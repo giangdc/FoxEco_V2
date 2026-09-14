@@ -13,10 +13,10 @@ counts:
   carried: 0
   deprecated: 0
   p1: 2
-  p2: 7
-  p3: 5
+  p2: 6
+  p3: 6
 status: ANALYZED
-updated: 2026-09-07
+updated: 2026-09-14
 ---
 
 # Test Scenario Map — v1.0 · Module FEED
@@ -60,8 +60,7 @@ updated: 2026-09-07
 
 ##### SC-FEED-001 — Bảng tin hiển thị tin của cả cộng đồng
 
-**Source Quote:**
-> "Tab Bảng tin | Danh sách toàn bộ tin đăng gửi hàng của cộng đồng"
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-FEED-001`)*
 
 **Source Location:** `DOC-v1.0-02 §2 · bảng Thành phần/Mô tả · dòng "Tab Bảng tin"`
 
@@ -69,8 +68,7 @@ updated: 2026-09-07
 
 ##### SC-FEED-002 — Completeness card tin (6 thành phần)
 
-**Source Quote:**
-> "Mỗi card: icon/ảnh hàng, loại hàng | giá trị, badge "Tin của bạn" nếu là tin tự đăng, thời gian đăng, "Nhận:"/"Giao:" rút gọn, khung giờ."
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-FEED-001`)*
 
 **Source Location:** `DOC-v1.0-02 §3.3 "Màn hình Bảng tin" · đoạn 3`
 
@@ -78,8 +76,7 @@ updated: 2026-09-07
 
 ##### SC-FEED-003 / SC-FEED-004 — Badge "Tin của bạn" (positive + negative)
 
-**Source Quote:**
-> "badge "Tin của bạn" nếu là tin tự đăng"
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-FEED-002`)*
 
 **Source Location:** `DOC-v1.0-02 §3.3 · đoạn 3 · mệnh đề 3`
 
@@ -87,8 +84,7 @@ updated: 2026-09-07
 
 ##### SC-FEED-005 — Bấm card mở Chi tiết tin đúng tin
 
-**Source Quote:**
-> "Bấm vào 1 tin → mở Chi tiết tin."
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-FEED-003`)*
 
 **Source Location:** `DOC-v1.0-02 §3.3 · đoạn 4`
 
@@ -106,8 +102,7 @@ updated: 2026-09-07
 
 ##### SC-FEED-008 — Ảnh mặc định khi tin không có ảnh
 
-**Source Quote:**
-> "Ảnh sản phẩm | Ảnh minh hoạ hàng hoá (hoặc ảnh mặc định nếu người đăng không tải ảnh)"
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-FEED-008`)*
 
 **Source Location:** `DOC-v1.0-02 §3.4 · bảng Trường/Thành phần · dòng "Ảnh sản phẩm"`
 
@@ -115,8 +110,7 @@ updated: 2026-09-07
 
 ##### SC-FEED-009 — Khung bản đồ là placeholder tĩnh
 
-**Source Quote:**
-> "10 | Bản đồ chỉ là placeholder | Khung "Bản đồ · ~X km" chỉ ghi khoảng cách ước tính tĩnh — cần xác nhận phạm vi bản chính thức có tích hợp bản đồ thật (GPS/Google Maps) hay không."
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-FEED-005`)*
 
 **Source Location:** `DOC-v1.0-02 §7 "Các điểm cần làm rõ / kiểm thử kỹ trước khi test chính thức" · bảng · dòng 10`
 

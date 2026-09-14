@@ -13,10 +13,10 @@ counts:
   carried: 0
   deprecated: 0
   p1: 1
-  p2: 11
-  p3: 12
+  p2: 12
+  p3: 11
 status: ANALYZED
-updated: 2026-09-07
+updated: 2026-09-14
 ---
 
 # Test Scenario Map — v1.0 · Module HOME
@@ -89,8 +89,7 @@ updated: 2026-09-07
 
 ##### SC-HOME-003 — Header hiển thị lời chào đúng tên
 
-**Source Quote:**
-> "Header | Icon vai trò + "Xin chào, [Tên]" + chuông thông báo (chấm đỏ khi có tin chưa đọc)"
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-HOME-002`)*
 
 **Source Location:** `DOC-v1.0-02 §2 · bảng Thành phần/Mô tả · dòng "Header"`
 
@@ -116,8 +115,7 @@ updated: 2026-09-07
 
 ##### SC-HOME-007 — Banner tĩnh, bấm không có hành vi
 
-**Source Quote:**
-> "Banner quảng bá | "Tiện đường — Giúp đồng nghiệp" + logo "FOX ECO" — tĩnh, không chức năng"
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-HOME-003`)*
 
 **Source Location:** `DOC-v1.0-02 §2 · bảng Thành phần/Mô tả · dòng "Banner quảng bá"`
 
@@ -125,8 +123,7 @@ updated: 2026-09-07
 
 ##### SC-HOME-008 — Card "Đóng góp của bạn"
 
-**Source Quote:**
-> "Card "Đóng góp của bạn" | Số đơn đã giúp (lớn) + "Cộng đồng FoxEco: [x] đơn · [y] người" — thống kê cá nhân & cộng đồng"
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-HOME-004`)*
 
 **Source Location:** `DOC-v1.0-02 §2 · bảng Thành phần/Mô tả · dòng "Card "Đóng góp của bạn""`
 
@@ -134,8 +131,7 @@ updated: 2026-09-07
 
 ##### SC-HOME-009 / SC-HOME-010 — Section "Đơn của tôi" hiện/ẩn có điều kiện
 
-**Source Quote:**
-> "Đơn của tôi | Chỉ hiện khi có đơn đang hoạt động. Nhãn "Gửi:" + loại hàng | giá trị; badge trạng thái (Chờ ghép/Đã ghép/Đang giao/Đã giao/Hoàn thành); "Từ:" / "Đến:"; thanh progress 5 bước; "Chạm để theo dõi đơn của bạn""
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-HOME-005`)*
 
 **Source Location:** `DOC-v1.0-02 §3.1 "Màn hình Trang chủ" · bảng Trường/Thành phần · dòng "Đơn của tôi"`
 
@@ -143,8 +139,7 @@ updated: 2026-09-07
 
 ##### SC-HOME-011 / SC-HOME-012 / SC-HOME-013 — Nhãn section theo vai trò (3 SC, 1/role)
 
-**Source Quote:**
-> "khối "Đơn của tôi" dùng nhãn "Nhận:" thay vì "Gửi:"/"Giao:""
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-HOME-005`)*
 
 **Source Location:** `DOC-v1.0-02 §5.1 "Màn hình Trang chủ, Bảng tin, Chi tiết tin, Đăng tin" · đoạn 1`
 
@@ -161,8 +156,7 @@ updated: 2026-09-07
 
 ##### SC-HOME-015 / SC-HOME-016 — Tap section · nút "Xem tất cả"
 
-**Source Quote:**
-> "Xem tất cả | Mở màn Hoạt động"
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-HOME-006`)*
 
 **Source Location:** `DOC-v1.0-02 §3.1 · bảng Trường/Thành phần · dòng "Xem tất cả"`
 
@@ -198,8 +192,7 @@ updated: 2026-09-07
 
 ##### SC-HOME-022 — Nút "Xem bảng tin gửi hàng"
 
-**Source Quote:**
-> "Nút "Xem bảng tin gửi hàng" | Chuyển sang tab Bảng tin"
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-HOME-008`)*
 
 **Source Location:** `DOC-v1.0-02 §2 · bảng Thành phần/Mô tả · dòng "Nút "Xem bảng tin gửi hàng""`
 
@@ -207,8 +200,7 @@ updated: 2026-09-07
 
 ##### SC-HOME-023 — Điều hướng thẳng Theo dõi đơn sau khi nhận đơn
 
-**Source Quote:**
-> "Sau khi xác nhận nhận một đơn, ứng dụng điều hướng thẳng sang Theo dõi đơn (không quay về Trang chủ)."
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-HOME-009`)*
 
 **Source Location:** `DOC-v1.0-02 §4.1 "Màn hình Trang chủ" (Luồng 2 — Người vận chuyển) · đoạn 1 · câu 2`
 

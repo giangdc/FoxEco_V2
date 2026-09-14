@@ -53,8 +53,7 @@ updated: 2026-09-07
 
 ##### SC-TS-001 / SC-TS-002 — Log đủ mốc + timestamp · ghi rõ actor
 
-**Source Quote:**
-> "TS-01 | Ghi log toàn bộ tương tác: ai đăng, ai nhận, mốc thời gian, đổi trạng thái, huỷ (kèm lý do + ai huỷ)"
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-TS-001`)*
 
 **Source Location:** `DOC-v1.0-01 §A8 "Trust & Safety (chung)" · bảng ID/Yêu cầu · L121`
 
@@ -82,8 +81,7 @@ updated: 2026-09-07
 
 ##### SC-TS-005 — [GAP] Không có cơ chế chặn user
 
-**Source Quote:**
-> "Phạm vi hiện tại: chỉ ghi log + admin can thiệp hỗ trợ. KHÔNG có chấm sao/đánh giá, **KHÔNG có chặn (block) người dùng**."
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-TS-005`)*
 
 **Source Location:** `DOC-v1.0-01 §A8 · blockquote phạm vi · L125`
 
@@ -91,8 +89,7 @@ updated: 2026-09-07
 
 ##### SC-TS-006 / SC-TS-007 — [GAP] Hệ quả "admin hỗ trợ" · Admin Portal ngoài phạm vi
 
-**Source Quote:**
-> "TS-03 | Admin có quyền can thiệp hỗ trợ khi có vướng mắc (dựa trên log)"
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-TS-003`)*
 > (`BR-CNF-04` §D4 L266): "RECEIVER không xác nhận 2 giờ → nhắc; thêm 2 giờ → **admin hỗ trợ**"
 > Phán quyết (`DOC-v1.0-06` KP-01 §9 `KB-TS-01`): "Phạm vi test v1.0 chỉ verify **hệ quả quan sát được từ phía end-user** (vd đơn quá hạn xác nhận → chuyển "admin hỗ trợ"), không test UI Admin Portal."
 

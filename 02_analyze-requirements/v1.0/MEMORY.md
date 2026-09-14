@@ -88,19 +88,19 @@ updated: 2026-09-07
 | Module | Req | SC | NEW | MOD | CARRIED | DEPR | P1 | P2 | P3 | CL | RISK | Risk Level |
 |---|--:|--:|--:|--:|--:|--:|--:|--:|--:|--:|--:|---|
 | USR | 7 | 12 | 12 | 0 | 0 | 0 | 1 | 5 | 6 | 4 | 5 | Low |
-| HOME | 10 | 24 | 24 | 0 | 0 | 0 | 1 | 11 | 12 | 3 | 5 | Medium |
-| FEED | 9 | 14 | 14 | 0 | 0 | 0 | 2 | 7 | 5 | 3 | 5 | **High** |
+| HOME | 10 | 24 | 24 | 0 | 0 | 0 | 1 | 12 | 11 | 3 | 5 | Medium |
+| FEED | 9 | 14 | 14 | 0 | 0 | 0 | 2 | 6 | 6 | 3 | 5 | **High** |
 | ORD | 22 | 51 | 51 | 0 | 0 | 0 | 7 | 28 | 16 | 10 | 8 | **High** |
 | ACT | 9 | 14 | 14 | 0 | 0 | 0 | 0 | 7 | 7 | 2 | 5 | Medium |
 | ASN | 12 | 18 | 18 | 0 | 0 | 0 | 6 | 10 | 2 | 2 | 7 | **High** |
-| DLV | 16 | 30 | 30 | 0 | 0 | 0 | 5 | 22 | 3 | 3 | 7 | **High** |
+| DLV | 16 | 30 | 30 | 0 | 0 | 0 | 4 | 25 | 1 | 3 | 7 | **High** |
 | GIFT | 8 | 12 | 12 | 0 | 0 | 0 | 0 | 6 | 6 | 3 | 5 | Low |
 | CNL | 7 | 13 | 13 | 0 | 0 | 0 | 4 | 7 | 2 | 2 | 6 | Medium-High |
-| NTF | 11 | 16 | 16 | 0 | 0 | 0 | 1 | 8 | 7 | 2 | 6 | Medium |
+| NTF | 11 | 16 | 16 | 0 | 0 | 0 | 1 | 9 | 6 | 2 | 6 | Medium |
 | TS | 5 | 7 | 7 | 0 | 0 | 0 | 1 | 2 | 4 | 1 | 5 | Medium |
-| **Tổng** | **116** | **211** | **211** | **0** | **0** | **0** | **28** | **113** | **70** | **35** | **64** | — |
+| **Tổng** | **116** | **211** | **211** | **0** | **0** | **0** | **27** | **117** | **67** | **35** | **64** | — |
 
-> ℹ️ **P1+P2+P3 = 28+113+70 = 211 = Tổng SC** ⇒ **không lệch cộng**: v1.0 là version đầu của chuỗi phân tích mới nên **0 DEPRECATED**, và mọi SC đều được gán Priority (kể cả SC dạng `[GAP]`). Quy ước đếm ở `Project_rule.md §Quy ước đếm scenario` cho phép `P1+P2+P3 < Tổng SC` khi có DEPRECATED — lượt này chưa phát sinh.
+> ℹ️ **P1+P2+P3 = 27+117+67 = 211 = Tổng SC** ⇒ **không lệch cộng**: v1.0 là version đầu của chuỗi phân tích mới nên **0 DEPRECATED**, và mọi SC đều được gán Priority (kể cả SC dạng `[GAP]`). Quy ước đếm ở `Project_rule.md §Quy ước đếm scenario` cho phép `P1+P2+P3 < Tổng SC` khi có DEPRECATED — lượt này chưa phát sinh. *(Sửa 2026-09-14 theo `health-check` B-06 — 4 module HOME/FEED/DLV/NTF đồng bộ lại theo đúng tally thật trên bảng SC; `generate-tc` đã dùng đúng số thật từ trước, chỉ frontmatter/router bị lệch.)*
 > ℹ️ **Cột `CL` chỉ đếm clarification có HOME ở module đó** (35 CL duy nhất). CL tham chiếu chéo (vd `C-ORD-06` xuất hiện ở 5 module) **không** cộng lặp — xem bảng CL ở từng `<module>/risk_assessment.md`.
 > ℹ️ **`req_without_sc` (gap SC có chủ đích):** `DLV` = 4 (`REQ-DLV-011/012/013/014`) · `CNL` = 1 (`REQ-CNL-007`) ⇒ **111/116 REQ có ≥1 SC**. Lý do từng REQ ghi ở `<module>/CHANGELOG.md §3`.
 > 🔴 **CL còn OPEN — 17/35**, ⛔ **KHÔNG có BLOCKER chặn execute**. Nhóm cần ưu tiên hỏi BA (ảnh hưởng nhiều TC nhất):

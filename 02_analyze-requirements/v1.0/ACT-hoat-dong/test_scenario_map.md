@@ -70,8 +70,7 @@ updated: 2026-09-07
 
 ##### SC-ACT-004 — Data tab "Đang diễn ra"
 
-**Source Quote:**
-> "Tab "Đang diễn ra": card đơn hiện tại (nếu có) → bấm vào mở Theo dõi đơn."
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-ACT-003`)*
 
 **Source Location:** `DOC-v1.0-02 §3.7 "Màn hình Hoạt động ("Đơn của tôi")" · đoạn 2`
 
@@ -89,8 +88,7 @@ updated: 2026-09-07
 
 ##### SC-ACT-006 — Completeness card đơn (5 trường)
 
-**Source Quote:**
-> "| 3 | Card (5 trường) | Icon trạng thái · Tên tin · Tuyến `Từ → Đến` · Ngày · Badge trạng thái |"
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-ACT-002`)*
 
 **Source Location:** `DOC-v1.0-06 KP-01 §3 "KB-ORD-07" · bảng · dòng 3`
 
@@ -98,8 +96,7 @@ updated: 2026-09-07
 
 ##### SC-ACT-007 — Đơn "Đã huỷ" không hiển thị ở cả 2 tab
 
-**Source Quote:**
-> "| 7 | Đơn trạng thái "Đã huỷ" | **KHÔNG** hiển thị ở cả 2 tab |"
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-ACT-007`)*
 
 **Source Location:** `DOC-v1.0-06 KP-01 §3 "KB-ORD-07" · bảng · dòng 7`
 
@@ -107,9 +104,7 @@ updated: 2026-09-07
 
 ##### SC-ACT-008 / SC-ACT-009 — Card "Hết hạn": lý do · non-clickable
 
-**Source Quote:**
-> "| 4 | Card "Hết hạn" có thêm dòng lý do | *"Không có ai nhận mang giúp trong thời gian đăng — tin đã tự động đóng."* |"
-> "| 6 | Tap card "Hết hạn" | → không cho thao tác (non-clickable) |"
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-ACT-005`)*
 
 **Source Location:** `DOC-v1.0-06 KP-01 §3 "KB-ORD-07" · bảng · dòng 4 và 6`
 
@@ -127,8 +122,7 @@ updated: 2026-09-07
 
 ##### SC-ACT-012 / SC-ACT-014 — [GAP] Empty state 2 tab
 
-**Source Quote:**
-> "**C-ORD-06** | Empty state của 3 màn (Hoạt động · Quà đã nhận · Thông báo) khi không có data | ⚠ **Có lịch sử đảo chiều:** từng Resolved 2026-07-28 với text *"Hiện tại chưa có dữ liệu"*, sau đó **REVERT về Open 2026-07-29** vì rà lại toàn bộ 82 ảnh Figma + BRD + demo docx **không tìm thấy bằng chứng nào**"
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-ACT-008`)*
 
 **Source Location:** `DOC-v1.0-06 KP-02 §5 · bảng "Nhóm Open" · dòng "C-ORD-06"`
 

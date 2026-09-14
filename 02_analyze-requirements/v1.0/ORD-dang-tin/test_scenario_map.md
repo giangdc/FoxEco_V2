@@ -98,9 +98,7 @@ updated: 2026-09-07
 
 ##### SC-ORD-001 / SC-ORD-002 / SC-ORD-003 — Màn "Đăng tin mới" và 2 nhánh đăng
 
-**Source Quote:**
-> "Chọn vai trò đăng tin: Gửi hàng / Nhận giao hàng"
-> "Subtitle *"Bạn muốn làm gì?"* · card `Tôi cần gửi hàng` (icon hộp cam) · card `Tôi nhận giao hàng` (icon route tím) · banner cam kết nền vàng nhạt icon ⓘ (không phí / không chat / không thanh toán / SĐT lộ sau ghép) · cả 2 card bấm được."
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-ORD-001`)*
 
 **Source Location:** `DOC-v1.0-02 §3.5 "Màn hình Đăng tin mới" · đoạn 1` + `DOC-v1.0-06 KP-01 §3 "KB-ORD-10"`
 
@@ -108,8 +106,7 @@ updated: 2026-09-07
 
 ##### SC-ORD-004 — Happy path đăng tin NEED qua 3 bước
 
-**Source Quote:**
-> "ORD-02 | Wizard đăng tin ngắn | B1 Loại tin+hàng → B2 Địa điểm/lộ trình+thời gian → B3 Xác nhận + đồng ý điều khoản"
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-ORD-002`)*
 
 **Source Location:** `DOC-v1.0-01 §D3 "Functional Requirements — Gửi Hàng" · bảng ID/Yêu cầu/AC · L240`
 
@@ -140,8 +137,7 @@ updated: 2026-09-07
 
 ##### SC-ORD-011 — Ghi chú biên 300 ký tự
 
-**Source Quote:**
-> "Ghi chú | Không | Trống | Tối đa 300 ký tự. Khuyến nghị nêu kích thước/khối lượng ước tính & lưu ý khi cầm giữ"
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-ORD-004`)*
 
 **Source Location:** `DOC-v1.0-01 §D8.1 · bảng · dòng "Ghi chú" · L358`
 
@@ -149,8 +145,7 @@ updated: 2026-09-07
 
 ##### SC-ORD-012 / SC-ORD-013 — Ảnh sản phẩm (ràng buộc · tuỳ chọn)
 
-**Source Quote:**
-> "Ảnh sản phẩm | Không | Trống | Chỉ 1 ảnh duy nhất, ≤ 5MB, định dạng JPG/PNG. Khuyến nghị có ảnh để người giao dễ nhận"
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-ORD-006`)*
 
 **Source Location:** `DOC-v1.0-01 §D8.1 · bảng · dòng "Ảnh sản phẩm" · L360`
 
@@ -258,9 +253,7 @@ updated: 2026-09-07
 
 ##### SC-ORD-043 / SC-ORD-044 — Sửa tin (cho phép ở Chờ ghép · khoá từ Đã ghép)
 
-**Source Quote:**
-> "BR-EDIT-01 | Chỉ được chỉnh sửa tin khi còn "Chờ ghép" (POSTED); đã MATCHED trở đi khoá chỉnh sửa"
-> "OPR-10 | Điều kiện chỉnh sửa đơn | Chỉ được sửa đơn khi chưa có ai nhận (trạng thái "Chờ ghép"); ngay khi đã có người nhận (Đã ghép trở đi) → khoá chỉnh sửa hoàn toàn"
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-ORD-017`)*
 > "Nút "Chỉnh sửa" chỉ hiện ở trạng thái Chờ ghép (POSTED); mở màn giống tạo đơn nhưng đã điền sẵn; có nút "Cập nhật" & "Huỷ chỉnh sửa"; **sau IN_TRANSIT không cho sửa**"
 
 **Source Location:** `DOC-v1.0-01 §D4 · BR-EDIT-01 · L269` · `§D7 · OPR-10 · L346` · `§D1b · US-D19 · L169` (và `§D3 ORD-10 · L252`)
@@ -280,8 +273,7 @@ updated: 2026-09-07
 
 ##### SC-ORD-046 — Timeline tin có mốc đăng tin
 
-**Source Quote:**
-> "ORD-04 | Tin có timeline trạng thái | Lịch sử đầy đủ với timestamp"
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-ORD-019`)*
 
 **Source Location:** `DOC-v1.0-01 §D3 · bảng ID/Yêu cầu/AC · L243`
 
@@ -289,10 +281,7 @@ updated: 2026-09-07
 
 ##### SC-ORD-047 / SC-ORD-048 / SC-ORD-049 — Quy tắc chung form (`VAL-01`/`VAL-02`/`VAL-03`)
 
-**Source Quote:**
-> "VAL-01 | Nút submit vô hiệu hoá đến khi mọi trường bắt buộc hợp lệ + đã tick điều khoản"
-> "VAL-02 | Lỗi hiện ngay dưới ô nhập khi rời ô (on blur), không dùng popup; cuộn tới ô lỗi đầu tiên khi bấm submit"
-> "VAL-03 | Tự cắt khoảng trắng đầu/cuối; chuẩn hoá SĐT (bỏ khoảng trắng, dấu chấm) trước khi lưu"
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-ORD-020`)*
 
 **Source Location:** `DOC-v1.0-01 §D8.3 "Quy tắc chung cho form" · bảng ID/Quy tắc · L392-394`
 
@@ -300,8 +289,7 @@ updated: 2026-09-07
 
 ##### SC-ORD-050 — [GAP] Thoát giữa wizard
 
-**Source Quote:**
-> "**C-ORD-08** | Bấm Reset/thoát giữa chừng wizard có xoá dữ liệu form đã nhập không? | Chưa hỏi BA. Không có mô tả trong BRD/PRD"
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-ORD-021`)*
 
 **Source Location:** `DOC-v1.0-06 KP-02 §5 · bảng "Nhóm Open" · dòng "C-ORD-08"`
 
@@ -309,8 +297,7 @@ updated: 2026-09-07
 
 ##### SC-ORD-051 — [GAP] Ngưỡng giá trị hàng bằng số tiền
 
-**Source Quote:**
-> "BR-ORD-03 | Giá trị hàng trong ngưỡng cấu hình; trên ngưỡng → cảnh báo nên mua bảo hiểm (phase sau)"
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-ORD-022`)*
 
 **Source Location:** `DOC-v1.0-01 §D4 "Business Rules & Permission Matrix" · bảng Rule/Mô tả · L262`
 

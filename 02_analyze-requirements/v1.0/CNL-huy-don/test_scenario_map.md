@@ -61,8 +61,7 @@ updated: 2026-09-07
 
 ##### SC-CNL-001 / SC-CNL-002 / SC-CNL-003 — Huỷ đơn ở POSTED · MATCHED · rule khoá nút Xác nhận
 
-**Source Quote:**
-> "Huỷ được ở POSTED/MATCHED; popup huỷ bắt buộc nhập lý do (nút Xác nhận khoá tới khi có lý do); đơn huỷ ghi rõ ai huỷ (Người gửi/Người vận chuyển/Người nhận) + lý do, đồng bộ realtime cho cả 3 bên; Carrier huỷ nhận → đơn trả lại bảng tin (về "Chờ ghép"); sau IN_TRANSIT phải tạo báo cáo sự cố"
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-CNL-001`)*
 
 **Source Location:** `DOC-v1.0-01 §D1b · US-D16 · Acceptance Criteria · L195`
 
@@ -81,10 +80,9 @@ updated: 2026-09-07
 
 ##### SC-CNL-005 / SC-CNL-006 — Chặn huỷ từ "Đang giao" · [GAP] không có bề mặt tạo sự cố
 
-**Source Quote:**
+**Source Quote:** *(vế "phải tạo sự cố" quote đầy đủ ở `requirement_traceability.md §2 REQ-CNL-007`)*
 > "đã lấy hàng → sang "Đang giao" thì **KHÔNG ai được huỷ**"
 > "BR-ASN-03 | Sau khi nhận hàng (IN_TRANSIT) không hủy thường → **phải tạo sự cố**"
-> "Màn "Báo sự cố" chưa có đặc tả — out of scope v1.0"
 
 **Source Location:** `DOC-v1.0-01 §D7 · OPR-11 · L347` · `§D4 · BR-ASN-03 · L264` ⟷ `DOC-v1.0-06 KP-01 §5 "KB-DLV-05"`
 
@@ -92,8 +90,7 @@ updated: 2026-09-07
 
 ##### SC-CNL-007 — Carrier huỷ nhận → đơn về "Chờ ghép"
 
-**Source Quote:**
-> "OPR-09 | Carrier huỷ khi chưa lấy hàng → trả đơn về bảng tin | Người vận chuyển huỷ ở trạng thái Đã ghép (chưa "Tôi đã lấy hàng") → đơn tự động về "Chờ ghép" và hiển thị lại trên bảng tin cho người khác nhận"
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-CNL-004`)*
 
 **Source Location:** `DOC-v1.0-01 §D7 · OPR-09 · L345` (đồng thuận `§D1b · US-D16 · L195`)
 
@@ -101,8 +98,7 @@ updated: 2026-09-07
 
 ##### SC-CNL-008 / SC-CNL-011 / SC-CNL-013 — Ghi vai trò + lý do · realtime 3 bên · ma trận quyền
 
-**Source Quote:**
-> "Ngoài luồng: [CANCELLED "Đã huỷ"] — bắt buộc lý do; ghi rõ ai huỷ (Sender/Carrier/Receiver); đồng bộ realtime cả 3 bên; Carrier huỷ → trả đơn về "Chờ ghép""
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-CNL-005`)*
 > (`§D4` permission matrix L285): "Huỷ đơn (bắt buộc lý do) | ✓ trước IN_TRANSIT | ✓ → về Chờ ghép | ✓ trước IN_TRANSIT | ✓"
 
 **Source Location:** `DOC-v1.0-01 §D2 · block code 2 · L233` và `§D4 · bảng Permission Matrix · L285`
@@ -111,10 +107,7 @@ updated: 2026-09-07
 
 ##### SC-CNL-009 / SC-CNL-010 — [GAP·bug] Log LỊCH SỬ khi huỷ
 
-**Source Quote:**
-> "- **Huỷ đơn** (Sender/Receiver) → **không ghi log nào** vào block LỊCH SỬ, chỉ hiện banner đỏ *"Đơn hàng đã bị huỷ"*"
-> "- **Huỷ nhận đơn** (Carrier) → tệ hơn: **XOÁ LUÔN dòng "Ghép thành công"** khỏi LỊCH SỬ"
-> "User chốt: *"huy don va huy nhan don hien tai cu luu log lich su nha"* → **LỊCH SỬ phải ghi log cho cả 2 hành động; hành vi hiện tại là GAP cần dev bổ sung.**"
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-CNL-006`)*
 > Rule bị vi phạm (`BR-INT-04` §A5 L80): "Timeline tương tác không sửa được sau khi ghi (audit)"
 
 **Source Location:** `DOC-v1.0-06 KP-01 §7 "KB-CNL-01"` (live-verify Chrome MCP 2026-07-29 + user chốt) ⟷ `DOC-v1.0-01 §A5 · BR-INT-04 · L80`

@@ -6,7 +6,7 @@ bi dung lam noi ghi LICH SU, roi phinh toi muc khong doc duoc nhu trang thai.
 Trieu chung da gap that: mot thu muc analyze nang vai MB, mot luot generate-tc
 nap hang tram nghin token, mot O BANG nang >80 KB.
 
-Hook nay la LOP CUNG cua policy `Project_rule.md §Memory Policy` (policy noi luat,
+Hook nay la LOP CUNG cua policy `Project_rule.md §Memory / Write-back Policy` (policy noi luat,
 hook cuong che). Ca hai deu can: policy mot minh thi bi quen, hook mot minh thi
 khong ai hieu vi sao bi chan.
 
@@ -106,16 +106,16 @@ RULE_CITATION = re.compile(
 # tc-notes-guard để không bắt nhầm nhãn nằm GIỮA câu (điều kiện áp dụng thật).
 HIST_PATTERNS = [
     (r"\((?:số cũ|bản trước|mốc cũ|lịch sử|bản lượt \d)",
-     "khối `(số cũ:/trước đó:/lịch sử)` — sửa TẠI CHỖ, đừng nối bản cũ (§Memory Policy)"),
+     "khối `(số cũ:/trước đó:/lịch sử)` — sửa TẠI CHỖ, đừng nối bản cũ (§Memory / Write-back Policy)"),
     (r"hết hiệu lực|đã bị thay thế|đừng trích lại|SUPERSEDED",
-     "nhãn số liệu đã bị thay thế — xoá hẳn, đừng giữ lại để đối chiếu (§Memory Policy)"),
+     "nhãn số liệu đã bị thay thế — xoá hẳn, đừng giữ lại để đối chiếu (§Memory / Write-back Policy)"),
     (r"~~.+~~",
-     "gạch ngang = nội dung đã chết ⚠️ TRỪ khi cả ô là căn cứ còn hiệu lực (§Memory Policy)"),
+     "gạch ngang = nội dung đã chết ⚠️ TRỪ khi cả ô là căn cứ còn hiệu lực (§Memory / Write-back Policy)"),
     (r"\d+\s*(?:→|->)\s*\d+",
-     "biến động số cũ→số mới — chỉ giữ số hiện hành (§Memory Policy)"),
+     "biến động số cũ→số mới — chỉ giữ số hiện hành (§Memory / Write-back Policy)"),
 ]
 
-# CHECK 4 — số đếm ngoài nguồn canonical (§Memory Policy). Chỉ WARN: regex chắc chắn có
+# CHECK 4 — số đếm ngoài nguồn canonical (§Memory / Write-back Policy). Chỉ WARN: regex chắc chắn có
 # false-positive (dải ID, tham chiếu chéo), nên không được phép chặn.
 COUNT_PATTERN = re.compile(r"(REQ|SC|CL|RISK|TC)\D{0,12}\d{2,3}")
 
@@ -185,7 +185,7 @@ def classify_tier(relpath):
 
     # TIER4: 02_analyze-requirements/WORKING-STATE.md — ràng buộc execute + nợ mở
     # + quyết định cấu trúc, tách khỏi CLAUDE.md 2026-08-25 (file đó nạp mọi phiên).
-    # Cùng luật §Memory Policy nhưng KHÁC vai 3 tier kia: prose chứ không phải bảng SC/quote.
+    # Cùng luật §Memory / Write-back Policy nhưng KHÁC vai 3 tier kia: prose chứ không phải bảng SC/quote.
     if base == "working-state.md" and len(rest) == 1:
         return "TIER4"
 
@@ -198,7 +198,12 @@ def classify_tier(relpath):
         return None
 
     # TIER2: v*-sprint-*/MEMORY.md  (parent = thư mục sprint ⇒ đúng 2 phần)
-    if len(rest) == 2 and base == "memory.md":
+    # `VERSION_MEMORY.md` la TEN CUA CHINH ROUTER DO sau khi `/package-version --tier analyze`
+    # doi hinh dang. Cung vai, cung tang, cung tran ⇒ phai khop o day. Bo sot no thi ham tra
+    # None ⇒ router da dong goi KHONG CO TRAN NAO va hook im lang vo dung (dung canh bao o
+    # comment tren), trong khi `package-version/references/packaged-layout.md` lai khai la
+    # "memory-guard da nhan VERSION_MEMORY.md la TIER2".
+    if len(rest) == 2 and base in ("memory.md", "version_memory.md"):
         return "TIER2"
 
     # TIER3: v*-sprint-*/<module>/<leaf>.md  (đúng 3 phần)
@@ -213,8 +218,8 @@ def strip_writeback(text):
 
     Ba section lớn dần CHÍNH ĐÁNG mỗi lượt ghi, không phải "phình":
       · `§4  Scenario Index` — generate-tc/vibe-test ghi cột TC/Vibe Status (`§12.1`)
-      · `§0.1 Changelog`     — đích lịch sử từng lượt UPDATE của analyze (`§Memory Policy`)
-      · `§9  TC Generation Log` — đích write-back của generate-tc (`§Memory Policy`)
+      · `§0.1 Changelog`     — đích lịch sử từng lượt UPDATE của analyze (`§Memory / Write-back Policy`)
+      · `§9  TC Generation Log` — đích write-back của generate-tc (`§Memory / Write-back Policy`)
     Không trừ thì hook chặn đúng lượt write-back hợp lệ và sẽ bị tắt sau vài lần.
     Đo 2026-08-28: trừ đủ 3 section ⇒ nhóm lành S1/2/3/5 còn 47–65 KB (trần 80 vẫn
     tách đúng), S6 100→82 KB · S7 109→84 KB.
@@ -256,7 +261,7 @@ def strip_detail(text):
 def leaf_limit(root, relpath):
     """Trần TIER3: 450 KB nếu module có >150 SC, ngược lại 250 KB.
 
-    Đếm SC ở NGUỒN CANONICAL `<module>/test_scenario_map.md` (`Project_rule §Memory Policy`),
+    Đếm SC ở NGUỒN CANONICAL `<module>/test_scenario_map.md` (`Project_rule §Memory / Write-back Policy`),
     không ước theo dung lượng. Thiếu file ⇒ trần mặc định.
     """
     smap = os.path.join(root, os.path.dirname(relpath), "test_scenario_map.md")
@@ -345,7 +350,7 @@ def main():
                 f"{CELL_FAIL_BYTES}B TRÊN DÒNG VỪA ĐỔI. Ô bảng là nơi lịch sử tích tụ "
                 "im lặng nhất (IDE Find bỏ sót dòng dài, git diff không đọc được) — "
                 "rút về đúng 4 thành phần: ngày · trạng thái · số liệu hiện hành · "
-                "1 link đích lịch sử (`Project_rule.md §Memory Policy`):")
+                "1 link đích lịch sử (`Project_rule.md §Memory / Write-back Policy`):")
             for n, i, nb in fail_touched[:6]:
                 blockers.append(f"  · dòng {n} ô {i}: {nb}B")
         if fail_stale:
@@ -409,14 +414,14 @@ def main():
                     "Nợ đóng lại thì file PHẢI co — kiểm mục nào đã xong mà chưa xoá."
                     if tier == "TIER4" else
                     "§15/§16/§13 có đang bị append trở lại? Đích đúng là `08_test-runs/runs/` "
-                    "(`docs/execution-log-restructure-guide.md`). ⛔ Đừng cắt §6/§7/§9 — "
+                    "(`Project_rule.md §Memory / Write-back Policy`). ⛔ Đừng cắt §6/§7/§9 — "
                     "3 registry đó là TRẠNG THÁI, lứn theo số spec/TC thật."
                     if tier == "TIER5" else
                     "Bảng trạng thái phình = có dòng append cho cùng 1 `FAIL ID`. "
                     "Luật là GHI ĐÈ: sửa dòng cũ, đẩy diễn biến xuống `## Chi tiết`."
                     if tier == "TIER6" else
                     "Mốc thực đo: router đúng vai ≈ 60–69 KB ngoài §4 "
-                    "(`Project_rule.md §Memory Policy②`)."))
+                    "(`Project_rule.md §Memory / Write-back Policy②`)."))
 
     # ── CHECK 3 — nhãn lịch sử THÊM MỚI (chỉ soi dòng trong diff) ─────────────
     # 77% dòng có marker lịch sử lại chứa tín hiệu căn cứ SỐNG ⇒ quét toàn file sẽ
@@ -434,7 +439,7 @@ def main():
                 break
     if hist_hits:
         head = (f"CHECK 3 — {len(hist_hits)} nhãn lịch sử THÊM MỚI ở lượt này "
-                "(CONSOLIDATE không APPEND — `Project_rule.md §Memory Policy`):")
+                "(CONSOLIDATE không APPEND — `Project_rule.md §Memory / Write-back Policy`):")
         bucket = blockers if len(hist_hits) >= HIST_LABELS_BLOCK else warnings
         bucket.append(head)
         for why, sample in hist_hits[:6]:
@@ -451,7 +456,7 @@ def main():
             warnings.append(
                 f"CHECK 4 — {len(count_hits)} dòng mới ở {tier} có dạng số đếm "
                 "REQ/SC/CL/RISK/TC. Tầng này KHÔNG ghi số, chỉ `→ xem <path>` — nguồn "
-                "canonical ở `Project_rule.md §Memory Policy`. ⚠️ Check này hay báo oan (dải "
+                "canonical ở `Project_rule.md §Memory / Write-back Policy`. ⚠️ Check này hay báo oan (dải "
                 "ID, tham chiếu chéo) ⇒ chỉ nhắc, không chặn.")
             for sample in count_hits[:3]:
                 warnings.append(f"  · {sample}")
@@ -460,7 +465,7 @@ def main():
         return 0
 
     msg = ["[memory-guard] MEMORY.md = TRẠNG THÁI hiện hành, không phải changelog "
-           f"(`Project_rule.md §Memory Policy`). File: {relpath} [{tier}]"]
+           f"(`Project_rule.md §Memory / Write-back Policy`). File: {relpath} [{tier}]"]
     if blockers:
         msg.append("")
         msg.extend(blockers)
@@ -470,12 +475,12 @@ def main():
     msg.append("")
     msg.append(
         "Tự kiểm trước khi giữ nguyên:\n"
-        "  1. Nội dung này có đích write-back chính thức không? (`§Memory Policy`) → ghi ở "
+        "  1. Nội dung này có đích write-back chính thức không? (`§Memory / Write-back Policy`) → ghi ở "
         "đó rồi xoá khỏi đây. ⛔ KHÔNG tạo file lịch sử mới.\n"
         "  2. Là trạng thái đang đúng hay việc đã xảy ra? → việc đã xảy ra thì bỏ.\n"
         "  3. Xoá dòng này thì lượt analyze/generate/execute sau có làm SAI không "
         "(mất căn cứ `CL-xxx`, mất cảnh báo `⛔`, mất đường `BLOCKED`)? Có rủi ro "
-        "thì GIỮ — 77% dòng mang marker lịch sử vẫn chứa căn cứ sống (`§Memory Policy`).\n"
+        "thì GIỮ — 77% dòng mang marker lịch sử vẫn chứa căn cứ sống (`§Memory / Write-back Policy`).\n"
         "Nếu đã cân nhắc và vẫn cần giữ, nói rõ lý do cho user rồi đi tiếp.")
     print("\n".join(msg), file=sys.stderr)
     return 2 if blockers else 0

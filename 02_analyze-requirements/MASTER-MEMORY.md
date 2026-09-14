@@ -21,8 +21,8 @@
 |--------|---------|------|------|--------|---------------|---------|
 | DOC-v1.0-01 | v1.0 | `Doc/FoxEco BRD v3.2.md` | Markdown — **BRD v3.2** (27/07/2026). **Nguồn nghiệp vụ chính, THẮNG khi mâu thuẫn về rule** | Active | — | USR, HOME, FEED, ORD, ACT, ASN, DLV, GIFT, CNL, NTF, TS |
 | DOC-v1.0-02 | v1.0 | `Doc/tổng hợp từ file demo.docx` | Word — **PRD (Nháp)** tái dựng từ demo standalone. **THẮNG khi mô tả chi tiết màn hình/field**; ⛔ hành vi demo KHÔNG dùng làm oracle | Active | — | USR, HOME, FEED, ORD, ACT, ASN, DLV, GIFT, NTF |
-| DOC-v1.0-03 | v1.0 | `Design/FoxEco Demo 3 vai tro (standalone) (2).html` | HTML — prototype tương tác 3 vai trò, **reference-only** | Active | — | FEED, ASN, DLV |
-| DOC-v1.0-04 | v1.0 | `Design/Fox Eco Doc/images/*` (82 ảnh) | Figma UI mockup — nguồn thiết kế UI chi tiết nhất. ⚠ status bar "9:41" = mẫu chuẩn Apple, **không phải screenshot máy thật** | Active | — | USR, HOME, FEED, ORD, DLV, GIFT, NTF |
+| DOC-v1.0-03 | v1.0 | `Design/FoxEco Demo 3 vai tro (standalone) (2).html` | HTML — prototype tương tác 3 vai trò, **reference-only, ⛔ không trích làm nguồn rule** ⇒ cột `Modules` là **bề mặt prototype mô tả 3 màn này**, KHÔNG phải nơi citation — 0 citation trong `requirement_traceability.md` là ĐÚNG, không phải orphan | Active | — | FEED, ASN, DLV *(mô tả, không citation)* |
+| DOC-v1.0-04 | v1.0 | `Design/Fox Eco Doc/` — gồm `images/*` (82 ảnh, nguồn UI chi tiết nhất) + `canvas.fig` (nguồn Figma gốc) + `meta.json` + `thumbnail.png` | Figma UI mockup. ⚠ status bar "9:41" = mẫu chuẩn Apple, **không phải screenshot máy thật** | Active | — | USR, HOME, FEED, ORD, DLV, GIFT, NTF |
 | DOC-v1.0-05 | v1.0 | `Design/Screenshot From 2026-07-27 15-23-25.png` | Ảnh mockup màn Hoạt động (⚠ cùng cảnh báo "9:41") | Active | — | ACT |
 | DOC-v1.0-06 | v1.0 | `_knowledge-pack/` (KP-01, 02, 03, 05, 06, 07 + `evidence/`) | Knowledge pack — kiến thức nghiệp vụ **NGOÀI tài liệu** (BA-chat · QA-obs · Figma · vibe-test). ⛔ KHÔNG là nguồn requirement gốc | Active | — | USR, HOME, FEED, ORD, ACT, ASN, DLV, GIFT, CNL, NTF, TS |
 
@@ -105,7 +105,7 @@
 | 11 | log-bug | NOT_STARTED | — | — | — | **≥9 bug/nghi vấn bug đã biết chưa log** (`KP-05 §5`) — xem §9 |
 | 11b | sync-jira-bugs | NOT_STARTED | — | — | — | ⛔ Jira **chưa cấu hình** (`Project_rule §Jira Integration` còn comment) |
 | 12 | test-report | NOT_STARTED | — | — | — | Phải nêu rõ nhánh Admin (`§D4` cột Admin) ngoài phạm vi v1.0 |
-| 13 | health-check | COMPLETED | 2026-09-07 | FULL · toàn repo | `09_reports/health-check/health-check-2026-09-07.md` | **0 CRITICAL · 6 WARNING · 7 INFO.** Số đếm canonical khớp 100% (211 SC / 116 REQ / 35 CL / 64 RISK). Nặng nhất: `G-03` 84 quote trùng nơi (66 cặp traceability↔scenario_map). Không có gì chặn `generate-tc` |
+| 13 | health-check | COMPLETED | 2026-09-14 | FULL · toàn repo + remediation pass cùng ngày | `09_reports/health-check/health-check-2026-09-14.md` (kèm `## Remediation Log`) | **12 finding gốc (2 CRITICAL · 5 WARNING · 5 INFO) → 10 đã fix, 2 vốn không cần hành động.** Số canonical không đổi sau fix (211 SC / 116 REQ / 35 CL / 64 RISK / 219 TC). G-03 quote trùng: 102→2 dòng (2 dòng còn lại là excerpt chủ đích). Đồng bộ thêm `memory-guard.py` + thêm `run-python.mjs` theo bản toolkit. **Còn treo ngoài phạm vi health-check:** `review-tc` REJECTED (0/100) chặn `vibe-test` thật — chưa xử lý; `validate-vibe-run.mjs` cũng hardcode `python3` như H-04 nhưng chưa fix (phát hiện phụ, xem Remediation Log) |
 
 ## 9. Notes (quyết định cross-version — KHÔNG phải per-run count log)
 

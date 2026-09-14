@@ -48,7 +48,7 @@
 | TC-07 | DLV | `DLV-giao-nhan/` | Giao nhận & Theo dõi đơn — ma trận nhãn nút 3 vai × 5 trạng thái, xác nhận đã nhận, ảnh/GPS/chi phí | Active |
 | TC-08 | GIFT | `GIFT-qua-cam-on/` | Quà cảm ơn — tặng quà sau Hoàn thành + màn "Quà đã nhận" | Active |
 | TC-09 | CNL | `CNL-huy-don/` | Huỷ đơn / Huỷ nhận đơn — lý do bắt buộc, ghi vai trò người huỷ | Active |
-| TC-10 | NTF | `NTF-thong-bao/` | Thông báo — danh sách, đánh dấu đã đọc, phân trang, 12 sự kiện thông báo | Active |
+| TC-10 | NTF | `NTF-thong-bao/` | Thông báo — danh sách, đánh dấu đã đọc, phân trang, **9 sự kiện chính thức `NTF-01..09`** (12 hàng ứng viên ở `KP-07`, chưa chốt — `C-NTF-01` Open) | Active |
 | TC-11 | TS | `TS-trust-safety/` | Trust & Safety — log tương tác bất biến, Admin can thiệp (phần lớn backend/Admin) | Active |
 
 > **Tách module so với đợt v1.0 cũ (2026-09-07, QC GiangDC2):** đợt cũ dùng 8 mã domain, trong đó
@@ -66,7 +66,9 @@
 | Document | `DOC-v[VERSION]-[NN]` |
 | Requirement | `REQ-[MODULE]-[NNN]` |
 | Scenario | `SC-[MODULE]-[NNN]` |
-| Testcase | `TC-[MODULE]-[NNN]-[short-title]` |
+| Testcase | `TC-[MODULE]-[NNN]` — tiêu đề để ở cột riêng ("Test Title"), **KHÔNG** nhét slug vào ID *(sửa 2026-09-14 theo `health-check` F-04 — 219/219 TC thực tế dùng dạng này, pattern cũ có `-[short-title]` chưa từng khớp)* |
+| Clarification | `C-[MODULE]-[NN]` *(bổ sung 2026-09-14 — dùng 649+ lần nhưng chưa có nguồn chuẩn, theo `health-check` F-04 lượt 2026-09-07)* |
+| Risk | `RISK-[MODULE]-[NN]` *(bổ sung 2026-09-14, cùng lý do)* |
 | Bug ID | `BUG-[NNN]` |
 | Test run | `TR-[SPRINT]-[YYYY-MM-DD]` |
 | TC-MASTER | `TC-MASTER-v[VERSION].xlsx` |
@@ -253,6 +255,43 @@ test data đúng giá trị TC · theo convention `10_source-code/MEMORY.md`) v�
 > đọc `Language` ở đây + `10_source-code/MEMORY.md §2 Tech Stack` để route đúng biến thể stack.
 
 N/A — chưa scaffold source code. Chạy `/init-source-code --archetype <stack>` để sinh.
+
+## Memory / Write-back Policy
+
+> Section này trả lời: **file nào được phép to tới đâu**, và **lịch sử làm việc bị cắt ra thì đi
+> về đâu**. Hook `memory-guard.py` đọc ở đây và cưỡng chế. Không khai ⇒ hook dùng trần khởi điểm
+> của chính nó, ⛔ không tự đoán theo project.
+>
+> ℹ️ `/package-version` **KHÔNG đọc section này** — skill đó tự chứa luật đóng gói. Nếu section này
+> khai luật đóng gói và **lệch** với skill: 🛑 skill DỪNG và báo, ⛔ không tự chọn bên thắng.
+
+**① Trần dung lượng từng tầng** (khớp `.claude/hooks/memory-guard.py` hiện hành — không đổi số ở đây mà không sửa kèm hook):
+
+| Tầng | File | Trần |
+|---|---|---|
+| 1 | `02_analyze-requirements/MASTER-MEMORY.md` | 60 KB |
+| 2 | `02_analyze-requirements/v1.0/MEMORY.md` (router) | 90 KB |
+| 3 | `02_analyze-requirements/v1.0/<MODULE>/*.md` (lá) | 250 KB (450 KB nếu module ≥150 SC — hiện chưa module nào chạm) |
+| 4 | `WORKING-STATE.md` | 16 KB |
+| 5 | `10_source-code/MEMORY.md` | 130 KB — N/A, project chưa scaffold automation |
+| 6 | `08_test-runs/runs/FAIL-REGISTRY.md` | 200 KB |
+
+🔴 **Trần nào làm file của sprint ĐÃ ĐÓNG đỏ là trần SAI** — nới trần, ⛔ đừng sửa file đã chốt.
+
+**② Đích write-back chính thức** — lịch sử cắt ra khỏi MEMORY đi về đây, ⛔ không đẻ file mới (`docs/history/`, `*-log.md`, `*.bak`):
+
+| Loại lịch sử | Đích |
+|---|---|
+| Lịch sử phân tích từng lượt | `02_analyze-requirements/v1.0/<MODULE>/CHANGELOG.md §1` (layout `module-first v2`) |
+| Lịch sử sinh TC | `03_test-cases/v1.0/CHANGELOG.md` (TC Gen Log) |
+| Lịch sử chạy test | `08_test-runs/runs/RUN-*.md` + `08_test-runs/runs/INDEX.md` |
+| Lịch sử implement | `10_source-code/MEMORY.md` §Implementation Log — N/A hiện tại |
+| Quyết định xuyên version | `MASTER-MEMORY.md §9 Notes` |
+| Còn lại | `git log -p` — ⛔ không chép ra file |
+
+**③ Nguồn canonical của số đếm:** frontmatter `counts:` của `<module>/test_scenario_map.md` (REQ/SC/NEW/MOD/CARRIED/DEPR/P1-P3) và `<module>/risk_assessment.md` (CL/RISK) — router `v1.0/MEMORY.md §2` và `MASTER-MEMORY.md §3` chỉ là bản dẫn xuất/roll-up; lệch thì **frontmatter module thắng**.
+
+**④ Khối bất khả xâm phạm:** mọi dòng có `⛔`, cộng thêm mọi dòng `🔴`/`⚠️` mang ngày + người quyết ở `§Active Memory Rules` và `§Custom Rules`.
 
 ## Active Memory Rules
 

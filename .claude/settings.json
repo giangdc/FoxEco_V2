@@ -9,7 +9,7 @@
     "PostToolUse": [
       {
         "matcher": "Write|Edit|MultiEdit",
-        "hooks": [ { "type": "command", "command": "python3 .claude/hooks/memory-guard.py" } ]
+        "hooks": [ { "type": "command", "command": "node .claude/hooks/run-python.mjs .claude/hooks/memory-guard.py" } ]
       }
     ]
   }

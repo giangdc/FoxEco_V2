@@ -59,8 +59,7 @@ updated: 2026-09-07
 
 ##### SC-USR-001 — Đăng nhập SSO thành công vào SDK FoxEco
 
-**Source Quote:**
-> "USR-01 | Đăng nhập SSO nội bộ FPT → JWT, role, profile"
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-USR-001`)*
 
 **Source Location:** `DOC-v1.0-01 §A6 "Tài khoản & Hồ sơ (USR)" · bảng ID/Yêu cầu · L99`
 
@@ -68,8 +67,7 @@ updated: 2026-09-07
 
 ##### SC-USR-002 — Màn Cá nhân hiển thị các trường hồ sơ
 
-**Source Quote:**
-> "USR-02 | Xem/cập nhật hồ sơ: tên, SĐT, avatar, phòng ban, khu vực/văn phòng, kênh liên hệ"
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-USR-002`)*
 
 **Source Location:** `DOC-v1.0-01 §A6 · bảng ID/Yêu cầu · L100`
 
@@ -86,8 +84,7 @@ updated: 2026-09-07
 
 ##### SC-USR-004 — Phòng ban + MNV đúng hồ sơ nhân viên
 
-**Source Quote:**
-> "mỗi tài khoản gắn với Phòng ban và Mã nhân viên (MNV) — ví dụ "Phòng Kỹ thuật · MNV: FTEL2291""
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-USR-003`)*
 
 **Source Location:** `DOC-v1.0-02 §1.1 "Bối cảnh & vấn đề" · đoạn 1`
 
@@ -95,8 +92,7 @@ updated: 2026-09-07
 
 ##### SC-USR-005 — Đúng 2 chỉ số đóng góp
 
-**Source Quote:**
-> "USR-05 | Hiển thị tổng số đơn đã giúp + tổng số quà ảo đã nhận (không tính điểm/CO₂)"
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-USR-004`)*
 
 **Source Location:** `DOC-v1.0-01 §A6 · bảng ID/Yêu cầu · L102`
 
@@ -104,8 +100,7 @@ updated: 2026-09-07
 
 ##### SC-USR-006 — Không hiển thị Điểm ECO / Điểm uy tín / CO₂ (negative)
 
-**Source Quote:**
-> "Không tính điểm, không tier/xếp hạng, không CO₂, không quy đổi tiền / thanh toán in-app"
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-USR-004`)*
 
 **Source Location:** `DOC-v1.0-01 §A7 "Phần thưởng — Quà ảo" · bullet 5 · L111`
 
@@ -113,8 +108,7 @@ updated: 2026-09-07
 
 ##### SC-USR-007 — Badge hạng thành viên là text tĩnh
 
-**Source Quote:**
-> "**CÓ** badge pill `🏆 Hạng Đồng hành` (dạng text)"
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-USR-007`)*
 
 **Source Location:** `DOC-v1.0-06 KP-01 §2 "KB-USR-02" · bullet 1`
 
@@ -122,8 +116,7 @@ updated: 2026-09-07
 
 ##### SC-USR-008 — Menu "Đơn của tôi" → màn Hoạt động
 
-**Source Quote:**
-> "Menu | "Đơn của tôi" (→ Hoạt động) · "Đánh giá đã nhận" (không có phản hồi khi bấm trong bản demo)"
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-USR-006`)*
 
 **Source Location:** `DOC-v1.0-02 §3.9 "Màn hình Cá nhân" · bảng Trường/Thành phần · dòng "Menu"`
 
@@ -131,8 +124,7 @@ updated: 2026-09-07
 
 ##### SC-USR-009 — Menu "Quà đã nhận" → màn Quà đã nhận
 
-**Source Quote:**
-> "Trang cá nhân có mục "Đơn đã giúp" & "Quà đã nhận"; màn Quà đã nhận hiển thị 1 card đếm số bông hoa/ly cà phê/gấu bông/vương miện + danh sách lịch sử nhận quà"
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-USR-006`)*
 
 **Source Location:** `DOC-v1.0-01 §D1b "Nhóm 4 — Hoàn tất, đánh giá & ngoài luồng chính" · US-D20 · L196`
 
@@ -140,8 +132,7 @@ updated: 2026-09-07
 
 ##### SC-USR-010 — [GAP] Không tồn tại màn cấu hình kênh liên hệ
 
-**Source Quote:**
-> "USR-07 | Cấu hình kênh liên hệ sẽ lộ: SĐT (bắt buộc), Workplace/email (tùy chọn)"
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-USR-005`)*
 
 **Source Location:** `DOC-v1.0-01 §A6 · bảng ID/Yêu cầu · L103`
 
@@ -149,8 +140,7 @@ updated: 2026-09-07
 
 ##### SC-USR-011 — Completeness header màn Cá nhân
 
-**Source Quote:**
-> "Card trắng chỉ có 2 số liệu: `12 — đơn đã giúp`, `8 — quà đã nhận`; menu: `Đơn của tôi`, `Quà đã nhận`"
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-USR-006`)*
 
 **Source Location:** `DOC-v1.0-06 KP-01 §2 "KB-USR-02" · bullet 3`
 
@@ -158,8 +148,7 @@ updated: 2026-09-07
 
 ##### SC-USR-012 — [GAP] 3 nguồn 3 nhãn cho mục menu thứ hai
 
-**Source Quote:**
-> "Menu | "Đơn của tôi" (→ Hoạt động) · "Đánh giá đã nhận" (không có phản hồi khi bấm trong bản demo)"
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-USR-006`)*
 
 **Source Location:** `DOC-v1.0-02 §3.9 · bảng Trường/Thành phần · dòng "Menu"` (đối chiếu `DOC-v1.0-01 §D1b US-D20 · L196`)
 

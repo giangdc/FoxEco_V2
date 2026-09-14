@@ -58,9 +58,7 @@ updated: 2026-09-07
 
 ##### SC-GIFT-001 / SC-GIFT-002 — Mở màn Tặng quà · đúng 4 loại quà
 
-**Source Quote:**
-> "Sau khi đơn hoàn tất, người gửi tặng quà ảo cảm ơn người vận chuyển"
-> "4 loại quà: bông hoa, ly cà phê, gấu bông, vương miện — biểu tượng phi vật chất"
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-GIFT-001`)*
 > (`DOC-v1.0-02` §3.8): "4 lựa chọn quà: 🌷 Bông hoa · ☕ Ly cà phê · 🧸 Gấu bông · 👑 Vương miện."
 
 **Source Location:** `DOC-v1.0-01 §A7 "Phần thưởng — Quà ảo" · bullet 1-2 · L107-108` ⟷ `DOC-v1.0-02 §3.8 "Màn hình Tặng quà"`
@@ -80,8 +78,7 @@ updated: 2026-09-07
 
 ##### SC-GIFT-005 — Nút đổi nhãn "Bạn đã đánh giá" sau khi gửi
 
-**Source Quote:**
-> "Ở trạng thái Hoàn thành, Sender thấy nút `✓ Cảm ơn người vận chuyển` (enable). Sau khi chọn 1 loại quà và gửi thành công, nút **đổi nhãn thành `Bạn đã đánh giá` (disable, không gửi lại được)**."
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-GIFT-003`)*
 
 **Source Location:** `DOC-v1.0-06 KP-01 §6 "KB-GIFT-01" · đoạn 1` (đồng thuận `KP-01 §5.1` ma trận ô 5·Sender)
 
@@ -89,9 +86,8 @@ updated: 2026-09-07
 
 ##### SC-GIFT-006 / SC-GIFT-007 — Card đếm có điều kiện · [GAP] danh sách lịch sử
 
-**Source Quote:**
+**Source Quote:** *(mệnh đề "Danh sách lịch sử" quote đầy đủ ở `requirement_traceability.md §2 REQ-GIFT-004`)*
 > "Card đếm theo 4 loại quà (bông hoa / ly cà phê / gấu bông / vương miện) nhưng **chỉ hiển thị loại đã thực sự nhận (count > 0)** — loại chưa nhận lần nào thì **không load, không hiện dạng "0"**."
-> "⚠ Thành phần "Danh sách lịch sử" **chỉ có bằng chứng văn bản US-D20**, chưa có ảnh Figma/app → **cần vibe-test xác nhận**. Nếu app không có → mở clarification, không im lặng bỏ qua."
 
 **Source Location:** `DOC-v1.0-06 KP-01 §6 "KB-GIFT-03" · đoạn 1 và ghi chú`
 
@@ -99,8 +95,7 @@ updated: 2026-09-07
 
 ##### SC-GIFT-008 — [GAP] Empty state màn "Quà đã nhận"
 
-**Source Quote:**
-> "**C-ORD-06** | Empty state của 3 màn (Hoạt động · **Quà đã nhận** · Thông báo) khi không có data"
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-GIFT-007`)*
 
 **Source Location:** `DOC-v1.0-06 KP-02 §5 · bảng "Nhóm Open" · dòng "C-ORD-06"` (home canonical: `ACT-hoat-dong/risk_assessment.md`)
 
@@ -108,9 +103,7 @@ updated: 2026-09-07
 
 ##### SC-GIFT-009 / SC-GIFT-010 — Back từ "Quà đã nhận" · [GAP·bug] back từ "Tặng quà"
 
-**Source Quote:**
-> "Ngoài ra có `Danh sách lịch sử` nhận quà và icon quay lại ở header (→ về màn Cá nhân)."
-> "Bấm back (←) từ màn "Tặng quà" (mở từ item mẫu tab "Đã hoàn thành") nhảy tới màn "Xác nhận đã nhận hàng" của **một đơn KHÁC không liên quan**, thay vì quay về "Đơn của tôi"."
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-GIFT-006`)*
 
 **Source Location:** `DOC-v1.0-06 KP-01 §6 "KB-GIFT-03"` và `"KB-GIFT-04"`
 
@@ -129,8 +122,7 @@ updated: 2026-09-07
 
 ##### SC-GIFT-012 — Thông báo cho Carrier khi nhận quà
 
-**Source Quote:**
-> "NTF-07 | Người gửi tặng quà ảo | Người vận chuyển | "Bạn nhận được một món quà cảm ơn 🎁 — mở Trang cá nhân để xem""
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-GIFT-008`)*
 
 **Source Location:** `DOC-v1.0-01 §D6 "Thông báo (Notifications)" · bảng · NTF-07 · L325`
 

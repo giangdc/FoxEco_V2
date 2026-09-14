@@ -13,10 +13,10 @@ counts:
   carried: 0
   deprecated: 0
   p1: 1
-  p2: 8
-  p3: 7
+  p2: 9
+  p3: 6
 status: ANALYZED
-updated: 2026-09-07
+updated: 2026-09-14
 ---
 
 # Test Scenario Map — v1.0 · Module NTF
@@ -62,9 +62,7 @@ updated: 2026-09-07
 
 ##### SC-NTF-001 — NTF-01/02 khi ghép ngay
 
-**Source Quote:**
-> "NTF-01 | Có người bấm "Tôi mang giúp được" → ghép ngay | Người gửi | "Đã có người nhận mang giúp đơn của bạn — SĐT đã được lộ để liên hệ""
-> "NTF-02 | Đơn được ghép (MATCHED) | Người nhận | "Đơn gửi tới bạn đã có người vận chuyển nhận giao""
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-NTF-001`)*
 
 **Source Location:** `DOC-v1.0-01 §D6 "Thông báo (Notifications)" · bảng · NTF-01 · L319` và `NTF-02 · L320`
 
@@ -72,8 +70,7 @@ updated: 2026-09-07
 
 ##### SC-NTF-002 — NTF-03 khớp tuyến
 
-**Source Quote:**
-> "NTF-03 | Hệ thống khớp tuyến OFFER với 1 tin NEED | Người vận chuyển | "Tìm thấy đơn hàng phù hợp tuyến của bạn — xem chi tiết để nhận giao""
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-NTF-002`)*
 
 **Source Location:** `DOC-v1.0-01 §D6 · bảng · NTF-03 · L321`
 
@@ -81,10 +78,7 @@ updated: 2026-09-07
 
 ##### SC-NTF-003 / SC-NTF-004 / SC-NTF-005 — NTF-04/05/06 theo mốc vận chuyển
 
-**Source Quote:**
-> "NTF-04 | Carrier bấm "Tôi đã lấy hàng" (IN_TRANSIT) | Người gửi · Người nhận | "Người vận chuyển đã lấy hàng và bắt đầu giao""
-> "NTF-05 | Carrier bấm "Đã giao cho người nhận" (DELIVERED) | Người nhận · Người gửi | "Đơn đã được giao — vui lòng xác nhận đã nhận hàng""
-> "NTF-06 | Người nhận "Xác nhận đã nhận hàng" (COMPLETED) | Người gửi · Người vận chuyển | "Đơn đã hoàn tất — cảm ơn bạn!""
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-NTF-003`)*
 
 **Source Location:** `DOC-v1.0-01 §D6 · bảng · NTF-04..06 · L322-324`
 
@@ -92,9 +86,7 @@ updated: 2026-09-07
 
 ##### SC-NTF-006 / SC-NTF-007 — NTF-08 huỷ đơn · NTF-09 tin quá hạn
 
-**Source Quote:**
-> "NTF-08 | Đơn bị huỷ (kèm lý do) | Các bên còn lại của đơn | "Đơn đã bị huỷ bởi [vai trò] — lý do: […]""
-> "NTF-09 | Tin quá hạn chưa ghép | Người đăng tin | "Tin của bạn đã quá hạn — gỡ hoặc đăng lại nếu vẫn cần""
+**Source Quote:** *(NTF-08/NTF-09 quote đầy đủ ở `requirement_traceability.md §2 REQ-NTF-004`)*
 > Figma (`KP-07` hàng #8): ""Đơn của bạn đã bị người vận chuyển huỷ" — "Lý do: 'bận họp gấp'. Đơn đang chờ người vận chuyển mới...""
 
 **Source Location:** `DOC-v1.0-01 §D6 · NTF-08 · L326` và `NTF-09 · L327` ⟷ `DOC-v1.0-06 KP-07 · hàng #8`
@@ -103,9 +95,8 @@ updated: 2026-09-07
 
 ##### SC-NTF-008 — SĐT không có trong nội dung thông báo
 
-**Source Quote:**
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-NTF-005`)*
 > "OPR-07 | Lộ liên hệ có kiểm soát | SĐT chỉ lộ sau khi ghép, chỉ cho đúng 2 người trong cặp; **không đưa SĐT vào nội dung push**"
-> "Kênh: in-app + push (**SĐT chỉ lộ sau khi ghép, không đưa vào nội dung push**)"
 
 **Source Location:** `DOC-v1.0-01 §D7 · OPR-07 · L343` và `§D6 · đoạn mở đầu · L315`
 
@@ -113,9 +104,7 @@ updated: 2026-09-07
 
 ##### SC-NTF-009 / SC-NTF-010 — Nhóm thời gian · chấm đỏ theo item
 
-**Source Quote:**
-> "Thông báo — nhóm theo Hôm nay / Hôm qua / Tuần này"
-> "Ảnh Figma `3e626d398e3a616a45f5c638df62be830d2f4357`: 2 thông báo mới nhất có chấm đỏ riêng, 2 thông báo cũ hơn **cùng nhóm "Hôm nay"** thì không → gợi ý trạng thái đã-đọc/chưa-đọc theo item."
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-NTF-006` và `REQ-NTF-007`)*
 
 **Source Location:** `DOC-v1.0-02 §3.2 · dòng tiêu đề ảnh` ⟷ `DOC-v1.0-06 KP-01 §8 "KB-NTF-01"`
 
@@ -123,8 +112,7 @@ updated: 2026-09-07
 
 ##### SC-NTF-011 / SC-NTF-012 — [GAP] cơ chế đánh dấu đã đọc · lazy-load
 
-**Source Quote:**
-> "🔴 **Không chứng minh được cơ chế tương tác**: bấm nút "Đánh dấu đã đọc" là mark-all hay mark-per-item? → chờ BA. Clarification `C-NTF-03(a)` Open."
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-NTF-007`)*
 > "QA GiangDC2 xác nhận (2026-07-29): đây là **hành vi UI nền tảng bắt buộc** cho danh sách lớn, không cần BA xác nhận riêng như một business rule."
 
 **Source Location:** `DOC-v1.0-06 KP-01 §8 "KB-NTF-01"` và `"KB-NTF-02"`
@@ -133,8 +121,7 @@ updated: 2026-09-07
 
 ##### SC-NTF-013 — Chuông đồng bộ số chưa đọc
 
-**Source Quote:**
-> "Header | Icon vai trò + "Xin chào, [Tên]" + chuông thông báo (chấm đỏ khi có tin chưa đọc)"
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-NTF-009`)*
 
 **Source Location:** `DOC-v1.0-02 §2 · bảng Thành phần/Mô tả · dòng "Header"`
 
@@ -152,9 +139,8 @@ updated: 2026-09-07
 
 ##### SC-NTF-015 / SC-NTF-016 — [GAP] Empty state · nút back
 
-**Source Quote:**
+**Source Quote:** *(mệnh đề "nút back" quote đầy đủ ở `requirement_traceability.md §2 REQ-NTF-011`)*
 > "**C-ORD-06** | Empty state của 3 màn (Hoạt động · Quà đã nhận · **Thông báo**) khi không có data"
-> "6 | Nút back (←) ở màn Thông báo quay về Trang chủ | Thuộc bề mặt màn Thông báo"
 
 **Source Location:** `DOC-v1.0-06 KP-02 §5 · dòng "C-ORD-06"` và `KP-05 §3 · bảng · dòng 6`
 

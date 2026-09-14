@@ -12,12 +12,12 @@ counts:
   modified: 0
   carried: 0
   deprecated: 0
-  p1: 5
-  p2: 22
-  p3: 3
+  p1: 4
+  p2: 25
+  p3: 1
   req_without_sc: 4
 status: ANALYZED
-updated: 2026-09-07
+updated: 2026-09-14
 ---
 
 # Test Scenario Map — v1.0 · Module DLV
@@ -95,8 +95,7 @@ updated: 2026-09-07
 
 ##### SC-DLV-016 — Thanh 5 mốc trạng thái
 
-**Source Quote:**
-> "timeline theo dõi 5 mốc (Chờ ghép · Lấy hàng · Đang giao · Đã giao · Hoàn thành), mỗi bước ghi timestamp"
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-DLV-001`)*
 
 **Source Location:** `DOC-v1.0-01 §D1b · US-D09 · Acceptance Criteria · L178` (đồng thuận `DOC-v1.0-02 §3.6 · dòng "Thanh 5 bước trạng thái"`)
 
@@ -104,11 +103,8 @@ updated: 2026-09-07
 
 ##### SC-DLV-017 / SC-DLV-018 / SC-DLV-019 / SC-DLV-020 — Popup xác nhận (3 nội dung + nhánh Huỷ)
 
-**Source Quote:**
+**Source Quote:** *(3 nội dung popup quote đầy đủ ở `requirement_traceability.md §2 REQ-DLV-003`)*
 > "**Popup xác nhận** — mọi hành động "enable" của Carrier/Receiver đều đi qua 1 popup title cố định `Xác nhận` trước khi đổi trạng thái thật (không chuyển ngay khi bấm nút nền)"
-> "| Carrier — Tôi đã lấy hàng | *"Bạn xác nhận đã lấy hàng từ người gửi và bắt đầu giao?"* |"
-> "| Carrier — Đã giao cho người nhận | *"Bạn xác nhận đã giao hàng tận tay người nhận?"* |"
-> "| Receiver — Xác nhận đã nhận hàng | *"Bạn xác nhận đã nhận được hàng từ người vận chuyển?"* |"
 > (`DOC-v1.0-02` §6 L191): "Mọi bước chuyển trạng thái (trừ bước đăng tin ban đầu) đều đi qua modal xác nhận 2 nút (Huỷ/Xác nhận) — không có bước nào tự động trôi mà không cần người dùng bấm xác nhận."
 
 **Source Location:** `DOC-v1.0-06 KP-01 §5.1 · bảng "Popup xác nhận"` ⟷ `DOC-v1.0-02 §6 "Tổng kết vòng đời một đơn hàng" · đoạn cuối (L191)`
@@ -138,8 +134,7 @@ updated: 2026-09-07
 
 ##### SC-DLV-023 — "Hoàn thành" ngay sau khi Receiver xác nhận
 
-**Source Quote:**
-> "Sau khi xác nhận | Đơn chuyển "Hoàn thành" NGAY LẬP TỨC, lịch sử ghi "Hoàn thành & đã đánh giá""
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-DLV-006`)*
 
 **Source Location:** `DOC-v1.0-02 §5.2 · bảng Trường/Thành phần · dòng "Sau khi xác nhận"`
 
@@ -147,8 +142,7 @@ updated: 2026-09-07
 
 ##### SC-DLV-024 — [GAP] Nhắc sau 2 giờ, admin sau 4 giờ
 
-**Source Quote:**
-> "BR-CNF-04 | RECEIVER không xác nhận 2 giờ → nhắc; thêm 2 giờ → admin hỗ trợ"
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-DLV-007`)*
 > "quá 2 giờ không xác nhận → hệ thống nhắc, thêm 2 giờ → admin hỗ trợ"
 
 **Source Location:** `DOC-v1.0-01 §D4 · BR-CNF-04 · L266` và `§D1b · US-D14 · L193` (đồng thuận `§D5 · L295`)
@@ -178,8 +172,7 @@ updated: 2026-09-07
 
 ##### SC-DLV-029 — Lịch sử timeline mốc sự kiện
 
-**Source Quote:**
-> "Lịch sử | Timeline mốc sự kiện: Đăng tin → Ghép thành công → Lấy hàng → Đã giao → Hoàn thành"
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-DLV-010`)*
 
 **Source Location:** `DOC-v1.0-02 §3.6 · bảng Trường/Thành phần · dòng "Lịch sử"`
 
@@ -187,10 +180,7 @@ updated: 2026-09-07
 
 ##### SC-DLV-030 — Nhãn phụ theo vai trò
 
-**Source Quote:**
-> "3.6. Màn hình Theo dõi đơn (nhãn phụ "Tôi gửi hàng")"
-> "4.3. Màn hình Theo dõi đơn (nhãn phụ "Tôi giao hàng")"
-> "5.2. Màn hình Theo dõi đơn (nhãn phụ "Tôi nhận hàng") — hành động chính của vai trò này"
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-DLV-016`)*
 
 **Source Location:** `DOC-v1.0-02 §3.6 · §4.3 · §5.2` — tiêu đề section (Heading 2)
 

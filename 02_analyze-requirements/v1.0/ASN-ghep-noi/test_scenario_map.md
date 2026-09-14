@@ -75,8 +75,7 @@ updated: 2026-09-07
 
 ##### SC-ASN-004 / SC-ASN-005 — Lộ SĐT đúng 2 người trong cặp (positive + negative)
 
-**Source Quote:**
-> "BR-CON-02 | Sau khi ghép: lộ SĐT + kênh liên hệ cho đúng 2 người trong cặp ghép; trước khi ghép không lộ SĐT"
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-ASN-002`)*
 > "OPR-07 | Lộ liên hệ có kiểm soát | SĐT chỉ lộ sau khi ghép, **chỉ cho đúng 2 người trong cặp**; không đưa SĐT vào nội dung push"
 
 **Source Location:** `DOC-v1.0-01 §A5 · BR-CON-02 · L78` và `§D7 · OPR-07 · L343`
@@ -85,8 +84,7 @@ updated: 2026-09-07
 
 ##### SC-ASN-006 — Chống double-accept (2 Carrier bấm gần đồng thời)
 
-**Source Quote:**
-> "ASN-03 | Chống ghép trùng | 1 tin chỉ 1 cặp active (DB constraint + tx lock)"
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-ASN-003`)*
 > "OPR-03 | 1 tin — 1 cặp ghép | **Ghép ngay cho người bấm "Tôi mang giúp được" đầu tiên**; ngay khi có người nhận, tin bị ẩn khỏi bảng tin và không ai bấm "Tôi mang giúp được" được nữa (chống double-accept)"
 
 **Source Location:** `DOC-v1.0-01 §D3 · ASN-03 · L249` và `§D7 · OPR-03 · L339` (và `§D5 · L293`)
@@ -95,8 +93,7 @@ updated: 2026-09-07
 
 ##### SC-ASN-007 — Tin ẩn khỏi bảng tin và luồng gợi ý
 
-**Source Quote:**
-> "ngay khi có người nhận, tin bị ẩn khỏi bảng tin và không ai bấm "Tôi mang giúp được" được nữa"
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-ASN-004`)*
 > "OPR-08 | Vòng đời tin trong luồng khớp | Tin đang MATCHED/IN_TRANSIT không xuất hiện ở gợi ý cho carrier khác…"
 
 **Source Location:** `DOC-v1.0-01 §D7 · OPR-03 · L339` và `OPR-08 · L344`
@@ -105,8 +102,7 @@ updated: 2026-09-07
 
 ##### SC-ASN-008 — Đồng bộ realtime 3 vai
 
-**Source Quote:**
-> "Bấm Xác nhận → đơn chuyển trạng thái "Đã ghép"; CẢ 3 khung (Người gửi / Người vận chuyển / Người nhận) đổi trạng thái tức thời — đây là điểm nhấn chính của bản demo (đồng bộ dữ liệu thời gian thực)."
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-ASN-005`)*
 
 **Source Location:** `DOC-v1.0-02 §4.2 · đoạn 3`
 
@@ -114,10 +110,7 @@ updated: 2026-09-07
 
 ##### SC-ASN-009 / SC-ASN-010 — Auto-match: thông báo · "Nhận giao"
 
-**Source Quote:**
-> "MTCH-01 | Tự khớp tuyến OFFER ↔ NEED | Trùng điểm lấy & điểm giao → đẩy thông báo cho Carrier duyệt "Nhận giao""
-> "Khi một tin NEED trùng điểm lấy & điểm giao với tuyến → hệ thống đẩy thông báo "Tìm thấy đơn hàng phù hợp tuyến của bạn"; bấm vào thông báo → mở màn chi tiết tin cần vận chuyển đó"
-> "Tại chi tiết tin NEED phù hợp có nút "Nhận giao"; bấm → ghép (MATCHED) → lộ liên hệ 2 bên → vào màn Theo dõi đơn"
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-ASN-006`)*
 
 **Source Location:** `DOC-v1.0-01 §D3 · MTCH-01 · L254` · `§D1b · US-D12 · L186` · `US-D13 · L187`
 
@@ -125,9 +118,7 @@ updated: 2026-09-07
 
 ##### SC-ASN-011 — Không khớp khi lệch điểm hoặc khung giờ (negative)
 
-**Source Quote:**
-> "OPR-02 | Điều kiện khớp | Chỉ khớp khi trùng điểm lấy & điểm giao (cùng khu vực/tuyến) và giao nhau về khung giờ"
-> "= **trùng địa chỉ giao hàng đã chọn** + **khung giờ phù hợp**. **KHÔNG dùng bán kính GPS / khoảng cách địa lý.**"
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-ASN-007`)*
 
 **Source Location:** `DOC-v1.0-01 §D7 · OPR-02 · L338` ⟷ `DOC-v1.0-06 KP-01 §4 "KB-ASN-04"`
 
@@ -144,8 +135,7 @@ updated: 2026-09-07
 
 ##### SC-ASN-013 / SC-ASN-014 — Trần gợi ý (5 tin) · trần thông báo (5/tin OFFER)
 
-**Source Quote:**
-> "OPR-01 | Trần số tin gợi ý cho 1 carrier | Mỗi người vận chuyển chỉ nhận thông báo tối đa 5 tin cần gửi phù hợp (mới & gần tuyến nhất); tránh làm phiền/spam"
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-ASN-008`)*
 > "OPR-06 | Trần thông báo khớp / ngày | Giới hạn số lần bắn thông báo khớp cho mỗi carrier **trong ngày** (ngưỡng admin cấu hình)"
 > Phán quyết (`DOC-v1.0-06` KP-01 §4 KB-ASN-03): "Không phải "5 thông báo/ngày" cộng dồn — tính **riêng theo từng tin**." · "⚠ Giá trị test 3/5/6 tin là **giá trị chốt**, không phải mock."
 
@@ -155,8 +145,7 @@ updated: 2026-09-07
 
 ##### SC-ASN-015 / SC-ASN-016 — Thứ tự ưu tiên · loại tin quá hạn
 
-**Source Quote:**
-> "OPR-04 | Ưu tiên gợi ý | Sắp xếp theo độ gần tuyến → thời gian đăng (mới trước); tin quá hạn loại khỏi luồng khớp"
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-ASN-009`)*
 
 **Source Location:** `DOC-v1.0-01 §D7 · OPR-04 · L340`
 
@@ -164,9 +153,7 @@ updated: 2026-09-07
 
 ##### SC-ASN-017 — Carrier huỷ nhận → tin khớp lại được
 
-**Source Quote:**
-> "tin huỷ bởi carrier quay lại "Chờ ghép" và được khớp lại"
-> "OPR-09 | Carrier huỷ khi chưa lấy hàng → trả đơn về bảng tin | Người vận chuyển huỷ ở trạng thái Đã ghép (chưa "Tôi đã lấy hàng") → đơn tự động về "Chờ ghép" và hiển thị lại trên bảng tin cho người khác nhận"
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-ASN-011`)*
 
 **Source Location:** `DOC-v1.0-01 §D7 · OPR-08 · L344` và `OPR-09 · L345`
 
@@ -174,8 +161,7 @@ updated: 2026-09-07
 
 ##### SC-ASN-018 — [GAP] Wizard không tạo listing độc lập
 
-**Source Quote:**
-> "Ghi nhận trên prototype. Chưa rõ là giới hạn kiến trúc bản demo (chấp nhận được) hay hành vi cần fix."
+**Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-ASN-012`)*
 
 **Source Location:** `DOC-v1.0-06 KP-01 §4 "KB-ASN-05" · đoạn 1`
 
