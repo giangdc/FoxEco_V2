@@ -1,7 +1,28 @@
+---
+id: v1.1/DLV-giao-nhan/risk
+title: Risk Assessment — v1.1 · Module DLV
+type: risk-assessment
+version: v1.1
+sprint: 1
+module: DLV
+counts:
+  cl: 4
+  risk: 11
+  cl_open: 1
+  cl_resolved: 3
+status: ANALYZED
+updated: 2026-09-15
+---
+
 # Risk Assessment — v1.1 · Module DLV (DELTA)
 
 > Tạo bởi: analyze-requirements (DELTA 2026-09-15) · layout **module-first v2**.
 > **Home của Clarification quote (layout v2).** Bảng risk đầy đủ v1.0 (7 dòng, `RISK-DLV-01..07`) xem `v1.0/DLV-giao-nhan/risk_assessment.md` — KHÔNG lặp lại ở đây. **ID mới bắt đầu từ `RISK-DLV-08`** (v1.0 đã dùng hết tới `-07`).
+
+## Tổng quan
+| Module | Risk Level | Rủi ro chính (delta v1.1) |
+|--------|-----------|--------------|
+| DLV | **High** (không đổi so với v1.0) | Module delta nặng nhất (34 SC mới). 2 rủi ro High mới: `RISK-DLV-08` màn "Xác nhận giao hàng" mở rộng 4 loại đối tượng nhận — cấu trúc UI đã khớp nhưng **luồng submit chưa verify end-to-end**; `RISK-DLV-09` `NFR-07` log append-only đụng thẳng bug audit đã biết (`RISK-TS-01`) ⇒ `SC-DLV-062` dự kiến FAIL |
 
 ## Chi tiết rủi ro (bảng hợp nhất — chỉ risk có delta)
 

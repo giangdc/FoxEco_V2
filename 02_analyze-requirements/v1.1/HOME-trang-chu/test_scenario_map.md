@@ -7,7 +7,7 @@ sprint: 1
 module: HOME
 counts:
   req: 13
-  sc: 27
+  sc: 28
   new: 4
   modified: 2
   carried: 21

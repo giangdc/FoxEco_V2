@@ -1,7 +1,28 @@
+---
+id: v1.1/TS-trust-safety/risk
+title: Risk Assessment — v1.1 · Module TS
+type: risk-assessment
+version: v1.1
+sprint: 1
+module: TS
+counts:
+  cl: 1
+  risk: 7
+  cl_open: 0
+  cl_resolved: 1
+status: ANALYZED
+updated: 2026-09-15
+---
+
 # Risk Assessment — v1.1 · Module TS (DELTA)
 
 > Tạo bởi: analyze-requirements (DELTA 2026-09-15) · layout **module-first v2**.
 > **Home của Clarification quote (layout v2).** Bảng risk đầy đủ v1.0 (5 dòng, không đổi) xem `v1.0/TS-trust-safety/risk_assessment.md` — KHÔNG lặp lại ở đây.
+
+## Tổng quan
+| Module | Risk Level | Rủi ro chính (delta v1.1) |
+|--------|-----------|--------------|
+| TS | **Medium** (không đổi so với v1.0) | `FR16` Báo cáo sự cố **đảo kết luận out-of-scope của `C-CNL-01` (v1.0)** — `RISK-TS-06`: `CNL`/`DLV` chưa rà lại nên người đọc từ 2 module đó vẫn thấy "out of scope". `RISK-TS-07`: đối chiếu MNV là quy trình Admin, không có bề mặt test qua UI |
 
 ## Chi tiết rủi ro (bảng hợp nhất — chỉ risk có delta)
 

@@ -13,8 +13,8 @@ counts:
   carried: 7
   deprecated: 0
   p1: 2
-  p2: 6
-  p3: 7
+  p2: 5
+  p3: 8
 status: ANALYZED
 updated: 2026-09-15
 ---

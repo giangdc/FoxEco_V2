@@ -1,7 +1,28 @@
+---
+id: v1.1/HOME-trang-chu/risk
+title: Risk Assessment — v1.1 · Module HOME
+type: risk-assessment
+version: v1.1
+sprint: 1
+module: HOME
+counts:
+  cl: 3
+  risk: 7
+  cl_open: 0
+  cl_resolved: 3
+status: ANALYZED
+updated: 2026-09-15
+---
+
 # Risk Assessment — v1.1 · Module HOME (DELTA)
 
 > Tạo bởi: analyze-requirements (DELTA 2026-09-15) · layout **module-first v2**.
 > **Home của Clarification quote (layout v2).** Bảng risk đầy đủ v1.0 (5 dòng, không đổi trừ ghi chú dưới) xem `v1.0/HOME-trang-chu/risk_assessment.md` — KHÔNG lặp lại ở đây.
+
+## Tổng quan
+| Module | Risk Level | Rủi ro chính (delta v1.1) |
+|--------|-----------|--------------|
+| HOME | **Medium** (không đổi so với v1.0) | 2 rủi ro lớn nhất của v1.0 đã **Resolved** (`RISK-HOME-01` mâu thuẫn 1-vs-5 tin → PRD chốt 5; `RISK-HOME-04` icon vai trò → QC xác nhận 1 icon chung), nhưng mở 2 rủi ro mới cùng loại "không kiểm được bằng manual": `RISK-HOME-06` NFR01 p95 < 2s cần load-test riêng · `RISK-HOME-07` 3 empty state cần tài khoản hoàn toàn trắng |
 
 ## Chi tiết rủi ro (bảng hợp nhất — chỉ risk có delta)
 

@@ -6,10 +6,10 @@ version: v1.1
 sprint: 1
 module: NTF
 counts:
-  cl: 0
-  risk: 1
+  cl: 2
+  risk: 7
   cl_open: 0
-  cl_resolved: 0
+  cl_resolved: 1
 status: ANALYZED
 updated: 2026-09-15
 ---

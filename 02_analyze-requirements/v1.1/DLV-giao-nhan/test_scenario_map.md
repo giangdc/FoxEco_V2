@@ -6,15 +6,15 @@ version: v1.1
 sprint: 1
 module: DLV
 counts:
-  req: 26
+  req: 23
   sc: 64
-  new: 31
-  modified: 3
+  new: 34
+  modified: 0
   carried: 30
   deprecated: 0
-  p1: 9
-  p2: 33
-  p3: 22
+  p1: 10
+  p2: 42
+  p3: 12
 status: ANALYZED
 updated: 2026-09-15
 ---

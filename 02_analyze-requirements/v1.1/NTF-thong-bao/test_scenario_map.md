@@ -6,15 +6,15 @@ version: v1.1
 sprint: 1
 module: NTF
 counts:
-  req: 4
-  sc: 9
+  req: 12
+  sc: 22
   new: 6
   modified: 3
   carried: 13
   deprecated: 0
-  p1: 0
-  p2: 8
-  p3: 1
+  p1: 1
+  p2: 15
+  p3: 6
 status: ANALYZED
 updated: 2026-09-15
 ---
@@ -23,7 +23,7 @@ updated: 2026-09-15
 
 > **Home của SC quote** (1 quote = 1 nơi): Source Quote per SC ở §"Source Detail per Scenario" file này.
 > REQ quote → `requirement_traceability.md §2` · Clarification quote → `risk_assessment.md`.
-> 🔑 Frontmatter `counts:` = **nguồn canonical** số REQ/SC/lifecycle/priority của **delta v1.1** module NTF. Tổng SC hiệu lực (v1.0 CARRIED 13 + v1.1 NEW 6) = **19**; canonical toàn phần đọc ở `v1.1/MEMORY.md §2` (dẫn xuất, cộng lại từ đây).
+> 🔑 Frontmatter `counts:` = **nguồn canonical** số REQ/SC/lifecycle/priority module NTF **tính tới v1.1** (bao gồm CARRIED từ v1.0) — cùng nghĩa với 4 module delta còn lại. **22 SC** = CARRIED 13 + MODIFIED 3 (giữ ID v1.0) + NEW 6. Router `v1.1/MEMORY.md §2` là bản **dẫn xuất**, cộng lại từ đây.
 
 ## Quy tắc đủ scenario (Scenario Sufficiency Rule)
 > **1 SC = 1 hành vi nguyên tử.** Fan-out mỗi sự kiện thông báo (state-transition sinh thông báo) = 1 SC riêng.

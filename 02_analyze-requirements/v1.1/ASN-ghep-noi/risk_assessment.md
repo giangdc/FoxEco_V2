@@ -6,9 +6,9 @@ version: v1.1
 sprint: 1
 module: ASN
 counts:
-  cl: 0
-  risk: 1
-  cl_open: 0
+  cl: 2
+  risk: 8
+  cl_open: 1
   cl_resolved: 0
 status: ANALYZED
 updated: 2026-09-15
