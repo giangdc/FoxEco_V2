@@ -14,8 +14,8 @@ doc_source:
 id_range:
   req: "REQ-HOME-011, REQ-HOME-012, REQ-HOME-013 (NEW)"
   sc: "SC-HOME-025..028 (NEW) + SC-HOME-019, SC-HOME-021 (MODIFIED, giữ ID sprint 1) · SC-HOME-024 (DEPRECATED)"
-  cl: "C-HOME-03 (Resolved qua PRD) · C-HOME-02 (Resolved qua vibe-check demo) · C-HOME-01 (Partially Resolved qua vibe-check demo) — cả 3 giữ ID sprint 1 (kế thừa v1.0), không mở CL mới"
-  risk: "RISK-HOME-06, RISK-HOME-07 (NEW) + RISK-HOME-01 (Status cập nhật, giữ ID sprint 1)"
+  cl: "C-HOME-03 (Resolved qua PRD) · C-HOME-02 (Resolved qua vibe-check demo) · C-HOME-01 (Resolved — (b) qua vibe-check demo, (a) qua xác nhận trực tiếp QC) — cả 3 CL giữ ID sprint 1 (kế thừa v1.0), không mở CL mới"
+  risk: "RISK-HOME-06, RISK-HOME-07 (NEW) + RISK-HOME-01, RISK-HOME-04 (Status cập nhật, giữ ID sprint 1)"
 status: ANALYZED
 updated: 2026-09-15
 ---
@@ -30,6 +30,8 @@ updated: 2026-09-15
 |---|---|---|---|---|
 | 2026-09-15 | UPDATE | **DELTA v1.1** — PRD chính thức (`DOC-v1.1-01`) resolve `C-HOME-03` (số tin "Tin mới" = 5, chốt sau nhiều tháng Open), đặc tả 3 empty state riêng cho Trang chủ (thay `SC-HOME-024` gộp), thêm NFR01 hiệu năng. +3 REQ mới, +4 SC mới, 2 SC MODIFIED, 1 SC DEPRECATED (`SC-HOME-024`) | `DOC-v1.1-01` §6/§8.17/§9 | `C-HOME-03` đóng; `RISK-HOME-01` Resolved; `SC-HOME-019`/`SC-HOME-021` có thể assert số cứng |
 | 2026-09-15 | UPDATE | Bổ sung UI reference (`00_input/v1.1/design/`, ảnh chụp từ demo `foxeco_demo/FoxEcoQC` thay Figma đã xoá) + resolve 2 CL kế thừa từ v1.0 bằng bằng chứng app thật: `C-HOME-02` (Resolved — "Đơn của tôi" ẩn theo điều kiện có đơn, không theo vai trò, đúng phép thử `SC-HOME-012` mà v1.0 đã chỉ ra) và `C-HOME-01` (Partially Resolved — (b) tagline chốt dùng bản PRD, (a) icon mapping theo vai trò vẫn chưa chốt, cần verify STG) | Vibe-check thủ công qua Playwright trên demo, theo yêu cầu QC GiangDC2 2026-09-15 | `SC-HOME-009/010/012` có thể assert cứng; `SC-HOME-004` vẫn ghi nhận (chưa assert icon) |
+| 2026-09-15 | UPDATE | **Sửa lỗi lượt trên** — QC GiangDC2 chỉ ra bằng chứng icon vai trò (3 ảnh so sánh header) lấy nhầm từ khu vực "Vai trò đang xem" (panel điều khiển demo để chọn vai trò mô phỏng), **không phải UI thật của app**. Rút lại toàn bộ nhận định về icon; `C-HOME-01(a)` quay về **Open** đúng như v1.0, không có input mới. `C-HOME-01(b)` (tagline) và `C-HOME-02` KHÔNG bị ảnh hưởng — 2 bằng chứng đó lấy từ nội dung màn hình thật bên trong khung điện thoại, vẫn giữ nguyên Resolved | QC GiangDC2 phản hồi trực tiếp 2026-09-15 | `risk_assessment.md` §C-HOME-01 sửa lại; không phát sinh thay đổi cho `scenario_map`/`traceability` vì `SC-HOME-004` vốn đã ở dạng ghi nhận, không đổi |
+| 2026-09-15 | UPDATE | QC GiangDC2 xác nhận trực tiếp (không qua demo): **chỉ có 1 icon dùng chung cho cả 3 vai trò**, không phân biệt Sender/Carrier/Receiver. `C-HOME-01(a)` **Resolved** — `KP-05 §3 dòng 5` (quan sát cũ "icon khác theo vai") bị bác bỏ. `RISK-HOME-04` (v1.0) cũng đóng theo | Xác nhận trực tiếp của QC GiangDC2, không qua tài liệu/demo | `SC-HOME-004` chuyển từ dạng GAP/ghi nhận sang assert cứng "1 icon chung, không mapping theo vai" |
 
 ## 2. Ràng buộc còn hiệu lực
 
@@ -49,6 +51,5 @@ updated: 2026-09-15
 
 | # | Nợ | Trạng thái | Đích xử lý |
 |---|---|---|---|
-| 1 | 🟡 `C-HOME-01(a)` — icon vai trò header vẫn chưa chốt (chỉ có thêm ảnh làm đầu vào, chưa đủ khẳng định thiết kế đúng/sai) | Đã vibe-check qua demo 2026-09-15 (xem `risk_assessment.md`), nhưng demo lịch sử bị đánh dấu reference-only | Verify lại trên STG thật khi có dịp; nếu STG khớp demo (icon chung, không phân vai) → có thể Resolve dứt điểm, không cần hỏi BA |
-| 2 | 🟡 `RISK-HOME-06` (NFR01) cần môi trường load-test riêng, chưa có lịch | Ngoài khả năng manual/vibe-test | Lên kế hoạch cùng team automation trước go-live |
-| 3 | 🟡 `C-ORD-06` (empty state ngoài phạm vi Trang chủ — ACT/FEED/GIFT/NTF) vẫn Open | Các module đó chưa được rà lại ở lượt delta này | Rà lại khi delta các module đó chạm tới `FR17` |
+| 1 | 🟡 `RISK-HOME-06` (NFR01) cần môi trường load-test riêng, chưa có lịch | Ngoài khả năng manual/vibe-test | Lên kế hoạch cùng team automation trước go-live |
+| 2 | 🟡 `C-ORD-06` (empty state ngoài phạm vi Trang chủ — ACT/FEED/GIFT/NTF) vẫn Open | Các module đó chưa được rà lại ở lượt delta này | Rà lại khi delta các module đó chạm tới `FR17` |
