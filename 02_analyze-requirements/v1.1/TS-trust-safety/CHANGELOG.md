@@ -1,0 +1,51 @@
+---
+id: v1.1/TS-trust-safety/changelog
+title: Changelog — Module TS
+type: changelog
+version: v1.1
+sprint: 1
+module:
+  code: TS
+  dir: TS-trust-safety
+  name: Trust & Safety
+doc_source:
+  - id: DOC-v1.1-01
+    section: "§8.16 FR16 (Báo cáo sự cố & hỗ trợ) · §8.16.1 BR16-01..06 · §8.16.2 UI/Field Spec · §6.1 US31 · §6.2 AC-31.1.01/.02/AC-31.2.01"
+id_range:
+  req: "REQ-TS-006 (NEW)"
+  sc: "SC-TS-008..015 (NEW)"
+  cl: "(không mở CL mới)"
+  risk: "RISK-TS-06, RISK-TS-07 (NEW)"
+status: ANALYZED
+updated: 2026-09-15
+---
+
+# Changelog — Module TS (`TS`)
+
+> **Đích write-back của LỊCH SỬ.** Mọi lượt chạm module này ghi **1 dòng ở §1**.
+
+## 1. Lịch sử thay đổi
+
+| Ngày | Loại | Thay đổi | Nguồn / Lý do | Ảnh hưởng |
+|---|---|---|---|---|
+| 2026-09-15 | UPDATE | **DELTA v1.1** — PRD chính thức (`DOC-v1.1-01`) đưa tính năng "Báo cáo sự cố & hỗ trợ" (`FR16`) hoàn toàn mới vào scope, đảo ngược kết luận `C-CNL-01` (v1.0: màn này out of scope) **chỉ trong phạm vi `TS` sở hữu**. +1 REQ mới (`REQ-TS-006`), +8 SC mới (`SC-TS-008..015`) phủ happy path/validation/boundary ảnh/mất mạng/vòng đời phiên/field prefill/đa vai trò. Module có test_data_catalog lần đầu (trước đây module log-only, không có form) | `DOC-v1.1-01` §8.16 | Module TS từ "chỉ log + gap ghi nhận" (7 SC v1.0) sang có tính năng UI đầy đủ test được (8 SC mới) |
+| 2026-09-15 | UPDATE | Bổ sung UI reference (`00_input/v1.1/design/TS_01..05`) — verify **toàn bộ end-to-end** luồng "Báo cáo sự cố" trên demo: trigger button (3 vai), form + trần 5 ảnh (`SC-TS-011`), validation nút Gửi disable/enable (`SC-TS-009`), success state đúng verbatim (`SC-TS-008`). Không có CL để resolve (module không mở CL mới ở v1.1) — mục đích là nâng độ tin cậy trước `generate-tc` | Vibe-check thủ công qua Playwright, theo yêu cầu QC GiangDC2 2026-09-15 | `SC-TS-008/009/010/011` sẵn sàng cho `generate-tc` với độ tin cậy cao nhất trong đợt rà này |
+
+## 2. Ràng buộc còn hiệu lực
+
+| # | Ràng buộc | Vì sao | Hệ quả nếu vi phạm |
+|---|---|---|---|
+| 1 | ⛔ **Sprint/module khác KHÔNG sửa** — thư mục dùng lại qua nhiều sprint, phân biệt bắt buộc bằng `id_range` + đường dẫn version | Nguyên tắc chung dự án | Mất truy vết; ID trùng nhưng nội dung lệch |
+| 2 | ⚠️ **KHÔNG mở rộng SC sang xử lý phía Admin** ("liên hệ lại 24h", "đối chiếu MNV") — quy trình ngoài app, không có bề mặt UI end-user để test | `RISK-TS-07`; Admin Portal out of scope (`C-TS-01`, kế thừa v1.0) | Viết SC không thể execute được (không có màn hình để verify) |
+| 3 | ⚠️ **`C-CNL-01` (home canonical ở module `CNL`) CHƯA được sửa/đóng ở lượt này** — chỉ có cảnh báo chéo ở đây (`RISK-TS-06`) | `CNL`/`DLV` chưa rà lại delta v1.1 tại thời điểm này | Người đọc `CNL`/`DLV` trước khi 2 module đó được rà lại delta có thể tưởng "Báo sự cố" vẫn out of scope toàn bộ |
+
+### 🔁 Kết luận bị đảo
+
+⛔ Kết luận **"màn 'Báo cáo sự cố' chưa có đặc tả — out of scope v1.0"** (`C-CNL-01`, Resolved 2026-07-27, home canonical ở `v1.0/CNL-huy-don/risk_assessment.md`) **HẾT HIỆU LỰC kể từ v1.1 trong phạm vi module `TS`** — đừng trích lại cho bề mặt "Báo sự cố"; hiện hành là **có đặc tả đầy đủ, vào scope** (`DOC-v1.1-01 §8.16`, xem `REQ-TS-006`). ⚠️ File `CNL-huy-don/` và `DLV-giao-nhan/` (nơi `C-CNL-01` được tham chiếu) **chưa được cập nhật** — chỉ ghi nhận đảo kết luận ở đây, chờ delta chính thức của 2 module đó.
+
+## 3. Nợ đang mở
+
+| # | Nợ | Trạng thái | Đích xử lý |
+|---|---|---|---|
+| 1 | 🔴 `RISK-TS-06` — `C-CNL-01` cần được rà lại chính thức ở module `CNL` và cross-ref `REQ-DLV-015` ở module `DLV` | Chưa xử lý — 2 module đó chưa nằm trong scope lượt delta này | Khi chạy `/analyze-requirements --delta` cho `CNL`/`DLV`, cập nhật `C-CNL-01` dựa trên `DOC-v1.1-01 §8.16` |
+| 2 | 🟡 `RISK-TS-07` — quy trình đối chiếu MNV/liên hệ lại phía Admin không test được qua UI | Ngoài phạm vi app end-user | Ghi rõ trong test report nếu execute; không mở SC mới |

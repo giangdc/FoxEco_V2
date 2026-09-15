@@ -29,6 +29,7 @@ updated: 2026-09-15
 | Ngày | Loại | Thay đổi | Nguồn / Lý do | Ảnh hưởng |
 |---|---|---|---|---|
 | 2026-09-15 | UPDATE | **DELTA v1.1** — PRD chính thức (`DOC-v1.1-01`) chốt danh mục **15 sự kiện thông báo chính thức** (`NTF-01..15`, §8.13.1), resolve `C-NTF-01` (Open từ 2026-07, CL lớn nhất module) và text `NTF-06`. 6 sự kiện mới (`NTF-10..15`) gắn với nhánh xử lý giao hàng không thành công của `DLV` (FR08/FR09). +1 REQ mới, +6 SC mới, 3 SC MODIFIED (`SC-NTF-005`, `SC-NTF-008`, `SC-NTF-014`), 3 REQ MODIFIED | `DOC-v1.1-01` §8.13/§8.13.1 | `C-NTF-01` đóng; `SC-NTF-005`/`SC-NTF-014` chuyển từ ghi-nhận sang assert; `SC-NTF-008` mở rộng phạm vi |
+| 2026-09-15 | UPDATE | Bổ sung UI reference (`00_input/v1.1/design/NTF_01..03`) + thử vibe-check `C-NTF-03(a)` (mark-all + tap-item) — **không resolve được**, demo không nối logic đọc/chưa đọc thật (mock tĩnh). Ghi nhận để không lặp lại hướng thử này | Vibe-check thủ công qua Playwright, theo yêu cầu QC GiangDC2 2026-09-15 | Không ảnh hưởng generate-tc; `C-NTF-03(a)` vẫn Open, cần hỏi BA/STG thật |
 
 ## 2. Ràng buộc còn hiệu lực
 
@@ -46,5 +47,5 @@ updated: 2026-09-15
 
 | # | Nợ | Trạng thái | Đích xử lý |
 |---|---|---|---|
-| 1 | 🟡 `C-NTF-03(a)` — cơ chế "Đánh dấu đã đọc" vẫn Open, PRD v1.1 không đề cập | Kế thừa nguyên trạng từ v1.0 | Vibe-test thử cả 2 cách; `/analyze --update` khi có bằng chứng |
+| 1 | 🟡 `C-NTF-03(a)` — cơ chế "Đánh dấu đã đọc" vẫn Open, PRD v1.1 không đề cập | Đã vibe-test cả 2 cách qua demo 2026-09-15 — **không kết luận được** (demo mock tĩnh, không đổi trạng thái đọc) | Hỏi BA trực tiếp, hoặc verify lại trên STG thật (demo không dùng được cho câu hỏi này) |
 | 2 | 🟡 `SC-NTF-017..022` cần chạy chung lô với vibe-test `DLV` (nhánh FR08/FR09) | Chưa có lịch chạy cụ thể | Lên kế hoạch vibe-test `DLV` + `NTF` cùng lô trước generate-tc |

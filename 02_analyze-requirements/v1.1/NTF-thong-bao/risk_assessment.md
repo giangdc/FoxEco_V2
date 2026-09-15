@@ -55,8 +55,16 @@ updated: 2026-09-15
 
 ⚠️ **Kết luận bị đảo:** kết luận cũ *"⛔ KHÔNG assert danh mục / danh sách loại thông báo"* (`v1.0/NTF-thong-bao/CHANGELOG.md §2` ràng buộc #3) và *"⛔ KHÔNG assert text NTF-06"* (ràng buộc #4) **HẾT HIỆU LỰC kể từ v1.1** — đừng trích lại 2 ràng buộc đó cho v1.1; hiện hành là **assert đủ 15 loại + đúng text NTF-06** theo `DOC-v1.1-01 §8.13.1`.
 
+## Vibe-check bổ sung 2026-09-15 (không resolve CL nào — ghi nhận để không lặp lại hướng đã thử)
+
+**`C-NTF-03(a)` — cơ chế "Đánh dấu đã đọc" (home canonical `v1.0/NTF-thong-bao/risk_assessment.md`):** đã thử trực tiếp trên demo `foxeco_demo/FoxEcoQC`, đúng khuyến nghị cũ *"vibe-test thử cả 2 cách (tap item / bấm nút)"*:
+> Ảnh `00_input/v1.1/design/NTF_02_thongbao_sau_danhdaudadoc_CNTF03.png` — sau khi bấm nút "Đánh dấu đã đọc" (mark-all), 3 chấm đỏ unread **VẪN CÒN NGUYÊN**, không đổi.
+> Ảnh `00_input/v1.1/design/NTF_03_thongbao_sau_tap_item_CNTF03.png` — sau khi tap vào 1 item ("Tìm thấy đơn hàng phù hợp tuyến của bạn") và quay lại, chấm đỏ của item đó **VẪN CÒN**, không đổi.
+
+↳ **Kết luận: KHÔNG resolve được `C-NTF-03(a)` qua demo này** — cả 2 cách thử đều không có hiệu ứng, tức cơ chế đọc trong demo là **dữ liệu tĩnh/mock, không nối logic thật**. Đây là giới hạn của công cụ tham chiếu (demo), không phải câu trả lời cho câu hỏi nghiệp vụ. **KHÔNG dùng 2 ảnh trên làm bằng chứng "app không có tính năng đánh dấu đã đọc"** — chỉ ghi nhận để tránh người sau lặp lại đúng 2 phép thử này trên cùng demo rồi tưởng đã có kết luận. Câu hỏi `C-NTF-03(a)` **vẫn Open**, cần hỏi BA hoặc verify trên STG thật.
+
 ## Khuyến nghị tổng thể (delta v1.1)
 1. **Không còn blocker** — `C-NTF-01` đã Resolved, không cần hỏi BA trước khi generate-tc phần NTF.
 2. **Ưu tiên test P1:** `SC-NTF-008` mở rộng — phải test đủ 15/15 sự kiện, không chỉ 9 sự kiện cũ.
 3. **Cần môi trường/tiền đề:** 6 SC mới (`SC-NTF-017..022`) phụ thuộc trực tiếp tiến độ vibe-test nhánh FR08/FR09 bên `DLV` — lên lịch chạy chung, không tách riêng.
-4. **`C-NTF-03` (cơ chế đánh dấu đã đọc), `RISK-NTF-03`, `RISK-NTF-05`, `RISK-NTF-06`** — PRD v1.1 không đề cập, giữ nguyên Open/Pending như v1.0, không có delta.
+4. **`C-NTF-03` (cơ chế đánh dấu đã đọc), `RISK-NTF-03`, `RISK-NTF-05`, `RISK-NTF-06`** — PRD v1.1 không đề cập, giữ nguyên Open/Pending như v1.0. Đã thử vibe-check qua demo 2026-09-15 (xem mục trên) nhưng **không kết luận được** — vẫn cần hỏi BA hoặc verify STG thật, KHÔNG coi là đã xử lý.
