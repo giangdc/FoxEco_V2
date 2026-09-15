@@ -15,11 +15,23 @@
  *   - Stop hook (mặc định): đọc payload stdin. Chỉ soi VR folder MỚI NHẤT nếu fresh (<45').
  *   - Manual:  node validate-vibe-run.mjs --check <VR-folder>   (chạy verify_evidence.py trực tiếp, exit theo nó)
  *
- * Fail-safe: thiếu python3 / thiếu verify_evidence.py / parse lỗi / bất kỳ exception → KHÔNG chặn (exit 0).
+ * Fail-safe: thiếu python / thiếu verify_evidence.py / parse lỗi / bất kỳ exception → KHÔNG chặn (exit 0).
+ * Interpreter dò qua pyBin(): python3 → python → py -3 (Windows không có python3).
  * Tôn trọng stop_hook_active (chống loop).
  */
 import { readFileSync, readdirSync, statSync, existsSync } from 'node:fs';
 import { spawnSync } from 'node:child_process';
+
+/** Interpreter Python có thật trên máy này. macOS/Linux có python3, Windows có python/py. */
+let _py;
+function pyBin() {
+  if (_py !== undefined) return _py;
+  for (const c of [['python3'], ['python'], ['py', '-3']]) {
+    const r = spawnSync(c[0], [...c.slice(1), '-c', 'pass'], { stdio: 'ignore' });
+    if (!r.error && r.status === 0) return (_py = c);
+  }
+  return (_py = null);
+}
 import { fileURLToPath } from 'node:url';
 import { dirname, join, resolve } from 'node:path';
 import { homedir } from 'node:os';
@@ -115,8 +127,10 @@ function isSealed(target) {
 function runGate(dir) {
   const script = findVerifyScript();
   if (!script) return { skip: 'không thấy verify_evidence.py (bundle vào .claude/hooks/ hoặc cài vibe-test skill)' };
-  const r = spawnSync('python3', [script, dir, '--json'], { encoding: 'utf8', timeout: 60000 });
-  if (r.error || r.status === null) return { skip: 'python3 không chạy được' };
+  const py = pyBin();
+  if (!py) return { skip: 'không tìm thấy python3/python/py' };
+  const r = spawnSync(py[0], [...py.slice(1), script, dir, '--json'], { encoding: 'utf8', timeout: 60000 });
+  if (r.error || r.status === null) return { skip: 'python không chạy được' };
   if (r.status === 2) return { skip: 'verify_evidence usage error' };
   let data; try { data = JSON.parse(r.stdout); } catch { return { skip: 'không parse được JSON' }; }
   return { data };
@@ -144,7 +158,8 @@ try {
     }
     const script = findVerifyScript();
     if (!script) { console.error('không thấy verify_evidence.py'); process.exit(0); }
-    const r = spawnSync('python3', [script, target], { stdio: 'inherit' });
+    const py = pyBin() || ['python3'];
+    const r = spawnSync(py[0], [...py.slice(1), script, target], { stdio: 'inherit' });
     process.exit(r.status === null ? 0 : r.status);
   }
 
