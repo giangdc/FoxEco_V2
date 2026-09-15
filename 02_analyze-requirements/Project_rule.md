@@ -140,6 +140,17 @@ req_notation: FR/VR
 # US-key  : doc dùng key user story (vd PRJ-123)
 # none    : doc KHÔNG đánh số → traceability dùng DOC-ID §section (traceability Schema B)
 # auto    : chưa rõ → analyze-requirements tự phát hiện lần chạy đầu rồi GHI NGƯỢC giá trị thật vào đây
+#
+# ⚠️ DOC-v1.1-01 (PRD chính thức "FoxEco — Gửi Hàng", 1.0-BM/PM/HDCV/FTEL) dùng ký hiệu KHÁC hẳn v1.0:
+#   FR<NN>        → §8 Feature Detail (đặc tả chức năng, có Business Rules con)
+#   BR<FF>-NN     → §8.<x>.1 Business Rules của từng FR (vd BR03-01 thuộc FR03)
+#   US<NN>        → §6.1 User Story
+#   AC-{US}.{Scenario}.{Case} → §6.2 Acceptance Criteria (Given/When/Then), trace tới US
+#   NFR-NN        → §9 Non-Functional Requirements
+#   VAL-NN        → §8.18.2 Quy tắc chung cho toàn bộ form
+# QUY TẮC riêng cho DOC-v1.1-01: cột "Maps (Ref DOC)" dùng TRỰC TIẾP ID gốc (vd `FR08`, `BR08-02`,
+# `AC-07.1.01`, `NFR-04`), không quy đổi. Không nhầm `BR<FF>-NN` (FF = số FR cha) với `BR-<MODULE>-NN`
+# của DOC-v1.0-01 — 2 hệ ký hiệu khác nhau, chỉ trùng chữ "BR".
 ```
 
 ## Jira Integration
@@ -303,6 +314,7 @@ N/A — chưa scaffold source code. Chạy `/init-source-code --archetype <stack
 |---|---|---|
 | 2026-07-24 | `§Custom Rules §10.1` — UI phải khớp tài liệu mới được viết TC khẳng định | QA GiangDC2 |
 | 2026-07-27 | `§Custom Rules §10.2` — màn có tab ⇒ mỗi tab ≥1 TC riêng verify data | QA GiangDC2 |
+| 2026-09-15 | `§Custom Rules §10.3` — gộp seed dữ liệu dùng chung cho nhóm TC cùng module, ưu tiên tạo trạng thái qua UI flow thay vì nhờ dev seed DB | QA GiangDC2 |
 | 2026-07-27 | "Đánh giá" trong scope Phase 1 = **Quà ảo** (`GIFT-01`); chấm 1–5 sao là phase sau | BA/PO |
 | 2026-09-07 | Tách 11 module (thêm `HOME`/`FEED`/`ACT`) thay 8 mã domain của đợt v1.0 cũ | QC GiangDC2 |
 | 2026-09-07 | Phân tích lại v1.0 từ đầu theo bộ skill v1.1 (`module-first v2`); **scope = toàn bộ 11 module**, không giới hạn 5 luồng Phase 1 | QC GiangDC2 |
@@ -349,3 +361,26 @@ Màn có tab switcher lọc dữ liệu theo trạng thái (vd `Đang diễn ra`
 - TC verify **cơ chế switch tab** giữ riêng, độc lập với các TC verify-data-theo-tab
 
 **Lý do:** TC gộp khi FAIL không chỉ ra ngay tab nào sai. **Case gốc:** màn "Hoạt động" (`ACT`).
+
+### §10.3 — Gộp seed dữ liệu dùng chung cho nhóm TC cùng module *(2026-09-15, QA GiangDC2)*
+
+FoxEco không có API/admin seed (`§Test Data Rules`: SDK nhúng, không có URL riêng) ⇒ mọi trạng thái đơn
+không tự tạo được bằng tay tester phải qua dev/QA hoặc qua flow UI thật. Khi ≥2 TC trong cùng module
+cần cùng một nhóm trạng thái đơn:
+
+1. **Seed 1 lần dùng chung**, KHÔNG lặp lại bước "Nhờ dev/QA seed …" đầy đủ ở từng TC riêng lẻ.
+   Fragment phải khai 1 khối **"Seed dùng chung"** ngay sau dòng `Nguồn:` ở đầu file, đặt tên mã
+   (`SEED-<MODULE>-NN`) và liệt kê đủ bộ đơn/trạng thái cần có cho cả nhóm TC dùng chung. Mỗi TC trong
+   nhóm chỉ dẫn chiếu lại mã seed đó ở `Pre-condition`/`Test Data`.
+2. **Ưu tiên tạo trạng thái qua flow UI thật** (multi-role: tài khoản phụ SENDER đăng tin → CARRIER
+   nhận/giao) khi trạng thái tái tạo được qua app (`Chờ ghép`/`Đã ghép`/`Đang giao`/`Đã giao`/`Hoàn
+   thành`) — để `/vibe-test` tự chủ chạy được, không phải dừng lại chờ dev mỗi TC. Chỉ ghi "Nhờ dev/QA
+   seed" khi trạng thái **không tái tạo được qua UI** trong thời gian hợp lý (vd `Hết hạn` cần chờ thời
+   gian thật hoặc sửa thẳng DB) — case này đánh dấu `⛔ không seed được qua UI` để `review-tc`/`vibe-test`
+   biết cần chuẩn bị trước, không phải chờ giữa chừng.
+3. Rà nhóm trạng thái/tài khoản đặc biệt dùng chung được (vd tài khoản "trắng" 0 đơn) và gộp seed tương
+   tự bước 1, kể cả khi các TC không liền kề ID nhau.
+
+**Lý do:** seed lặp lại theo từng TC khiến `/vibe-test` phải dừng xin dev/QA seed nhiều lần cho cùng
+1 module thay vì 1 lần, giảm mạnh hiệu quả "AI thay manual tester". **Case gốc:** `ACT` — 8/14 TC lặp
+lại bước seed riêng lẻ dù dùng chung được 1 bộ đơn (`SEED-ACT-01`) + 1 tài khoản trắng (`SEED-ACT-02`).

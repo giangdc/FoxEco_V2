@@ -1,7 +1,7 @@
 # MASTER-MEMORY — Cross-Version Registry
 
-> Cập nhật lần cuối: 2026-09-07
-> Active version: **v1.0**
+> Cập nhật lần cuối: 2026-09-15
+> Active version: **v1.0** (thực thi/test) · **v1.1 đang DELTA analyze song song** — v1.0 pipeline (review-tc REJECTED, vibe-test/log-bug chưa chạy) vẫn còn dở nên KHÔNG áp dụng §10 Version Cutover; §8 dưới đây vẫn là bảng sống của v1.0.
 >
 > **⚠️ Tầng 1 (project) — ROUTER cross-version.** Chứa registry (version / DOC / TC-file / downstream path), quyết định cross-version. **KHÔNG chứa chi tiết SC/data/risk per-module** (sống ở tầng 3 module fragment). **KHÔNG lặp** cùng 1 bảng ở version `MEMORY.md`: §2 DOC Registry là **nguồn duy nhất** ở đây; §3 giữ **lifecycle cross-version**.
 
@@ -9,6 +9,7 @@
 | Version | Release Date | Input Folder | Analyze Folder | Status | Tổng DOC | Tổng SC (all) | Tổng SC (new+mod) | Parent |
 |---------|-------------|-------------|----------------|--------|----------|--------------|-------------------|--------|
 | v1.0 | TBD | `00_input/v1.0/` | `02_analyze-requirements/v1.0/` | ANALYZED | 6 | 211 | 211 | — (version đầu của chuỗi phân tích mới) |
+| v1.1 | TBD | `00_input/v1.1/` | `02_analyze-requirements/v1.1/` | IN_PROGRESS (delta analyze) | 2 | TBD (211 carried + Δ — cập nhật khi §8 dòng `analyze-requirements` chuyển COMPLETED) | Δ TBD | v1.0 |
 
 > 📌 **v1.0 được PHÂN TÍCH LẠI TỪ ĐẦU ngày 2026-09-07** bằng bộ skill `qc-claude-v1 v1.1` (layout `module-first v2`, 11 module). Bản phân tích v1.0 **cũ** (bộ skill v1.0, layout `flat`, 8 module — 46 REQ / 92 SC / 323 TC) được lưu trữ ở `_handoff-v1.0/04_archive-project-v1.0/` và **KHÔNG phải parent** của bản này: cùng version, cùng tài liệu nguồn, khác phương pháp phân tích. ⛔ Không dùng archive làm baseline regression cho v1.0 (xem §9).
 
@@ -25,8 +26,11 @@
 | DOC-v1.0-04 | v1.0 | `Design/Fox Eco Doc/` — gồm `images/*` (82 ảnh, nguồn UI chi tiết nhất) + `canvas.fig` (nguồn Figma gốc) + `meta.json` + `thumbnail.png` | Figma UI mockup. ⚠ status bar "9:41" = mẫu chuẩn Apple, **không phải screenshot máy thật** | Active | — | USR, HOME, FEED, ORD, DLV, GIFT, NTF |
 | DOC-v1.0-05 | v1.0 | `Design/Screenshot From 2026-07-27 15-23-25.png` | Ảnh mockup màn Hoạt động (⚠ cùng cảnh báo "9:41") | Active | — | ACT |
 | DOC-v1.0-06 | v1.0 | `_knowledge-pack/` (KP-01, 02, 03, 05, 06, 07 + `evidence/`) | Knowledge pack — kiến thức nghiệp vụ **NGOÀI tài liệu** (BA-chat · QA-obs · Figma · vibe-test). ⛔ KHÔNG là nguồn requirement gốc | Active | — | USR, HOME, FEED, ORD, ACT, ASN, DLV, GIFT, CNL, NTF, TS |
+| DOC-v1.1-01 | v1.1 | `FoxEco PRD v1.0 - Gui Hang.pdf` | PDF — **PRD chính thức** (mã `1.0-BM/PM/HDCV/FTEL`, PRD Standard v1.2, rev 08/09/2026 "[A] Bổ sung flow exit giao hàng"). ⚠️ **Cùng tính năng "Gửi Hàng" đã phân tích ở v1.0** (khớp gần 1:1 cả 11 module qua FR01–FR18), KHÔNG phải sản phẩm mới — bản thân PRD tự nhận "MỚI HOÀN TOÀN" chỉ vì PM viết độc lập, không đối chiếu bộ phân tích v1.0. Chi tiết/chính thức hơn hẳn `DOC-v1.0-01/02` | Active | — | HOME, ASN, DLV, GIFT, CNL, NTF, TS, ORD, ACT (xem ghi chú USR dưới) |
+| DOC-v1.1-02 | v1.1 | `FoxEco Demo 3 vai tro (standalone) v4.0 (1).html` | HTML — prototype 3 vai trò bản **v4.0** (kế thừa `DOC-v1.0-03`), reference-only ⛔ không trích làm nguồn rule | Active | — | (mô tả, không citation — như `DOC-v1.0-03`) |
 
 **Ghi chú registry:**
+- **`DOC-v1.1-01` không kéo `USR` vào delta.** FR15 của PRD đề xuất cho sửa SĐT/địa chỉ mặc định, xung đột trực tiếp với `SC-USR-003`/`C-USR-03` (v1.0 — màn Cá nhân view-only, resolved theo quan sát app STG). QC **GiangDC2 quyết định 2026-09-15: giữ nguyên view-only**, FR15 không áp dụng ở v1.1 ⇒ `USR-tai-khoan/` KHÔNG có delta, không tạo `v1.1/USR-tai-khoan/`. Quyết định ghi lại ở đây vì đây là nơi duy nhất so sánh 2 DOC — đừng hiểu nhầm là bị bỏ sót khi rà lại.
 - **Đánh số giữ nguyên theo đợt v1.0 cũ** (01 = BRD · 02 = PRD demo · 03 = prototype HTML · 04 = ảnh Figma) để citation trong `_handoff-v1.0/04_archive-project-v1.0/` và `KP-04` còn đối chiếu được. `05` (screenshot) và `06` (knowledge pack) là DOC-ID **mới** của lượt này.
 - **`DOC-v1.0-06` KHÔNG phải tài liệu yêu cầu.** Toàn bộ `§D3` Functional Requirements, `§D4` Business Rules, `§D1b` User Story + AC, `§D8` Validate rules nằm ở `DOC-v1.0-01`. KP chỉ chứa **phán quyết clarification** và **hành vi app thật** — dùng để quyết định khi 2 nguồn tài liệu mâu thuẫn.
 - **Thứ tự thắng khi mâu thuẫn** (áp dụng suốt lượt phân tích này): (1) **`DOC-v1.0-06`** nếu có phán quyết BA/PO có ngày hoặc bằng chứng app/Figma cụ thể → (2) **`DOC-v1.0-01`** (BRD, bản mới nhất 27/07) → (3) **`DOC-v1.0-02`** (PRD demo) → (4) `DOC-v1.0-04`/`05` (mockup, chỉ đối chiếu cấu trúc) → (5) `DOC-v1.0-03` (prototype, reference-only). Mỗi lần áp thứ tự này đều ghi rõ ở Analyst Note của REQ/CL tương ứng.
