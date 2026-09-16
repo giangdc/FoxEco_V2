@@ -11,7 +11,7 @@ counts:
   cl_open: 0
   cl_resolved: 1
 status: ANALYZED
-updated: 2026-09-15
+updated: 2026-09-16
 ---
 
 # Risk Assessment — v1.1 · Module NTF (Delta)
@@ -62,6 +62,8 @@ updated: 2026-09-15
 > Ảnh `00_input/v1.1/design/NTF_03_thongbao_sau_tap_item_CNTF03.png` — sau khi tap vào 1 item ("Tìm thấy đơn hàng phù hợp tuyến của bạn") và quay lại, chấm đỏ của item đó **VẪN CÒN**, không đổi.
 
 ↳ **Kết luận: KHÔNG resolve được `C-NTF-03(a)` qua demo này** — cả 2 cách thử đều không có hiệu ứng, tức cơ chế đọc trong demo là **dữ liệu tĩnh/mock, không nối logic thật**. Đây là giới hạn của công cụ tham chiếu (demo), không phải câu trả lời cho câu hỏi nghiệp vụ. **KHÔNG dùng 2 ảnh trên làm bằng chứng "app không có tính năng đánh dấu đã đọc"** — chỉ ghi nhận để tránh người sau lặp lại đúng 2 phép thử này trên cùng demo rồi tưởng đã có kết luận. Câu hỏi `C-NTF-03(a)` **vẫn Open**, cần hỏi BA hoặc verify trên STG thật.
+
+↳ **Tái xác nhận độc lập 2026-09-16 (không lặp lại đúng 2 phép thử cũ):** Thử thêm 1 cách khác — tap trực tiếp vào 1 item thông báo cụ thể (không phải nút "Đánh dấu đã đọc"). Lần này item **CÓ điều hướng thật** (mở đúng "Chi tiết tin" tương ứng với nội dung thông báo, dùng dữ liệu đơn thật vừa tạo trong phiên) — khác hẳn 2 phép thử cũ (đều không có hiệu ứng gì trên item mẫu tĩnh). Nhưng quay lại danh sách Thông báo, chấm đỏ của item đó **vẫn còn nguyên**, không đổi. Bấm "Đánh dấu đã đọc" (mark-all) cũng **không đổi** bất kỳ chấm đỏ nào. ⇒ Củng cố thêm: điều hướng trong danh sách thông báo có hoạt động (route thật), nhưng **trạng thái đã đọc hoàn toàn không được cài đặt/lưu** trong bản demo này — dù dùng route thật hay item mẫu. Không đủ để kết luận cơ chế nghiệp vụ, `C-NTF-03(a)` **giữ nguyên Open**.
 
 ## Khuyến nghị tổng thể (delta v1.1)
 1. **Không còn blocker** — `C-NTF-01` đã Resolved, không cần hỏi BA trước khi generate-tc phần NTF.

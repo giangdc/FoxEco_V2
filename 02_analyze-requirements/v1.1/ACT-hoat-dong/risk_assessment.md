@@ -8,10 +8,10 @@ module: ACT
 counts:
   cl: 3
   risk: 8
-  cl_open: 2
-  cl_resolved: 1
+  cl_open: 1
+  cl_resolved: 2
 status: ANALYZED
-updated: 2026-09-15
+updated: 2026-09-16
 ---
 
 > Tạo bởi: analyze-requirements (DELTA 2026-09-15) · layout **module-first v2**.
@@ -37,8 +37,8 @@ updated: 2026-09-15
 | CL ID | Nội dung | Status | Mở | REQ/SC liên quan |
 |-------|----------|--------|-----|-------------------|
 | C-ORD-06 | Text empty state của các màn khi không có data (**home canonical ở đây**) | ✅ **Resolved 2026-09-15 — bằng tài liệu đã phê duyệt, không phải lời chốt miệng** | mở lại 2026-07-29 (từng Resolved 2026-07-28 → REVERT) | REQ-ACT-008, REQ-GIFT-007, REQ-HOME-012, và các SC empty state của FEED/NTF |
-| C-ACT-02 | Nhãn 2 tab + tên màn: theo PRD ("Đang chạy"/"Hoàn tất", màn "Đơn của tôi") hay theo app ("Đang diễn ra"/"Đã hoàn thành", nav "Hoạt động")? | 🔴 **Open (non-blocking)** | 2026-09-15 | REQ-ACT-001, SC-ACT-001 |
-| C-ACT-01 | Tap card ở màn Hoạt động mở "Chi tiết tin" hay "Theo dõi đơn"? | 🔴 **Open** (không đổi — PRD không nêu đích điều hướng) | mở 2026-09-07 | REQ-ACT-006, SC-ACT-011 |
+| C-ACT-02 | Nhãn 2 tab + tên màn: theo PRD ("Đang chạy"/"Hoàn tất", màn "Đơn của tôi") hay theo app ("Đang diễn ra"/"Đã hoàn thành", nav "Hoạt động")? | 🔴 **Open (non-blocking)** — có thêm bằng chứng demo 2026-09-16, xem ghi chú | 2026-09-15 | REQ-ACT-001, SC-ACT-001 |
+| C-ACT-01 | Tap card ở màn Hoạt động mở "Chi tiết tin" hay "Theo dõi đơn"? | ✅ **Resolved 2026-09-16 — qua demo, xem ghi chú** | mở 2026-09-07 | REQ-ACT-006, SC-ACT-011 |
 
 ### C-ORD-06 · Text empty state *(RESOLVED 2026-09-15 — lần thứ hai, lần này có bằng chứng)*
 
@@ -68,7 +68,19 @@ updated: 2026-09-15
 **Câu hỏi cho BA/PM:** (a) nhãn nào là chuẩn để assert — PRD hay app? (b) nếu PRD chuẩn thì đây là **defect UI** cần dev sửa hay PRD viết theo bản thiết kế cũ? (c) tên màn trên bottom nav có đổi theo không?
 **Vì sao non-blocking:** `SC-ACT-001` vẫn chạy được ở phần *"có đúng 2 tab"*; chỉ phần nhãn treo. **Vì sao vẫn phải chốt trước generate-tc:** nhãn tab xuất hiện trong **Steps của rất nhiều TC** ở `ACT` và các module khác (*"mở tab Đã hoàn thành"*) — chốt muộn thì phải sửa rải rác, đúng kiểu lỗi #1 của đợt cũ (`C-ORD-09` với nhãn "Tài liệu").
 
+↳ **Cập nhật 2026-09-16 — bằng chứng phụ từ demo (không resolve, chỉ củng cố):** Vibe-check qua demo (vai Carrier, Playwright) xác nhận màn Hoạt động có H1 **"Đơn của tôi"** và 2 tab **"Đang diễn ra" / "Đã hoàn thành"** — khớp chính xác quan sát STG cũ (`KP-01 §3 KB-ORD-07`, 2026-07-27), không khớp PRD. Đây là **nguồn độc lập thứ hai** (khác STG thật) cùng cho kết quả app-side giống nhau ⇒ củng cố khả năng nếu BA chọn "PRD chuẩn" thì đây **thực sự là defect**, không phải do quan sát cũ lỗi thời. Câu hỏi "bên nào đúng" vẫn là quyết định của BA/PM, demo không tự trả lời được.
+
+### C-ACT-01 · Đích tap card ở màn Hoạt động *(RESOLVED 2026-09-16 — qua demo)*
+
+📍 Vibe-check demo 2026-09-16 (home canonical gốc: `v1.0/ACT-hoat-dong/risk_assessment.md`, giữ nguyên làm hồ sơ lịch sử)
+
+**Bằng chứng:** Tap vào card "Đơn của tôi" ở màn Hoạt động (vai Carrier, đơn đang `Chờ ghép`) mở đúng màn **"Theo dõi đơn"** — role-aware, có khối "Người gửi"/"Người nhận" kèm nút Gọi, thanh trạng thái 5 mốc, nút hành động theo vai ("Nhận mang giúp đơn này" / "Tôi đã lấy hàng" / …). Chính bản thân card còn in sẵn dòng chữ **"Chạm để theo dõi đơn của bạn"** — tự mô tả đích đến.
+
+**Analyst Note:** Kết quả khớp **Nguồn B** (`DOC-v1.0-02 §3.7`: "bấm vào mở Theo dõi đơn") và khớp hành vi đã biết ở `HOME` (`SC-HOME-015`). Bác bỏ **Nguồn A** (`KP-01 §3 KB-ORD-07` dòng 5: "→ mở Chi tiết tin") — đúng như nghi vấn đã nêu trước đó rằng quan sát cũ **ghi nhầm tên màn** (Chi tiết tin là màn public khác hẳn, không role-aware). `SC-ACT-011` hết `[GAP]`, có thể viết TC assert cứng đích "Theo dõi đơn" thay vì chỉ ghi nhận theo dữ liệu.
+⚠️ Khuyến nghị double-check nhanh trên STG thật trước khi hardening automation locator (đúng caveat chung dùng demo làm nguồn), nhưng bằng chứng (nhãn tự mô tả trên card + cấu trúc màn đích) đủ rõ để không coi là blocker cho `generate-tc`.
+
 ## Khuyến nghị tổng thể
+0. ✅ **`C-ACT-01` đã Resolved 2026-09-16** — đích tap card = "Theo dõi đơn" (role-aware), không phải "Chi tiết tin". `SC-ACT-011` hết GAP.
 1. **Chốt `C-ACT-02` trước `generate-tc`** — nhãn tab nằm trong Steps của nhiều TC ở nhiều module; chốt muộn phải sửa rải rác (đúng vết xe đổ của `C-ORD-09`).
 2. **2 SC hết gap phải regenerate TC, không patch** (`SC-ACT-012`/`SC-ACT-014`) — Then đổi từ *ghi nhận text là gì* sang *assert verbatim + assert bất đối xứng CTA + assert ẩn khối lịch sử*.
 3. **`SC-ACT-015` phải giữ nguyên dạng đối chứng 2 đơn** — tách rời sẽ mất đúng cái nó sinh ra để bắt (`RISK-ACT-07`).

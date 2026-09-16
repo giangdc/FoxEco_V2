@@ -11,7 +11,7 @@ counts:
   cl_open: 2
   cl_resolved: 1
 status: ANALYZED
-updated: 2026-09-07
+updated: 2026-09-16
 ---
 
 # Risk Assessment — v1.0 · Module GIFT
@@ -31,14 +31,14 @@ updated: 2026-09-07
 | RISK-GIFT-02 | GIFT / Text popup | **2 nguồn 2 text popup** (`US-D15` *"Cảm ơn của bạn đã được gửi"* ⟷ PRD+Figma *"Đã gửi lời cảm ơn!"*) ⇒ TC assert text sẽ FAIL ở 1 trong 2 cách hiểu | Low | `US-D15` L194 vs `DOC-v1.0-02` §3.8 + Figma | Assert theo PRD+Figma (2 nguồn bề mặt) | Hỏi BA chốt (`C-GIFT-03`); tới khi đó dùng bản PRD+Figma | Open | REQ-GIFT-002, SC-GIFT-003 |
 | RISK-GIFT-03 | GIFT / Danh sách lịch sử | Thành phần *"danh sách lịch sử nhận quà"* **chỉ có 1 nguồn văn bản** (`US-D20`), không có ảnh Figma/app ⇒ nếu viết TC khẳng định sẽ vi phạm `§Custom Rules §10.1` | Medium | `US-D20` L196 · KP-01 §6 KB-GIFT-03 (ghi chú: *"cần vibe-test xác nhận… không im lặng bỏ qua"*) | `SC-GIFT-007` ghi nhận có/không | Vibe-test màn "Quà đã nhận"; không có → mở CL, ⛔ không im lặng bỏ qua | Open | REQ-GIFT-004, SC-GIFT-007 |
 | RISK-GIFT-04 | GIFT / UI leftover | Nhãn *"Bạn đã đánh giá"* và chuỗi *"Hoàn thành & đã đánh giá"* dùng từ **"đánh giá"** cho hành động **tặng quà** ⇒ người đọc sau dễ kết luận v1.0 có tính năng rating và viết TC chấm sao | Medium | KP-01 §6 KB-GIFT-01/KB-GIFT-02 · `DOC-v1.0-02` §5.2 | `SC-GIFT-011` assert-absent màn chấm sao | Ghi ràng buộc `CHANGELOG §2`; nêu với BA để đổi nhãn nếu được | Resolved | REQ-GIFT-003, REQ-GIFT-005 |
-| RISK-GIFT-05 | GIFT / Back navigation | Nút back màn "Tặng quà" nhảy sang màn của **đơn khác** — nếu tái hiện trên app thật thì user có thể thao tác nhầm trên đơn không liên quan | Low | KP-01 §6 KB-GIFT-04 (`C-GIFT-02` Open) | `SC-GIFT-010` với **đơn thật**, không dùng item mẫu demo | Verify trên STG; tái hiện → log bug | Open | REQ-GIFT-006, SC-GIFT-010 |
+| RISK-GIFT-05 | GIFT / Back navigation | *(cập nhật Severity)* Nút back màn "Tặng quà" nhảy sang màn của **đơn khác** — đã tái hiện được với **đơn thật** (không chỉ item mẫu) qua vibe-check demo 2026-09-16, không còn là giả thuyết | Low → **Medium** | KP-01 §6 KB-GIFT-04 (`C-GIFT-02` Open) · vibe-check demo 2026-09-16 | `SC-GIFT-010` với **đơn thật** — nay có bằng chứng tái hiện, ưu tiên chạy sớm | Verify lại trên STG thật (khác kỹ thuật SPA của demo); nếu tái hiện → log bug ngay, mức độ **cao hơn đánh giá ban đầu** vì user có thể thao tác nhầm lên đơn của người khác | Open (ưu tiên cao hơn) | REQ-GIFT-006, SC-GIFT-010 |
 
 ## Clarifications (home của CL quote — layout v2)
 
 | CL ID | Vấn đề | Status | Ngày | REQ/SC liên quan |
 |---|---|---|---|---|
 | C-GIFT-01 | Rating 1–5 sao (`RAT-01/02`) có thuộc v1.0? | ✅ Resolved — **Out of scope v1.0**; v1.0 chỉ có Quà ảo | 2026-07-27 | REQ-GIFT-005 |
-| C-GIFT-02 | 🔴 Nút back màn "Tặng quà" nhảy sang màn của đơn khác | 🔴 **Open** | kế thừa 2026-07-29 | REQ-GIFT-006 |
+| C-GIFT-02 | 🔴 Nút back màn "Tặng quà" nhảy sang màn của đơn khác | 🔴 **Open — tái hiện với đơn thật 2026-09-16, mức độ cao hơn đánh giá ban đầu** | kế thừa 2026-07-29 | REQ-GIFT-006 |
 | C-GIFT-03 | 🔴 Text popup sau khi gửi quà + có "danh sách lịch sử nhận quà" hay không | 🔴 **Open** | mở 2026-09-07 | REQ-GIFT-002, REQ-GIFT-004 |
 | C-ORD-06 | Text empty state (tham chiếu — home ở `ACT`) | 🔴 **Open** | mở lại 2026-07-29 | REQ-GIFT-007 |
 
@@ -62,7 +62,10 @@ updated: 2026-09-07
 
 **Source Location:** `DOC-v1.0-06 KP-01 §6 "KB-GIFT-04"`
 
-**Analyst Note:** Phát hiện trong ngữ cảnh **item mẫu tĩnh của bản demo** ⇒ chính nguồn cũng nghiêng về *"giới hạn demo"*. ⇒ `SC-GIFT-010` yêu cầu Given là **đơn thật trên STG**, ⛔ không kết luận bug từ dữ liệu mẫu. Nếu tái hiện với đơn thật thì mức độ: user có thể **thao tác nhầm trên đơn không liên quan** (vd bấm xác nhận nhận hàng của đơn khác) ⇒ nghiêm trọng hơn đánh giá ban đầu. **Non-blocking.**
+**Analyst Note (2026-09-07):** Phát hiện trong ngữ cảnh **item mẫu tĩnh của bản demo** ⇒ chính nguồn cũng nghiêng về *"giới hạn demo"*. ⇒ `SC-GIFT-010` yêu cầu Given là **đơn thật trên STG**, ⛔ không kết luận bug từ dữ liệu mẫu. Nếu tái hiện với đơn thật thì mức độ: user có thể **thao tác nhầm trên đơn không liên quan** (vd bấm xác nhận nhận hàng của đơn khác) ⇒ nghiêm trọng hơn đánh giá ban đầu. **Non-blocking.**
+
+↳ **Cập nhật 2026-09-16 — TÁI HIỆN được với đơn thật, không còn là giả thuyết:** Vibe-check qua demo (Playwright) — tạo và hoàn tất **một đơn thật từ đầu đến cuối** (Sender đăng tin → Carrier nhận/lấy/giao → Receiver xác nhận → COMPLETED), sau đó vào tab "Đã hoàn thành" bấm 1 item, mở đúng màn **"Tặng quà"**. Bấm nút back (←) trên màn "Tặng quà" → nhảy tới màn **"Xác nhận đã nhận hàng"** của một đơn **hoàn toàn khác, không liên quan** (carrier "Trần Thị Lan", địa chỉ khác, không phải đơn vừa thao tác).
+**Analyst Note:** Đây **không còn là giới hạn của "item mẫu tĩnh"** như phỏng đoán ban đầu (2026-09-07) — bug tái hiện y hệt ngay cả khi thao tác trên một luồng nghiệp vụ thật, đầy đủ. Nhiều khả năng là lỗi **back-stack/history của SPA** (điều hướng không push đúng lịch sử, back nhảy tới 1 route ngẫu nhiên/còn sót trong stack) chứ không phải do dữ liệu mẫu. ⚠️ **Nâng mức độ ưu tiên:** cần verify khẩn trên STG thật (kỹ thuật khác — có thể dùng native navigation, không chắc lặp lại lỗi này) TRƯỚC `generate-tc`; nếu tái hiện trên STG thì log bug ngay với severity Medium/High (rủi ro thao tác nhầm lên đơn của người khác), không chờ đến khi execute.
 
 ### C-GIFT-03 · 🔴 Text popup + danh sách lịch sử nhận quà
 

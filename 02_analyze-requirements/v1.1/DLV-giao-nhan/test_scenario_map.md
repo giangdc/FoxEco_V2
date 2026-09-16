@@ -97,7 +97,7 @@ updated: 2026-09-15
 ##### SC-DLV-037..042 — Xác nhận giao hàng (Carrier, FR07 mở rộng)
 **Source Quote:** xem `requirement_traceability.md REQ-DLV-017` (BR07-01..07 đầy đủ).
 **Source Location:** `DOC-v1.1-01 §8.7, §8.7.1, §8.7.3 · trang 39-41`
-**Analyst Note:** ⚠️ **Rủi ro execute cao** — `risk_assessment.md RISK-DLV-08`. Trước khi chạy 6 SC này, xác nhận app STG đã build lại màn theo form đầy đủ; nếu app vẫn hiện nút+popup đơn giản cũ thì đây là **defect nghiêm trọng (PRD/app lệch)**, không phải TC sai. Không liên quan `C-DLV-03` (màn Receiver khác, xem `SC-DLV-025`).
+**Analyst Note:** `risk_assessment.md RISK-DLV-08` nay **Confirmed qua demo (2026-09-16)** — cấu trúc form + luồng submit end-to-end (đính ảnh, chọn "Giao cho", chuyển DELIVERED) đều chạy đúng. Vẫn khuyến nghị 1 lượt xác nhận nhanh trên STG thật trước khi hardening automation locator, nhưng không còn là rủi ro cao chặn generate-tc. Không liên quan `C-DLV-03` (màn Receiver khác, xem `SC-DLV-025`).
 
 ##### SC-DLV-043..048 — Không liên lạc được người nhận
 **Source Quote:** xem `requirement_traceability.md REQ-DLV-018` (BR08-01..07 đầy đủ).

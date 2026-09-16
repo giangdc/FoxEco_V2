@@ -16,7 +16,7 @@ counts:
   p2: 10
   p3: 7
 status: ANALYZED
-updated: 2026-09-15
+updated: 2026-09-16
 ---
 
 # Test Scenario Map — v1.1 · Module USR
@@ -51,7 +51,7 @@ updated: 2026-09-15
 | SC-USR-019 | Banner tự ẩn khi người dùng sửa tiếp | REQ-USR-008 | DOC-v1.1-01 §8.15.1 BR15-05 | Vừa lưu thành công, banner xanh **đang hiển thị** | Chạm vào ô SĐT hoặc địa chỉ và sửa tiếp | Banner **tự ẩn** khi bắt đầu sửa; ⛔ không cần bấm đóng thủ công | P3 | UI | NEW |
 | SC-USR-020 | Địa chỉ mặc định KHÔNG bắt buộc, ≤ 200 ký tự | REQ-USR-008 | DOC-v1.1-01 §8.15.2 | Đang ở màn "Cập nhật thông tin", SĐT đang hợp lệ | Xoá trắng ô **địa chỉ mặc định** → Lưu; rồi nhập chuỗi **200** và **201** ký tự → Lưu | Bỏ trống **vẫn lưu được** (⛔ không phải invalid — cột `Bắt buộc` = *Không*); 200 ký tự **được**, 201 **bị chặn/cắt** | P3 | Business Rule | NEW |
 | SC-USR-003 | Vùng SSO của hồ sơ vẫn chỉ đọc *(lật một phần)* | REQ-USR-002 | DOC-v1.1-01 §8.15.1 BR15-01 · §8.15 Description | Đang ở **trang Cá nhân** (không phải màn "Cập nhật thông tin") | Rà toàn bộ trang tìm control sửa trực tiếp trên từng trường | Tên · phòng ban · MNV · email **không sửa trực tiếp được tại trang Cá nhân**. ⚠ **KHÁC v1.0**: nay **CÓ** lối vào màn sửa qua mục "Cập nhật thông tin" ⇒ ⛔ không assert *"không có bất kỳ control sửa nào"* | P2 | Business Rule | MODIFIED |
-| SC-USR-002 | Hồ sơ cá nhân — các trường hiển thị | REQ-USR-002 | DOC-v1.1-01 §8.15.2 · DOC-v1.0-01 §A6 | Đã vào FoxEco bằng tài khoản có hồ sơ đầy đủ | Mở tab "Cá nhân" | Hiển thị đủ các trường đọc được: avatar, tên, phòng ban, MNV. ⚠ Danh sách trường của **trang Cá nhân** vẫn chưa có bằng chứng UI đầy đủ (`C-USR-04` còn Open một nửa) — ⛔ không lấy `§8.15.2` làm danh sách cho màn này | P2 | UI | MODIFIED |
+| SC-USR-002 | Hồ sơ cá nhân — các trường hiển thị *(hết gap 2026-09-16)* | REQ-USR-002 | Vibe-check demo 2026-09-16 (`00_input/v1.1/design/USR_01...png`) | Đã vào FoxEco bằng tài khoản có hồ sơ đầy đủ | Mở tab "Cá nhân" | Hiển thị đúng: avatar (icon placeholder) · Tên · "[Phòng ban] · MNV: [mã]" · 2 chỉ số "[N] đơn đã giúp" / "[N] quà đã nhận" · 3 mục menu đúng thứ tự "Đơn của tôi" → "Quà đã nhận" → "Cập nhật thông tin". ⛔ KHÔNG gồm SĐT/Email/Địa chỉ — 3 trường đó chỉ ở màn "Cập nhật thông tin" (`SC-USR-013..016`), không lấy `§8.15.2` làm danh sách cho màn này. Badge "Hạng Đồng hành" (nếu STG cũng có): chỉ ghi nhận, không assert cứng — chưa có trong bất kỳ tài liệu nào | P2 | UI | MODIFIED |
 | SC-USR-012 | Nhãn mục menu thứ hai *(hết gap)* | REQ-USR-006 | DOC-v1.1-01 §8.15 dòng Trigger | Đang ở trang Cá nhân | Đọc nhãn và thứ tự các mục menu | Mục thứ hai là **"Cập nhật thông tin"**, nằm **dưới** "Quà đã nhận" — hết dạng ghi-nhận, assert được | P2 | UI | MODIFIED |
 
 #### Source Detail per Scenario (verbatim quotes)
@@ -103,13 +103,15 @@ updated: 2026-09-15
 
 ---
 
-##### SC-USR-012 / SC-USR-002 — Menu trang cá nhân có tên; nhưng danh sách trường vẫn chưa đủ bằng chứng
-📍 `DOC-v1.1-01 §8.15 dòng Trigger · trang 48` · `§8.15.2 UI/Field Spec · trang 49`
+##### SC-USR-012 / SC-USR-002 — Menu trang cá nhân có tên; danh sách trường hết gap qua demo 2026-09-16
+📍 `DOC-v1.1-01 §8.15 dòng Trigger · trang 48` · `§8.15.2 UI/Field Spec · trang 49` · vibe-check demo 2026-09-16
 
 > Trigger: "Mở "Cập nhật thông tin" trong trang cá nhân (nằm dưới mục "Quà đã nhận")"
 
-**Analyst Note (diff):** Một dòng `Trigger` đóng được **một nửa** `C-USR-04`: trang Cá nhân có ít nhất 2 mục menu **theo thứ tự xác định** ⇒ `SC-USR-012` hết `[GAP]`, nâng **P3 → P2**.
-⚠️ **Nửa còn lại vẫn Open, và đây là chỗ dễ kết luận sai:** `§8.15.2` liệt kê trường của **màn "Cập nhật thông tin"** — ⛔ **không phải** danh sách trường hiển thị trên **trang Cá nhân**. Hai màn khác nhau; `SC-USR-002` (trang Cá nhân) **không được** lấy `§8.15.2` làm nguồn. ⇒ `C-USR-04` chuyển **Partially Resolved**, ⛔ không đóng hẳn.
+> Ảnh `00_input/v1.1/design/USR_01_trangcanhan_fields_CUSR04.png` — trang Cá nhân: avatar (placeholder) · Tên · "Phòng Kỹ thuật · MNV: FTEL2291" · badge "Hạng Đồng hành" (ngoài đặc tả, không assert) · "12 đơn đã giúp" / "8 quà đã nhận" · menu "Đơn của tôi" → "Quà đã nhận" → "Cập nhật thông tin".
+> Ảnh `00_input/v1.1/design/USR_02_capnhatthongtin_fields.png` — màn "Cập nhật thông tin": avatar chữ tắt "CL" + Tên + Phòng ban/MNV (đọc) · Số điện thoại mặc định (sửa được) · Email công ty (khoá) · Địa chỉ mặc định (sửa được) · nút "Lưu thay đổi".
+
+**Analyst Note (diff):** `SC-USR-012` hết `[GAP]` từ dòng `Trigger` (nâng P3 → P2, không đổi ở lượt này). **`SC-USR-002` hết gap ở lượt 2026-09-16** nhờ 2 ảnh trên — xác nhận trực tiếp trang Cá nhân và màn "Cập nhật thông tin" là **hai màn có hai bộ trường khác nhau**, đúng nghi vấn đã nêu từ 2026-09-15. `§8.15.2` **vẫn chỉ** là field spec của màn "Cập nhật thông tin" — ⛔ không dùng cho `SC-USR-002`, giờ đã có nguồn riêng (ảnh demo) thay vì phải mượn `§8.15.2`. `C-USR-04` **Resolved 2026-09-16** — xem `risk_assessment.md`.
 
 ---
 

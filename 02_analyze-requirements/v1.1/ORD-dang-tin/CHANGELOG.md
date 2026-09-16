@@ -17,7 +17,7 @@ id_range:
   cl: "C-ORD-13 (NEW) + C-ORD-04 (MỞ LẠI), C-ORD-05, C-ORD-08, C-ORD-09, C-ORD-10, C-ORD-11 (đổi Status, giữ ID sprint 1)"
   risk: "RISK-ORD-09..12 (NEW, 4) + RISK-ORD-03, RISK-ORD-06 (Status/Severity cập nhật, giữ ID sprint 1)"
 status: ANALYZED
-updated: 2026-09-15
+updated: 2026-09-16
 ---
 
 # Changelog — Module ORD (`ORD`)
@@ -28,6 +28,7 @@ updated: 2026-09-15
 
 | Ngày | Loại | Thay đổi | Nguồn / Lý do | Ảnh hưởng |
 |---|---|---|---|---|
+| 2026-09-16 | UPDATE | Vibe-check qua demo (Playwright, wizard "Đăng tin" bước 1) — 3 phát hiện, KHÔNG resolve CL nào: (a) chip "Loại hàng" đầu tiên là **"Tài liệu"** khớp PRD (không phải "Giấy tờ, hồ sơ") — nhưng demo ≠ STG, `C-ORD-09` giữ nguyên ràng buộc dùng nhãn STG; (b) chọn chip **"Thuốc/Y tế"** không bị chặn/cảnh báo ngay — nhưng không tới được bước cuối để xem có checkbox cam kết hàng cấm không, vì (c) **wizard này không có `<input type=file>`** ⇒ không đính ảnh được ⇒ validation chặn vĩnh viễn ở bước 1, cũng là bằng chứng xác nhận `RISK-ORD-09` (ảnh bắt buộc) có tồn tại (lỗi "Vui lòng thêm ít nhất 1 ảnh hàng" khi bấm Tiếp theo mà chưa có ảnh) | Vibe-check thủ công qua Playwright, theo yêu cầu QC GiangDC2 2026-09-16 | `RISK-ORD-09` hạ xuống Partially confirmed; `C-ORD-04`/`C-ORD-09` giữ nguyên trạng thái, chỉ thêm bằng chứng phụ trong `risk_assessment.md` |
 | 2026-09-15 | UPDATE | **DELTA v1.1 (lượt bù — module này bị bỏ sót ở lượt delta đầu).** Module lớn nhất dự án, và PRD đặc tả `FR01` dày nhất (9 BR + ~20 dòng field spec + 8 nhóm AC). Kết quả: **+6 REQ, +14 SC, +4 RISK, +1 CL**; **15 REQ / 12 SC MODIFIED**. Nhóm thay đổi lớn: (a) **ảnh món hàng từ *không rõ* → BẮT BUỘC ≥ 1, chặn sang bước 2** (`SC-ORD-054` P1); (b) **tra danh bạ nội bộ** — tích hợp hệ thống ngoài nêu tên lần đầu, 3 nhánh (`SC-ORD-058..060`); (c) **người nhận uỷ quyền khai ngay lúc đăng tin** — khái niệm mới, nối thẳng sang `FR07` của `DLV`; (d) `FR18` tiện ích dùng chung (carousel/lightbox · copy nhanh · ảnh gắn mốc bất biến) | `DOC-v1.1-01` §8.1/§8.2/§8.5/§8.18 · §6.2 AC-01..09, AC-19/20/30 | **4 CL đóng** ⇒ 4 SC hết dạng ghi-nhận, phải **regenerate TC**; 1 SC P1 mới phụ thuộc app đã siết ảnh chưa (`RISK-ORD-09`); 3 SC phụ thuộc STG có danh bạ chưa (`C-ORD-13`) |
 | 2026-09-15 | ĐÍNH CHÍNH | 🔴 **Phát hiện PRD TỰ MÂU THUẪN** — `§8.1.4` để **"Thuốc/Y tế"** là giá trị hợp lệ của Loại hàng, `§8.1.1 BR01-07` lại xếp **"thuốc"** vào hàng cấm *"không được đăng"*; hai câu cách nhau 1 trang trong cùng `FR01`. ⇒ **`C-ORD-04` MỞ LẠI** (v1.0 đã Resolved *"KHÔNG chặn"*) | `DOC-v1.1-01` §8.1.4 (trang 35) vs §8.1.1 BR01-07 (trang 34) | Không phân xử được bằng thứ tự ưu tiên nguồn (cả hai đều là `DOC-v1.1-01`) ⇒ `SC-ORD-031..035` **GHI NHẬN**, ⛔ không assert chiều nào (`RISK-ORD-10`) |
 

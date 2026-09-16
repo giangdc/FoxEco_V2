@@ -132,7 +132,7 @@ updated: 2026-09-15
 | SC-ACT-007 | Đơn "Đã huỷ" bị ẩn | ACT | v1.0 | P2 | → như trên — ⭐ dùng làm **đối chứng** cho `SC-ACT-015` |
 | SC-ACT-009 | Card "Hết hạn" không thao tác được | ACT | v1.0 | P3 | → như trên |
 | SC-ACT-010 | Tap card (≠ Hết hạn) | ACT | v1.0 | P2 | → như trên |
-| SC-ACT-011 | [GAP] Đích tap card | ACT | v1.0 | P3 | → như trên — `C-ACT-01` vẫn **Open**, PRD không nêu đích điều hướng |
+| SC-ACT-011 | Đích tap card = "Theo dõi đơn" *(hết gap 2026-09-16)* | ACT | v1.0 | P3 | `C-ACT-01` Resolved qua vibe-check demo 2026-09-16 (`v1.1/ACT-hoat-dong/risk_assessment.md`) — assert cứng đích "Theo dõi đơn", không còn ghi nhận theo dữ liệu |
 
 > ℹ️ **8 SC CARRIED** — `SC-ACT-001` `005` `008` `012` `013` `014` KHÔNG ở bảng này vì đã MODIFIED (xem §NEW & MODIFIED ở trên).
 

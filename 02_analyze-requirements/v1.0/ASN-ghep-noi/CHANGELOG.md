@@ -21,7 +21,7 @@ id_range:
   cl: "C-NTF-02 (home canonical) · C-ASN-03 · C-ASN-01/02 (tham chiếu — home ở FEED)"
   risk: RISK-ASN-01..07
 status: ANALYZED
-updated: 2026-09-07
+updated: 2026-09-16
 ---
 
 # Changelog — Module ASN (`ASN`)
@@ -32,6 +32,7 @@ updated: 2026-09-07
 
 | Ngày | Loại | Thay đổi | Nguồn / Lý do | Ảnh hưởng |
 |---|---|---|---|---|
+| 2026-09-16 | UPDATE | Thử vibe-check `C-ASN-03` (đăng 2 tin liên tiếp để xem có ghi đè không) — **KHÔNG kiểm được**: wizard "Đăng tin" trên demo không có `<input type=file>`, chặn vĩnh viễn ở bước 1 (ảnh bắt buộc), không hoàn tất được dù chỉ 1 lần đăng. Đây là giới hạn kỹ thuật khác, không phải bằng chứng cho câu hỏi gốc | Vibe-check thủ công qua Playwright, theo yêu cầu QC GiangDC2 2026-09-16 | `C-ASN-03` giữ nguyên Open, không có tiến triển; cần STG thật hoặc hỏi BA |
 | 2026-09-07 | INIT | Phân tích lần đầu §A5/§D3/§D7 — 12 REQ (`001..012`), 18 SC, 3 CL, 7 RISK. Điểm nghiệp vụ đáng chú ý nhất: **BRD mâu thuẫn nội bộ về cơ chế ghép** (`BR-CON-01` ghép ngay ⟷ `ASN-02`/`§D2`/`§D5` chủ tin duyệt) — chốt theo *ghép ngay* vì khớp bề mặt thật `DOC-v1.0-02` §4.2 | `DOC-v1.0-01` §A5/§D3/§D5/§D7/§D1b · `DOC-v1.0-02` §4.2 · `DOC-v1.0-06` KP-01 §4 | Dựng đủ 5 deliverable + `CHANGELOG.md` |
 | 2026-09-07 | REFACTOR | **Thu hẹp phạm vi module.** Đợt v1.0 cũ để Bảng tin + Chi tiết tin trong `ASN`; lượt này 2 màn đó tách sang `FEED`, `ASN` chỉ còn **rule ghép nối** (engine + state-transition) | Quyết định QC GiangDC2 2026-09-07 | Dải `SC-ASN-*` đánh lại từ 001; ⛔ ID cũ (`SC-ASN-005`, `SC-ASN-014` = bề mặt Bảng tin) **KHÔNG** map 1-1 sang dải mới |
 | 2026-09-07 | INIT | **Nhận home canonical của `C-NTF-02`** (định nghĩa "khớp tuyến" + tham số vận hành) — rule thuộc engine ghép nối, không thuộc màn Thông báo | Trước đây CL này gắn nhãn `NTF` nhưng nội dung là rule matching | `NTF-thong-bao/risk_assessment.md` chỉ tham chiếu; `SC-ASN-011` chịu giới hạn từ CL này |

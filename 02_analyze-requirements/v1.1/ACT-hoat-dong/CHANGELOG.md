@@ -14,10 +14,10 @@ doc_source:
 id_range:
   req: "REQ-ACT-010 (NEW) + REQ-ACT-001, REQ-ACT-004, REQ-ACT-005, REQ-ACT-008, REQ-ACT-009 (MODIFIED, giữ ID sprint 1)"
   sc: "SC-ACT-015, SC-ACT-016, SC-ACT-017 (NEW) + SC-ACT-001, SC-ACT-005, SC-ACT-008, SC-ACT-012, SC-ACT-013, SC-ACT-014 (MODIFIED, giữ ID sprint 1)"
-  cl: "C-ACT-02 (NEW) + C-ORD-06 (home canonical ở module này — chuyển Resolved, giữ ID) · C-ACT-01 (không đổi)"
+  cl: "C-ACT-02 (NEW) + C-ORD-06 (home canonical ở module này — chuyển Resolved, giữ ID) · C-ACT-01 (Resolved 2026-09-16 qua demo)"
   risk: "RISK-ACT-06, RISK-ACT-07, RISK-ACT-08 (NEW) + RISK-ACT-03, RISK-ACT-04 (Status/Severity cập nhật, giữ ID sprint 1)"
 status: ANALYZED
-updated: 2026-09-15
+updated: 2026-09-16
 ---
 
 # Changelog — Module ACT (`ACT`)
@@ -29,6 +29,7 @@ updated: 2026-09-15
 | Ngày | Loại | Thay đổi | Nguồn / Lý do | Ảnh hưởng |
 |---|---|---|---|---|
 | 2026-09-15 | UPDATE | **DELTA v1.1 (lượt bù — module này bị bỏ sót ở lượt delta đầu).** Kết quả: **+1 REQ, +3 SC, +3 RISK, +1 CL**; **5 REQ / 6 SC MODIFIED**. Ba việc lớn: (a) **`C-ORD-06` ĐÓNG** — CL lan rộng nhất dự án (5 màn / 6 SC), home canonical ở module này, lần này Resolved bằng **tài liệu đã phê duyệt** chứ không phải lời chốt miệng như lần bị REVERT 2026-07-29; (b) `RETURNED` — kết cục đơn hoàn toàn mới — tạo cặp **đối chứng với `CANCELLED`** (`SC-ACT-015`); (c) `SC-ACT-013` (★ leftover) chuyển từ `[GAP]` sang **defect đủ căn cứ log bug** | `DOC-v1.1-01` §8.17/§8.17.1/§8.17.2 · §6.2 AC-29/AC-09/AC-24 · §8.5.1 BR05-03 · §8.14.1 BR14-03 · §4 | 2 SC empty state hết gap ⇒ **regenerate TC**, ⛔ không patch; `C-ACT-02` (nhãn tab) phải chốt **trước** `generate-tc` |
+| 2026-09-16 | UPDATE | Vibe-check qua demo (Playwright, vai Carrier) — **đóng `C-ACT-01`**: tap card ở màn Hoạt động mở đúng "Theo dõi đơn" (role-aware), không phải "Chi tiết tin"; card còn tự in dòng "Chạm để theo dõi đơn của bạn". Bác bỏ quan sát cũ `KP-01 §3 KB-ORD-07` (nghi ghi nhầm tên màn). Đồng thời củng cố thêm bằng chứng cho `C-ACT-02` (nhãn tab) — demo cho kết quả giống hệt quan sát STG cũ ("Đang diễn ra"/"Đã hoàn thành"), không resolve được câu hỏi PRD-vs-app nhưng loại trừ khả năng quan sát cũ lỗi thời | Vibe-check thủ công qua Playwright, theo yêu cầu QC GiangDC2 2026-09-16 | `SC-ACT-011` hết `[GAP]`, assert cứng đích "Theo dõi đơn"; `counts.cl_resolved` 1→2, `cl_open` 2→1 |
 | 2026-09-15 | ĐÍNH CHÍNH | Phát hiện **xung đột nhãn PRD ⟷ app**: PRD gọi 2 tab "Đang chạy"/"Hoàn tất" và màn là "Đơn của tôi"; app STG hiển thị "Đang diễn ra"/"Đã hoàn thành", bottom nav "Hoạt động". `SC-ACT-001` **tạm hạ phần nhãn xuống ghi nhận**, ⛔ không assert cứng bên nào | `DOC-v1.1-01` §8.17.1 EMP-05/EMP-06 · §6.2 AC-09.1.01 vs `KP-01` §3 KB-ORD-07 · áp `Project_rule §Custom Rules §10.1` | Mở `C-ACT-02`; nhãn tab nằm trong Steps của nhiều TC ở nhiều module ⇒ chốt muộn sẽ phải sửa rải rác |
 
 ## 2. Ràng buộc còn hiệu lực
@@ -54,7 +55,7 @@ updated: 2026-09-15
 | # | Nợ | Vì sao còn treo | Hướng xử lý |
 |---|---|---|---|
 | 1 | 🔴 **`C-ACT-02`** — nhãn 2 tab + tên màn theo PRD hay app | PRD nhất quán 3 chỗ, app nhất quán theo cách khác; không bên nào sai rõ ràng | **Chốt trước `generate-tc`** — nhãn tab nằm trong Steps của nhiều TC ở nhiều module (`RISK-ACT-06`) |
-| 2 | 🔴 **`C-ACT-01` vẫn Open** — tap card mở "Chi tiết tin" hay "Theo dõi đơn" | PRD không nêu đích điều hướng của card ở màn này | Giữ `SC-ACT-011` dạng `[GAP]`; hỏi BA cùng lượt với `C-ACT-02` |
+| 2 | ✅ **`C-ACT-01` Resolved 2026-09-16** — tap card mở "Theo dõi đơn" (role-aware), xác nhận qua demo | Card tự in "Chạm để theo dõi đơn của bạn"; khớp hành vi đã biết ở HOME | `SC-ACT-011` hết `[GAP]`, assert cứng |
 | 3 | 🟡 **`SC-ACT-015` / phần `RETURNED` của `SC-ACT-005` chờ nhánh `FR09`** | Trạng thái `RETURNED` mới ở v1.1, `RISK-DLV-08` cảnh báo app có thể chưa build | Gộp lô với `SC-DLV-053..056`; nếu chưa có thì verdict `BLOCKED`, ⛔ không PASS |
 | 4 | 🟡 **Tài khoản trắng dùng chung** cho `SC-ACT-012/014/016/017` | Cùng nhu cầu với `SC-HOME-025..027` và `SC-GIFT-008`; môi trường đã có dữ liệu thì không tái tạo được | Xin **1 tài khoản mới tinh**, chạy hết cụm empty state trong 1 lượt rồi mới để nó "bẩn" |
 | 5 | 🟡 **`SC-ACT-017` cần throttle mạng** | Mạng nhanh thì pha loading trôi quá nhanh, không phân biệt được *đang tải* ⟷ *không có dữ liệu* | Ghi rõ bước throttle 3G trong Steps của TC |

@@ -11,7 +11,7 @@ counts:
   cl_open: 1
   cl_resolved: 0
 status: ANALYZED
-updated: 2026-09-07
+updated: 2026-09-16
 ---
 
 # Risk Assessment — v1.0 · Module ASN
@@ -65,6 +65,8 @@ updated: 2026-09-07
 **Source Location:** `DOC-v1.0-06 KP-01 §4 "KB-ASN-05"` ⟷ `DOC-v1.0-02 §7 · bảng · dòng 3`
 
 **Analyst Note:** Nguồn B **giải thích được** nguồn A: bản demo *"chỉ có 1 đơn hàng duy nhất"* và *"đăng tin mới ghi đè đơn đang có"* ⇒ việc không thấy listing độc lập rất có thể là **giới hạn của demo**, không phải đặc tả sản phẩm. ⇒ `SC-ASN-018` ghi nhận với tiền đề **2 tin liên tiếp**; ⛔ không kết luận bug. **Cần xác nhận lại khi có backend thật** — nếu app STG cũng ghi đè đơn thì đó là vấn đề kiến trúc nghiêm trọng cần escalate. **Non-blocking** cho generate-tc.
+
+↳ **Thử vibe-check 2026-09-16 — KHÔNG kiểm được, chặn bởi giới hạn khác của demo:** Định thử đăng 2 tin liên tiếp (cùng vai Carrier/Sender) để xem có tạo 2 listing song song hay ghi đè, nhưng wizard "Đăng tin" bước 1 trên demo **không có `<input type=file>`** ⇒ không đính được ảnh bắt buộc ⇒ không qua được bước 1 để hoàn tất dù chỉ 1 lần đăng, nói gì đến 2 lần. Đây là giới hạn kỹ thuật khác của demo (không liên quan tới câu hỏi gốc), không phải bằng chứng cho C-ASN-03. **Giữ nguyên Open**, vẫn cần xác nhận trên STG thật (nơi có thể đăng tin trọn vẹn) hoặc hỏi BA.
 
 ## Khuyến nghị tổng thể
 1. **Resolve trước generate-tc:** `C-NTF-02` phần còn thiếu (định nghĩa *"khung giờ phù hợp"* + chu kỳ quét) — không chốt thì **không viết được TC biên** cho điều kiện khớp, coverage auto-match chỉ ở mức nhánh trùng/không trùng.

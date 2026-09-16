@@ -11,7 +11,7 @@ counts:
   cl_open: 1
   cl_resolved: 2
 status: ANALYZED
-updated: 2026-09-15
+updated: 2026-09-16
 ---
 
 > Tạo bởi: analyze-requirements (DELTA 2026-09-15) · layout **module-first v2**.
@@ -36,7 +36,7 @@ updated: 2026-09-15
 |-------|----------|--------|-----|-------------------|
 | C-GIFT-01 | Rating 1–5 sao (`RAT-01/02`) có thuộc v1.0? | ✅ **Resolved 2026-09-15 — nâng cấp: out of scope VĨNH VIỄN, không phải hoãn tới phase sau** | 2026-07-27 | REQ-GIFT-005 |
 | C-GIFT-03 | Text popup sau khi gửi quà + có "danh sách lịch sử nhận quà" hay không | ✅ **Resolved 2026-09-15 — cả 2 vế** | 2026-09-07 | REQ-GIFT-002, REQ-GIFT-004 |
-| C-GIFT-02 | Nút back màn "Tặng quà" nhảy sang màn của đơn khác | 🔴 **Open** (không đổi — PRD không nhắc tới lỗi điều hướng này) | kế thừa 2026-07-29 | REQ-GIFT-006 |
+| C-GIFT-02 | Nút back màn "Tặng quà" nhảy sang màn của đơn khác | 🔴 **Open — tái hiện với đơn thật 2026-09-16, ưu tiên cao hơn** | kế thừa 2026-07-29 | REQ-GIFT-006 |
 
 ### C-GIFT-03 · Text popup + danh sách lịch sử nhận quà *(RESOLVED 2026-09-15 — cả 2 vế)*
 
@@ -65,4 +65,4 @@ updated: 2026-09-15
 2. **Chạy `SC-GIFT-014` cùng lượt với `SC-USR-005`/`SC-USR-012` và `SC-HOME-008`** — cùng một bộ đếm hiển thị ở 3 màn; dùng chung 1 đơn `RETURNED` để so 3 màn trong 1 lượt thay vì seed 3 lần (`RISK-GIFT-02`).
 3. **`SC-ACT-013` (★ leftover) nay đủ căn cứ log bug** — `BR14-03` + §4 Out of Scope. ⛔ Không diễn giải là "dấu vết phase sau".
 4. **3 SC hết `[GAP]` cần viết lại Then hẳn, không chỉ sửa chữ** (`SC-GIFT-007` · `SC-GIFT-008` · `SC-GIFT-011`) — từ *ghi nhận* sang *assert khẳng định*; `generate-tc` phải regenerate, ⛔ không patch TC cũ.
-5. **`C-GIFT-02` vẫn Open** — PRD không nhắc tới lỗi back-navigation; giữ nguồn `QA-obs` và tiếp tục xin BA xác nhận.
+5. **`C-GIFT-02` vẫn Open, nay ưu tiên cao hơn** — vibe-check demo 2026-09-16 tái hiện được lỗi back-navigation với **đơn thật** (không chỉ item mẫu), loại bỏ giả thuyết "giới hạn demo". Cần verify khẩn trên STG thật trước `generate-tc`; xem chi tiết `v1.0/GIFT-qua-cam-on/risk_assessment.md`.

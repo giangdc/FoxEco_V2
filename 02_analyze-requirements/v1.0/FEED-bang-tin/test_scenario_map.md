@@ -42,7 +42,7 @@ updated: 2026-09-14
 | Scenario ID | Feature | Req ID | DOC Source | Given | When | Then | Priority | Test Type | Lifecycle |
 |-------------|---------|--------|-----------|-------|------|------|----------|-----------|-----------|
 | SC-FEED-001 | Danh sách Bảng tin | REQ-FEED-001 | DOC-v1.0-02 §3.3 · §2 | Cộng đồng có ≥2 tin NEED ở trạng thái Chờ ghép | Mở tab "Bảng tin" | Hiển thị danh sách tin NEED của cả cộng đồng (không giới hạn tin của mình); tin OFFER KHÔNG xuất hiện | P2 | Functional | NEW |
-| SC-FEED-002 | Completeness card tin | REQ-FEED-001 | DOC-v1.0-02 §3.3 đoạn 3 | Bảng tin đang có ≥1 tin | Đối chiếu từng thành phần của 1 card | Card đủ 6 thành phần: icon/ảnh hàng · loại hàng\|giá trị · badge "Tin của bạn" (nếu là tin mình) · thời gian đăng · "Nhận:"/"Giao:" rút gọn · khung giờ | P2 | UI | NEW |
+| SC-FEED-002 | Completeness card tin *(hết gap CTA 2026-09-16)* | REQ-FEED-001 | DOC-v1.0-02 §3.3 đoạn 3 · vibe-check demo 2026-09-16 | Bảng tin đang có ≥1 tin | Đối chiếu từng thành phần của 1 card | Card đủ 6 thành phần: icon/ảnh hàng · loại hàng\|giá trị · badge "Tin của bạn" (nếu là tin mình) · thời gian đăng · "Nhận:"/"Giao:" rút gọn · khung giờ. Card **KHÔNG có** nút CTA "Tôi mang giúp được" (`C-FEED-01(a)` Resolved — nút chỉ có ở màn Chi tiết tin) | P2 | UI | NEW |
 | SC-FEED-003 | Badge "Tin của bạn" | REQ-FEED-002 | DOC-v1.0-02 §3.3 đoạn 3 | Tài khoản A đã đăng 1 tin đang Chờ ghép | A mở Bảng tin, tìm tin của mình | Card tin đó có badge "Tin của bạn" | P3 | UI | NEW |
 | SC-FEED-004 | Không badge với tin người khác | REQ-FEED-002 | DOC-v1.0-02 §3.3 đoạn 3 | Bảng tin có tin do tài khoản B đăng | A mở Bảng tin, xem card tin của B | Card tin của B KHÔNG có badge "Tin của bạn" | P3 | Business Rule | NEW |
 | SC-FEED-005 | Mở Chi tiết tin | REQ-FEED-003 | DOC-v1.0-02 §3.3 đoạn 4 | Bảng tin có ≥1 tin | Bấm vào 1 tin cụ thể | Mở màn Chi tiết tin của đúng tin đó (loại hàng/lộ trình/khung giờ khớp card vừa bấm) | P2 | Functional | NEW |
@@ -70,9 +70,10 @@ updated: 2026-09-14
 
 **Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-FEED-001`)*
 
-**Source Location:** `DOC-v1.0-02 §3.3 "Màn hình Bảng tin" · đoạn 3`
+**Source Location:** `DOC-v1.0-02 §3.3 "Màn hình Bảng tin" · đoạn 3` · vibe-check demo 2026-09-16 (`00_input/v1.1/design/FEED_01_bangtin_carrier_khongco_CTA.png`)
 
-**Analyst Note:** ⛔ **Không** assert nút CTA trên card: `US-D07` nói nút có *"ngay tại thẻ tin hoặc màn chi tiết"* nhưng `§3.3` không liệt kê nút trong 6 thành phần ⇒ lệch nguồn về vị trí CTA, đưa về `C-FEED-01`. Badge là thành phần **có điều kiện** ⇒ chỉ assert khi tin là của mình (đã tách riêng `SC-FEED-003/004`).
+**Analyst Note:** ~~⛔ Không assert nút CTA trên card~~ *(2026-09-07)* — `US-D07` nói nút có *"ngay tại thẻ tin hoặc màn chi tiết"* nhưng `§3.3` không liệt kê nút trong 6 thành phần ⇒ lệch nguồn, đưa về `C-FEED-01`.
+↳ **Cập nhật 2026-09-16:** Vibe-check qua demo (vai Carrier) xác nhận card **không có** nút CTA nào — khớp `§3.3`. `C-FEED-01(a)` Resolved ⇒ **đổi từ "cố ý không assert" sang assert cứng phủ định** ("card KHÔNG có CTA"). Badge vẫn là thành phần **có điều kiện** ⇒ chỉ assert khi tin là của mình (đã tách riêng `SC-FEED-003/004`).
 
 ##### SC-FEED-003 / SC-FEED-004 — Badge "Tin của bạn" (positive + negative)
 

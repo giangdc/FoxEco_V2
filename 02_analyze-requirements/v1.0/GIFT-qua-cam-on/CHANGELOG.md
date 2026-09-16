@@ -23,7 +23,7 @@ id_range:
   cl: "C-GIFT-01 · C-GIFT-02 · C-GIFT-03 (mới) · C-ORD-06 (tham chiếu — home ở ACT)"
   risk: RISK-GIFT-01..05
 status: ANALYZED
-updated: 2026-09-07
+updated: 2026-09-16
 ---
 
 # Changelog — Module GIFT (`GIFT`)
@@ -34,6 +34,7 @@ updated: 2026-09-07
 
 | Ngày | Loại | Thay đổi | Nguồn / Lý do | Ảnh hưởng |
 |---|---|---|---|---|
+| 2026-09-16 | UPDATE | Vibe-check qua demo (Playwright) — **tái hiện `C-GIFT-02` với đơn thật** (không phải item mẫu tĩnh như lần phát hiện đầu 2026-09-07): hoàn tất 1 đơn thật qua đủ vòng đời, mở màn "Tặng quà" từ tab "Đã hoàn thành", bấm back (←) → nhảy tới màn "Xác nhận đã nhận hàng" của một đơn khác không liên quan. Loại bỏ giả thuyết "giới hạn item mẫu"; nhiều khả năng là lỗi back-stack SPA thật. `RISK-GIFT-05` nâng Severity Low → Medium | Vibe-check thủ công qua Playwright, theo yêu cầu QC GiangDC2 2026-09-16 | `C-GIFT-02` giữ Open nhưng nâng ưu tiên; khuyến nghị verify khẩn trên STG thật trước `generate-tc`, log bug ngay nếu tái hiện |
 | 2026-09-07 | INIT | Phân tích lần đầu §A7/§D3/§3.8 — 8 REQ (`001..008`), 12 SC, 4 CL (1 mới), 5 RISK. Điểm nghiệp vụ đáng chú ý nhất: **BRD mâu thuẫn 3-1 về rating** (`RAT-01/02` có chấm sao ⟷ `BR-INT-06`+`§A7`+`§A8` không) ⇒ `C-GIFT-01` chốt **quà ảo THAY CHO chấm sao** — đây là hệ quả scope lớn nhất dự án | `DOC-v1.0-01` §A5/§A7/§A8/§D3/§D4/§D6/§D1b · `DOC-v1.0-02` §3.8 · `DOC-v1.0-06` KP-01 §6 | Dựng đủ 5 deliverable + `CHANGELOG.md` |
 | 2026-09-07 | INIT | Giữ lại **phát hiện ngoài tài liệu** của đợt cũ: nút `✓ Cảm ơn người vận chuyển` → `Bạn đã đánh giá` (disable) sau khi gửi quà — nguồn `QA-obs` + Figma, chưa từng có ở BRD/PRD | `DOC-v1.0-06` KP-01 §6 KB-GIFT-01 (đợt cũ đã sinh REQ riêng) | `REQ-GIFT-003` + `SC-GIFT-005`; kéo theo rule **chỉ tặng quà 1 lần/đơn** |
 | 2026-09-07 | INIT | Mở `C-GIFT-03` — gộp 2 điểm chưa chốt: **text popup** sau khi gửi quà (2 nguồn 2 text) và **danh sách lịch sử nhận quà** (1 nguồn văn bản, chưa có ảnh) | Đối chiếu `US-D15`/`US-D20` ↔ PRD §3.8 ↔ `KB-GIFT-03` | `SC-GIFT-003` dùng text PRD+Figma; `SC-GIFT-007` ghi nhận lịch sử |
