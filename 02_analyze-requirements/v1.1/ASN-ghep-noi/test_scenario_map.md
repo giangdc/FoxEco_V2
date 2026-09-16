@@ -44,7 +44,7 @@ updated: 2026-09-15
 | SC-ASN-006 | Chống double-accept (bổ sung ngưỡng concurrency) | REQ-ASN-003 | DOC-v1.1-01 §8.3 BR03-02 · §9 NFR-06 | 1 tin NEED "Chờ ghép"; 2 Carrier B và C cùng mở Chi tiết tin của tin đó | (a, manual) B và C bấm "Tôi mang giúp được" tuần tự, C bấm sau khi tin đã ẩn với B; (b, automation/backend) 50 request ghép đồng thời trên cùng 1 tin | (a) Chỉ B ghép được; C nhận thông báo tin đã có người nhận. (b) Tỷ lệ ghép trùng = 0% (khoá giao dịch chặn toàn bộ request thừa) — nhánh (b) BẮT BUỘC test ở tầng API/backend (concurrency test trên staging), không manual | P1 | Business Rule + Backend | MODIFIED |
 | SC-ASN-008 | Đồng bộ realtime 3 vai — ngưỡng ≤5 giây | REQ-ASN-005 | DOC-v1.1-01 §9 NFR-08 | 1 đơn "Chờ ghép" mở đồng thời trên 3 phiên/thiết bị khác nhau (Sender · Carrier · Receiver) | Carrier xác nhận mang giúp; đo thời điểm mỗi phiên cập nhật trạng thái | Cả 3 phiên cập nhật trạng thái "Đã ghép" trong vòng **≤5 giây** kể từ thời điểm đổi trạng thái, không cần thao tác làm mới thủ công | P2 | Functional | MODIFIED |
 | SC-ASN-011 | Điều kiện khớp tuyến chính thức (điểm + ngày overlap + buổi overlap) | REQ-ASN-007 | DOC-v1.1-01 §8.4 BR04-01, BR04-02 | Carrier B đã đăng tin OFFER (điểm xuất phát P1, điểm đến P2, khoảng ngày D1-D2, tập buổi S) | Đăng lần lượt: (a) tin NEED điểm giao KHÁC P2 → không khớp; (b) tin NEED trùng P1/P2, khoảng ngày KHÔNG giao nhau với D1-D2 → không khớp; (c) tin NEED trùng P1/P2, khoảng ngày có giao nhau nhưng tập buổi KHÔNG có buổi chung → không khớp; (d) tin NEED trùng P1/P2, ngày giao nhau, buổi có ít nhất 1 buổi chung (hoặc chọn "Giờ nào cũng được") → KHỚP, B nhận thông báo trong ≤60s | Nhánh (a)(b)(c): B KHÔNG nhận thông báo khớp tuyến. Nhánh (d): B CÓ nhận thông báo, trong ngưỡng NFR-04 ≤60s (p95) | P2 | Business Rule | MODIFIED |
-| SC-ASN-014 | Trần thông báo khớp — theo NGÀY/người dùng (đảo kết luận v1.0) | REQ-ASN-008 | DOC-v1.1-01 §8.4 BR04-04 | Carrier B đã nhận N thông báo khớp trong ngày hôm nay (N = ngưỡng cấu hình thật của hệ thống — xác nhận giá trị này với admin/vận hành trước khi execute, ⛔ không tự đặt số) | Có thêm 1 tin NEED khớp tuyến của B (bất kể thuộc tin OFFER nào của B) | Nếu B đã đạt ngưỡng/ngày → KHÔNG bắn thêm thông báo cho B (dù là tin OFFER khác); nếu chưa đạt → bắn bình thường. ⛔ KHÔNG còn assert "tính riêng theo từng tin OFFER" (kết luận v1.0 đã HẾT HIỆU LỰC — xem CHANGELOG §2) | P2 | Business Rule | MODIFIED |
+| SC-ASN-014 | Trần thông báo khớp — **5 thông báo / 1 tin đăng OFFER**, KHÔNG có trần theo ngày *(đảo lần 2 — BA 2026-09-16)* | REQ-ASN-008 | DOC-v1.1-01 §8.4 BR04-04 *(BA xác nhận dư)* · BA trả lời `C-NTF-02` 2026-09-16 | Có **≥ 6** tin NEED ở `POSTED` cùng khớp tuyến P1→P2 (khoảng ngày + buổi giao nhau) | Carrier B đăng 1 tin OFFER P1→P2 | B nhận **tối đa 5** thông báo `NTF-03` cho tin OFFER này; ⛔ KHÔNG assert trần theo ngày. ⚠️ Người nhận / cách chọn 5 tin / chiều NEED-mới **chờ `C-ASN-04`** — tới lúc đó chỉ assert *"không vượt 5 cho 1 tin OFFER"* | P2 | Business Rule | MODIFIED |
 | SC-ASN-015 | Thứ tự ưu tiên gợi ý — 2 tầng (độ gần tuyến trước, thời gian đăng sau) | REQ-ASN-009 | DOC-v1.1-01 §8.3 BR03-06 | Có ≥3 tin NEED: 2 tin trùng tuyến của B (đăng ở 2 thời điểm khác nhau) + 1 tin KHÔNG trùng tuyến nhưng đăng sớm nhất | Xem danh sách gợi ý của B | Tầng 1: 2 tin trùng tuyến luôn xếp trước tin không trùng tuyến (dù tin không trùng đăng sớm hơn). Tầng 2: trong 2 tin trùng tuyến, tin đăng sau (mới hơn) xếp trước tin đăng trước | P3 | Business Rule | MODIFIED |
 | SC-ASN-019 | [NEW] Chặn truy cập tin OFFER qua API trực tiếp + audit log | REQ-ASN-013 | DOC-v1.1-01 §9 NFR-11 | Tin OFFER đang POSTED, không phải sở hữu của tài khoản D | D gọi trực tiếp API đọc chi tiết tin OFFER đó (không qua UI, vì UI không có đường dẫn tới tin OFFER với người ngoài) | Request bị chặn lỗi (không trả dữ liệu tin OFFER); hệ thống ghi audit log ghi nhận request trái phép này | P2 | Security | NEW |
 
@@ -57,7 +57,7 @@ updated: 2026-09-15
 
 **Source Quote (mới):**
 > "BR03-02 | ... chống double-accept bằng khoá giao dịch."
-> "NFR-06 | Data Integrity | Một tin chỉ tồn tại một cặp ghép active; tỷ lệ ghép trùng = 0% dưới điều kiện 50 request đồng thời trên cùng một tin | Cách đo: Concurrency test trên staging"
+> ↪ *Quote `NFR-06` — home ở `requirement_traceability.md` · `REQ-ASN-003` (không chép lại — tránh lặp home, health-check G-03 2026-09-16)*
 
 **Source Location:** `DOC-v1.1-01 §8.3 "FR03" · page 37` · `§9 "NFR-06" · page 53`
 
@@ -68,7 +68,7 @@ updated: 2026-09-15
 ##### SC-ASN-008 — Đồng bộ realtime 3 vai — ngưỡng ≤5 giây
 
 **Source Quote:**
-> "NFR-08 | Consistency | Ba vai trò thấy cùng một trạng thái đơn trong ≤ 5 giây sau khi trạng thái đổi | Cách đo: Integration test đa thiết bị"
+> ↪ *Quote `NFR-08` — home ở `requirement_traceability.md` · `REQ-ASN-005` (không chép lại — tránh lặp home, health-check G-03 2026-09-16)*
 
 **Source Location:** `DOC-v1.1-01 §9 "NFR-08" · page 53`
 
@@ -82,8 +82,8 @@ updated: 2026-09-15
 > `DOC-v1.0-06` KP-01 §4 `KB-ASN-04`: "🔴 Còn thiếu: "khung giờ phù hợp" là trùng hoàn toàn hay có độ lệch cho phép?"
 
 **Source Quote (mới):**
-> "BR04-01 | Điều kiện khớp: trùng điểm lấy VÀ điểm giao · khoảng ngày của NEED và OFFER có ngày giao nhau · tập buổi có buổi giao nhau."
-> "BR04-02 | Buổi "Giờ nào cũng được" khớp với mọi buổi."
+> ↪ *Quote `BR04-01` — home ở `requirement_traceability.md` · `REQ-ASN-007` (không chép lại — tránh lặp home, health-check G-03 2026-09-16)*
+> ↪ *Quote `BR04-02` — home ở `requirement_traceability.md` · `REQ-ASN-007` (không chép lại — tránh lặp home, health-check G-03 2026-09-16)*
 
 **Source Location:** `DOC-v1.1-01 §8.4 "FR04" BR04-01/02 · page 38`
 
@@ -91,17 +91,19 @@ updated: 2026-09-15
 
 ---
 
-##### SC-ASN-014 — Trần thông báo khớp — theo NGÀY/người dùng (đảo kết luận v1.0)
+##### SC-ASN-014 — Trần thông báo khớp — 5 thông báo / 1 tin OFFER *(đảo lần 2 — BA 2026-09-16)*
 
 **Source Quote (cũ — v1.0, kết luận HẾT HIỆU LỰC):**
 > `DOC-v1.0-06` KP-01 §4 `KB-ASN-03`: "Không phải "5 thông báo/ngày" cộng dồn — tính riêng theo từng tin." · "⚠ Giá trị test 3/5/6 tin là giá trị chốt, không phải mock." *(mốc 3/5/6 này vẫn dùng cho SC-ASN-013 "trần gợi ý 5 tin/carrier" — KHÔNG liên quan tới trần thông báo/ngày ở đây.)*
 
 **Source Quote (mới):**
-> "BR04-04 | Trần số thông báo khớp mỗi ngày cho một người dùng do admin cấu hình."
+> ↪ *Quote `BR04-04` — home ở `requirement_traceability.md` · `REQ-ASN-008` (không chép lại — tránh lặp home, health-check G-03 2026-09-16)*
 
 **Source Location:** `DOC-v1.1-01 §8.4 "FR04" BR04-04 · page 38`
 
 **Analyst Note (diff):** ⛔ **Kết luận bị đảo lần 2.** v1.0 (BA, 2026-07-29): trần theo TỪNG TIN OFFER. v1.1 (PRD chính thức): trần theo NGÀY, cho MỘT NGƯỜI DÙNG (gộp tất cả tin OFFER của người đó), giá trị "do admin cấu hình" — không có số cứng trong tài liệu. **Không dùng lại mốc 3/5/6 của v1.0 cho rule này** (mốc đó gắn với "trần gợi ý 5 tin/carrier" của `SC-ASN-013`, một rule độc lập không đổi). Trước khi viết TC boundary cho `SC-ASN-014`, PHẢI hỏi admin/vận hành giá trị cấu hình thật — ghi ở `CHANGELOG §3 Nợ đang mở`.
+
+⛔ **Cập nhật 2026-09-16 — đoạn trên HẾT HIỆU LỰC, đừng trích lại:** BA 2026-09-16 bỏ trần theo ngày (`BR04-04` dư) — rule hiện hành **5 thông báo / 1 tin đăng OFFER**; ⛔ không hỏi admin giá trị cấu hình. Đây thực chất là lần đảo **thứ 3** (v1.0 theo tin → PRD theo ngày → BA theo tin đăng). Then hiện hành ở bảng SC phía trên; chi tiết chờ `C-ASN-04`.
 
 ---
 
@@ -111,7 +113,7 @@ updated: 2026-09-15
 > `DOC-v1.0-01` §D7 `OPR-04` L340: "Sắp xếp theo độ gần tuyến → thời gian đăng (mới trước)"
 
 **Source Quote (mới):**
-> "BR03-06 | Trần gợi ý cho một người vận chuyển: tối đa 5 tin phù hợp, ưu tiên độ gần tuyến rồi tới thời gian đăng."
+> ↪ *Quote `BR03-06` — home ở `requirement_traceability.md` · `REQ-ASN-009` (không chép lại — tránh lặp home, health-check G-03 2026-09-16)*
 
 **Source Location:** `DOC-v1.1-01 §8.3 "FR03" BR03-06 · page 37`
 
@@ -122,7 +124,7 @@ updated: 2026-09-15
 ##### SC-ASN-019 — [NEW] Chặn truy cập tin OFFER qua API trực tiếp + audit log
 
 **Source Quote:**
-> "NFR-11 | Security | Tin OFFER không truy cập được trực tiếp; mọi request đọc tin OFFER bởi người dùng không phải chủ tin phải bị chặn lỗi và ghi audit log | Cách đo: Security test"
+> ↪ *Quote `NFR-11` — home ở `requirement_traceability.md` · `REQ-ASN-013` (không chép lại — tránh lặp home, health-check G-03 2026-09-16)*
 
 **Source Location:** `DOC-v1.1-01 §9 "NFR-11" · page 54`
 
@@ -144,7 +146,7 @@ updated: 2026-09-15
 | SC-ASN-013 | Trần 5 tin gợi ý / carrier | ASN | v1.0 | P2 | → xem v1.0 |
 | SC-ASN-016 | Tin quá hạn bị loại khỏi luồng khớp | ASN | v1.0 | P2 | → xem v1.0 |
 | SC-ASN-017 | Carrier huỷ nhận → tin khớp lại được | ASN | v1.0 | P2 | → xem v1.0 |
-| SC-ASN-018 | [GAP] Wizard không tạo listing độc lập | ASN | v1.0 | P3 | → xem v1.0 |
+| SC-ASN-018 | [GAP] Wizard không tạo listing độc lập | ASN | v1.0 | P3 | → xem v1.0 — ✅ **2026-09-16 BA: ghi đè chỉ là giới hạn demo; app không giới hạn đăng tin** (`C-ASN-03` Resolved) ⇒ hết `[GAP]`, Then assert đăng tin thứ 2 **không ghi đè** tin thứ 1 (cả 2 cùng tồn tại) |
 
 ## Scenarios — DEPRECATED
 

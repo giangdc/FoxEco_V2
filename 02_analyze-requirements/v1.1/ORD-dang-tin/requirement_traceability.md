@@ -113,6 +113,8 @@
 **Nửa còn lại — và nó nặng hơn:** app STG hiển thị chip đầu là **"Giấy tờ, hồ sơ"**, PRD ghi **"Tài liệu"**. Đây **không phải** hai cách gọi của cùng một thứ trong cùng một tài liệu — mà là **doc ⟷ app lệch nhau ở một nhãn xuất hiện trong Steps của rất nhiều TC**. Theo `Project_rule §Custom Rules §10.1`, ⛔ **không được tự chọn bên nào**. ⇒ `C-ORD-09` chuyển **🟡 Partially Resolved**, và **ràng buộc 4 của `03_test-cases/v1.0/CHANGELOG.md §2`** (*"dùng nhãn app, ⛔ tuyệt đối không dùng 'Tài liệu' cho tới khi C-ORD-09 chốt"*) **vẫn còn hiệu lực**.
 🔴 **Phát hiện phụ, nghiêm trọng hơn: PRD tự mâu thuẫn với chính nó.** Field spec để **"Thuốc/Y tế"** là 1 trong 8 giá trị hợp lệ, trong khi `BR01-07` viết *"Hàng cấm (**thuốc**, vũ khí, chất nguy hiểm, hàng phi pháp) **không được đăng**"*. ⇒ **`C-ORD-04` (đã Resolved ở v1.0: "KHÔNG chặn") phải MỞ LẠI** — xem `risk_assessment.md`.
 
+⛔ **Cập nhật 2026-09-16 — đoạn trên HẾT HIỆU LỰC, đừng trích lại:** BA trả lời 2026-09-16: `C-ORD-09` **Resolved** — nhãn chuẩn là **"Tài liệu"** (app hiện "Giấy tờ, hồ sơ" = defect UI), ràng buộc 4 `03_test-cases/v1.0/CHANGELOG.md §2` **không áp cho v1.1**. `C-ORD-04` **Partially Resolved** — chip "Thuốc/Y tế" hợp lệ, không chặn/không cảnh báo; còn vòng 2 về banner/điều khoản. Chi tiết: `risk_assessment.md`.
+
 ---
 
 ### REQ-ORD-006 · Ảnh món hàng: từ tuỳ chọn thành BẮT BUỘC ≥ 1 *(MODIFIED)*

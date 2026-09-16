@@ -56,7 +56,7 @@ updated: 2026-09-15
 | SC-ORD-063 | Địa chỉ giao phải KHÁC địa chỉ lấy | REQ-ORD-028, REQ-ORD-009 | DOC-v1.1-01 §8.1.4 dòng "Địa chỉ giao hàng" | Bước 2, đã có địa chỉ lấy hàng | Nhập địa chỉ giao **trùng hệt** địa chỉ lấy → quan sát; rồi nhập bản **chỉ khác khoảng trắng đầu/cuối** → quan sát | Trùng hệt → **bị chặn**. Khác mỗi khoảng trắng → GHI NHẬN hành vi (`VAL-03` có trim, nhưng PRD **không định nghĩa** so sánh hoa/thường) — ⛔ không assert cứng | P2 | Business Rule | NEW |
 | SC-ORD-064 | Copy nhanh địa chỉ và số điện thoại | REQ-ORD-025 | DOC-v1.1-01 §8.18.1 BR18-04 | Đang ở màn **chi tiết tin** của 1 tin có địa chỉ giao + SĐT | Bấm icon copy cạnh địa chỉ; dán ra ô nhập bất kỳ; lặp với icon copy cạnh SĐT | Nội dung vào clipboard **đúng nguyên văn**; icon **đổi trạng thái + màu xanh** rồi trở lại sau **khoảng 2 giây** (dung sai — ⛔ không bấm giờ đòi đúng 1,8s) | P3 | UI | NEW |
 | SC-ORD-065 | Ảnh đã gắn mốc nhật ký thì không xoá được | REQ-ORD-027 | DOC-v1.1-01 §8.18.1 BR18-05 · BR18-02 | Bước 1 đang soạn tin có 2 ảnh (**chưa ghi mốc**) | Xoá 1 ảnh lúc đang soạn → quan sát; đăng tin; mở lại tin đã đăng và thử xoá ảnh | Lúc **đang soạn**: xoá được (`BR18-02`). Sau khi **đã đăng**: ⛔ **không xoá được** (`BR18-05`, *"phục vụ truy vết"*). Ranh giới là **thời điểm ghi mốc** | P3 | Business Rule | NEW |
-| SC-ORD-005 | Loại hàng — 8 giá trị, mặc định "Tài liệu" *(doc)* vs app | REQ-ORD-003 | DOC-v1.1-01 §8.1.4 dòng "Loại hàng" | Bước 1 wizard, chưa chạm vào field Loại hàng | Đọc giá trị **mặc định** và liệt kê toàn bộ lựa chọn | Có đúng **8** lựa chọn. ⚠ **Nhãn đầu tiên**: PRD ghi "Tài liệu", app STG hiện "Giấy tờ, hồ sơ" ⇒ **GHI NHẬN, ⛔ KHÔNG assert cứng** cho tới khi `C-ORD-09` chốt (ràng buộc 4, `03_test-cases/v1.0/CHANGELOG.md §2` vẫn hiệu lực) | P2 | UI | MODIFIED |
+| SC-ORD-005 | Loại hàng — 8 giá trị, mặc định "Tài liệu" | REQ-ORD-003 | DOC-v1.1-01 §8.1.4 dòng "Loại hàng" · BA trả lời `C-ORD-09` 2026-09-16 | Bước 1 wizard, chưa chạm vào field Loại hàng | Đọc giá trị **mặc định** và liệt kê toàn bộ lựa chọn | Có đúng **8** lựa chọn theo thứ tự "Tài liệu · Đồ điện tử · Thực phẩm · Hàng nhỏ · Đồ dễ vỡ · Quần áo · Thuốc/Y tế · Khác"; mặc định chọn **"Tài liệu"**. App hiện "Giấy tờ, hồ sơ" ⇒ **FAIL = defect UI** (`C-ORD-09` Resolved 2026-09-16) | P2 | UI | MODIFIED |
 | SC-ORD-012 | Ảnh món hàng — nay là trường BẮT BUỘC | REQ-ORD-006 | DOC-v1.1-01 §8.1.1 BR01-01 | Bước 1 wizard | Tải 1 ảnh JPG hợp lệ | Ảnh hiện trong ô, bộ đếm `1/5`; luồng đi tiếp được. ⚠ Ô ảnh phải mang dấu hiệu **bắt buộc** (khác v1.0 — v1.0 không rõ có bắt buộc không) | P2 | Functional | MODIFIED |
 | SC-ORD-025 | Địa chỉ lấy hàng PHẢI prefill từ hồ sơ | REQ-ORD-007, REQ-ORD-010 | DOC-v1.1-01 §8.1.4 · §6.2 AC-30.1.01 | Tài khoản **ĐÃ đặt địa chỉ mặc định** ở "Cập nhật thông tin" (xác nhận trước khi chạy) | Mở wizard đăng tin, sang bước 2, đọc ô Địa chỉ lấy hàng | Ô **đã điền sẵn** đúng địa chỉ mặc định và **sửa được**. ⚠ Nếu trống → **BUG** (`C-ORD-10` Resolved: prefill là hành vi đặc tả) | P2 | Functional | MODIFIED |
 | SC-ORD-026 | Cơ chế ô địa chỉ — văn bản tự do, ≤ 200 ký tự | REQ-ORD-010 | DOC-v1.1-01 §8.1.4 | Bước 2 wizard | Quan sát kiểu ô; nhập chuỗi 200 và 201 ký tự | Là **ô văn bản tự do** (⛔ không phải preset 6 văn phòng, không chip gợi ý — `C-ORD-11` Resolved); 200 ký tự **được**, 201 **bị chặn/cắt** | P3 | Business Rule | MODIFIED |
@@ -89,7 +89,7 @@ updated: 2026-09-15
 ##### SC-ORD-058 / SC-ORD-059 / SC-ORD-060 — Tra danh bạ nội bộ: 3 nhánh
 📍 `DOC-v1.1-01 §8.1.1 BR01-09 · trang 34` · `§8.1.4 dòng "Email công ty người nhận" · trang 35` · `§6.2 AC-04.x · trang 20` · `§4 SCOPES Tích hợp · trang 9`
 
-> `BR01-09`: "Email công ty người nhận được tra danh bạ nội bộ: tìm thấy thì tự điền tên · số điện thoại · địa chỉ (vẫn sửa được); không thấy thì cho nhập thủ công."
+> ↪ *Quote `BR01-09` — home ở `risk_assessment.md` · `C-ORD-13` (không chép lại — tránh lặp home, health-check G-03 2026-09-16)*
 
 > §8.1.4: "Email công ty người nhận | Có | Văn bản · trống | Đúng định dạng và thuộc tên miền nội bộ; kích hoạt tra danh bạ"
 
@@ -101,22 +101,24 @@ updated: 2026-09-15
 
 ---
 
-##### SC-ORD-005 — Loại hàng: PRD chốt được danh mục, nhưng nhãn vẫn lệch app
+##### SC-ORD-005 — Loại hàng: 8 giá trị, nhãn chuẩn "Tài liệu" *(BA chốt 2026-09-16)*
 📍 `DOC-v1.1-01 §8.1.4 UI/Field Spec, dòng "Loại hàng" · trang 35`
 
-> "Loại hàng | Có | Chọn 1 giá trị · mặc định Tài liệu | Tài liệu · Đồ điện tử · Thực phẩm · Hàng nhỏ · Đồ dễ vỡ · Quần áo · Thuốc/Y tế · Khác"
+> ↪ *Quote `Loại hàng | Có | Chọn 1 giá trị · mặc…` — home ở `requirement_traceability.md` · `REQ-ORD-003` (không chép lại — tránh lặp home, health-check G-03 2026-09-16)*
 
 **Analyst Note (diff):** ⭐ **`C-ORD-09` — CL số 1 của dự án — được giải quyết ĐÚNG MỘT NỬA.**
 **Nửa xong:** v1.0 có **3 nguồn cho 3 danh mục khác nhau** nên không biết lấy cái nào; nay có **một** danh mục chính thức, đủ 8 giá trị, kèm **giá trị mặc định**.
 **Nửa chưa xong, và nặng hơn:** PRD ghi nhãn đầu là **"Tài liệu"**, app STG hiện **"Giấy tờ, hồ sơ"**. Đây là lệch **doc ⟷ app**, ở đúng một nhãn xuất hiện trong Steps của **rất nhiều TC** — chính là **lỗi #1 của đợt phân tích cũ**. Theo `Project_rule §Custom Rules §10.1` ⛔ không tự chọn bên. ⇒ SC assert **số lượng 8** (chắc chắn) và **ghi nhận** nhãn; ràng buộc 4 của `03_test-cases/v1.0/CHANGELOG.md §2` **vẫn hiệu lực**.
 🔴 **Phát hiện phụ — PRD tự mâu thuẫn:** field spec để **"Thuốc/Y tế"** là giá trị hợp lệ, `BR01-07` lại viết *"Hàng cấm (**thuốc**, vũ khí, chất nguy hiểm, hàng phi pháp) **không được đăng**"*. Hai câu này **không thể cùng đúng**. ⇒ **`C-ORD-04` MỞ LẠI** (v1.0 đã Resolved *"KHÔNG chặn"*), xem `risk_assessment.md`.
 
+⛔ **Cập nhật 2026-09-16 — đoạn trên HẾT HIỆU LỰC, đừng trích lại:** `C-ORD-09` Resolved (BA) — SC **assert cứng** 8 giá trị + mặc định **"Tài liệu"**; app hiện nhãn khác ⇒ FAIL = defect UI. `C-ORD-04` Partially — chip "Thuốc/Y tế" không chặn/không cảnh báo.
+
 ---
 
 ##### SC-ORD-025 / SC-ORD-026 — Prefill địa chỉ lấy hàng và cơ chế ô địa chỉ
 📍 `DOC-v1.1-01 §8.1.4 UI/Field Spec · trang 35` · `§6.2 AC-30.1.01 · trang 28`
 
-> "Địa chỉ lấy hàng | Có | Văn bản · prefill địa chỉ mặc định | Không để trống, ≤ 200 ký tự"
+> ↪ *Quote `Địa chỉ lấy hàng | Có | Văn bản · pre…` — home ở `requirement_traceability.md` · `REQ-ORD-007` (không chép lại — tránh lặp home, health-check G-03 2026-09-16)*
 
 > `AC-30.1.01`: "…Lần đăng tin sau, hai giá trị này được prefill vào ô số điện thoại người…"
 
@@ -153,7 +155,122 @@ updated: 2026-09-15
 
 ---
 
-> Các SC MODIFIED còn lại (`SC-ORD-028` · `029` · `041` · `043` · `044` · `045` · `052`/`053` nhóm dropdown) là **siết Then theo giá trị/enum cụ thể** mà PRD bổ sung, không đảo hành vi — quote gắn trực tiếp ở cột `DOC Source` của bảng trên; diff tóm tắt ở `CHANGELOG.md §1`.
+##### SC-ORD-028 — Khoảng ngày: quá khứ · Đến < Từ · biên 7/8 ngày
+📍 `DOC-v1.1-01 §6.2 AC-06.1.02 · trang 18` · `§8.1.1 BR01-04 · trang 34` · `§8.1.4 dòng "Từ ngày"/"Đến ngày" · trang 35`
+
+> `AC-06.1.02` When/Then: "Người dùng chọn Đến ngày nhỏ hơn Từ ngày, hoặc khoảng lớn hơn 7 ngày, hoặc Từ ngày ở quá khứ. — Hiện lỗi tương ứng dưới ô ngày. Chặn tiếp tục. Không lưu giá trị không hợp lệ."
+
+> ↪ *Quote `BR01-04` + field spec "Từ ngày"/"Đến ngày" — home ở `requirement_traceability.md` · `REQ-ORD-011`*
+
+**Analyst Note (diff):** Trần **7 ngày** là ràng buộc **mới** của v1.1 ⇒ Then siết thành 3 nhánh chặn + 1 ô biên hợp lệ. `AC-06.1.02` thêm 2 chi tiết kiểm được mà bảng SC chưa ghi: lỗi **"tương ứng"** (mỗi nhánh 1 thông báo riêng, hiện **dưới ô ngày**) và **"không lưu giá trị không hợp lệ"** (ô không giữ ngày sai sau khi báo lỗi).
+⚠️ **Biên "đúng 7 ngày hợp lệ / 8 ngày chặn" đang dựa trên cách đọc "tính gồm ngày đầu"** — PRD không định nghĩa (`C-ORD-15(a)` Open). ⛔ Chưa có câu trả lời BA thì TC ghi rõ cách đếm đang giả định (vd Từ 15 → Đến 21 = 7 ngày), để kết quả không bị hiểu nhầm là bug khi BA chốt cách đếm khác. Biên *ngày quá khứ* dùng **hôm qua so với ngày thiết bị** (`Project_rule §Test Data Rules` — ngày giờ tương đối).
+
+---
+
+##### SC-ORD-029 — Buổi "Giờ nào cũng được" loại trừ 2 chiều
+📍 `DOC-v1.1-01 §6.2 AC-06.2.01 · trang 18` · `§8.1.4 dòng "Buổi mong muốn" · trang 36`
+
+> `AC-06.2.01` Then: "Các buổi khác tự bỏ chọn, chỉ còn "Giờ nào cũng được". Ngược lại, khi tick một buổi cụ thể thì "Giờ nào cũng được" tự bỏ chọn. Phải còn tối thiểu 1 buổi được chọn."
+
+> ↪ *Quote enum "Buổi mong muốn" (Sáng 8–12 · Chiều 13–17 · Sau giờ làm 17–19 · Giờ nào cũng được) — home ở `requirement_traceability.md` · `REQ-ORD-012`*
+
+**Analyst Note (diff):** Bảng SC mới assert **một chiều** (chọn "Giờ nào cũng được" → các buổi khác bỏ chọn). `AC-06.2.01` có **3 mệnh đề**: (1) chiều thuận; (2) **chiều ngược** — đang ở "Giờ nào cũng được" mà tick 1 buổi cụ thể thì "Giờ nào cũng được" tự bỏ; (3) **không cho bỏ chọn hết** (tối thiểu 1 buổi). ⇒ TC khi generate phải có **đủ 3 bước quan sát** trong cùng 1 luồng; chiều ngược và "bỏ hết" là 2 chỗ dev hay sót nhất. ⚠️ Buổi đã trôi qua trong ngày hôm nay có bị chặn không — chờ `C-ORD-15(b)`, ⛔ không assert.
+
+---
+
+##### SC-ORD-041 — Tin OFFER: không tìm, không xem, không ngỏ ý
+📍 `DOC-v1.1-01 §6.2 AC-20.1.01 / AC-20.1.02 · trang 24` · `§8.2.1 BR02-01 · trang 36`
+
+> `AC-20.1.01` Then: "Tin OFFER không xuất hiện ở bất kỳ tab nào của bảng tin và không tìm được. Chỉ hệ thống truy cập dữ liệu này để khớp với tin NEED. Chủ tuyến vẫn xem lại tuyến của mình ở "Đơn của tôi"."
+
+> ↪ *Quote `BR02-01` + `AC-20.1.02` — home ở `requirement_traceability.md` · `REQ-ORD-016`*
+
+**Analyst Note (diff):** Từ **kiểm hiển thị** (v1.0) thành **kiểm kiểm soát truy cập** 3 lớp. `AC-20.1.01` bổ sung **vế dương** thường bị quên khi viết TC phủ định: **chủ tuyến vẫn thấy** tuyến của mình ở "Đơn của tôi" ⇒ Then cần 1 bước đối chứng ở tài khoản A (nếu A cũng không thấy thì không phải "ẩn đúng" mà là "mất dữ liệu").
+⚠️ **2 phụ thuộc chưa chốt:** (a) *"bất kỳ tab nào của bảng tin"* — Bảng tin có mấy tab và tab nào chưa rõ (`C-FEED-03`); (b) tuyến OFFER hiện ở tab nào của "Đơn của tôi" (`C-ACT-04(c)`). Vế *"mở link trực tiếp"* không có đường thử trên mobile — ghi nhận, ⛔ không PASS giả (`CHANGELOG §2` ràng buộc 8); kiểm tầng API ở `SC-ASN-019` (`NFR-11`).
+
+---
+
+##### SC-ORD-043 — Sửa tin khi còn POSTED: nạp sẵn · Cập nhật · Huỷ chỉnh sửa
+📍 `DOC-v1.1-01 §6.2 AC-08.1.01 · trang 19` · `§8.5.1 BR05-02 · trang 38` · `§8.18.2 VAL-05 · trang 52`
+
+> `AC-08.1.01` Then: "Form nạp sẵn toàn bộ dữ liệu cũ. Sau khi cập nhật, đơn giữ trạng thái POSTED với dữ liệu mới. Có nút "Huỷ chỉnh sửa" trả về dữ liệu cũ, không lưu."
+
+> ↪ *Quote `BR05-01`/`BR05-02` — home ở `requirement_traceability.md` · `REQ-ORD-017`*
+
+**Analyst Note (diff):** Ba điểm assert: **nạp sẵn toàn bộ** (không chỉ vài field) · **giữ `POSTED`** sau cập nhật (không bị reset về trạng thái khác, không sinh tin mới) · **"Huỷ chỉnh sửa" không lưu**. Nút "Huỷ chỉnh sửa" là chi tiết v1.0 không biết.
+⚠️ `AC-08.1.01` chỉ minh hoạ **đổi địa chỉ giao** — phạm vi field sửa được, sửa có tính lại EXPIRED / chạy lại khớp tuyến / báo người nhận hay không **chưa rõ** (`C-ORD-16`). ⇒ TC chỉ sửa **địa chỉ giao**, ⛔ không mở rộng sang field khác cho tới khi BA trả lời. Bước "mở lại đơn kiểm dữ liệu mới đã persist" là bắt buộc — thông báo thành công không chứng minh đã lưu.
+
+---
+
+##### SC-ORD-044 — Từ MATCHED trở đi không còn sửa được
+📍 `DOC-v1.1-01 §6.2 AC-08.1.02 · trang 19` · `§8.5.1 BR05-01 · trang 38` · `§8.12.3 · trang 46`
+
+> ↪ *Quote `BR05-01` + `AC-08.1.02` Then — home ở `requirement_traceability.md` · `REQ-ORD-017`*
+
+**Analyst Note (diff):** Chặn **2 tầng**: UI ẩn nút "Chỉnh sửa" (assert được) và backend từ chối request + **không ghi mốc nhật ký** (⛔ không verify qua UI — ghi nhận, để API test ở `implement-automation`). Given *"MATCHED hoặc muộn hơn"* ⇒ TC nên lấy **2 mẫu**: 1 đơn `MATCHED` (biên ngay sau `POSTED`) và 1 đơn ở trạng thái đóng (vd `COMPLETED`), vì `§8.12.3` cho thấy tập nút khác nhau theo trạng thái — nút "Chỉnh sửa" phải vắng ở **mọi** trạng thái đó, không chỉ ở biên. Seed đơn `MATCHED` cần tài khoản thứ 2 nhận đơn (`§Custom Rules §10.3`).
+
+---
+
+##### SC-ORD-045 — Tin quá "Đến ngày" mà vẫn POSTED → EXPIRED
+📍 `DOC-v1.1-01 §6.2 AC-09.1.01 · trang 19` · `§8.5.1 BR05-03 · trang 38` · `§8.13.1 NTF-09 · trang 47`
+
+> ↪ *Quote `BR05-03` + `AC-09.1.01` Then — home ở `requirement_traceability.md` · `REQ-ORD-018`*
+
+**Analyst Note (diff):** SC giữ **vế chuyển trạng thái** + **biến khỏi bảng tin và luồng khớp tuyến**; chuỗi lý do "Hết hạn" có home ở `SC-ACT-008`, thông báo `NTF-09` ở `SC-NTF-007` — ⛔ không nhân bản. ⭐ Ô đối chứng quan trọng nhất: đơn **đã `MATCHED`** rồi mới quá "Đến ngày" thì **KHÔNG** chuyển `EXPIRED`.
+⚠️ **3 phụ thuộc chưa chốt:** thời điểm chuyển chính xác (00:00 hay theo job — `C-ORD-15(c)`) ⇒ TC không được kết luận FAIL trước khi qua mốc đó đủ lâu; *"gỡ / đăng lại"* là nút gì (`C-ORD-17`); card "Hết hạn" có mở được không (`C-ACT-03(c)`). Tiền đề cần chờ qua ngày thật hoặc nhờ dev chỉnh ngày ⇒ đánh dấu `⛔ không seed được qua UI` (`§Custom Rules §10.3`).
+
+---
+
+##### SC-ORD-052 / SC-ORD-053 — Khối lượng, kích thước bắt buộc; không chặn theo ngưỡng
+📍 `DOC-v1.1-01 §6.2 AC-02.1.02 · trang 15` · `§8.1.1 BR01-02 · trang 34` · `§8.18.2 VAL-02 · trang 52`
+
+> `AC-02.1.02` Then: "Chặn sang bước 2. Hiện lỗi ngay dưới ô còn trống và cuộn tới ô lỗi đầu tiên. Không tạo tin."
+
+> ↪ *Quote `BR01-02` + field spec "Khối lượng"/"Kích thước" — home ở `requirement_traceability.md` · `REQ-ORD-024`*
+
+**Analyst Note:** `AC-02.1.02` chi tiết hơn Then trong bảng: lỗi hiện **ngay dưới ô còn trống** và app **cuộn tới ô lỗi đầu tiên** (cùng `VAL-02`) ⇒ TC để 2 ô cùng trống thì phải thấy **2 lỗi** và màn cuộn về **ô đầu**. Tách 2 SC vì mỗi dropdown fail độc lập; vế phủ định *"không chặn theo ngưỡng"* (`> 10 kg`, `Lớn · > 20×20 cm` vẫn đăng được) gắn vào Then từng SC, ⛔ không tách SC riêng. ⚠️ `AC-02.1.02` Given ghi *"đã chọn loại hàng nhưng để trống một trong ba dropdown"* — Giá trị hàng cũng thuộc nhóm này nhưng đã có SC riêng từ v1.0 (`SC-ORD-008..011`).
+
+---
+
+##### SC-ORD-057 — Carousel + lightbox đa ảnh
+📍 `DOC-v1.1-01 §6.2 AC-03.1.01 · trang 16` · `§8.18.1 BR18-03 · trang 52`
+
+> `AC-03.1.01` Then: "Bộ đếm hiển thị "3/5"; xoá được từng ảnh. Trên thẻ tin, chi tiết tin và màn theo dõi đơn, ảnh hiển thị dạng carousel lướt ngang có badge đếm "2/5"; chạm ảnh mở lightbox nền tối giữ đúng tỉ lệ, có nút đóng và chạm nền để đóng."
+
+> ↪ *Quote `BR18-03` — home ở `requirement_traceability.md` · `REQ-ORD-026`*
+
+**Analyst Note:** 4 hành vi trong 1 luồng liên tục ⇒ 1 SC. ⚠️ `AC-03.1.01` áp carousel cho **3 bề mặt** — **thẻ tin** (Bảng tin, module `FEED`), **chi tiết tin** (SC này) và **màn theo dõi đơn** (`DLV`). SC này chỉ giữ **chi tiết tin**; 2 bề mặt kia chưa có SC ở module sở hữu — ghi nợ cho lượt delta `FEED`/`DLV` sau, ⛔ không nhân bản vào `ORD`. Badge `"2/5"` là **ví dụ định dạng** `vị-trí/tổng`, không phải giá trị cố định ⇒ assert theo định dạng + số ảnh thật của tin.
+
+---
+
+##### SC-ORD-061 — Khai người nhận uỷ quyền: validate tên & SĐT
+📍 `DOC-v1.1-01 §6.2 AC-05.1.01 / AC-05.1.02 · trang 17` · `§8.1.1 BR01-06 · trang 34`
+
+> `AC-05.1.01` Then: "Dữ liệu được lưu vào đơn; không bắt buộc. Ở màn giao hàng, người vận chuyển thấy khối này kèm nhãn "Người gửi chỉ định" và khi chọn "Người được uỷ quyền" thì tên · số điện thoại được prefill sẵn."
+
+> `AC-05.1.02` Then: "Hiện lỗi dưới ô số điện thoại khi rời ô. Nút sang bước tiếp bị vô hiệu hoá cho tới khi sửa đúng hoặc xoá nội dung ô."
+
+> ↪ *Quote `BR01-06` + field spec khối uỷ quyền — home ở `requirement_traceability.md` · `REQ-ORD-023`*
+
+**Analyst Note:** Hai chi tiết AC mà bảng SC chưa ghi: lỗi hiện **khi rời ô** (không phải khi bấm tiếp) và nút bị khoá tới khi **sửa đúng *hoặc* xoá nội dung ô** — tức **xoá trắng SĐT là hợp lệ** (khớp ràng buộc #6 `CHANGELOG §2`). ⭐ Vế *"người vận chuyển thấy khối kèm nhãn 'Người gửi chỉ định' + prefill"* xảy ra ở **màn giao hàng** — home `SC-DLV-038`; SC này chỉ assert dữ liệu **được lưu vào đơn**, cross-ref `DLV` để kiểm đầu kia. Biên tên **2** và **60** ký tự hợp lệ; 1 và 61 là ô invalid tương ứng. Trường "Quan hệ / ghi chú" ≤ 60 ký tự chưa có ô kiểm — gộp vào TC này ở bước nhập.
+
+---
+
+##### SC-ORD-062 — Xoá khối uỷ quyền sau khi đã mở
+📍 `DOC-v1.1-01 §6.2 AC-05.2.01 · trang 17-18`
+
+> `AC-05.2.01` Then: "Toàn bộ dữ liệu uỷ quyền được xoá khỏi đơn và khối thu gọn lại. Đơn vẫn đăng được vì trường này không bắt buộc."
+
+**Analyst Note:** Ba điểm assert: **toàn bộ** dữ liệu uỷ quyền bị xoá (không còn sót tên/SĐT ở đơn tạo ra — kiểm ở màn theo dõi đơn hoặc màn giao hàng của Carrier) · khối **thu gọn lại** về nút "+ Thêm người nhận uỷ quyền" · đơn **vẫn đăng được**. ⚠️ Đây là vế phủ định dễ PASS oan: nếu chỉ nhìn wizard thì không biết dữ liệu có thật sự bị xoá khỏi đơn không ⇒ TC bắt buộc có bước kiểm **đơn sau khi đăng** (đơn không có khối "Người gửi chỉ định").
+
+---
+
+##### SC-ORD-064 — Copy nhanh địa chỉ và số điện thoại
+📍 `DOC-v1.1-01 §8.18.1 BR18-04 · trang 52` · `§6.2 AC-10.1.01 · trang 19`
+
+> ↪ *Quote `BR18-04` — home ở `requirement_traceability.md` · `REQ-ORD-025`*
+
+**Analyst Note:** SC giữ bề mặt **màn chi tiết tin**; bề mặt **màn theo dõi đơn** ở `SC-DLV-064` (`AC-10.1.01` — cùng thời lượng 1,8 giây), ⛔ không nhân bản. Thời lượng **~1,8s** assert với dung sai (*"trở lại sau khoảng 2 giây"*). ⚠️ **Phụ thuộc bảo mật:** `BR18-04` đặt icon copy **cạnh SĐT ở màn chi tiết tin**, nhưng SĐT **không được hiện trước khi ghép** (`BR01-08`, `AC-13.1.02`, `SC-FEED-010`) ⇒ trước ghép chỉ assert copy **địa chỉ**; icon copy SĐT chỉ kiểm khi đang xem tin **đã ghép** với tư cách một trong 2 người của cặp. Phạm vi địa chỉ hiện đầy đủ hay rút gọn trước ghép chờ `C-FEED-04`.
 
 ---
 
@@ -170,7 +287,7 @@ updated: 2026-09-15
 | SC-ORD-022..024 | Nhóm người nhận — tên, SĐT, địa chỉ giao | ORD | v1.0 | P2-P3 | → như trên |
 | SC-ORD-027 | Địa chỉ lấy hàng — nhập tay hợp lệ | ORD | v1.0 | P2 | → như trên |
 | SC-ORD-030 | Buổi mong muốn — chọn nhiều | ORD | v1.0 | P2 | → như trên |
-| SC-ORD-031..035 | Consent điều khoản · hàng cấm (banner) | ORD | v1.0 | P1-P3 | → như trên — ⚠️ `C-ORD-04` **MỞ LẠI**, xem `risk_assessment.md` |
+| SC-ORD-031..035 | Consent điều khoản · hàng cấm (banner) | ORD | v1.0 | P1-P3 | → như trên — ⚠️ `C-ORD-04` **Partially Resolved 2026-09-16**: chọn chip "Thuốc/Y tế" **KHÔNG chặn, KHÔNG cảnh báo** (assert được); phần banner hàng cấm + nội dung điều khoản vẫn ghi nhận tới khi BA trả lời vòng 2 |
 | SC-ORD-037..038 | Màn thành công — điều hướng | ORD | v1.0 | P2-P3 | → như trên |
 | SC-ORD-039..040, SC-ORD-042 | Form OFFER — 1 trang, validate tuyến | ORD | v1.0 | P1-P3 | → như trên — `BR02-03` xác nhận lại |
 | SC-ORD-046..049 | Quản lý tin · `VAL-01/02/03` chung của form | ORD | v1.0 | P1-P3 | → như trên — `§8.18.2` xác nhận lại nguyên văn |

@@ -9,7 +9,7 @@
 | Version | Release Date | Input Folder | Analyze Folder | Status | Tổng DOC | Tổng SC (all) | Tổng SC (new+mod) | Parent |
 |---------|-------------|-------------|----------------|--------|----------|--------------|-------------------|--------|
 | v1.0 | TBD | `00_input/v1.0/` | `02_analyze-requirements/v1.0/` | ANALYZED | 6 | 211 | 211 | — (version đầu của chuỗi phân tích mới) |
-| v1.1 | TBD | `00_input/v1.1/` | `02_analyze-requirements/v1.1/` | **ANALYZED** (delta 10/11 module · chỉ `FEED` không có delta — đã rà) | 2 | 295 | Δ 126 (84 NEW + 42 MODIFIED) | v1.0 |
+| v1.1 | TBD | `00_input/v1.1/` | `02_analyze-requirements/v1.1/` | **ANALYZED** (delta 10/11 module có thư mục · `FEED` sửa tại chỗ ở `v1.0/` — xem §3) | 3 | 302 | Δ 136 (91 NEW + 45 MODIFIED) · 2 DEPRECATED | v1.0 |
 
 > 📌 **v1.0 được PHÂN TÍCH LẠI TỪ ĐẦU ngày 2026-09-07** bằng bộ skill `qc-claude-v1 v1.1` (layout `module-first v2`, 11 module). Bản phân tích v1.0 **cũ** (bộ skill v1.0, layout `flat`, 8 module — 46 REQ / 92 SC / 323 TC) được lưu trữ ở `_handoff-v1.0/04_archive-project-v1.0/` và **KHÔNG phải parent** của bản này: cùng version, cùng tài liệu nguồn, khác phương pháp phân tích. ⛔ Không dùng archive làm baseline regression cho v1.0 (xem §9).
 
@@ -26,8 +26,10 @@
 | DOC-v1.0-04 | v1.0 | `Design/Fox Eco Doc/` — gồm `images/*` (82 ảnh, nguồn UI chi tiết nhất) + `canvas.fig` (nguồn Figma gốc) + `meta.json` + `thumbnail.png` | Figma UI mockup. ⚠ status bar "9:41" = mẫu chuẩn Apple, **không phải screenshot máy thật** | Active | — | USR, HOME, FEED, ORD, DLV, GIFT, NTF |
 | DOC-v1.0-05 | v1.0 | `Design/Screenshot From 2026-07-27 15-23-25.png` | Ảnh mockup màn Hoạt động (⚠ cùng cảnh báo "9:41") | Active | — | ACT |
 | DOC-v1.0-06 | v1.0 | `_knowledge-pack/` (KP-01, 02, 03, 05, 06, 07 + `evidence/`) | Knowledge pack — kiến thức nghiệp vụ **NGOÀI tài liệu** (BA-chat · QA-obs · Figma · vibe-test). ⛔ KHÔNG là nguồn requirement gốc | Active | — | USR, HOME, FEED, ORD, ACT, ASN, DLV, GIFT, CNL, NTF, TS |
-| DOC-v1.1-01 | v1.1 | `FoxEco PRD v1.0 - Gui Hang.pdf` | PDF — **PRD chính thức** (mã `1.0-BM/PM/HDCV/FTEL`, PRD Standard v1.2, rev 08/09/2026 "[A] Bổ sung flow exit giao hàng"). ⚠️ **Cùng tính năng "Gửi Hàng" đã phân tích ở v1.0** (khớp gần 1:1 cả 11 module qua FR01–FR18), KHÔNG phải sản phẩm mới — bản thân PRD tự nhận "MỚI HOÀN TOÀN" chỉ vì PM viết độc lập, không đối chiếu bộ phân tích v1.0. Chi tiết/chính thức hơn hẳn `DOC-v1.0-01/02` | Active | — | HOME, ASN, DLV, GIFT, CNL, NTF, TS, ORD, ACT (xem ghi chú USR dưới) |
+| DOC-v1.1-01 | v1.1 | `FoxEco PRD v1.0 - Gui Hang.pdf` | PDF — **PRD chính thức** (mã `1.0-BM/PM/HDCV/FTEL`, PRD Standard v1.2, rev 08/09/2026 "[A] Bổ sung flow exit giao hàng"). ⚠️ **Cùng tính năng "Gửi Hàng" đã phân tích ở v1.0** (khớp gần 1:1 cả 11 module qua FR01–FR18), KHÔNG phải sản phẩm mới — bản thân PRD tự nhận "MỚI HOÀN TOÀN" chỉ vì PM viết độc lập, không đối chiếu bộ phân tích v1.0. Chi tiết/chính thức hơn hẳn `DOC-v1.0-01/02` | Active | — | USR, HOME, FEED, ORD, ACT, ASN, DLV, GIFT, CNL, NTF, TS |
 | DOC-v1.1-02 | v1.1 | `FoxEco Demo 3 vai tro (standalone) v4.0 (1).html` | HTML — prototype 3 vai trò bản **v4.0** (kế thừa `DOC-v1.0-03`), reference-only ⛔ không trích làm nguồn rule | Active | — | (mô tả, không citation — như `DOC-v1.0-03`) |
+| DOC-v1.1-03 | v1.1 | `design/` — 26 ảnh PNG chụp demo `DOC-v1.1-02` (tiền tố tên file = module: `ASN_01..03` · `DLV_01..07` · `FEED_01..02` · `HOME_01..04` · `NTF_01..03` · `TS_01..05` · `USR_01..02`) | Ảnh bằng chứng UI từ vibe-check demo 2026-09-15/16 — **evidence phụ**, ⚠ demo ≠ STG; ⛔ không trích làm nguồn rule (rule lấy từ `DOC-v1.1-01` hoặc câu trả lời BA). Đăng ký 2026-09-16 theo health-check F-08 | Active | — | ASN, DLV, FEED, HOME, NTF, TS, USR *(Source Location của CL/SC)* |
+| DOC-v1.1-04 | v1.1 | `location_address_catalog.xlsx` | Excel — **danh mục 399 văn phòng FTEL** (cột `name` · `search_text` · mã tỉnh · toạ độ). BA cung cấp 2026-09-16 làm **nguồn danh sách gợi ý "Địa chỉ mặc định"**. Dữ liệu master, không phải tài liệu rule; ⚠ 118 `name` bị cắt 30 ký tự, toạ độ MISSING toàn bộ. Profile + từ khoá test: `04_test-data/valid/USR-office-catalog.md` | Active | — | USR *(prefill sang ORD, ASN)* |
 
 **Ghi chú registry:**
 - **`DOC-v1.1-01` CÓ kéo `USR` vào delta** *(sửa 2026-09-15 — ghi chú trước đó SAI)*. Bản trước ghi *"FR15 không áp dụng ở v1.1 ⇒ `USR` không có delta"* vì cho rằng `FR15` (cho sửa SĐT/địa chỉ mặc định) **xung đột** với `SC-USR-003`/`C-USR-03` (màn Cá nhân view-only, chốt 2026-07-24 theo quan sát app). ⛔ **Lập luận đó nhầm một xung đột CẦN PHÂN TÍCH thành lý do bỏ qua cả FR.** Bằng chứng rõ nhất: chính lượt delta đó đã trích `AC-30.1.01` — một AC **thuộc `FR15`** — làm nguồn resolve `C-ORD-10`. Hiện hành: `FR15` **áp dụng**, `C-USR-03` **bị đảo** (có màn `"Cập nhật thông tin"` sửa được **đúng 2 trường**; 4 trường SSO vẫn chỉ đọc). Phân tích đầy đủ: `v1.1/USR-tai-khoan/`.
@@ -57,13 +59,13 @@
 
 ### v1.1 (delta — 10/11 module)
 > Từ version delta trở đi liệt kê **per-SC** cho MODIFIED / DEPRECATED; NEW gom theo dải; CARRIED không liệt kê lại.
-> ✅ Bảng **đã đóng**: chỉ `FEED` không có delta (PRD không đụng bề mặt Bảng tin), 10 module còn lại đều đã phân tích. ⚠️ `USR` được bù ngày 2026-09-15 sau khi phát hiện khai nhầm *"không có delta"* — xem `v1.1/USR-tai-khoan/CHANGELOG.md §1`.
+> ✅ Bảng **đã đóng**: 10 module có thư mục v1.1; `FEED` không dựng thư mục — PRD có chạm bề mặt Bảng tin nhưng thay đổi 2026-09-16 (`SC-FEED-009`/`013` viết lại, giữ lifecycle NEW) được **sửa tại chỗ ở `v1.0/FEED-bang-tin/`**. ⚠️ `USR` được bù ngày 2026-09-15 sau khi phát hiện khai nhầm *"không có delta"* — xem `v1.1/USR-tai-khoan/CHANGELOG.md §1`.
 
 | Module | NEW (dải) | MODIFIED (per-SC — giữ ID v1.0, bản v1.1 authoritative) | DEPRECATED | Tổng tới v1.1 |
 |---|---|---|---|--:|
-| USR | `SC-USR-013..020` (8 SC) | `SC-USR-002` · `SC-USR-003` · `SC-USR-012` | — | 20 |
-| HOME | `SC-HOME-025..028` | `SC-HOME-019` · `SC-HOME-021` | `SC-HOME-024` | 28 |
-| FEED | — | — | — | 14 *(không delta)* |
+| USR | `SC-USR-013..024` (12 SC) | `SC-USR-002` · `SC-USR-003` · `SC-USR-007` · `SC-USR-011` · `SC-USR-012` | — | 24 |
+| HOME | `SC-HOME-025..030` | `SC-HOME-008` · `SC-HOME-019` · `SC-HOME-021` | `SC-HOME-024` · `SC-HOME-010` | 30 |
+| FEED | `SC-FEED-015` *(sửa tại chỗ ở v1.0, 2026-09-17)* | `SC-FEED-007`, `SC-FEED-009`, `SC-FEED-013` *(sửa tại chỗ ở v1.0, giữ lifecycle NEW)* | — | 15 *(không có thư mục v1.1)* |
 | ORD | `SC-ORD-052..065` (14 SC) | `SC-ORD-005` · `012` · `025` · `026` · `028` · `029` · `036` · `041` · `043` · `044` · `045` · `050` | — | 65 |
 | ACT | `SC-ACT-015..017` | `SC-ACT-001` · `005` · `008` · `012` · `013` · `014` | — | 17 |
 | ASN | `SC-ASN-019` | `SC-ASN-006` · `008` · `011` · `014` · `015` | — | 19 |
@@ -72,9 +74,9 @@
 | CNL | `SC-CNL-014..017` | `SC-CNL-004` · `006` · `009` · `010` · `012` | — | 17 |
 | NTF | `SC-NTF-017..022` | `SC-NTF-005` · `008` · `014` | — | 22 |
 | TS | `SC-TS-008..015` | — | — | 15 |
-| **Tổng** | **84 NEW** | **42 MODIFIED** | **1 DEPRECATED** | **295** |
+| **Tổng** | **91 NEW** | **45 MODIFIED** | **2 DEPRECATED** | **302** |
 
-> 📌 **`SC-HOME-024` DEPRECATED** — theo `Project_rule §Quy ước đếm scenario`, SC này **vẫn trong tổng 287** nhưng **không** vào P1/P2/P3 (38+162+86 = 286).
+> 📌 **`SC-HOME-024` · `SC-HOME-010` DEPRECATED** (010 từ 2026-09-17, BA chốt `C-HOME-05`) — theo `Project_rule §Quy ước đếm scenario`, 2 SC này **vẫn trong tổng 302** nhưng **không** vào P1/P2/P3 (40+171+89 = 300).
 > 📌 **SC MODIFIED giữ nguyên ID v1.0 và bản v1.1 là authoritative** — ⛔ không sửa bản v1.0 của chúng. 🔴 **Hai SC có Then NGƯỢC NHAU giữa 2 bản, và cả hai bản đều chạy được nên không có gì báo lỗi khi lấy nhầm:** `SC-CNL-006` (v1.0: PASS = *không thấy* nút Báo sự cố · v1.1: PASS = *thấy*) và `SC-USR-003` (v1.0: PASS = *không có control sửa nào* · v1.1: chỉ vùng SSO chỉ đọc, **có** lối vào màn sửa). Điểm chung: cả hai kết luận v1.0 đều Resolved **theo quan sát app**, không theo tài liệu.
 
 ## 4. Regression Scope
@@ -89,13 +91,13 @@
 
 ### v1.1 — Regression Scope
 
-**Phải test (new + modified):** **126 SC** = 84 NEW + 42 MODIFIED. Đây là mẫu số bắt buộc của v1.1.
+**Phải test (new + modified):** **132 SC** = 88 NEW + 44 MODIFIED. Đây là mẫu số bắt buộc của v1.1.
 
 **Nên regression (carried — high risk):** SC của 3 module `Risk Level = High` mà v1.1 có chạm tới — `ORD` (39 carried) · `ASN` (13) · `DLV` (30) · `CNL` (8, nâng High ở v1.1). Ưu tiên cụm liên quan trực tiếp tới thay đổi: vòng đời đơn · nhật ký · ghép nối.
 
-**Không cần test (carried — low risk, stable):** `FEED` (14) — **không có delta**, PRD không đụng bề mặt Bảng tin. `GIFT` carried (6) · `NTF` carried (13) · `USR` carried (9) rủi ro thấp.
+**Không cần test (carried — low risk, stable):** `FEED` (11/15) — ⚠️ **trừ `SC-FEED-007` (tên hiện trước ghép) · `SC-FEED-009` (ảnh bản đồ tĩnh vẽ tuyến) · `SC-FEED-013` (empty state `EMP-04`) · `SC-FEED-015` (mới — thiếu toạ độ)** phải test lại vì Then đổi 2026-09-16/17; ngoài ra `SC-FEED-010/011/012` là P1/bug đã biết nên vẫn nên regression. `GIFT` carried (6) · `NTF` carried (13) · `USR` carried (9) rủi ro thấp.
 
-> ⚠️ **1 SC DEPRECATED** (`SC-HOME-024`) — bỏ khỏi mọi mẫu số pass-rate.
+> ⚠️ **2 SC DEPRECATED** (`SC-HOME-024` · `SC-HOME-010` từ 2026-09-17) — bỏ khỏi mọi mẫu số pass-rate.
 > 🔴 **Trừ ra khỏi mẫu số cho tới khi gỡ nợ:** `SC-ORD-058..060` (chờ `C-ORD-13` — danh bạ nội bộ) · `SC-GIFT-013/014` + `SC-ACT-015` + phần `RETURNED` của `SC-DLV-053..056` (chờ nhánh `FR09` có trên STG) · `SC-CNL-015` (chờ trạng thái `INCIDENT`) · `SC-ORD-031..035` (chờ `C-ORD-04`) · **`SC-USR-013..020` (8 SC — chờ xác nhận app đã build `FR15`; app quan sát 2026-07-24 còn view-only hoàn toàn)**. Verdict đúng khi chưa gỡ là **BLOCKED**, ⛔ không PASS.
 > 📌 `CNL` · `NTF` · `TS` vẫn đang chờ PM xác nhận scope Phase 1 (`RISK-CNL-06` · `KP-03 §3.1`) — nhưng **PRD v1.1 đặc tả đầy đủ cả ba** và đặt `FR11`/`FR13`/`FR16` vào business process chính ⇒ **mặc định lập kế hoạch là IN scope**.
 
@@ -107,10 +109,10 @@
 |---|--:|--:|--:|
 | Module có phân tích | 11 | 11 *(10 có delta + 1 giữ nguyên)* | — |
 | REQ | 116 | **142** | +26 |
-| SC (tổng, gồm DEPRECATED) | 211 | **295** | +84 NEW · 42 MODIFIED giữ ID · 1 DEPRECATED |
-| P1 / P2 / P3 | 27 / 117 / 67 | **40 / 167 / 87** | +13 / +50 / +20 |
-| Clarification | 35 | **40** | +5 mở mới · **10 Open→Resolved** · 1 mở lại · 2 chuyển Partially |
-| CL còn Open | 17 | **10** | −7 |
+| SC (tổng, gồm DEPRECATED) | 211 | **302** | +91 NEW · 45 MODIFIED giữ ID · 2 DEPRECATED |
+| P1 / P2 / P3 | 27 / 117 / 67 | **40 / 171 / 89** | +13 / +54 / +22 |
+| Clarification | 35 | **66** | +5 mở mới lượt delta 2026-09-15 · **+25 mở mới lượt UPDATE 2026-09-16** (rà sâu sau khi BA trả lời) · 1 mở lại |
+| CL còn Open | 17 | **18** *(+ 5 Partially chờ BA vòng 2 — 2026-09-17)* | +1 · 43 Resolved — nguồn canonical: `counts:` ở `<module>/risk_assessment.md` |
 | RISK | 64 | **87** | +23 |
 | DOC nguồn | 6 | 2 *(v1.1)* | PRD chính thức thay thế BRD+PRD-demo làm nguồn chính |
 
@@ -133,8 +135,8 @@
 ## 7. Downstream Path Registry
 | Skill | Active Version Path |
 |-------|-------------------|
-| analyze-requirements | `02_analyze-requirements/v1.0/` (router `MEMORY.md` + 11 module) |
-| generate-tc | `03_test-cases/v1.0/` (fragments `.md` + `TC-MASTER-v1.0.xlsx`) |
+| analyze-requirements | `02_analyze-requirements/v1.0/` (router `MEMORY.md` + 11 module — **thực thi/test hiện hành**) · `02_analyze-requirements/v1.1/` (router + 10 module delta, **ANALYZED** 2026-09-16 — `FEED` đọc ở `v1.0/`; bảng hỏi BA `v1.1/CL-hoi-BA-v1.1.xlsx`) |
+| generate-tc | `03_test-cases/v1.0/` (fragments `.md` + `TC-MASTER-v1.0.xlsx`) · v1.1: `03_test-cases/v1.1/` — fragment `TC-USR-v1.1.md` (PARTIAL, chưa có TC-MASTER v1.1, xem §8b) |
 | export-tc-rp | `03_test-cases/v1.0/exports/` (phase design) · `09_reports/` (phase report) |
 | review-tc | `11_tc-review/` |
 | vibe-test | `08_test-runs/vibe/` |
@@ -172,12 +174,13 @@
 
 | # | Skill | Status | Last Run | Scope | Output | Notes |
 |---|-------|--------|----------|-------|--------|-------|
-| 3 | analyze-requirements | **COMPLETED** | 2026-09-15 | v1.1 · **10/11 module** (chỉ `FEED` không có delta) — DELTA ×3 lượt + UPDATE | `02_analyze-requirements/v1.1/` — router `MEMORY.md` + 10 × 5 file | **142 REQ · 295 SC · 40 CL (10 Open, 0 blocker) · 87 RISK.** Δ so v1.0: +26 REQ · **+84 SC NEW** · 42 SC MODIFIED · 1 DEPRECATED · +23 RISK. **10 CL Open của v1.0 được đóng**; **2 kết luận bị ĐẢO** (`C-CNL-01` · `C-USR-03` — cả hai đều từng Resolved *theo quan sát app*); 5 CL mở mới; 2 chuyển Partially; **1 MỞ LẠI (`C-ORD-04` — PRD tự mâu thuẫn)**. ⚠️ `USR` được bù ở lượt thứ ba sau khi phát hiện khai nhầm *"không có delta"* — xem `v1.1/USR-tai-khoan/CHANGELOG.md §1`. 🔴 **5 nợ chặn `generate-tc`:** `C-ORD-04` · `C-ORD-13` · `RISK-ORD-09` (ảnh bắt buộc) · `RISK-DLV-08`+`RISK-DLV-11` · **`RISK-USR-06` (app đã build `FR15` chưa — 8 SC)** |
-| 4 | generate-tc | NOT_STARTED | — | — | — | Chờ v1.1 analyze COMPLETED **và** v1.0 `review-tc` hết REJECTED |
+| 3 | analyze-requirements | **COMPLETED** | 2026-09-16 | v1.1 · **10/11 module** + `FEED` (v1.0) — DELTA ×3 lượt + UPDATE ×2 (vibe-check demo · **áp câu trả lời BA + rà sâu từng chức năng**) | `02_analyze-requirements/v1.1/` — router `MEMORY.md` + 10 × 5 file · `v1.1/CL-hoi-BA-v1.1.xlsx` (bảng hỏi BA, dẫn xuất) | **142 REQ · 295 SC · 65 CL (37 Resolved · 3 Partially · 25 Open, 0 blocker execute) · 87 RISK.** Lượt 2026-09-16: BA trả lời **13 CL → 10 Resolved + 3 Partially** (vòng 2: `C-ORD-04` · `C-ORD-13` · `C-USR-05`); rà sâu PRD ⟷ SC **mở 25 CL mới** (chi tiết `<module>/CHANGELOG.md §1`). Kết luận đảo: trần thông báo khớp **không theo ngày** mà *5 thông báo / 1 tin OFFER* · `SC-FEED-009` bản đồ **thật** · nhãn Loại hàng **"Tài liệu"** · nhãn tab theo app. 🔴 **Nợ chặn `generate-tc`:** `C-ORD-13` vòng 2 (email mẫu HRIS) · `C-ASN-05` (so khớp địa chỉ tự do) · 3 cặp SC mâu thuẫn (`C-HOME-05` · `C-DLV-06` · `C-USR-06`) · `C-ACT-03/04` · `RISK-ORD-09` · `RISK-DLV-11` · `RISK-USR-06`. ⚠️ Downstream: TC v1.1 chưa generate ⇒ chưa cần reset |
+| 4 | generate-tc | **PARTIAL** | 2026-09-16 | v1.1 · **1/11 module** (`USR`) · mode `standard` | `03_test-cases/v1.1/fragments/TC-USR-v1.1.md` + `CHANGELOG.md` | **29 TC** (P1 2 · P2 23 · P3 4) cho 17 SC NEW+MODIFIED; chưa consolidate, chưa review. ⚠️ v1.0 `review-tc` vẫn REJECTED |
+| 13 | health-check | COMPLETED | 2026-09-16 | VERSION · v1.1 (+ `v1.0/FEED-bang-tin` vì là home duy nhất của FEED) | inline summary (mode VERSION — không sinh file report) | **2 CRITICAL · 5 WARNING · 3 INFO.** 🔴 **G-02** `MASTER §5` còn *CL 40 / Open 10* trong khi canonical module = **65 (37 Resolved · 3 Partially · 25 Open)**. 🔴 **G-06b** ~15 chỗ register sống (Khuyến nghị tổng thể · `test_data_catalog` · ghi chú REQ ở traceability · heading CL) còn nói ngược CL đã Resolved 2026-09-16 — nặng nhất: `ORD` KN#4 + `FEED` data catalog *"không dùng Tài liệu"*, `REQ-FEED-005` *"không viết TC bản đồ thật"*, `ASN` data catalog + KN#2 *"trần/ngày hỏi admin"*, `GIFT` KN#5, `NTF` KN#4. 🟡 F-01 router `doc_source.modules` thiếu 5 module · F-08 26 ảnh `design/` chưa DOC-ID · G-03 ≈18 quote lặp home · router/MASTER §4 còn *"FEED không delta, PRD không đụng"* · MASTER §7 chỉ trỏ v1.0. 🔵 F-06 thiếu Source Detail 14 SC (`ORD` 12, `USR-019/020`) · A-05 active version v1.0 (chủ đích) · C/D/E N/A (v1.1 chưa có TC/run). **Sạch:** B counts module↔router 10/10 · P1+P2+P3 khớp · F-05 · F-07 2/2 · G-01/G-08 · G-05 · H-03 9/9 · H-04 3/3 hook · H-05/H-06 khớp toolkit. ✅ **2 CRITICAL đã sửa cùng ngày** (MASTER §5 → 65 CL / 25 Open / 3 Partially; 9 module sửa chữ register sống + dòng `ĐÍNH CHÍNH` ở `CHANGELOG §1`, quét lại 0 chỗ còn nói ngược). ✅ **5 WARNING đã sửa cùng ngày:** F-01 router `doc_source.modules` đủ 11 module · F-08 đăng ký `DOC-v1.1-03` cho 26 ảnh `design/` (+ router) · G-03 thay 20 quote lặp bằng dòng trỏ `↪` về home (quét lại 0) · G-06b bỏ nhận định *"FEED không delta, PRD không đụng"* ở router/MASTER §3/§4, `SC-FEED-009/013` vào phạm vi test lại · MASTER §7 thêm path v1.1. ✅ **INFO F-06 đã sửa cùng ngày:** thêm 13 khối Source Detail cho 14 SC (`ORD` 12 · `USR-019/020`), quét lại 0 SC thiếu, G-03 vẫn 0. Còn lại chỉ A-05 (active version v1.0 — chủ đích). |
 
 ## 9. Notes (quyết định cross-version — KHÔNG phải per-run count log)
 
-**Quyết định phương pháp (2026-09-07, QC GiangDC2):**
+**Quyết định phương pháp (2026-09-07):**
 1. **Phân tích lại v1.0 từ đầu** bằng bộ skill v1.1 thay vì migrate bản phân tích cũ — vì bản cũ dùng layout `flat` (MEMORY.md 193 KB monolith, drift số đếm nhiều lần) và mang 5 lỗi đã biết (`KP-04 §4`).
 2. **Tách 11 module** thay 8 mã domain của đợt cũ: thêm `HOME` · `FEED` · `ACT` để **module ↔ fragment ↔ sheet `export-tc-rp`** thành 1:1. Đợt cũ để `ORD` gánh 3 màn (33 SC / 161 TC) và `ASN` gánh Bảng tin (2 SC / 31 TC).
 3. **Scope = toàn bộ 11 module**, không giới hạn 5 luồng Phase 1 mà PM chốt (`KP-03 §3`). ⚠️ `CNL` · `NTF` · `TS` được PM xếp **out of scope Phase 1** — cần **xác nhận lại với PM trước khi execute** (36 SC thuộc 3 module này).

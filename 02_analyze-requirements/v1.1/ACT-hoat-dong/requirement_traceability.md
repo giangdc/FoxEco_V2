@@ -52,7 +52,7 @@
 
 ---
 
-### REQ-ACT-001 · Nhãn 2 tab — PRD gọi "Đang chạy / Hoàn tất" *(MODIFIED)*
+### REQ-ACT-001 · Nhãn 2 tab — theo app "Đang diễn ra / Đã hoàn thành" *(MODIFIED · BA chốt 2026-09-16)*
 📍 `DOC-v1.1-01 §8.17.1 EMP-05 / EMP-06 · trang 51` · `§6.2 AC-09.1.01 · trang 19`  ·  Clarif: `C-ACT-02`
 
 > Nguồn (v1.0) — `DOC-v1.0-02 §3.7` + `KP-01 §3 KB-ORD-07` (quan sát app 2026-07-27):
@@ -65,6 +65,8 @@
 > "Hiện badge "Hết hạn" ở tab **Hoàn tất** kèm lý do "Không có ai nhận mang giúp trong thời gian đăng"."
 
 ↳ **Ghi chú (diff):** 🔴 **Xung đột nhãn giữa PRD và app STG.** PRD gọi 2 tab là **"Đang chạy"** / **"Hoàn tất"**, nhất quán ở **3 chỗ độc lập** (`EMP-05`, `EMP-06`, `AC-09.1.01`) — không phải lỗi đánh máy một lần. App STG (quan sát 2026-07-27, `KB-ORD-07`) hiển thị **"Đang diễn ra"** / **"Đã hoàn thành"**. PRD cũng gọi cả màn là **"Đơn của tôi"** trong khi v1.0 ghi nhận tên màn là *"Hoạt động"* (bottom nav) với tiêu đề trong màn là *"Đơn của tôi"*. ⇒ Theo `Project_rule §Custom Rules §10.1` (*UI phải khớp Tài liệu mới được viết TC*), đây là **xung đột cần chốt trước khi assert nhãn** — mở `C-ACT-02`. ⛔ **KHÔNG tự chọn bên nào**: chọn PRD thì TC FAIL hàng loạt trên app hiện tại; chọn app thì hợp thức hoá việc app lệch đặc tả. `SC-ACT-001` giữ assert *"có đúng 2 tab"* và **hạ phần nhãn xuống ghi nhận** cho tới khi `C-ACT-02` được chốt.
+
+⛔ **Cập nhật 2026-09-16 — đoạn trên HẾT HIỆU LỰC, đừng trích lại:** BA trả lời `C-ACT-02` — *"a. Đơn của tôi. Tab Đang diễn ra|Đã hoàn thành · b. PRD Ba chưa cập nhật nhé · c. Vẫn là Hoạt động"*. Hiện hành: nhãn **theo app**, PRD lỗi thời ⇒ `SC-ACT-001` assert cứng "Đơn của tôi" · "Đang diễn ra" · "Đã hoàn thành" · nav "Hoạt động".
 
 ---
 

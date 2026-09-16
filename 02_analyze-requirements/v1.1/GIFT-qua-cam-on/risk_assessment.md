@@ -6,12 +6,12 @@ version: v1.1
 sprint: 1
 module: GIFT
 counts:
-  cl: 3
+  cl: 4
   risk: 6
-  cl_open: 1
-  cl_resolved: 2
+  cl_open: 0
+  cl_resolved: 3
 status: ANALYZED
-updated: 2026-09-16
+updated: 2026-09-17
 ---
 
 > Tạo bởi: analyze-requirements (DELTA 2026-09-15) · layout **module-first v2**.
@@ -36,7 +36,8 @@ updated: 2026-09-16
 |-------|----------|--------|-----|-------------------|
 | C-GIFT-01 | Rating 1–5 sao (`RAT-01/02`) có thuộc v1.0? | ✅ **Resolved 2026-09-15 — nâng cấp: out of scope VĨNH VIỄN, không phải hoãn tới phase sau** | 2026-07-27 | REQ-GIFT-005 |
 | C-GIFT-03 | Text popup sau khi gửi quà + có "danh sách lịch sử nhận quà" hay không | ✅ **Resolved 2026-09-15 — cả 2 vế** | 2026-09-07 | REQ-GIFT-002, REQ-GIFT-004 |
-| C-GIFT-02 | Nút back màn "Tặng quà" nhảy sang màn của đơn khác | 🔴 **Open — tái hiện với đơn thật 2026-09-16, ưu tiên cao hơn** | kế thừa 2026-07-29 | REQ-GIFT-006 |
+| C-GIFT-02 | Nút back màn "Tặng quà" nhảy sang màn của đơn khác | ✅ **Resolved 2026-09-16 — BA: lỗi của demo; quy tắc là back về màn hình trước đó** | kế thừa 2026-07-29 | REQ-GIFT-006, SC-GIFT-010 |
+| C-GIFT-04 | Tặng quà: mỗi đơn mấy lần · bỏ qua rồi tặng lại sau được không / có hạn không · đã tặng thì mở đơn thấy gì · NTF-06 có dẫn thẳng tới màn Tặng quà | 🟡 **Partially Resolved 2026-09-17 — hỏi vòng 2** — BA: tặng **1 lần** rồi đóng; câu (b) trả lời *"không"* (mơ hồ + mâu thuẫn `C-ACT-01`); (c)(d) chưa trả lời. *(`cl_open 0 + cl_resolved 3 < cl 4` vì CL này Partially)* | 2026-09-16 | REQ-GIFT-001, REQ-GIFT-002, SC-GIFT-001, SC-GIFT-005 |
 
 ### C-GIFT-03 · Text popup + danh sách lịch sử nhận quà *(RESOLVED 2026-09-15 — cả 2 vế)*
 
@@ -52,7 +53,7 @@ updated: 2026-09-16
 
 📍 `DOC-v1.1-01 §4 SCOPES dòng Out of Scope · trang 9` · `§8.14.1 BR14-03 · trang 49`
 
-> "Đánh giá sao 1–5 và mọi hình thức xếp hạng/tier/điểm thưởng — thay bằng quà ảo"
+> ↪ *Quote `Đánh giá sao 1–5 và mọi hình thức xếp…` — home ở `requirement_traceability.md` · `REQ-GIFT-005` (không chép lại — tránh lặp home, health-check G-03 2026-09-16)*
 
 > "BR14-03 | Không có chấm sao 1–5, không điểm, không tier/xếp hạng, không chỉ số môi trường."
 
@@ -60,9 +61,37 @@ updated: 2026-09-16
 
 > ⚠️ `C-ORD-06` (text empty state) có **home canonical ở module `ACT`** — phần `EMP-08` thuộc `GIFT` chỉ **tham chiếu**, xem `v1.1/ACT-hoat-dong/risk_assessment.md`.
 
+### C-GIFT-02 · ↳ BA trả lời 2026-09-16 *(→ RESOLVED)*
+
+📍 BA trả lời · `02_analyze-requirements/v1.1/CL-hoi-BA-v1.1.xlsx` sheet `GIFT` · cột "Câu trả lời BA" · 2026-09-16
+
+> "-> đây là demo lỗi thôi, quy tăc là back về màn hình trước đó"
+
+↳ **Ghi chú:** Back nhảy sang đơn khác là **lỗi của demo**, không phải hành vi được chấp nhận. Rule: nút back (←) ở màn "Tặng quà" **quay về đúng màn đã mở nó** (vd tab "Đã hoàn thành" của Đơn của tôi — theo `C-ACT-01` BA vừa chốt; hoặc màn Theo dõi đơn). ⇒ `SC-GIFT-010` hết `[GAP·bug]` dạng chờ: Then assert back về màn trước đó; STG nhảy sang màn/đơn khác ⇒ **bug** (mức cao — có thể thao tác nhầm đơn khác). ⚠️ Ghi chú 2026-09-16 trước đó *"tái hiện với đơn thật"* là **trên demo** ⇒ không mâu thuẫn với câu trả lời BA.
+
+### C-GIFT-04 · Vòng đời bước tặng quà *(PARTIALLY RESOLVED 2026-09-17 — hỏi vòng 2)*
+
+📍 `DOC-v1.1-01 §6.2 AC-24.1.01 · trang 26` · `§8.10 Post-Conditions · trang 43` · `§8.12.3 dòng COMPLETED · trang 46` ⟷ BA trả lời `C-ACT-01` 2026-09-16
+
+> `AC-24.1.01`: "Quà được gửi ngay, không cần bước xác nhận của người nhận quà. Hiện popup "Cảm ơn của bạn đã được gửi" và nút về trang chủ."
+
+> `§8.12.3`: "COMPLETED | Tặng quà cảm ơn | Xem quà đã nhận | Xem lịch sử"
+
+↳ **Ghi chú:** BA vừa chốt *"hoàn thành **chưa tặng quà** thì ra màn Tặng quà"* ⇒ ngầm định có trạng thái **đã tặng / chưa tặng**. PRD không nói: (a) mỗi đơn tặng được **1 lần** hay nhiều lần? (b) Sender **bỏ qua** (thoát màn Tặng quà) thì vào lại tặng **sau** được không, **có thời hạn** không? (c) Đã tặng rồi thì mở đơn thấy gì — nút đổi nhãn (`SC-GIFT-005`, nguồn chỉ là `QA-obs` v1.0) thành chữ gì, có hiện **loại quà đã tặng** không? (d) Chạm `NTF-06` (*"Đơn đã hoàn tất"*) ở vai Sender có mở thẳng màn Tặng quà không?
+
+### C-GIFT-04 · ↳ BA trả lời 2026-09-17 *(→ PARTIALLY RESOLVED — hỏi vòng 2)*
+
+📍 BA trả lời · `02_analyze-requirements/v1.1/CL-hoi-BA-v1.1.xlsx` sheet `GIFT`
+
+> "a. 1 lần rồi đóng ko cho tặng nữa
+> b. không nhé
+> c. "
+
+↳ **Ghi chú:** (a) **Chốt:** mỗi đơn tặng quà **đúng 1 lần**, gửi xong **đóng**, không tặng lại ⇒ `SC-GIFT-005` (*nút disable, không gửi lại được*) nay có nguồn BA thay cho `QA-obs` — phần *"không gửi lại được"* assert cứng; **nhãn nút** (*"Bạn đã đánh giá"*) vẫn chỉ từ `QA-obs` v1.0 ⇒ chờ (c). (b) *"không nhé"* trả lời cho câu gộp *"vào lại tặng sau được không? Có thời hạn không?"* ⇒ **2 cách hiểu**: *không cho tặng sau* **hoặc** *không có thời hạn*. ⚠️ Nếu hiểu *không cho tặng sau* thì **mâu thuẫn** `C-ACT-01` (BA 2026-09-16: *"hoàn thành chưa tặng quà thì ra màn tặng quà"* — tức đơn Hoàn thành chưa tặng vẫn mở lại được màn Tặng quà). (c)(d) BA để trống. ⇒ **Hỏi vòng 2** (sheet `GIFT` dòng `C-GIFT-04 (vòng 2)`). `SC-GIFT-001` giữ nguyên (mở Tặng quà lần đầu).
+
 ## Khuyến nghị tổng thể
 1. **⛔ Không chạy `SC-GIFT-013`/`SC-GIFT-014` trước khi xác nhận nhánh `RETURNING → RETURNED` đã có trên STG** — cả 2 là vế phủ định, không có tiền đề thì PASS là PASS oan (`RISK-GIFT-06`). Gộp lô với `SC-DLV-053..056`.
 2. **Chạy `SC-GIFT-014` cùng lượt với `SC-USR-005`/`SC-USR-012` và `SC-HOME-008`** — cùng một bộ đếm hiển thị ở 3 màn; dùng chung 1 đơn `RETURNED` để so 3 màn trong 1 lượt thay vì seed 3 lần (`RISK-GIFT-02`).
 3. **`SC-ACT-013` (★ leftover) nay đủ căn cứ log bug** — `BR14-03` + §4 Out of Scope. ⛔ Không diễn giải là "dấu vết phase sau".
 4. **3 SC hết `[GAP]` cần viết lại Then hẳn, không chỉ sửa chữ** (`SC-GIFT-007` · `SC-GIFT-008` · `SC-GIFT-011`) — từ *ghi nhận* sang *assert khẳng định*; `generate-tc` phải regenerate, ⛔ không patch TC cũ.
-5. **`C-GIFT-02` vẫn Open, nay ưu tiên cao hơn** — vibe-check demo 2026-09-16 tái hiện được lỗi back-navigation với **đơn thật** (không chỉ item mẫu), loại bỏ giả thuyết "giới hạn demo". Cần verify khẩn trên STG thật trước `generate-tc`; xem chi tiết `v1.0/GIFT-qua-cam-on/risk_assessment.md`.
+5. ✅ **`C-GIFT-02` Resolved 2026-09-16 (BA)** — back nhảy sai màn là **lỗi của demo**; rule: back về **màn hình trước đó**. `SC-GIFT-010` assert theo rule; STG còn nhảy sang đơn/màn khác ⇒ bug. Việc mới: `C-GIFT-04` (vòng đời bước tặng quà).

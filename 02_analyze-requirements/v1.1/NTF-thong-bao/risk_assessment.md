@@ -6,10 +6,10 @@ version: v1.1
 sprint: 1
 module: NTF
 counts:
-  cl: 2
+  cl: 4
   risk: 7
-  cl_open: 0
-  cl_resolved: 1
+  cl_open: 2
+  cl_resolved: 2
 status: ANALYZED
 updated: 2026-09-16
 ---
@@ -43,6 +43,9 @@ updated: 2026-09-16
 | CL ID | Vấn đề | Status | Ngày | REQ/SC liên quan |
 |---|---|---|---|---|
 | C-NTF-01 | 🔴 Danh sách loại thông báo chính thức (3 nguồn, nay đã hợp nhất) | ✅ **Resolved 2026-09-15** — chính thức **15 sự kiện** theo `DOC-v1.1-01 §8.13.1` | 2026-09-15 (mở từ 2026-07) | REQ-NTF-001..004, REQ-NTF-010, REQ-NTF-012 |
+| C-NTF-03 | Đánh dấu đã đọc **(a)** — mark-all hay từng item (bản gốc `v1.0/NTF-thong-bao/`) | ✅ **Resolved 2026-09-16 — BA: bấm "Đánh dấu đã đọc" = đánh dấu TẤT CẢ đã đọc** | 2026-07-29 | REQ-NTF-007, REQ-NTF-008, SC-NTF-011, SC-NTF-013 |
+| C-NTF-04 | Chạm từng loại thông báo (`NTF-01..15`) mở màn nào; chạm 1 thông báo có đánh dấu đã đọc riêng thông báo đó không | 🔴 **Open (mới 2026-09-16)** | 2026-09-16 | REQ-NTF-007, REQ-NTF-010, SC-NTF-010, SC-NTF-014 |
+| C-NTF-05 | Người nhận thông báo ở các sự kiện PRD viết mơ hồ: Carrier huỷ nhận · giao uỷ quyền/quầy có gửi kèm `NTF-05` · `NTF-08` "các bên còn lại" khi đơn còn POSTED | 🔴 **Open (mới 2026-09-16)** | 2026-09-16 | REQ-NTF-003, REQ-NTF-012, SC-NTF-006, SC-NTF-017, SC-NTF-018 |
 
 ### C-NTF-01 · 🔴 Danh sách loại thông báo chính thức — RESOLVED 2026-09-15
 
@@ -54,6 +57,38 @@ updated: 2026-09-16
 **Analyst Note:** Resolved theo PRD chính thức (đã qua Approval §12), thay thế hoàn toàn 3 nguồn mâu thuẫn cũ (BRD tự nhận "Nháp", PRD-demo, Figma). 9 sự kiện cũ (`NTF-01..09`) giữ nguyên nội dung/người nhận đúng bản BRD; 6 sự kiện mới (`NTF-10..15`) bổ sung cho nhánh xử lý giao hàng không thành công. Hàng "Sắp đến khung giờ hẹn giao" mà `KP-07` (v1.0) nghi ngờ BRD bỏ sót — **không** có trong danh mục chính thức v1.1 ⇒ xác nhận không phải sự kiện chính thức, đóng nghi vấn cũ.
 
 ⚠️ **Kết luận bị đảo:** kết luận cũ *"⛔ KHÔNG assert danh mục / danh sách loại thông báo"* (`v1.0/NTF-thong-bao/CHANGELOG.md §2` ràng buộc #3) và *"⛔ KHÔNG assert text NTF-06"* (ràng buộc #4) **HẾT HIỆU LỰC kể từ v1.1** — đừng trích lại 2 ràng buộc đó cho v1.1; hiện hành là **assert đủ 15 loại + đúng text NTF-06** theo `DOC-v1.1-01 §8.13.1`.
+
+### C-NTF-03 · ↳ BA trả lời 2026-09-16 *(→ RESOLVED vế a)*
+
+📍 BA trả lời · `02_analyze-requirements/v1.1/CL-hoi-BA-v1.1.xlsx` sheet `NTF` · cột "Câu trả lời BA" · 2026-09-16
+
+> "Click vao đánh dấu tất cả là đã đọc nhé"
+
+↳ **Ghi chú:** Nút "Đánh dấu đã đọc" là **mark-all** — một lần bấm đưa **mọi** thông báo về trạng thái đã đọc. ⇒ `SC-NTF-011` hết `[GAP]`: Then assert sau khi bấm, **không còn** chấm đỏ ở bất kỳ item nào; `SC-NTF-013`: badge chuông về **0 / ẩn**. Vế (b) phân trang vẫn N/A như v1.0. BA **không nói** chạm vào **một** thông báo có đánh dấu riêng item đó không → gộp vào `C-NTF-04`.
+
+### C-NTF-04 · Đích điều hướng khi chạm thông báo + đọc từng item *(OPEN — mới 2026-09-16)*
+
+📍 `DOC-v1.1-01 §8.13 Post-Conditions · trang 47` · `§8.13.1 NTF-07 · trang 47` · `§11 DoD #7 · trang 56`
+
+> `§8.13` Post-Conditions: "Thông báo hiển thị ở màn Thông báo; chạm vào mở đúng đơn/màn liên quan"
+
+> `NTF-07`: "Bạn nhận được một món quà cảm ơn — mở Trang cá nhân để xem"
+
+> DoD #7: "15 mẫu thông báo được kiểm thử trên thiết bị thật (iOS + Android), nội dung đúng mẫu và mở đúng màn đích."
+
+↳ **Ghi chú:** DoD bắt test *"mở đúng màn đích"* cho cả 15 loại, nhưng PRD chỉ nêu đích của **1** loại (`NTF-07` → Trang cá nhân). **Hỏi:** (a) bảng đích cho từng `NTF-01..15` — vd `NTF-03` → màn chi tiết đơn có nút "Nhận giao" (`AC-22.1.01`); `NTF-06` → Theo dõi đơn hay thẳng màn Tặng quà (cho Sender)?; `NTF-09` → đơn hết hạn hay wizard đăng lại? (b) chạm **1** thông báo có tự đánh dấu **riêng nó** đã đọc không (ảnh demo `NTF_03_thongbao_sau_tap_item_CNTF03.png`)? (c) Chạm thông báo của **đơn đã đóng/đã bị người khác nhận** thì mở màn gì?
+
+### C-NTF-05 · Người nhận thông báo ở các sự kiện mơ hồ *(OPEN — mới 2026-09-16)*
+
+📍 `DOC-v1.1-01 §6.2 AC-25.1.02 · trang 26` · `§8.13.1 NTF-05 / NTF-08 / NTF-10 / NTF-11 · trang 47` · `§8.7.2 bước 6 · trang 40`
+
+> `AC-25.1.02`: "Đơn quay về POSTED và hiển thị lại trên bảng tin để người khác nhận. Người gửi nhận thông báo."
+
+> `NTF-08`: "Đơn bị huỷ (kèm lý do) | Các bên còn lại | "Đơn đã bị huỷ bởi {vai trò} — lý do: {…}""
+
+> `NTF-10`: "Giao cho người được uỷ quyền | Người nhận · Người gửi | "Hàng đã được giao cho {tên người nhận thay} (uỷ quyền bởi {người gửi/người nhận}) — có ảnh bằng chứng""
+
+↳ **Ghi chú:** (a) **Carrier huỷ nhận** (đơn về POSTED, *không* bị huỷ): *"người gửi nhận thông báo"* — là `NTF-08` (câu *"Đơn đã bị huỷ bởi…"* sai nghĩa) hay thông báo riêng chưa có trong danh mục? **Người nhận** có được báo không? (b) Giao cho **người uỷ quyền / quầy**: người nhận chỉ nhận `NTF-10`/`NTF-11` (không có lời nhắc *"vui lòng xác nhận"*), hay nhận **thêm `NTF-05`**? Người nhận vẫn là người duy nhất bấm được "Xác nhận đã nhận hàng" nên thiếu lời nhắc là rủi ro kẹt đơn. (c) `NTF-08` khi Sender huỷ đơn còn **POSTED** (chưa có Carrier): "các bên còn lại" = chỉ người nhận?
 
 ## Vibe-check bổ sung 2026-09-15 (không resolve CL nào — ghi nhận để không lặp lại hướng đã thử)
 
@@ -69,4 +104,4 @@ updated: 2026-09-16
 1. **Không còn blocker** — `C-NTF-01` đã Resolved, không cần hỏi BA trước khi generate-tc phần NTF.
 2. **Ưu tiên test P1:** `SC-NTF-008` mở rộng — phải test đủ 15/15 sự kiện, không chỉ 9 sự kiện cũ.
 3. **Cần môi trường/tiền đề:** 6 SC mới (`SC-NTF-017..022`) phụ thuộc trực tiếp tiến độ vibe-test nhánh FR08/FR09 bên `DLV` — lên lịch chạy chung, không tách riêng.
-4. **`C-NTF-03` (cơ chế đánh dấu đã đọc), `RISK-NTF-03`, `RISK-NTF-05`, `RISK-NTF-06`** — PRD v1.1 không đề cập, giữ nguyên Open/Pending như v1.0. Đã thử vibe-check qua demo 2026-09-15 (xem mục trên) nhưng **không kết luận được** — vẫn cần hỏi BA hoặc verify STG thật, KHÔNG coi là đã xử lý.
+4. ✅ **`C-NTF-03` Resolved 2026-09-16 (BA)** — "Đánh dấu đã đọc" = **đánh dấu tất cả** (mark-all). `RISK-NTF-03`, `RISK-NTF-05`, `RISK-NTF-06` — PRD v1.1 không đề cập, giữ nguyên Open/Pending như v1.0. Việc mới: `C-NTF-04` (màn đích khi chạm thông báo) · `C-NTF-05` (người nhận ở sự kiện mơ hồ).

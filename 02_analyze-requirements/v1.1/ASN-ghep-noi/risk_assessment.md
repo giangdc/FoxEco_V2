@@ -6,12 +6,12 @@ version: v1.1
 sprint: 1
 module: ASN
 counts:
-  cl: 2
+  cl: 5
   risk: 8
-  cl_open: 1
-  cl_resolved: 0
+  cl_open: 3
+  cl_resolved: 2
 status: ANALYZED
-updated: 2026-09-15
+updated: 2026-09-16
 ---
 
 # Risk Assessment — v1.1 · Module ASN
@@ -32,14 +32,73 @@ updated: 2026-09-15
 | RISK-ASN-06 | ASN / Ưu tiên gợi ý | *(cập nhật Status)* Tiêu chí "độ gần tuyến" — trước đây coi là vô hiệu (nhị phân, không còn thang đo); PRD xác nhận vẫn là tầng ưu tiên số 1, có hiệu lực dù nhị phân | Medium → **Resolved** | `DOC-v1.1-01` §8.3 BR03-06 | `SC-ASN-015` (2 tầng ưu tiên) | Đã làm rõ qua PRD v1.1, không cần hỏi BA thêm | **Resolved** | REQ-ASN-009, SC-ASN-015 |
 | RISK-ASN-02 | ASN / Double-accept | *(cập nhật Solution)* Nhánh cạnh tranh thật vẫn khó test bằng manual — nhưng giờ có ngưỡng + phương pháp chính thức để giao cho automation | High (không đổi) | `DOC-v1.1-01` §9 NFR-06 (50 request đồng thời, 0% trùng, concurrency test trên staging) | `SC-ASN-006` nhánh (b) | **Cập nhật:** giao nhánh cạnh tranh thật cho automation/backend concurrency test theo đúng ngưỡng NFR-06, không còn "đề xuất" chung chung như v1.0 | Open (nhánh manual) / **có hướng automation rõ ràng** | REQ-ASN-003, SC-ASN-006 |
 | RISK-ASN-05 | ASN / Realtime | *(cập nhật Solution)* Bằng chứng đồng bộ realtime trước đây chỉ từ demo giả lập — giờ có ngưỡng định lượng để test thật | Medium (không đổi) | `DOC-v1.1-01` §9 NFR-08 (≤5 giây) | `SC-ASN-008` | **Cập nhật:** dùng ngưỡng ≤5s làm oracle pass/fail khi test trên 3 thiết bị thật, thay vì chỉ quan sát định tính | Open — chờ chạy test thật để xác nhận đạt ngưỡng | REQ-ASN-005, SC-ASN-008 |
-| RISK-ASN-08 | ASN / Auto-match | **(risk mới)** Ngưỡng "trần thông báo khớp/ngày" (BR04-04) không có số cứng trong PRD ("do admin cấu hình") ⇒ không viết được TC boundary chính xác cho đến khi có giá trị thật | Medium | `DOC-v1.1-01 §8.4 BR04-04 · page 38` | `SC-ASN-014` | Hỏi admin/vận hành giá trị cấu hình thật trước generate-tc; tạm viết TC ở mức "đạt ngưỡng X (biến)/chưa đạt" không hardcode số | Open (non-blocking) | REQ-ASN-008, SC-ASN-014 |
+| RISK-ASN-08 | ASN / Auto-match | **(risk mới 2026-09-15)** Ngưỡng "trần thông báo khớp/ngày" (`BR04-04`) không có số cứng. **BA 2026-09-16: KHÔNG có trần theo ngày — tài liệu bị dư**; thay bằng *"mỗi lần đăng Tôi nhận giao hàng thì bắn 5 thông báo / 1 tin đăng"* ⇒ rủi ro gốc **hết**, nhưng rule thay thế chưa đủ định nghĩa (`C-ASN-04`) | Medium → **Closed (thay bằng `C-ASN-04`)** | `DOC-v1.1-01 §8.4 BR04-04 · page 38` · BA trả lời 2026-09-16 | `SC-ASN-014` — viết lại theo rule "5 thông báo / 1 tin OFFER", chờ `C-ASN-04` | ⛔ Không viết TC trần/ngày nữa. Hỏi vòng 2 định nghĩa rule 5 thông báo | Closed | REQ-ASN-008, SC-ASN-014 |
 
 ## Clarifications (home của CL quote — layout v2)
 
-> Không có CL mới ở lượt delta này. `C-NTF-02` (home canonical tại ASN) và `C-ASN-03` giữ nguyên trạng thái như v1.0 — xem `v1.0/ASN-ghep-noi/risk_assessment.md`. `C-NTF-02` **không đóng hẳn**: 2/3 tham số đã Resolved qua `RISK-ASN-04`, phần "ngưỡng gộp thông báo" chuyển thành `RISK-ASN-08` (risk mới, không phải CL) vì đây là thiếu **giá trị cấu hình vận hành**, không phải thiếu **định nghĩa nghiệp vụ**.
+| CL ID | Nội dung | Status | Mở | REQ/SC liên quan |
+|-------|----------|--------|-----|-------------------|
+| C-NTF-02 | Định nghĩa "khớp tuyến" & tham số vận hành (**home canonical ở ASN**, bản gốc `v1.0/ASN-ghep-noi/`) | ✅ **Resolved 2026-09-16 — BA: không có trần theo ngày; "5 thông báo / 1 tin đăng OFFER"** | 2026-07-27 | REQ-ASN-006, REQ-ASN-007, REQ-ASN-008 |
+| C-ASN-03 | Đăng tin mới ghi đè đơn đang có, không tạo song song (bản gốc `v1.0/ASN-ghep-noi/`) | ✅ **Resolved 2026-09-16 — BA: giới hạn bản demo; app không giới hạn đăng tin** | kế thừa 2026-07 | REQ-ASN-012, SC-ASN-018 |
+| C-ASN-04 | Rule "5 thông báo / 1 tin đăng OFFER" — ai nhận, chọn 5 tin nào, có quét lại khi có tin NEED mới không | 🔴 **Open (mới 2026-09-16)** | 2026-09-16 | REQ-ASN-006, REQ-ASN-008, REQ-ASN-009, SC-ASN-013, SC-ASN-014 |
+| C-ASN-05 | "Trùng điểm lấy và điểm giao" được so thế nào khi địa chỉ là **ô văn bản tự do ≤ 200 ký tự** | 🔴 **Open (mới 2026-09-16)** | 2026-09-16 | REQ-ASN-007, SC-ASN-011 |
+| C-ASN-06 | Người bấm nhận sau (double-accept) thấy câu nào: "Tin này đã có…" hay "Đơn này đã có…"; dạng toast/popup/push | 🔴 **Open (mới 2026-09-16)** | 2026-09-16 | REQ-ASN-003, SC-ASN-006, SC-ASN-010 |
+
+> ℹ️ `C-NTF-02` và `C-ASN-03` có bản gốc ở `v1.0/ASN-ghep-noi/risk_assessment.md` (giữ nguyên làm hồ sơ lịch sử, ⛔ không sửa); **bản hiện hành là 2 dòng trên** + khối trả lời BA bên dưới.
+
+### C-NTF-02 · ↳ BA trả lời 2026-09-16 *(→ RESOLVED — phần trần thông báo)*
+
+📍 BA trả lời · `02_analyze-requirements/v1.1/CL-hoi-BA-v1.1.xlsx` sheet `ASN` · cột "Câu trả lời BA" · 2026-09-16
+
+> "Không có ngường ngày, tài liệu bị dư → mỗi lần đăng Tôi nhận giao hàng thì bắn 5 thông báo/ 1 tin đăng, không có giới hạn ngày"
+
+↳ **Ghi chú:** `BR04-04` (*"Trần số thông báo khớp mỗi ngày cho một người dùng do admin cấu hình"*) là **dư — không có trong sản phẩm**; kéo theo dòng *"Cấu hình ngưỡng thông báo khớp tuyến"* ở `§7.3` và *"cấu hình ngưỡng thông báo"* ở Persona Admin cũng không áp dụng. ⇒ `RISK-ASN-08` **Closed**. 🔁 **Kết luận bị đảo lần 2:** v1.0 (BA 2026-07-29, `KB-ASN-03`) *"trần tính riêng theo từng tin OFFER"* → v1.1 PRD *"trần theo ngày/người dùng"* → nay BA quay về **theo từng tin đăng** (*"5 thông báo / 1 tin đăng"*). Rule thay thế chưa đủ để viết TC → `C-ASN-04`.
+
+### C-ASN-03 · ↳ BA trả lời 2026-09-16 *(→ RESOLVED)*
+
+📍 BA trả lời · `02_analyze-requirements/v1.1/CL-hoi-BA-v1.1.xlsx` sheet `ASN` · cột "Câu trả lời BA" · 2026-09-16
+
+> "Hiện tại không giói hạn đăng tin, đây là giới hạn bản demo"
+
+↳ **Ghi chú:** Hiện tượng *"đăng tin mới ghi đè đơn đang có"* là **giới hạn của demo**, không phải hành vi sản phẩm. Rule chốt: **không giới hạn số tin đăng** của một người ⇒ `SC-ASN-018` hết `[GAP]`, Then assert: đăng tin thứ 2 khi tin thứ 1 còn `POSTED` → **cả 2 tin cùng tồn tại** trên Bảng tin + "Đơn của tôi". Nếu STG ghi đè ⇒ **bug**. ⚠️ "Không giới hạn" — BA không nói có trần chống spam hay không; không viết TC boundary số lượng.
+
+### C-ASN-04 · Rule "5 thông báo / 1 tin đăng" — định nghĩa đủ để test *(OPEN — mới 2026-09-16)*
+
+📍 BA trả lời `C-NTF-02` 2026-09-16 ⟷ `DOC-v1.1-01 §6.2 AC-21.1.01 · trang 24` · `§8.3.1 BR03-06 · trang 36` · `§8.4 Trigger · trang 37`
+
+> `AC-21.1.01`: "…mỗi lần gợi ý tối đa 5 tin, ưu tiên độ gần tuyến rồi tới thời gian đăng."
+
+> `BR03-06`: "Trần gợi ý cho một người vận chuyển: tối đa 5 tin phù hợp, ưu tiên độ gần tuyến rồi tới thời gian đăng."
+
+> `§8.4` Trigger: "Có tin NEED mới được đăng, hoặc có tin OFFER mới được đăng"
+
+↳ **Ghi chú:** Câu BA *"mỗi lần đăng Tôi nhận giao hàng thì bắn 5 thông báo / 1 tin đăng"* thay trần/ngày, nhưng còn 5 điểm không assert được: (a) **Ai nhận** 5 thông báo — người đăng OFFER (Carrier) được báo 5 tin NEED khớp? (b) Có **>5** tin NEED khớp thì chọn 5 tin nào — có phải cùng thứ tự ưu tiên `BR03-06`? Tức **"5 thông báo" và "trần gợi ý 5 tin" là cùng một rule** (`SC-ASN-013` ⟷ `SC-ASN-014` gộp được)? (c) Có **<5** tin khớp thì gửi đúng số tin khớp, **0** tin thì không gửi gì? (d) Chiều ngược lại theo `§8.4` Trigger: khi có **tin NEED mới** khớp một OFFER **đã đăng trước đó**, Carrier có nhận thêm thông báo không — và có bị tính vào con số 5 của tin OFFER đó không? (e) Hệ thống quét lại theo chu kỳ (`NFR-04` ≤ 60s) — tin NEED đăng **sau** khi OFFER đã bắn đủ 5 thì còn được báo không?
+
+### C-ASN-05 · "Trùng điểm lấy/giao" với ô địa chỉ tự do *(OPEN — mới 2026-09-16)*
+
+📍 `DOC-v1.1-01 §8.4.1 BR04-01 · trang 37` · `§8.1.4 dòng "Địa chỉ lấy hàng" · trang 35` · `§8.2.2 dòng "Điểm xuất phát"/"Điểm đến" · trang 36` · `§4 Out of Scope · trang 9`
+
+> `BR04-01`: "Điều kiện khớp: trùng điểm lấy và điểm giao · khoảng ngày của NEED và OFFER có ngày giao nhau · tập buổi có buổi giao nhau."
+
+> `§8.1.4`: "Địa chỉ lấy hàng | Có | Văn bản · prefill địa chỉ mặc định | Không để trống, ≤ 200 ký tự"
+
+> `§4 Out of Scope`: "Ghép nối tự động nâng cao theo độ gần địa lý bằng bản đồ/toạ độ — MVP dùng khớp điểm lấy/giao + khoảng ngày + buổi"
+
+↳ **Ghi chú:** Điểm lấy/giao và điểm xuất phát/đến đều là **văn bản tự do** (`C-ORD-11` Resolved). PRD bắt *"trùng"* nhưng không nói phép so: (a) **so khớp chuỗi chính xác** (khác 1 dấu cách/hoa-thường là không khớp)? (b) **chuẩn hoá** (trim, bỏ dấu, không phân biệt hoa thường)? (c) khớp theo **văn phòng / toà nhà / tỉnh** trích từ địa chỉ? Không chốt thì **không dựng được dữ liệu** cho 4 nhánh của `SC-ASN-011` — tester gõ lại địa chỉ bằng tay sẽ ra kết quả ngẫu nhiên. Liên quan `RISK-ORD-12` (so sánh *"địa chỉ giao khác địa chỉ lấy"* cũng chưa định nghĩa) — nên hỏi chung 1 câu: **quy tắc so sánh địa chỉ** dùng chung cho cả 2 rule.
+
+### C-ASN-06 · Thông báo cho người bấm nhận sau *(OPEN — mới 2026-09-16)*
+
+📍 `DOC-v1.1-01 §6.2 AC-12.1.02 · trang 20` ⟷ `§6.2 AC-22.2.01 · trang 25`
+
+> `AC-12.1.02`: "Người sau nhận thông báo "Tin này đã có người nhận mang giúp" và tin biến khỏi bảng tin của họ."
+
+> `AC-22.2.01`: "Hiện thông báo "Đơn này đã có người nhận mang giúp" và không tạo cặp ghép thứ hai. Màn chi tiết chuyển sang trạng thái chỉ xem."
+
+↳ **Ghi chú:** Cùng một tình huống (tin đã có người nhận) nhưng 2 AC dùng **2 câu khác nhau** ("Tin này" ⟷ "Đơn này") theo 2 lối vào (Bảng tin ⟷ thông báo khớp tuyến), và câu đó **không có** trong danh mục 15 thông báo `§8.13.1` ⇒ không rõ là **toast/popup trong app** hay **push**. Hỏi: (a) giữ 2 câu riêng theo lối vào hay thống nhất 1 câu? (b) dạng hiển thị? Mức ưu tiên **thấp** — chỉ ảnh hưởng assert verbatim của `SC-ASN-006`/`SC-ASN-010`.
+
 
 ## Khuyến nghị tổng thể
 1. **Không còn blocker cứng cho auto-match** — `RISK-ASN-04`/`RISK-ASN-06` đã Resolved qua PRD v1.1, coverage `SC-ASN-011`/`SC-ASN-015` có thể viết đầy đủ 4 nhánh + 2 tầng ưu tiên.
-2. **Trước generate-tc:** xác nhận giá trị cấu hình thật của `RISK-ASN-08` (trần thông báo/ngày) với admin/vận hành — không hardcode số, không tái sử dụng mốc 3/5/6 cũ (mốc đó thuộc rule khác — trần gợi ý/carrier, không đổi).
+2. **Trước generate-tc:** ✅ `RISK-ASN-08` đã Closed (BA 2026-09-16 — không có trần/ngày). Việc còn lại: hỏi BA **`C-ASN-04`** (định nghĩa rule 5 thông báo / 1 tin OFFER) và **`C-ASN-05`** (so khớp "trùng điểm" với địa chỉ tự do — chặn data `SC-ASN-011`).
 3. **Ưu tiên chuyển cho automation:** nhánh cạnh tranh thật của `SC-ASN-006` (concurrency 50 request) và mốc ≤5s của `SC-ASN-008` — cả hai giờ có ngưỡng đo được rõ ràng (NFR-06, NFR-08), phù hợp hơn cho backend/integration test so với manual.
 4. **SC mới `SC-ASN-019`** cần công cụ gọi API trực tiếp (Postman/tương đương) — không thực hiện được thuần qua UI, lập kế hoạch môi trường trước khi execute.

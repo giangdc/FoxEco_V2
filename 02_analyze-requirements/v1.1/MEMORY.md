@@ -11,15 +11,20 @@ doc_source:
     revision: "PRD v1.0 · mã 1.0-BM/PM/HDCV/FTEL · PRD Standard v1.2 · rev 08/09/2026 \"[A] Bổ sung flow exit giao hàng\" · Active"
     md5: caf8af665163f6c5c2d85daec414efa6
     kind: "PRD chính thức — nguồn nghiệp vụ CHÍNH của v1.1, chi tiết hơn hẳn DOC-v1.0-01/02. ⚠️ CÙNG tính năng \"Gửi Hàng\" đã phân tích ở v1.0 (khớp gần 1:1 qua FR01–FR18), KHÔNG phải sản phẩm mới"
-    modules: [HOME, ASN, DLV, NTF, TS]
+    modules: [USR, HOME, ORD, ACT, ASN, DLV, GIFT, CNL, NTF, TS, FEED]
   - id: DOC-v1.1-02
     file: 00_input/v1.1/FoxEco Demo 3 vai tro (standalone) v4.0 (1).html
     revision: "prototype 3 vai trò bản v4.0 (kế thừa DOC-v1.0-03) · Active · reference-only"
     md5: 0f336205b8c66da40f2741c51d52a6a5
     kind: "KHÔNG PHẢI URD — prototype tương tác, reference-only (⛔ không trích làm nguồn rule)"
     modules: []
+  - id: DOC-v1.1-03
+    file: 00_input/v1.1/design/ (26 ảnh PNG)
+    revision: "ảnh chụp demo DOC-v1.1-02 · vibe-check 2026-09-15/16 · Active · evidence phụ"
+    kind: "Ảnh bằng chứng UI — ⚠ demo ≠ STG; ⛔ không trích làm nguồn rule"
+    modules: [ASN, DLV, FEED, HOME, NTF, TS, USR]
 status: ANALYZED
-updated: 2026-09-15
+updated: 2026-09-16
 ---
 
 # Router — Analyze v1.1 sprint-1 (delta)
@@ -28,11 +33,11 @@ updated: 2026-09-15
 > 📜 **Lịch sử từng lượt của mỗi module** → `<module>/CHANGELOG.md §1`. **Lịch sử router bản cũ** → `git show <commit>:<path>`.
 > 🔑 **Nguồn canonical của số đếm là FILE MODULE** — xem §Luật `counts` canonical dưới. Bảng §2 là **bản dẫn xuất**: sửa số ở file module trước, rồi mới đồng bộ về đây.
 >
-> ℹ️ **v1.1 là DELTA — 10/11 module có thư mục ở đây.** Module duy nhất không có delta:
+> ℹ️ **v1.1 là DELTA — 10/11 module có thư mục ở đây.** Module duy nhất không có thư mục v1.1:
 >
-> | Module | Vì sao không có delta |
+> | Module | Vì sao không có thư mục v1.1 |
 > |---|---|
-> | `FEED` | `DOC-v1.1-01` không liệt kê module này ở `MASTER-MEMORY §2`; rà `§7.2 Feature Traceability` cũng không có FR nào thuộc bề mặt Bảng tin ⇒ giữ nguyên v1.0. ⛔ Không dựng thư mục rỗng |
+> | `FEED` | PRD **có** chạm bề mặt Bảng tin/Chi tiết tin (`AC-12.1.01`, `AC-13.1.02`, `EMP-04`, `BR18-04`, `BR01-01`) nhưng module **không dựng thư mục v1.1** — thay đổi 2026-09-16 (`C-FEED-01` Resolved, `SC-FEED-009`/`013` viết lại, `C-FEED-02..04` mở) **sửa tại chỗ ở `v1.0/FEED-bang-tin/`**, xem `CHANGELOG §3`. *(Nhận định cũ "PRD không đụng bề mặt Bảng tin" HẾT HIỆU LỰC 2026-09-16.)* |
 >
 > 🔴 **`USR` từng bị khai nhầm là "không có delta" (2026-09-15) — đã sửa cùng ngày.** `FR15` đặc tả hẳn một màn mới (`"Cập nhật thông tin"`), và chính lượt delta trước đã trích `AC-30.1.01` — một AC **thuộc `FR15`** — để resolve `C-ORD-10`, tức đã dùng `FR15` làm căn cứ trong khi tuyên bố nó ngoài phạm vi. Chi tiết: `USR-tai-khoan/CHANGELOG.md §1` dòng `ĐÍNH CHÍNH`.
 
@@ -46,7 +51,7 @@ updated: 2026-09-15
 | **NTF** | [`NTF-thong-bao/`](NTF-thong-bao/) | Thông báo — danh mục chính thức mở rộng **9 → 15 sự kiện** (`NTF-10..15` cho các nhánh mới của `DLV`) | `DOC-v1.1-01` §8.13 FR13 · §8.13.1 Danh mục thông báo (bảng 15 dòng, trang 47-48) | `REQ-NTF-001..012` | `SC-NTF-001..022` |
 | **TS** | [`TS-trust-safety/`](TS-trust-safety/) | Trust & Safety — **`FR16` Báo cáo sự cố & hỗ trợ** (tính năng mới: nút trigger + form WebView + trần 5 ảnh) | `DOC-v1.1-01` §8.16 FR16 · §8.16.1 BR16-01..06 · §8.16.2 UI/Field Spec · §6.1 US31 · §6.2 AC-31.x | `REQ-TS-001..006` | `SC-TS-001..015` |
 | **USR** | [`USR-tai-khoan/`](USR-tai-khoan/) | Tài khoản & Hồ sơ — **`C-USR-03` ĐẢO**: có màn `"Cập nhật thông tin"` sửa được **2 trường** (SĐT · địa chỉ mặc định); 4 trường SSO vẫn chỉ đọc; +2 rule truy vết hai chiều | `DOC-v1.1-01` §8.15 FR15 · §8.15.1 BR15-01..05 · §8.15.2 · §6.1 US30 · §6.2 AC-30.x | `REQ-USR-001..010` | `SC-USR-001..020` |
-| FEED | [`../v1.0/FEED-bang-tin/`](../v1.0/FEED-bang-tin/) | *(không cần delta — PRD không đụng)* Bảng tin & Chi tiết tin | v1.0 | `REQ-FEED-001..009` | `SC-FEED-001..014` |
+| FEED | [`../v1.0/FEED-bang-tin/`](../v1.0/FEED-bang-tin/) | Bảng tin & Chi tiết tin — *không có thư mục v1.1*; cập nhật 2026-09-16 (**bản đồ thật**, CTA chỉ ở Chi tiết tin, 3 CL mới) sửa tại chỗ ở v1.0 | v1.0 · `DOC-v1.1-01` AC-12/13 · EMP-04 (chạm) | `REQ-FEED-001..009` | `SC-FEED-001..014` |
 | **ORD** | [`ORD-dang-tin/`](ORD-dang-tin/) | Đăng tin & Quản lý tin — ảnh **bắt buộc ≥1**, tra **danh bạ nội bộ**, người nhận uỷ quyền khai lúc đăng tin, tiện ích dùng chung `FR18` | `DOC-v1.1-01` §8.1 FR01 · §8.2 FR02 · §8.5 FR05 · §8.18 FR18 · §6.2 AC-01..09/19/20/30 | `REQ-ORD-001..028` | `SC-ORD-001..065` |
 | **ACT** | [`ACT-hoat-dong/`](ACT-hoat-dong/) | Hoạt động ("Đơn của tôi") — `EMP-05`/`EMP-06` đóng `C-ORD-06`; kết cục `RETURNED` mới; **home rule hình thức chung của `FR17`** | `DOC-v1.1-01` §8.17 FR17 · §8.17.1/§8.17.2 · §8.5.1 BR05-03 · §6.2 AC-29/AC-09/AC-24 | `REQ-ACT-001..010` | `SC-ACT-001..017` |
 | **GIFT** | [`GIFT-qua-cam-on/`](GIFT-qua-cam-on/) | Quà cảm ơn — 4 quà có **tên chính thức**, đơn `RETURNED` **không mở bước tặng quà và không cộng "Đơn đã giúp"**; 3 SC `[GAP]` hết gap | `DOC-v1.1-01` §8.14 FR14 · §8.14.1 BR14-01..04 · §8.17.1 EMP-08 · §6.2 AC-24/AC-26 | `REQ-GIFT-001..009` | `SC-GIFT-001..014` |
@@ -72,42 +77,47 @@ updated: 2026-09-15
 
 | Module | Req | SC | NEW | MOD | CARRIED | DEPR | P1 | P2 | P3 | CL | RISK | Risk Level |
 |---|--:|--:|--:|--:|--:|--:|--:|--:|--:|--:|--:|---|
-| USR | 10 | 20 | 8 | 3 | 9 | 0 | 3 | 10 | 7 | 5 | 8 | Medium |
-| HOME | 13 | 28 | 4 | 2 | 21 | 1 | 1 | 13 | 13 | 3 | 7 | Medium |
-| FEED | — | — | — | — | — | — | — | — | — | — | — | *(không delta — xem `../v1.0/`)* |
-| ORD | 28 | 65 | 14 | 12 | 39 | 0 | 9 | 36 | 20 | 11 | 12 | **High** |
-| ACT | 10 | 17 | 3 | 6 | 8 | 0 | 0 | 11 | 6 | 3 | 8 | Medium |
-| ASN | 13 | 19 | 1 | 5 | 13 | 0 | 6 | 11 | 2 | 2 | 8 | **High** |
-| DLV | 23 | 64 | 34 | 0 | 30 | 0 | 10 | 42 | 12 | 4 | 11 | **High** |
-| GIFT | 9 | 14 | 2 | 6 | 6 | 0 | 0 | 9 | 5 | 3 | 6 | Low |
+| USR | 10 | 24 | 12 | 5 | 7 | 0 | 3 | 14 | 7 | 6 | 8 | Medium |
+| HOME | 13 | 30 | 6 | 3 | 19 | 2 | 1 | 13 | 14 | 6 | 7 | Medium |
+| FEED | — | — | — | — | — | — | — | — | — | — | — | *(không có thư mục v1.1 — số ở `../v1.0/`, xem 2b)* |
+| ORD | 28 | 65 | 14 | 12 | 39 | 0 | 9 | 36 | 20 | 15 | 12 | **High** |
+| ACT | 10 | 17 | 3 | 6 | 8 | 0 | 0 | 11 | 6 | 5 | 8 | Medium |
+| ASN | 13 | 19 | 1 | 5 | 13 | 0 | 6 | 11 | 2 | 5 | 8 | **High** |
+| DLV | 23 | 64 | 34 | 0 | 30 | 0 | 10 | 42 | 12 | 8 | 11 | **High** |
+| GIFT | 9 | 14 | 2 | 6 | 6 | 0 | 0 | 9 | 5 | 4 | 6 | Low |
 | CNL | 9 | 17 | 4 | 5 | 8 | 0 | 6 | 9 | 2 | 3 | 8 | **High** |
-| NTF | 12 | 22 | 6 | 3 | 13 | 0 | 1 | 15 | 6 | 2 | 7 | Low |
-| TS | 6 | 15 | 8 | 0 | 7 | 0 | 2 | 5 | 8 | 1 | 7 | Medium |
-| **Tổng (10 module delta)** | **133** | **281** | **84** | **42** | **154** | **1** | **38** | **161** | **81** | **37** | **82** | — |
+| NTF | 12 | 22 | 6 | 3 | 13 | 0 | 1 | 15 | 6 | 4 | 7 | Low |
+| TS | 6 | 15 | 8 | 0 | 7 | 0 | 2 | 5 | 8 | 3 | 7 | Medium |
+| **Tổng (10 module delta)** | **133** | **287** | **90** | **45** | **150** | **2** | **38** | **165** | **82** | **59** | **82** | — |
 
 ### 2b. Toàn bộ v1.1 (10 module delta + 1 module giữ nguyên v1.0)
 
 | Nhóm | Req | SC | P1 | P2 | P3 | CL | RISK |
 |---|--:|--:|--:|--:|--:|--:|--:|
-| 10 module delta (bảng 2a) | 133 | 281 | 38 | 161 | 81 | 37 | 82 |
-| 1 module không delta (`FEED`) — đọc `../v1.0/` | 9 | 14 | 2 | 6 | 6 | 3 | 5 |
-| **Tổng v1.1** | **142** | **295** | **40** | **167** | **87** | **40** | **87** |
+| 10 module delta (bảng 2a) | 133 | 287 | 38 | 165 | 82 | 59 | 82 |
+| 1 module không có thư mục v1.1 (`FEED`) — đọc `../v1.0/` | 9 | 15 | 2 | 6 | 7 | 7 | 5 |
+| **Tổng v1.1** | **142** | **302** | **40** | **171** | **89** | **66** | **87** |
 
-> ℹ️ **Δ so với v1.0:** REQ 116 → **142** (+26) · SC 211 → **295** (**+84 NEW**, 42 MODIFIED giữ ID, 1 DEPRECATED) · CL 35 → **40** (+5: `C-DLV-04` · `C-CNL-03` · `C-ACT-02` · `C-ORD-13` · `C-USR-05`) · RISK 64 → **87** (+23).
-> ℹ️ **P1+P2+P3 = 40+167+87 = 294 = 295 − 1 DEPRECATED** ⇒ **không lệch cộng**, đúng `Project_rule.md §Quy ước đếm scenario`. SC bị DEPRECATED: `SC-HOME-024`.
-> ℹ️ **Cột `CL` chỉ đếm clarification có HOME ở module đó** — CL tham chiếu chéo không cộng lặp. `cl_open + cl_resolved` **nhỏ hơn** `cl`: **4 CL ở trạng thái *Partially Resolved*** (`C-NTF-02` home ASN · `C-NTF-03` home NTF · `C-ORD-09` home ORD · `C-USR-04` home USR) không thuộc 2 ô đó.
-> 🟢 **CL còn OPEN — 10/40** (9 ở 10 module delta + 1 của `FEED`), ⛔ **0 BLOCKER chặn execute.**
-> **v1.1 chuyển 10 CL từ Open → Resolved:** `C-HOME-01` `C-HOME-02` `C-HOME-03` · `C-NTF-01` · `C-GIFT-03` · `C-ORD-05` `C-ORD-08` `C-ORD-10` `C-ORD-11` · `C-ORD-06`.
-> **Nâng cấp / đảo chiều (đã Resolved ở v1.0, nay đổi nội dung):** `C-CNL-01` (out-of-scope → **in-scope**) · `C-USR-03` (view-only hoàn toàn → **có màn sửa 2 trường**) · `C-CNL-02` (override QA → đặc tả PM) · `C-GIFT-01` (out-of-scope *v1.0* → out-of-scope vĩnh viễn).
-> **Mở mới 5:** `C-DLV-04` (Resolved ngay) · `C-CNL-03` · `C-ACT-02` · `C-ORD-13` · `C-USR-05`. **Chuyển Partially: 2** (`C-ORD-09` · `C-USR-04`). **MỞ LẠI 1:** `C-ORD-04` — PRD tự mâu thuẫn.
-> 🔴 **4 nợ chặn `generate-tc` v1.1** — không phải blocker execute, nhưng chạy TC trước khi xong sẽ FAIL/BLOCKED hàng loạt vì lý do không phải bug:
+> ℹ️ **Δ so với v1.0:** REQ 116 → **142** (+26) · SC 211 → **302** (**+90 NEW** ở 10 module delta + 1 NEW sửa tại chỗ `FEED`, 45 MODIFIED giữ ID, 2 DEPRECATED — cập nhật 2026-09-17) · CL 35 → **66** (+1 `C-FEED-05` 2026-09-17) (+5 lượt delta 2026-09-15: `C-DLV-04` · `C-CNL-03` · `C-ACT-02` · `C-ORD-13` · `C-USR-05`; **+25 lượt UPDATE 2026-09-16** sau khi BA trả lời — xem `<module>/CHANGELOG.md §1`) · RISK 64 → **87** (+23).
+> ℹ️ **P1+P2+P3 = 40+171+89 = 300 = 302 − 2 DEPRECATED** ⇒ **không lệch cộng**, đúng `Project_rule.md §Quy ước đếm scenario`. SC bị DEPRECATED: `SC-HOME-024` · `SC-HOME-010` (2026-09-17, thay bằng `SC-HOME-026`).
+> ℹ️ **Cột `CL` chỉ đếm clarification có HOME ở module đó** — CL tham chiếu chéo không cộng lặp. `cl_open + cl_resolved` **nhỏ hơn** `cl` ở 3 module: **5 CL *Partially Resolved — chờ BA vòng 2*** (`C-ORD-04` · `C-ORD-13` · `C-HOME-04` · `C-HOME-06` · `C-GIFT-04`) không thuộc 2 ô đó. *(`C-USR-05` → Resolved 2026-09-16.)*
+> 🟡 **Trạng thái CL sau lượt BA trả lời 2026-09-17 — 66 CL: 43 Resolved · 5 Partially (vòng 2) · 18 Open** (tính từ `counts:` các module),
+> **BA trả lời lượt 2026-09-17:** ✅ `C-HOME-05` (hiện empty state `EMP-02` ⇒ `SC-HOME-010` DEPRECATED) · `C-FEED-02` (placeholder + "0km", ảnh tĩnh vẽ tuyến) · `C-FEED-03` (1 danh sách, không tab/lọc) · `C-FEED-04` (trước ghép chỉ ẩn SĐT) · USR chuỗi lỗi SĐT theo demo + PRD sẽ cập nhật sau. 🟡 Partially: `C-HOME-04` (BA nói tin **toàn quốc** ⟷ PRD lọc khu vực) · `C-HOME-06` (+`SC-HOME-029/030`) · `C-GIFT-04` (tặng 1 lần; "tặng sau" mâu thuẫn `C-ACT-01`). 🔴 Mới: `C-FEED-05` (toạ độ văn phòng lỗi). Chi tiết: `<module>/CHANGELOG.md §1` dòng 2026-09-17.
+> ⛔ **0 BLOCKER chặn execute.** Nguồn câu hỏi gửi BA: `v1.1/CL-hoi-BA-v1.1.xlsx` (bản dẫn xuất từ CL section các module).
+> **BA trả lời 13 CL ngày 2026-09-16 → 10 Resolved:** `C-ORD-09` (nhãn "Tài liệu") · `C-ACT-02` (nhãn tab theo app) · `C-ACT-01` (+ nhánh "chưa tặng quà → Tặng quà") · `C-ASN-03` · `C-NTF-02` (**không có trần/ngày** — "5 thông báo / 1 tin OFFER") · `C-CNL-03` (không có tool admin) · `C-DLV-02` (không có GPS) · `C-NTF-03` (mark-all) · `C-GIFT-02` (lỗi demo) · `C-FEED-01` (**có bản đồ thật**). **3 Partially:** `C-ORD-04` · `C-ORD-13` · `C-USR-05`.
+> **Mở mới 25 (2026-09-16):** ORD `14..17` · ACT `03/04` · USR `06` · ASN `04..06` · DLV `05..08` · NTF `04/05` · GIFT `04` · HOME `04..06` · TS `02/03` · FEED `02..04`. **Kết luận bị đảo:** trần thông báo khớp (đảo lần 2) · `SC-FEED-009` (placeholder → bản đồ thật) · ràng buộc *"không dùng nhãn Tài liệu"* · `KB-ORD-07` #5 (Chi tiết tin → Theo dõi đơn).
+> 🔴 **Nợ chặn `generate-tc` v1.1** (cập nhật 2026-09-16) — không phải blocker execute, nhưng chạy TC trước khi xong sẽ FAIL/BLOCKED hàng loạt vì lý do không phải bug:
 > | Nợ | Module | Ảnh hưởng |
 > |---|---|---|
-> | `C-ORD-04` — **PRD tự mâu thuẫn**: `§8.1.4` cho "Thuốc/Y tế" là loại hàng hợp lệ, `BR01-07` xếp "thuốc" vào hàng cấm | ORD | Không phân xử được bằng thứ tự ưu tiên nguồn (cả hai cùng là `DOC-v1.1-01`) ⇒ `SC-ORD-031..035` phải ghi nhận, không assert |
-> | `C-ORD-13` — STG đã nối **Danh bạ nội bộ** chưa, có email mẫu không | ORD | 3 SC (1 **P1**) `BLOCKED` nếu thiếu — không tự chế được email mẫu |
+> | `C-ORD-04` vòng 2 — chip "Thuốc/Y tế" đã chốt **không chặn**; còn banner hàng cấm + nội dung điều khoản | ORD | `SC-ORD-031..035` phần banner/điều khoản vẫn ghi nhận |
+> | `C-ORD-13` vòng 2 — nguồn đã rõ (**HRIS**, chỉ nhân sự đang làm việc); còn **email mẫu 3 loại** + tên miền | ORD | 3 SC (1 **P1**) `BLOCKED` nếu thiếu — không tự chế được email mẫu |
+> | `C-ASN-05` — "trùng điểm lấy/giao" với địa chỉ văn bản tự do chưa có phép so | ASN | Không dựng được data 4 nhánh `SC-ASN-011` |
+> | ~~`C-HOME-05`~~ ✅ Resolved 2026-09-17 · `C-DLV-06` · `C-USR-06` — SC trong dự án đang cho kết luận **ngược nhau** (~~`SC-HOME-010`⟷`026`~~ · `SC-DLV-043`⟷`AC-16/17` · ~~`SC-USR-007`⟷`BR14-03`~~ ✅ `C-USR-06` Resolved 2026-09-16 — badge không hiện) | HOME · DLV · USR | Viết TC theo 1 chiều ⇒ FAIL oan hoặc PASS giả |
+> | `C-FEED-05` (mới 2026-09-17) — file toạ độ văn phòng: 399 `MISSING`, 61 thiếu lat/lng, 34 ngoài VN | FEED | Không dựng được Given bản đồ thật `SC-FEED-009` |
+> | `C-ACT-03`/`C-ACT-04` — đích tap card + 12 trạng thái chia 2 tab + đơn Đã huỷ ẩn/hiện | ACT | Nằm trong Steps của `SC-ACT-004/005/007/009/010/015` |
 > | `RISK-DLV-08` + `RISK-DLV-11` — luồng submit form 4 đối tượng nhận & ảnh lúc lấy hàng chưa verify end-to-end | DLV | Kéo theo `GIFT` (`SC-GIFT-013/014`) và `ACT` (`SC-ACT-015`) vì cùng cần đơn `RETURNED` |
 > | `RISK-ORD-09` — app đã siết **ảnh bắt buộc ≥1** chưa | ORD | `SC-ORD-054` là **P1 chặn luồng chính**; chưa siết ⇒ FAIL vì *"app chưa cập nhật"* |
-> 🟡 **2 câu hỏi nhãn UI nên gộp 1 lượt hỏi BA** — `C-ORD-09` (nhãn "Tài liệu" ⟷ "Giấy tờ, hồ sơ") và `C-ACT-02` (nhãn 2 tab "Đang chạy/Hoàn tất" ⟷ "Đang diễn ra/Đã hoàn thành"): **cùng bản chất doc ⟷ app**, và nhãn nằm rải trong Steps của rất nhiều TC ⇒ chốt muộn sẽ phải sửa rải rác (đúng lỗi #1 của đợt cũ).
+> ✅ **2 câu hỏi nhãn UI đã chốt 2026-09-16** — `C-ORD-09` theo **PRD** ("Tài liệu"; app khác = defect) và `C-ACT-02` theo **app** ("Đơn của tôi" · "Đang diễn ra"/"Đã hoàn thành" · nav "Hoạt động"; PRD chưa cập nhật). ⚠️ BA quyết **từng nhãn**, không có luật chung "PRD thắng" hay "app thắng".
 
 ### 🔑 Luật `counts` canonical (v2)
 

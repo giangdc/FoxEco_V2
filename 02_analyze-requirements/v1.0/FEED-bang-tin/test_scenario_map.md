@@ -7,16 +7,16 @@ sprint: 1
 module: FEED
 counts:
   req: 9
-  sc: 14
-  new: 14
+  sc: 15
+  new: 15
   modified: 0
   carried: 0
   deprecated: 0
   p1: 2
   p2: 6
-  p3: 6
+  p3: 7
 status: ANALYZED
-updated: 2026-09-14
+updated: 2026-09-17
 ---
 
 # Test Scenario Map — v1.0 · Module FEED
@@ -47,13 +47,14 @@ updated: 2026-09-14
 | SC-FEED-004 | Không badge với tin người khác | REQ-FEED-002 | DOC-v1.0-02 §3.3 đoạn 3 | Bảng tin có tin do tài khoản B đăng | A mở Bảng tin, xem card tin của B | Card tin của B KHÔNG có badge "Tin của bạn" | P3 | Business Rule | NEW |
 | SC-FEED-005 | Mở Chi tiết tin | REQ-FEED-003 | DOC-v1.0-02 §3.3 đoạn 4 | Bảng tin có ≥1 tin | Bấm vào 1 tin cụ thể | Mở màn Chi tiết tin của đúng tin đó (loại hàng/lộ trình/khung giờ khớp card vừa bấm) | P2 | Functional | NEW |
 | SC-FEED-006 | Chi tiết tin — phần trên | REQ-FEED-004 | DOC-v1.0-02 §3.4 | Đang ở Chi tiết tin của 1 tin có ảnh + có ghi chú | Quan sát phần trên màn | Hiển thị: ảnh sản phẩm · Loại hàng · Giá trị (2 cột) · Ghi chú | P2 | UI | NEW |
-| SC-FEED-007 | Chi tiết tin — phần dưới | REQ-FEED-004 | DOC-v1.0-02 §3.4 · DOC-v1.0-01 §D1b US-D07 | Đang ở Chi tiết tin của 1 tin Chờ ghép | Cuộn xuống phần dưới màn | Hiển thị: Lộ trình (điểm Lấy hàng + Giao hàng + khung "Bản đồ · ~X km") · Khung giờ mong muốn · cụm Người gửi · nút CTA "Tôi mang giúp được" | P2 | UI | NEW |
+| SC-FEED-007 | Chi tiết tin — phần dưới | REQ-FEED-004 | DOC-v1.0-02 §3.4 · DOC-v1.0-01 §D1b US-D07 | Đang ở Chi tiết tin của 1 tin Chờ ghép | Cuộn xuống phần dưới màn | Hiển thị: Lộ trình (điểm Lấy hàng + Giao hàng + khung "Bản đồ · ~X km") · Khung giờ mong muốn · cụm Người gửi (**có họ tên**, không SĐT — `C-FEED-04` 2026-09-17) · nút CTA "Tôi mang giúp được"; điểm Lấy/Giao hiện **đầy đủ** như data đã đăng | P2 | UI | NEW |
 | SC-FEED-008 | Ảnh mặc định | REQ-FEED-008 | DOC-v1.0-02 §3.4 dòng "Ảnh sản phẩm" | Có 1 tin được đăng KHÔNG kèm ảnh sản phẩm | Mở Chi tiết tin của tin đó | Hiển thị ảnh mặc định (placeholder), layout không vỡ; KHÔNG assert nội dung ảnh | P3 | UI | NEW |
-| SC-FEED-009 | Bản đồ là placeholder tĩnh | REQ-FEED-005 | DOC-v1.0-02 §3.4 · §7 dòng 10 | Đang ở Chi tiết tin | Bấm/kéo/zoom vào khung "Bản đồ · ~X km" | Khung là placeholder tĩnh — KHÔNG mở bản đồ thật, KHÔNG zoom/pan; chỉ hiện khoảng cách ước tính | P3 | UI | NEW |
+| SC-FEED-009 | Bản đồ thật ở Chi tiết tin *(đảo 2026-09-16 — BA)* | REQ-FEED-005 | DOC-v1.0-02 §3.4 · BA trả lời `C-FEED-01(b)` 2026-09-16 | Đang ở Chi tiết tin của 1 tin có điểm lấy/giao thuộc văn phòng **có** location | Quan sát khung bản đồ | Hiển thị **ảnh bản đồ tĩnh có vẽ tuyến** từ điểm lấy tới điểm giao (không phải placeholder; ⛔ không test zoom/pan) + dòng "~X km" (⛔ không assert giá trị). `C-FEED-02` Resolved 2026-09-17. ⚠️ Given **chưa dựng được** — file toạ độ lỗi (`C-FEED-05`) | P3 | UI | NEW |
 | SC-FEED-010 | [GAP·bug] SĐT trước khi ghép | REQ-FEED-006 | DOC-v1.0-01 §A5 BR-CON-02 L78 · §D7 OPR-07 L343 | 1 tin ở trạng thái "Chờ ghép" (chưa ai nhận); tài khoản đang xem KHÔNG thuộc cặp ghép | Mở Chi tiết tin của tin đó, xem cụm "Người gửi" | KHÔNG hiển thị SĐT và KHÔNG có nút "Gọi" (BR-CON-02). ⚠ Dự kiến FAIL trên app hiện tại → log bug, KHÔNG sửa TC | P1 | Business Rule | NEW |
 | SC-FEED-011 | [GAP·bug] CTA với chủ tin | REQ-FEED-007 | DOC-v1.0-01 §D7 OPR-05 L341 · DOC-v1.0-02 §3.3 đoạn 5 | Tài khoản A là chủ tin của 1 tin đang Chờ ghép | A mở Chi tiết tin của chính tin mình đăng | Nút "Tôi mang giúp được" KHÔNG hiển thị (OPR-05). ⚠ Dự kiến FAIL trên app hiện tại → log bug | P1 | Business Rule | NEW |
 | SC-FEED-012 | [GAP·bug] CTA với người nhận của đơn | REQ-FEED-007 | DOC-v1.0-02 §7 dòng 9 | Tài khoản C là **Người nhận** được khai trong 1 tin đang Chờ ghép | C mở Chi tiết tin của tin đó | Nút "Tôi mang giúp được" KHÔNG hiển thị. ⚠ Dự kiến FAIL → log bug | P2 | Business Rule | NEW |
-| SC-FEED-013 | [GAP] Empty state Bảng tin | REQ-FEED-009 | DOC-v1.0-06 KP-05 §3 · C-ORD-06 | Cộng đồng không có tin NEED nào ở Chờ ghép (hoặc mọi tin đã ghép nên bị ẩn) | Mở tab "Bảng tin" | GHI NHẬN hiển thị thực tế; ⛔ KHÔNG assert text — chưa có đặc tả (C-ORD-06 Open) | P3 | UI | NEW |
+| SC-FEED-013 | [GAP] Empty state Bảng tin | REQ-FEED-009 | DOC-v1.1-01 §8.17.1 EMP-04 · C-ORD-06 (Resolved 2026-09-15 ở `ACT`) | Cộng đồng không có tin NEED nào ở Chờ ghép (hoặc mọi tin đã ghép nên bị ẩn) | Mở tab "Bảng tin" | Hiện "Chưa có tin nào" + CTA "Đăng tin" (`EMP-04`). Bảng tin **1 danh sách, không tab** (`C-FEED-03` Resolved 2026-09-17). ⚠️ Câu "gợi ý mở rộng khu vực" chờ `C-HOME-04` vòng 2 — chỉ ghi nhận | P3 | UI | NEW |
+| SC-FEED-015 | Bản đồ khi văn phòng thiếu toạ độ | REQ-FEED-005 | BA trả lời `C-FEED-02` 2026-09-17 · DOC-v1.1-04 | Đang ở Chi tiết tin của 1 tin có điểm lấy hoặc giao là văn phòng **thiếu** lat/lng trong `location_address_catalog.xlsx` | Quan sát khung bản đồ | Hiện **placeholder + thông báo** thay cho ảnh bản đồ; khoảng cách hiện **"0km"**; màn không vỡ. ⚠️ BA: lỗi data, *"có thể không cần viết TC"* ⇒ P3, `generate-tc` được bỏ (ghi lý do). Text thông báo + nhánh chỉ 1 điểm thiếu chờ `C-FEED-05` | P3 | UI | NEW |
 | SC-FEED-014 | Back về Bảng tin | REQ-FEED-003 | DOC-v1.0-02 §2 | Đang ở Chi tiết tin mở từ Bảng tin | Bấm nút quay lại (←) | Về đúng màn Bảng tin, giữ vị trí danh sách | P3 | Functional | NEW |
 
 #### Source Detail per Scenario (verbatim quotes)
@@ -109,7 +110,10 @@ updated: 2026-09-14
 
 **Analyst Note:** Doc **không nói ảnh mặc định là ảnh gì** ⇒ Then assert *có placeholder + layout không vỡ*, ⛔ không assert nội dung/ảnh cụ thể (`§Custom Rules §10.1`). Given cần Fixture: 1 tin cố ý đăng không kèm ảnh — dễ tạo vì ảnh là trường tuỳ chọn (`D8.1`).
 
-##### SC-FEED-009 — Khung bản đồ là placeholder tĩnh
+##### SC-FEED-009 — Khung bản đồ ~~là placeholder tĩnh~~ → ảnh tĩnh có vẽ tuyến *(2026-09-17)*
+
+⛔ **Cập nhật 2026-09-17 — Analyst Note dưới HẾT HIỆU LỰC:** BA chốt `C-FEED-01(b)` + `C-FEED-02(c)` — **ảnh bản đồ tĩnh có vẽ tuyến**; thiếu toạ độ ⇒ `SC-FEED-015`.
+
 
 **Source Quote:** *(quote đầy đủ ở `requirement_traceability.md §2 REQ-FEED-005`)*
 
@@ -144,6 +148,14 @@ updated: 2026-09-14
 **Source Location:** `DOC-v1.0-06 KP-05 §3 · bảng "6 nhóm case chưa có nguồn tài liệu" · dòng 4` · liên quan `C-ORD-06`
 
 **Analyst Note:** Derivation: `C-ORD-06` mở cho 3 màn (Hoạt động · Quà đã nhận · Thông báo); Bảng tin là **màn thứ tư** cũng có trạng thái rỗng — đặc biệt vì `OPR-03` ẩn tin đã ghép nên bảng tin **có thể rỗng ngay cả khi hệ thống đang có nhiều đơn**. Ghi nhận, ⛔ không assert text.
+
+##### SC-FEED-015 — Bản đồ khi văn phòng thiếu toạ độ *(NEW 2026-09-17)*
+
+**Source Quote (BA, `CL-hoi-BA-v1.1.xlsx` sheet `FEED`, `C-FEED-02`):**
+> "a, hiển placehoder + thông báo (nhưng case này do data sai thôi có thể ko cần viết tc đâu)
+> b. thiếu thì hiện 0km , tính từ điểm nhận đến điểm giao"
+
+**Analyst Note:** Nhánh negative của `REQ-FEED-005` — tách SC theo Scenario Sufficiency Rule. Giá trị "0km" cố định ⇒ assert được. Given dựa file `DOC-v1.1-04` (61 dòng thiếu lat/lng). BA cho phép không viết TC ⇒ P3.
 
 ##### SC-FEED-014 — Back về Bảng tin
 

@@ -15,6 +15,13 @@
 | REQ-HOME-012 | `FR17`, `BR17-01..03` | §8.17, §8.17.1 (trang 51) | SC-HOME-025, SC-HOME-026, SC-HOME-027 (NEW) | — |
 | REQ-HOME-013 | `NFR01` | §9 (trang 53) | SC-HOME-028 (NEW) | — |
 
+> **Cập nhật 2026-09-17 — REQ v1.0 có SC thay đổi theo câu trả lời BA** (REQ quote giữ ở `v1.0/HOME-trang-chu/requirement_traceability.md`, ⛔ không chép lại):
+>
+> | REQ ID (v1.0) | Thay đổi SC | Clarification |
+> |---|---|---|
+> | REQ-HOME-004 (card "Đóng góp của bạn") | SC-HOME-008 (MODIFIED) · SC-HOME-029, SC-HOME-030 (NEW) | C-HOME-06 (Partially — vòng 2) |
+> | REQ-HOME-005 (section "Đơn của tôi") | SC-HOME-010 (DEPRECATED → thay bằng SC-HOME-026 của REQ-HOME-012) | C-HOME-05 (Resolved 2026-09-17) |
+
 ## 2. Requirement Source Detail (verbatim quotes — home của REQ quote)
 
 ### REQ-HOME-011 · "Tin mới" hiển thị đúng 5 tin, loại trừ MATCHED/EXPIRED/của chính mình

@@ -6,12 +6,12 @@ version: v1.1
 sprint: 1
 module: TS
 counts:
-  cl: 1
+  cl: 3
   risk: 7
-  cl_open: 0
+  cl_open: 2
   cl_resolved: 1
 status: ANALYZED
-updated: 2026-09-15
+updated: 2026-09-16
 ---
 
 # Risk Assessment — v1.1 · Module TS (DELTA)
@@ -33,7 +33,42 @@ updated: 2026-09-15
 
 ## Clarifications (home của CL quote — layout v2)
 
-> Không có CL mới ở lượt delta này — `FR16` được PRD đặc tả đầy đủ (Description/Actor/Trigger/Pre-Post-Conditions/6 BR/2 AC/field spec), không có vùng mơ hồ cần hỏi BA. 5 CL của v1.0 (nếu có) giữ nguyên trạng thái — xem `v1.0/TS-trust-safety/risk_assessment.md`.
+> Lượt delta 2026-09-15 không mở CL mới. ⚠️ **Rà sâu 2026-09-16 phát hiện nhận định *"FR16 không có vùng mơ hồ"* là chưa đúng** — có 2 chỗ PRD tự mâu thuẫn / thiếu, mở 2 CL dưới. CL của v1.0 giữ nguyên — xem `v1.0/TS-trust-safety/risk_assessment.md`.
+
+| CL ID | Nội dung | Status | Mở | REQ/SC liên quan |
+|-------|----------|--------|-----|-------------------|
+| C-TS-02 | Nút "Báo cáo sự cố" hiện ở **trạng thái** nào; gửi form có **tự chuyển đơn sang INCIDENT** không | 🔴 **Open (mới 2026-09-16)** | 2026-09-16 | REQ-TS-006, SC-TS-015, SC-CNL-006, SC-CNL-015, SC-DLV-034 |
+| C-TS-03 | Trường prefill: chỉ mã đơn (`BR16-02`) hay 9 trường (`AC-31.1.01`); mã đơn chỉ đọc hay sửa được (`BR16-03`); Custom Tabs có làm được nút "Thử lại"/"Quay lại đơn hàng" | 🔴 **Open (mới 2026-09-16)** | 2026-09-16 | REQ-TS-006, SC-TS-008, SC-TS-012, SC-TS-014 |
+
+### C-TS-02 · Phạm vi hiển thị nút + hệ quả trạng thái *(OPEN — mới 2026-09-16)*
+
+📍 `DOC-v1.1-01 §6.2 AC-31.1.01 · trang 29` · `§8.12.2 dòng INCIDENT · trang 45` · `§8.12.3 · trang 46` · `§5.2 S-14 · trang 12` ⟷ BA trả lời `C-CNL-03` 2026-09-16
+
+> `AC-31.1.01`: "Given: Người dùng đang ở màn theo dõi đơn với vai trò bất kỳ."
+
+> `§8.12.2`: "INCIDENT | Có sự cố | Có báo cáo sự cố sau khi đơn đã sang IN_TRANSIT | Bất kỳ bên nào | (chờ admin hỗ trợ, không tự về COMPLETED)"
+
+> `§8.12.3`: "IN_TRANSIT | Theo dõi · Báo sự cố | … Báo sự cố | Theo dõi · Báo sự cố" · "DELIVERED | Theo dõi · Báo sự cố | (không còn thao tác) | "Xác nhận đã nhận hàng""
+
+> S-14: "…đơn **có thể** chuyển INCIDENT để admin hỗ trợ dựa trên nhật ký + ảnh."
+
+↳ **Ghi chú:** (a) `AC-31.1.01` nói nút có ở màn theo dõi đơn **mọi trạng thái** (vai bất kỳ), nhưng `§8.12.3` chỉ liệt kê "Báo sự cố" ở **IN_TRANSIT** (3 vai) và **DELIVERED** (chỉ Sender) — còn POSTED/MATCHED/COMPLETED/đơn đã đóng thì sao? (b) Từ điển nói INCIDENT = *"có báo cáo sự cố sau IN_TRANSIT"* ⇒ gửi form là **tự động** chuyển INCIDENT; nhưng S-14 viết *"có thể"*, và BA vừa nói *"dev hỗ trợ tay, không có tool"* — form Google **không gọi được API** của app ⇒ gần như chắc chắn **không tự chuyển**. **Hỏi:** ai/cái gì đưa đơn **vào** INCIDENT? Nếu không ai ⇒ trạng thái INCIDENT **không bao giờ xuất hiện** trên app ⇒ `SC-CNL-015`/`SC-DLV-034` **out of scope**. (c) Loại yêu cầu "Lỗi ứng dụng"/"Góp ý" (không phải sự cố đơn) có làm đơn đổi trạng thái không?
+
+### C-TS-03 · Prefill form + khả thi kỹ thuật của WebView *(OPEN — mới 2026-09-16)*
+
+📍 `DOC-v1.1-01 §8.16.1 BR16-01 / BR16-02 / BR16-03 / BR16-04 · trang 50` · `§8.16.2 dòng "Mã đơn hàng" · trang 51` · `§6.2 AC-31.1.01 / AC-31.2.01 · trang 29-30`
+
+> `BR16-02`: "Ứng dụng tự đẩy mã đơn hàng sang google form"
+
+> `AC-31.1.01`: "Mã đơn, vai trò, trạng thái đơn, MNV, họ tên, phòng ban, số điện thoại, phiên bản ứng dụng và hệ điều hành được điền sẵn."
+
+> `BR16-03`: "Trường prefill là dạng câu trả lời ngắn, người dùng vẫn sửa được — đối chiếu MNV ở khâu xử lý."
+
+> `§8.16.2`: "Mã đơn hàng | Có | Chỉ đọc · tự điền từ ứng dụng | Không sửa"
+
+> `BR16-01`: "Mở WebView toàn màn hình (SFSafariViewController trên iOS · Chrome Custom Tabs trên Android) có thanh URL chỉ đọc và nút đóng."
+
+↳ **Ghi chú:** 3 mâu thuẫn trong cùng `FR16`: (a) **Số trường prefill**: `BR16-02` chỉ nói **mã đơn**, `AC-31.1.01` liệt kê **9 trường** — demo 2026-09-15 (`TS_02`) cho thấy bao nhiêu? (b) **Mã đơn**: `§8.16.2` *"Chỉ đọc · Không sửa"* ⟷ `BR16-03` *"trường prefill… người dùng vẫn sửa được"* — Google Form **không khoá được** câu trả lời ngắn đã prefill ⇒ `SC-TS-014` assert chiều nào? (c) `BR16-01` dùng **Custom Tabs / SFSafariViewController** (trình duyệt hệ thống) — app **không vẽ được** màn lỗi + nút "Thử lại" bên trong (`AC-31.2.01`), và nút **"Quay lại đơn hàng"** nằm trên trang xác nhận của Google Form thì **không điều khiển được app**. **Hỏi BA/Dev:** đang build bằng WebView nhúng hay Custom Tabs? Nút "Thử lại" và "Quay lại đơn hàng" do **app** hay **Google Form** hiển thị? ⛔ Chưa chốt thì `SC-TS-012`/`SC-TS-014` ghi nhận.
 
 ## Vibe-check bổ sung 2026-09-15 — xác nhận luồng end-to-end trên demo
 

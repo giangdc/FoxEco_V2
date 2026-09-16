@@ -57,7 +57,7 @@ updated: 2026-09-15
 > "NTF-06 | ... | "Đơn đã hoàn tất — cảm ơn bạn!"" (BRD `DOC-v1.0-01` §D6 L324) — mâu thuẫn với `DOC-v1.0-06 KP-07` hàng #6 (Figma/PRD-demo: "Đơn đã hoàn thành — đánh giá ngay")
 
 **Source Quote (new):**
-> "NTF-06 | Người nhận xác nhận đã nhận hàng (COMPLETED) | Người gửi · Người vận chuyển | "Đơn đã hoàn tất — cảm ơn bạn!""
+> ↪ *Quote `NTF-06` — home ở `requirement_traceability.md` · `REQ-NTF-003` (không chép lại — tránh lặp home, health-check G-03 2026-09-16)*
 
 **Source Location:** `DOC-v1.1-01 §8.13.1 · bảng "Danh mục thông báo" · dòng NTF-06 · page 48`
 
@@ -100,9 +100,9 @@ updated: 2026-09-15
 | SC-NTF-007 | NTF-09 — tin quá hạn | NTF | v1.0 | P2 | → như trên |
 | SC-NTF-009 | Nhóm theo mốc thời gian | NTF | v1.0 | P2 | → như trên |
 | SC-NTF-010 | Chấm đỏ theo từng item | NTF | v1.0 | P3 | → như trên |
-| SC-NTF-011 | [GAP] Cơ chế "Đánh dấu đã đọc" | NTF | v1.0 | P3 | → như trên |
+| SC-NTF-011 | [GAP] Cơ chế "Đánh dấu đã đọc" | NTF | v1.0 | P3 | → như trên — ✅ **2026-09-16 BA: mark-all** (`C-NTF-03` Resolved) ⇒ hết `[GAP]`, Then assert bấm 1 lần → **mọi** thông báo về đã đọc, không còn chấm đỏ nào |
 | SC-NTF-012 | Scroll / lazy-load | NTF | v1.0 | P3 | → như trên |
-| SC-NTF-013 | Chuông đồng bộ số chưa đọc | NTF | v1.0 | P2 | → như trên |
+| SC-NTF-013 | Chuông đồng bộ số chưa đọc | NTF | v1.0 | P2 | → như trên — ⚠️ **2026-09-16:** bước "đọc hết" = bấm "Đánh dấu đã đọc" (mark-all, `C-NTF-03`) ⇒ assert badge chuông về 0/ẩn ngay sau đó |
 | SC-NTF-015 | [GAP] Empty state màn Thông báo | NTF | v1.0 | P3 | → như trên |
 | SC-NTF-016 | Nút back màn Thông báo | NTF | v1.0 | P3 | → như trên |
 

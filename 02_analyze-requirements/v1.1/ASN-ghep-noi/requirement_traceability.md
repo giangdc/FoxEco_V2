@@ -35,7 +35,7 @@
 
 ---
 
-### REQ-ASN-008 · Trần thông báo khớp/ngày theo người dùng (đảo kết luận v1.0) *(MODIFIED)*
+### REQ-ASN-008 · Trần thông báo khớp — 5 thông báo / 1 tin OFFER, KHÔNG theo ngày *(MODIFIED · đảo lần 2 — BA 2026-09-16)*
 📍 `DOC-v1.1-01 §8.4 "FR04 — Khớp tuyến OFFER ↔ NEED" BR04-04 · page 38`  ·  Clarif: —
 
 **Source Quote (cũ — v1.0, ĐÃ BA ĐẢO KẾT LUẬN NGÀY 2026-07-29, giờ PRD đảo LẠI LẦN NỮA):**
@@ -45,6 +45,8 @@
 > "BR04-04 | Trần số thông báo khớp mỗi ngày cho một người dùng do admin cấu hình."
 
 ↳ **Ghi chú:** ⛔ **ĐẢO NGƯỢC** kết luận đã được BA chốt ở v1.0 (`KB-ASN-03`, 2026-07-29: "tính riêng theo từng tin OFFER, KHÔNG cộng dồn theo ngày"). PRD v1.1 lại quy định **trần theo NGÀY cho MỘT NGƯỜI DÙNG** (không phải theo từng tin OFFER), và giá trị cụ thể "do admin cấu hình" — KHÔNG có số cứng trong tài liệu. Xem `CHANGELOG.md §2 Kết luận bị đảo`. Vì không có số cứng, đây là **Open non-blocking mới**: cần hỏi vận hành/admin giá trị cấu hình thật trước khi viết TC boundary chính xác.
+
+⛔ **Cập nhật 2026-09-16 — đoạn trên HẾT HIỆU LỰC, đừng trích lại:** BA trả lời `C-NTF-02` 2026-09-16 — *"Không có ngưỡng ngày, tài liệu bị dư → mỗi lần đăng Tôi nhận giao hàng thì bắn 5 thông báo/ 1 tin đăng, không có giới hạn ngày"*. Hiện hành: `BR04-04` **dư**, rule là **5 thông báo cho mỗi tin OFFER**, không có trần theo ngày; `RISK-ASN-08` **Closed**. Chi tiết còn thiếu → `C-ASN-04` (`risk_assessment.md`).
 
 ---
 

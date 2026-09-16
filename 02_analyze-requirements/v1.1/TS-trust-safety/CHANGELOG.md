@@ -14,10 +14,10 @@ doc_source:
 id_range:
   req: "REQ-TS-006 (NEW)"
   sc: "SC-TS-008..015 (NEW)"
-  cl: "(không mở CL mới)"
+  cl: "(không mở CL mới) + C-TS-02, C-TS-03 (NEW 2026-09-16)"
   risk: "RISK-TS-06, RISK-TS-07 (NEW)"
 status: ANALYZED
-updated: 2026-09-15
+updated: 2026-09-16
 ---
 
 # Changelog — Module TS (`TS`)
@@ -28,6 +28,7 @@ updated: 2026-09-15
 
 | Ngày | Loại | Thay đổi | Nguồn / Lý do | Ảnh hưởng |
 |---|---|---|---|---|
+| 2026-09-16 | ĐÍNH CHÍNH | **Rà sâu lại `FR16` theo yêu cầu QC** — nhận định lượt delta *"FR16 đặc tả đầy đủ, không có vùng mơ hồ cần hỏi BA"* **chưa đúng**. **Mở 2 CL:** `C-TS-02` (nút Báo cáo sự cố hiện ở trạng thái nào — `AC-31.1.01` ⟷ `§8.12.3`; gửi form có tự chuyển INCIDENT không — BA `C-CNL-03` nói dev xử lý tay) · `C-TS-03` (prefill 1 trường `BR16-02` ⟷ 9 trường `AC-31.1.01`; mã đơn chỉ đọc `§8.16.2` ⟷ sửa được `BR16-03`; Custom Tabs không vẽ được nút "Thử lại"/"Quay lại đơn hàng") | Rà chéo `§8.16` với `§8.12.2/§8.12.3` + câu trả lời BA `C-CNL-03` | `counts` cl 1→3; `SC-TS-012`/`014`/`015` hạ phần treo xuống ghi nhận; nếu INCIDENT không bao giờ xuất hiện ⇒ `SC-CNL-015`/`SC-DLV-034` out of scope |
 | 2026-09-15 | UPDATE | **DELTA v1.1** — PRD chính thức (`DOC-v1.1-01`) đưa tính năng "Báo cáo sự cố & hỗ trợ" (`FR16`) hoàn toàn mới vào scope, đảo ngược kết luận `C-CNL-01` (v1.0: màn này out of scope) **chỉ trong phạm vi `TS` sở hữu**. +1 REQ mới (`REQ-TS-006`), +8 SC mới (`SC-TS-008..015`) phủ happy path/validation/boundary ảnh/mất mạng/vòng đời phiên/field prefill/đa vai trò. Module có test_data_catalog lần đầu (trước đây module log-only, không có form) | `DOC-v1.1-01` §8.16 | Module TS từ "chỉ log + gap ghi nhận" (7 SC v1.0) sang có tính năng UI đầy đủ test được (8 SC mới) |
 | 2026-09-15 | UPDATE | Bổ sung UI reference (`00_input/v1.1/design/TS_01..05`) — verify **toàn bộ end-to-end** luồng "Báo cáo sự cố" trên demo: trigger button (3 vai), form + trần 5 ảnh (`SC-TS-011`), validation nút Gửi disable/enable (`SC-TS-009`), success state đúng verbatim (`SC-TS-008`). Không có CL để resolve (module không mở CL mới ở v1.1) — mục đích là nâng độ tin cậy trước `generate-tc` | Vibe-check thủ công qua Playwright, theo yêu cầu QC GiangDC2 2026-09-15 | `SC-TS-008/009/010/011` sẵn sàng cho `generate-tc` với độ tin cậy cao nhất trong đợt rà này |
 | 2026-09-15 | ĐÍNH CHÍNH | Frontmatter `counts` P2/P3 = 6/7 ⇒ **5/8** (v1.0 CARRIED 1/2/4 + v1.1 NEW 1/3/4). Bổ sung frontmatter `counts:` (cl/risk) và `## Tổng quan` cho `risk_assessment.md` — 2 phần bắt buộc theo template mà lượt DELTA bỏ sót | `health-check` 2026-09-15 G-02 + structure-lock (`risk-assessment-template.md`) | Tổng SC 15 không đổi. `risk_assessment.md` giờ có nguồn canonical CL/RISK đọc được bằng máy (`cl: 1` · `risk: 7`) |
@@ -48,5 +49,5 @@ updated: 2026-09-15
 
 | # | Nợ | Trạng thái | Đích xử lý |
 |---|---|---|---|
-| 1 | 🔴 `RISK-TS-06` — `C-CNL-01` cần được rà lại chính thức ở module `CNL` và cross-ref `REQ-DLV-015` ở module `DLV` | Chưa xử lý — 2 module đó chưa nằm trong scope lượt delta này | Khi chạy `/analyze-requirements --delta` cho `CNL`/`DLV`, cập nhật `C-CNL-01` dựa trên `DOC-v1.1-01 §8.16` |
+| 1 | 🔴 **`C-TS-02` + `C-TS-03`** (mới 2026-09-16) — phạm vi nút + nguồn gốc trạng thái INCIDENT; prefill và khả thi WebView | PRD tự mâu thuẫn trong `FR16` và với `§8.12` | Hỏi BA + Dev (sheet `TS`). *(Nợ cũ `RISK-TS-06` đã xử lý ở lượt delta `CNL` 2026-09-15 — `C-CNL-01` có bản v1.1)* |
 | 2 | 🟡 `RISK-TS-07` — quy trình đối chiếu MNV/liên hệ lại phía Admin không test được qua UI | Ngoài phạm vi app end-user | Ghi rõ trong test report nếu execute; không mở SC mới |

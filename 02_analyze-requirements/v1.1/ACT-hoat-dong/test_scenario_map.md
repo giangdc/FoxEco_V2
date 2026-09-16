@@ -35,7 +35,7 @@ updated: 2026-09-15
 - Tổng số scenarios (tính tới v1.1): **17** (NEW: 3, MODIFIED: 6, CARRIED: 8)
 - Phân bổ priority: P1: 0 | P2: 11 | P3: 6
 - Delta lớn nhất: **`C-ORD-06` đóng** — CL lan rộng nhất dự án (5 màn / 6 SC) có home canonical ở module này; `SC-ACT-012`/`SC-ACT-014` hết `[GAP]`, nâng P3 → P2.
-- ⚠️ Delta gây tranh cãi nhất: **nhãn 2 tab PRD ≠ app** ⇒ `C-ACT-02` mở mới, `SC-ACT-001` tạm hạ phần nhãn xuống ghi nhận.
+- ⚠️ Delta gây tranh cãi nhất: **nhãn 2 tab PRD ≠ app** ⇒ `C-ACT-02` mở 2026-09-15 → ✅ **Resolved 2026-09-16 theo app** (PRD chưa cập nhật); `SC-ACT-001` assert cứng nhãn app.
 
 ## Scenarios — NEW & MODIFIED (chi tiết đầy đủ)
 
@@ -48,7 +48,7 @@ updated: 2026-09-15
 | SC-ACT-017 | [GAP] Điều kiện hiện empty state dựa cờ rỗng, không dựa null field | REQ-ACT-010 | DOC-v1.1-01 §8.17 Pre-Conditions · §8.17.2 BR17-02 | Tài khoản trắng; có thể throttle mạng về 3G chậm | Mở tab rỗng và quan sát chuỗi trạng thái hiển thị từ lúc vào màn | Phân biệt rõ **đang tải** ⟷ **không có dữ liệu**; ⛔ không skeleton vô hạn. GHI NHẬN GAP: điều kiện *"cờ dữ liệu rỗng"* là rule **backend**, không verify trực tiếp qua UI được | P3 | UI | NEW |
 | SC-ACT-012 | Empty state tab "Đang chạy" — text + CTA chính thức *(hết gap)* | REQ-ACT-008 | DOC-v1.1-01 §8.17.1 EMP-05 | Tài khoản **chưa có đơn nào đang chạy** | Mở "Đơn của tôi" → tab đang-chạy | Hiện **đúng chuỗi** "Không có đơn đang thực hiện" **và có đúng 1 CTA** nhãn "Đăng tin gửi hàng"; kèm icon nét mảnh màu neutral + 1 dòng giải thích (`BR17-01`) | P2 | UI | MODIFIED |
 | SC-ACT-014 | Empty state tab "Hoàn tất" — text + **ẩn khối lịch sử** *(hết gap)* | REQ-ACT-008 | DOC-v1.1-01 §8.17.1 EMP-06 | Tài khoản **chưa có đơn hoàn tất nào** | Mở "Đơn của tôi" → tab hoàn-tất | Hiện **đúng chuỗi** "Chưa có đơn hoàn tất"; **KHÔNG có CTA** (khác hẳn tab kia); **khối lịch sử bị ẩn hẳn**, không hiện khung rỗng | P2 | UI | MODIFIED |
-| SC-ACT-001 | Hai tab tồn tại — nhãn tạm ghi nhận do PRD ≠ app | REQ-ACT-001 | DOC-v1.1-01 §8.17.1 EMP-05/EMP-06 · §6.2 AC-09.1.01 | Đã đăng nhập, mở màn "Đơn của tôi" | Đọc số lượng tab và nhãn từng tab | **Có đúng 2 tab.** Nhãn: GHI NHẬN giá trị thực tế trên app và đối chiếu PRD ("Đang chạy" / "Hoàn tất"). ⛔ **KHÔNG assert cứng nhãn** cho tới khi `C-ACT-02` được chốt | P2 | UI | MODIFIED |
+| SC-ACT-001 | Hai tab + tên màn — nhãn theo app *(hết ghi nhận 2026-09-16)* | REQ-ACT-001 | DOC-v1.1-01 §8.17.1 EMP-05/EMP-06 · §6.2 AC-09.1.01 · BA trả lời `C-ACT-02` 2026-09-16 | Đã đăng nhập, bấm tab **"Hoạt động"** ở bottom nav | Đọc tiêu đề màn, số lượng tab và nhãn từng tab | Tiêu đề màn **"Đơn của tôi"**; có đúng **2 tab** nhãn **"Đang diễn ra"** và **"Đã hoàn thành"**; nhãn bottom nav là **"Hoạt động"** (PRD ghi "Đang chạy"/"Hoàn tất" là **PRD chưa cập nhật** — ⛔ không assert theo PRD) | P2 | UI | MODIFIED |
 | SC-ACT-005 | Data tab kết thúc — gồm cả EXPIRED và RETURNED | REQ-ACT-004 | DOC-v1.1-01 §6.2 AC-09.1.01 · AC-24.2.01 | Tài khoản có đủ 3 loại đơn kết thúc: `COMPLETED` · `EXPIRED` · `RETURNED` | Mở tab kết thúc, đối chiếu từng đơn | Cả **3 loại** đều hiện trong tab này; đơn `EXPIRED` có badge "Hết hạn" (`AC-09.1.01` chốt vị trí là tab kết thúc), đơn `RETURNED` có lý do hoàn hàng | P2 | Functional | MODIFIED |
 | SC-ACT-008 | Card "Hết hạn" — lý do đúng chuỗi chính thức | REQ-ACT-005 | DOC-v1.1-01 §8.5.1 BR05-03 · §6.2 AC-09.1.01 | Có 1 tin NEED quá "Đến ngày" mà **vẫn ở POSTED** (chưa ai ghép) | Mở tab kết thúc, mở card của tin đó | Badge "Hết hạn" kèm **đúng chuỗi** lý do "Không có ai nhận mang giúp trong thời gian đăng" | P3 | UI | MODIFIED |
 | SC-ACT-013 | ★★★★★ leftover trên card — nay là defect | REQ-ACT-009 | DOC-v1.1-01 §8.14.1 BR14-03 · §4 SCOPES Out of Scope | Tab kết thúc có ≥ 1 đơn `COMPLETED` | Rà toàn bộ card đơn ở tab kết thúc | **KHÔNG** có ★/điểm/tier/chỉ số môi trường trên card. ⚠ Nếu còn ★ → **log bug** (`BR14-03` + §4 loại trừ vĩnh viễn), ⛔ KHÔNG diễn giải là "dấu vết phase sau" | P2 | Business Rule | MODIFIED |
@@ -80,22 +80,24 @@ updated: 2026-09-15
 ##### SC-ACT-012 / SC-ACT-014 — `EMP-05` / `EMP-06`: text chính thức và **bất đối xứng CTA**
 📍 `DOC-v1.1-01 §8.17.1 bảng Danh mục empty state · trang 51`
 
-> "EMP-05 | Đơn của tôi — tab Đang chạy | "Không có đơn đang thực hiện" | "Đăng tin gửi hàng""
+> ↪ *Quote `EMP-05` — home ở `requirement_traceability.md` · `REQ-ACT-008` (không chép lại — tránh lặp home, health-check G-03 2026-09-16)*
 
-> "EMP-06 | Đơn của tôi — tab Hoàn tất | "Chưa có đơn hoàn tất" — ẩn luôn khối lịch sử | —"
+> ↪ *Quote `EMP-06` — home ở `requirement_traceability.md` · `REQ-ACT-008` (không chép lại — tránh lặp home, health-check G-03 2026-09-16)*
 
 **Analyst Note (diff):** ⭐ **Đây là chỗ `C-ORD-06` được đóng, và home canonical của CL đó chính là module này.** CL từng `Resolved 2026-07-28` rồi **REVERT 2026-07-29** vì lần chốt không kèm bằng chứng — nay nguồn là tài liệu đã phê duyệt, liệt kê đủ 8 dòng ⇒ bền. Hai SC hết `[GAP]`, nâng **P3 → P2** (từ *ghi nhận text là gì* sang *assert verbatim*). **Hai bất đối xứng bắt buộc phải assert:** (a) `EMP-05` **có** CTA `"Đăng tin gửi hàng"`, `EMP-06` **không** có — hai tab cạnh nhau khác nhau có chủ đích, và `BR17-01` viết *"tối đa một CTA"* nên "không có" là lựa chọn hợp lệ chứ không phải thiếu; (b) `EMP-06` có mệnh đề riêng **"ẩn luôn khối lịch sử"** — hành vi **ngoài** cấu trúc chuẩn `BR17-01`, chỉ tab này có, và là thứ dễ bị bỏ sót nhất (khung rỗng vẫn hiện thì trông "gần đúng"). ⚠️ Nhãn tab trong 2 dòng này là **"Đang chạy"/"Hoàn tất"** — xung đột với app, xem `SC-ACT-001` và `C-ACT-02`; 2 SC này **assert text bên trong empty state**, không assert nhãn tab.
 
 ---
 
-##### SC-ACT-001 — Nhãn 2 tab: PRD ≠ app, tạm hạ xuống ghi nhận
+##### SC-ACT-001 — Nhãn 2 tab: theo app *(BA chốt 2026-09-16)*
 📍 `DOC-v1.1-01 §8.17.1 EMP-05 / EMP-06 · trang 51` · `§6.2 AC-09.1.01 · trang 19`
 
 > `EMP-05`: "Đơn của tôi — tab **Đang chạy**" · `EMP-06`: "Đơn của tôi — tab **Hoàn tất**"
 
-> `AC-09.1.01`: "Hiện badge "Hết hạn" ở tab **Hoàn tất** kèm lý do…"
+> ↪ *Quote `AC-09.1.01` — home ở `risk_assessment.md` · `C-ACT-02` (không chép lại — tránh lặp home, health-check G-03 2026-09-16)*
 
 **Analyst Note (diff):** PRD dùng **"Đang chạy" / "Hoàn tất"** nhất quán ở **3 chỗ độc lập** ⇒ không phải lỗi đánh máy. App STG (`KB-ORD-07`, quan sát 2026-07-27) hiển thị **"Đang diễn ra" / "Đã hoàn thành"**. Theo `Project_rule §Custom Rules §10.1` — *UI phải khớp Tài liệu mới được viết TC* — ⛔ **không được tự chọn bên nào**: chọn PRD ⇒ TC FAIL hàng loạt trên app hiện tại vì lý do không phải bug nghiệp vụ; chọn app ⇒ hợp thức hoá việc app lệch đặc tả đã phê duyệt. ⇒ SC giữ phần **chắc chắn** (*có đúng 2 tab*) và **hạ phần nhãn xuống ghi nhận**, mở `C-ACT-02`. Cùng vấn đề với **tên màn**: PRD gọi *"Đơn của tôi"*, v1.0 ghi nhận bottom nav là *"Hoạt động"* còn tiêu đề trong màn là *"Đơn của tôi"*.
+
+⛔ **Cập nhật 2026-09-16 — đoạn trên HẾT HIỆU LỰC, đừng trích lại:** BA chốt nhãn **theo app** (`C-ACT-02` Resolved) — Then hiện hành ở bảng SC phía trên: tiêu đề "Đơn của tôi", tab "Đang diễn ra"/"Đã hoàn thành", nav "Hoạt động".
 
 ---
 
@@ -129,10 +131,10 @@ updated: 2026-09-15
 | SC-ACT-003 | Cơ chế switch tab | ACT | v1.0 | P3 | → như trên |
 | SC-ACT-004 | Data tab đang-chạy | ACT | v1.0 | P2 | → như trên |
 | SC-ACT-006 | Completeness card đơn | ACT | v1.0 | P2 | → như trên |
-| SC-ACT-007 | Đơn "Đã huỷ" bị ẩn | ACT | v1.0 | P2 | → như trên — ⭐ dùng làm **đối chứng** cho `SC-ACT-015` |
-| SC-ACT-009 | Card "Hết hạn" không thao tác được | ACT | v1.0 | P3 | → như trên |
+| SC-ACT-007 | Đơn "Đã huỷ" bị ẩn | ACT | v1.0 | P2 | → như trên — ⭐ dùng làm **đối chứng** cho `SC-ACT-015`. ⚠️ **2026-09-16:** PRD §8.12.3 cho mọi vai *"Xem lý do"* đơn CANCELLED ⇒ rule *"ẩn"* có thể hết hiệu lực — chờ `C-ACT-04` |
+| SC-ACT-009 | Card "Hết hạn" không thao tác được | ACT | v1.0 | P3 | → như trên — ⚠️ **2026-09-16:** PRD §8.12.3 + `NTF-09` nói *"xem lý do · đăng lại"* ⇒ card có thể phải mở được — chờ `C-ACT-03` / `C-ORD-17` |
 | SC-ACT-010 | Tap card (≠ Hết hạn) | ACT | v1.0 | P2 | → như trên |
-| SC-ACT-011 | Đích tap card = "Theo dõi đơn" *(hết gap 2026-09-16)* | ACT | v1.0 | P3 | `C-ACT-01` Resolved qua vibe-check demo 2026-09-16 (`v1.1/ACT-hoat-dong/risk_assessment.md`) — assert cứng đích "Theo dõi đơn", không còn ghi nhận theo dữ liệu |
+| SC-ACT-011 | Đích tap card = "Theo dõi đơn" *(hết gap 2026-09-16)* | ACT | v1.0 | P3 | `C-ACT-01` Resolved qua demo + **BA xác nhận 2026-09-16**: tab Đang diễn ra → **"Theo dõi đơn"**; tab Đã hoàn thành, đơn **chưa tặng quà** (vai Sender) → màn **"Tặng quà"**. Các ô còn lại chờ `C-ACT-03` |
 
 > ℹ️ **8 SC CARRIED** — `SC-ACT-001` `005` `008` `012` `013` `014` KHÔNG ở bảng này vì đã MODIFIED (xem §NEW & MODIFIED ở trên).
 

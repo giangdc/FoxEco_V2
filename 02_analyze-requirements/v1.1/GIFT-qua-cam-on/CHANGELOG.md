@@ -14,10 +14,10 @@ doc_source:
 id_range:
   req: "REQ-GIFT-009 (NEW) + REQ-GIFT-001, REQ-GIFT-002, REQ-GIFT-004, REQ-GIFT-005, REQ-GIFT-007 (MODIFIED, giữ ID sprint 1)"
   sc: "SC-GIFT-013, SC-GIFT-014 (NEW) + SC-GIFT-002, SC-GIFT-003, SC-GIFT-006, SC-GIFT-007, SC-GIFT-008, SC-GIFT-011 (MODIFIED, giữ ID sprint 1)"
-  cl: "(không mở CL mới) — C-GIFT-01 và C-GIFT-03 chuyển Resolved, giữ ID sprint 1"
+  cl: "(không mở CL mới) — C-GIFT-01 và C-GIFT-03 chuyển Resolved, giữ ID sprint 1 + C-GIFT-04 (NEW 2026-09-16) · C-GIFT-02 → Resolved (2026-09-16)"
   risk: "RISK-GIFT-06 (NEW) + RISK-GIFT-02, RISK-GIFT-05 (Status/Why cập nhật, giữ ID sprint 1)"
 status: ANALYZED
-updated: 2026-09-15
+updated: 2026-09-17
 ---
 
 # Changelog — Module GIFT (`GIFT`)
@@ -28,6 +28,10 @@ updated: 2026-09-15
 
 | Ngày | Loại | Thay đổi | Nguồn / Lý do | Ảnh hưởng |
 |---|---|---|---|---|
+| 2026-09-17 | UPDATE | **Áp câu trả lời BA `C-GIFT-04`** → **Partially Resolved**: (a) mỗi đơn tặng **1 lần** rồi đóng ⇒ `SC-GIFT-005` vế *không gửi lại* có nguồn BA; (b) *"không nhé"* mơ hồ (không cho tặng sau ⟷ không có thời hạn) và nếu là *không cho tặng sau* thì **mâu thuẫn `C-ACT-01`**; (c)(d) trống ⇒ hỏi vòng 2 | BA trả lời `CL-hoi-BA-v1.1.xlsx` sheet `GIFT` 2026-09-17 | `counts` cl_open 1→0 (Partially); không đổi SC counts |
+| 2026-09-16 | ĐÍNH CHÍNH | **Sửa WARNING health-check G-03:** thay 1 trích dẫn bị chép lặp sang file khác bằng dòng trỏ `↪` về đúng home (REQ → `requirement_traceability.md` · CL → `risk_assessment.md`) | `/health-check` 2026-09-16 · QC GiangDC2 yêu cầu sửa | Nội dung quote không mất — chỉ còn 1 home |
+| 2026-09-16 | ĐÍNH CHÍNH | **Sửa theo health-check VERSION v1.1 (G-06b CRITICAL):** các đoạn register sống còn kể lại kết luận cũ của CL vừa Resolved (`C-GIFT-02` — Khuyến nghị #5) — đổi mục Khuyến nghị / heading / data catalog sang kết luận hiện hành và thêm dòng *"⛔ Cập nhật 2026-09-16 — đoạn trên HẾT HIỆU LỰC"* sau các ghi chú gốc (giữ nguyên nội dung cũ làm hồ sơ, không xoá lặng lẽ) | `/health-check` 2026-09-16 · QC GiangDC2 yêu cầu sửa | Không đổi `counts`, không đổi Then SC — chỉ đồng bộ chữ với CL section |
+| 2026-09-16 | UPDATE | **Áp câu trả lời BA** + rà `FR14`. (a) `C-GIFT-02` → **Resolved**: lỗi của demo, rule **back về màn hình trước đó**; `SC-GIFT-010` hết dạng chờ. (b) **Mở `C-GIFT-04`**: câu trả lời `C-ACT-01` (*"chưa tặng quà thì ra màn Tặng quà"*) ngầm định trạng thái đã/chưa tặng mà PRD không đặc tả — số lần tặng, tặng sau, đã tặng thì thấy gì, đích `NTF-06` | BA trả lời 2026-09-16 · rà kỹ theo yêu cầu QC GiangDC2 | `counts` cl 3→4; `SC-GIFT-010` regenerate TC |
 | 2026-09-15 | UPDATE | **DELTA v1.1 (lượt bù — module này bị bỏ sót ở lượt delta đầu).** `FR14` + 4 AC lấp gap dày nhất so với kích cỡ module: **3 SC dạng `[GAP]` hết gap cùng lúc** (`SC-GIFT-007` lịch sử nhận quà · `SC-GIFT-008` text empty state · `SC-GIFT-011` không sao/điểm/tier). Thêm **1 REQ / 2 SC NEW** cho trạng thái `RETURNED` (`BR14-04` + `AC-24.2.01`) — trạng thái hoàn toàn mới do `FR09` của `DLV` sinh ra. **2 CL đóng** (`C-GIFT-01`, `C-GIFT-03`) | `DOC-v1.1-01` §8.14/§8.14.1 · §6.2 AC-24/AC-26 · §8.17.1 EMP-08 · §4 SCOPES | 3 SC hết gap phải **regenerate TC** (Then đổi từ *ghi nhận* sang *assert khẳng định*), ⛔ không patch TC cũ; 2 SC mới **phụ thuộc `DLV`/`FR09`** — có thể `BLOCKED` |
 | 2026-09-15 | ĐÍNH CHÍNH | Phán quyết `C-GIFT-01` ở v1.0 — *"Out of scope **v1.0**"* — nay đọc được thành *"có thể có ở phase sau"*, khiến ★ leftover bị xem là dấu vết hợp lệ. Bản hiện hành: **out of scope VĨNH VIỄN** (§4 SCOPES, *"thay bằng quà ảo"*) | `DOC-v1.1-01` §4 SCOPES Out of Scope · §8.14.1 BR14-03 | `SC-ACT-013` (★ leftover ở `ACT`) chuyển từ *"[GAP] ghi nhận"* sang **defect đủ căn cứ log bug** |
 
@@ -50,5 +54,5 @@ updated: 2026-09-15
 | # | Nợ | Vì sao còn treo | Hướng xử lý |
 |---|---|---|---|
 | 1 | 🟡 **`SC-GIFT-013`/`SC-GIFT-014` chờ nhánh `FR09` trên STG** | Trạng thái `RETURNED` là mới ở v1.1; `RISK-DLV-08` cảnh báo app có thể chưa build lại theo PRD | Gộp lô chạy với `SC-DLV-053..056` sau khi `vibe-test` xác nhận nhánh hoàn hàng đã có (`RISK-GIFT-06`) |
-| 2 | 🔴 **`C-GIFT-02` vẫn Open** — nút back màn "Tặng quà" nhảy sang đơn khác | PRD không nhắc tới lỗi điều hướng này; nguồn vẫn là `QA-obs` 2026-07-29 | Tiếp tục xin BA xác nhận; `SC-GIFT-010` giữ nguyên dạng `[GAP·bug]` |
+| 2 | 🟡 **`C-GIFT-04` vòng 2** — đã chốt tặng 1 lần; còn: tặng sau được không (mâu thuẫn `C-ACT-01`) · nhãn nút sau khi tặng · NTF-06 mở màn nào | BA trả lời 2026-09-17 thiếu (c)(d), (b) mơ hồ | Hỏi BA vòng 2 (sheet `GIFT`) |
 | 3 | 🟡 **Tài khoản "trắng" cho `SC-GIFT-008`** | Cần tài khoản chưa từng nhận quà — khó tái tạo khi môi trường đã có dữ liệu từ lô khác | Cùng nhóm khó với `SC-HOME-025..027`; xin 1 tài khoản mới tinh dùng chung cho cả cụm empty state |

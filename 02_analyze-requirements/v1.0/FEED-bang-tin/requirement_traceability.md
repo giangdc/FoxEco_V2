@@ -15,8 +15,8 @@
 | REQ-FEED-001 | — (bảng §3.3 không đánh số) | `DOC-v1.0-02` §3.3 · §2 dòng "Tab Bảng tin" | SC-FEED-001, SC-FEED-002 | — |
 | REQ-FEED-002 | — | `DOC-v1.0-02` §3.3 · đoạn 3 | SC-FEED-003, SC-FEED-004 | — |
 | REQ-FEED-003 | — | `DOC-v1.0-02` §3.3 · đoạn 4 | SC-FEED-005, SC-FEED-014 | — |
-| REQ-FEED-004 | `US-D07` | `DOC-v1.0-02` §3.4 · §4.2 · `DOC-v1.0-01` §D1b L176 | SC-FEED-006, SC-FEED-007 | — |
-| REQ-FEED-005 | — | `DOC-v1.0-02` §3.4 · dòng "Lộ trình" · §7 dòng 10 | SC-FEED-009 | C-FEED-01 |
+| REQ-FEED-004 | `US-D07` | `DOC-v1.0-02` §3.4 · §4.2 · `DOC-v1.0-01` §D1b L176 | SC-FEED-006, SC-FEED-007 | C-FEED-04 |
+| REQ-FEED-005 | — | `DOC-v1.0-02` §3.4 · dòng "Lộ trình" · §7 dòng 10 | SC-FEED-009, SC-FEED-015 | C-FEED-01, C-FEED-02, C-FEED-05 |
 | REQ-FEED-006 | `BR-CON-02`, `OPR-07` | `DOC-v1.0-01` §A5 L78 · §D7 L343 · `DOC-v1.0-02` §3.4 dòng "Người gửi" · §7 dòng 1 | SC-FEED-010 | C-ASN-01 |
 | REQ-FEED-007 | `OPR-05` | `DOC-v1.0-01` §D7 L341 · `DOC-v1.0-02` §3.3 đoạn 5 · §7 dòng 9 | SC-FEED-011, SC-FEED-012 | C-ASN-02 |
 | REQ-FEED-008 | — | `DOC-v1.0-02` §3.4 · dòng "Ảnh sản phẩm" | SC-FEED-008 | — |
@@ -73,7 +73,7 @@
 
 ---
 
-### REQ-FEED-005 · Khung "Bản đồ · ~X km" là placeholder tĩnh
+### REQ-FEED-005 · Khung "Bản đồ · ~X km" — bản đồ thật *(đảo 2026-09-16, BA)*
 📍 `DOC-v1.0-02 §3.4 · dòng "Lộ trình"` · `§7 · bảng "Các điểm cần làm rõ" · dòng 10`  ·  Clarif: `C-FEED-01`
 
 > Nguồn #1 — `DOC-v1.0-02` §3.4 dòng "Lộ trình":
@@ -83,6 +83,8 @@
 > "10 | Bản đồ chỉ là placeholder | Khung "Bản đồ · ~X km" chỉ ghi khoảng cách ước tính tĩnh — cần xác nhận phạm vi bản chính thức có tích hợp bản đồ thật (GPS/Google Maps) hay không."
 
 ↳ **Ghi chú:** Doc tự đặt câu hỏi mở ⇒ SC assert **placeholder tĩnh** (không tương tác được, không zoom/pan), ⛔ không viết TC bản đồ thật. `~X km` là **số ước tính tĩnh** ⇒ không assert giá trị khoảng cách. Cross-ref `GPS-01` (`REQ-DLV-013`) — chia sẻ vị trí là nhánh phụ khác, đừng trộn.
+
+⛔ **Cập nhật 2026-09-16 — đoạn trên HẾT HIỆU LỰC, đừng trích lại:** BA trả lời `C-FEED-01(b)` 2026-09-16 — *"có hiển thị được map nhé (sẽ có vài case không hiển thị được map cho data văn phòng bị thiếu location)"*. Hiện hành: **bản đồ thật**; `SC-FEED-009` assert bản đồ thật, nhánh thiếu location chờ `C-FEED-02`. Nguồn quote gốc giữ nguyên làm hồ sơ; chi tiết `risk_assessment.md §C-FEED-01`.
 
 ---
 

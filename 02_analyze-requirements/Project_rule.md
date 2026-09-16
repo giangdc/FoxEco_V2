@@ -232,8 +232,10 @@ test data đúng giá trị TC · theo convention `10_source-code/MEMORY.md`) v�
 - **Định dạng dữ liệu đặc thù:**
   - **Khung giờ mong muốn phải TƯƠNG ĐỐI so với "now"**, ⛔ KHÔNG hardcode giờ — app validate theo
     đồng hồ thật, giá trị mặc định hết hạn nếu form mở lâu (`DOC-v1.0-06 KP-01 §10.11`).
-  - Chip **"Loại hàng"**: app STG có **8 chip**, mặc định chọn `Giấy tờ, hồ sơ`, **KHÔNG tồn tại chip
-    tên "Tài liệu"** như tài liệu/TC đợt cũ ghi → xem clarification tương ứng, áp `§Custom Rules §10.1`.
+  - Chip **"Loại hàng"**: **8 chip**, nhãn chuẩn + mặc định là **`Tài liệu`** — BA chốt 2026-09-16
+    (`C-ORD-09`, `v1.1/ORD-dang-tin/risk_assessment.md`). Quan sát app STG 2026-07 hiện `Giấy tờ, hồ sơ`
+    ⇒ nếu STG còn nhãn đó là **defect UI**, ⛔ không sửa TC theo app. *(Ghi chú cũ "không tồn tại chip
+    Tài liệu" hết hiệu lực cho v1.1.)*
   - Lý do huỷ đơn: tối thiểu **5 ký tự** (`VAL-04`) — UI hiện **chưa enforce** (`KP-01 §KB-CNL-02`).
 - **Ràng buộc thiết lập dữ liệu:** TC cần đơn ở trạng thái `Đã ghép` trở đi **cần bên thứ 2 nhận đơn**
   — ngoài tầm kiểm soát tester ⇒ nhờ dev/QA seed dữ liệu STG (`KP-01 §10.12`).

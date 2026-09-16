@@ -7,16 +7,16 @@ sprint: 1
 module: HOME
 counts:
   req: 13
-  sc: 28
-  new: 4
-  modified: 2
-  carried: 21
-  deprecated: 1
+  sc: 30
+  new: 6
+  modified: 3
+  carried: 19
+  deprecated: 2
   p1: 1
   p2: 13
-  p3: 13
+  p3: 14
 status: ANALYZED
-updated: 2026-09-15
+updated: 2026-09-17
 ---
 
 # Test Scenario Map — v1.1 · Module HOME
@@ -32,8 +32,9 @@ updated: 2026-09-15
 > Fan-out mỗi role/quyền · mỗi state-transition · mỗi lớp EP · mỗi boundary · mỗi nhánh lỗi = 1 SC riêng.
 
 ## Tổng quan
-- Tổng số scenarios (tính tới v1.1): **27** (NEW: 4, MODIFIED: 2, CARRIED: 21, DEPRECATED: 1)
-- Phân bổ priority: P1: 1 | P2: 13 | P3: 13
+- Tổng số scenarios (tính tới v1.1): **30** (NEW: 6, MODIFIED: 3, CARRIED: 19, DEPRECATED: 2) — P chỉ đếm 28 SC còn hiệu lực
+- Phân bổ priority: P1: 1 | P2: 13 | P3: 14
+- **Cập nhật 2026-09-17 (BA trả lời `C-HOME-04..06`):** `SC-HOME-010` DEPRECATED (thay bằng `SC-HOME-026`) · `SC-HOME-008` CARRIED → MODIFIED · +2 NEW `SC-HOME-029/030` · `SC-HOME-019/025/026` bỏ rào ghi nhận
 - Delta lần này: **resolve `C-HOME-03`** (số tin mới nhất chốt = 5) + **đặc tả hoá empty state Trang chủ** (thay SC gộp `SC-HOME-024` bằng 3 SC atomic) + 1 SC hiệu năng mới (NFR01).
 
 ## Scenarios — NEW & MODIFIED (chi tiết đầy đủ)
@@ -42,11 +43,14 @@ updated: 2026-09-15
 
 | Scenario ID | Feature | Req ID | DOC Source | Given | When | Then | Priority | Test Type | Lifecycle |
 |-------------|---------|--------|-----------|-------|------|------|----------|-----------|-----------|
-| SC-HOME-019 | "Tin mới" — đúng 5 tin, loại trừ MATCHED/EXPIRED/của chính mình | REQ-HOME-011 | DOC-v1.1-01 §6.2 AC-11.1.01 | Trong khu vực của người dùng có 12 tin NEED ở POSTED, trong đó có ít nhất 1 tin đã MATCHED, 1 tin đã EXPIRED và 1 tin do chính người dùng đăng | Mở Trang chủ | Section "Tin mới" hiển thị **đúng 5 tin** mới nhất; tin MATCHED, EXPIRED và tin của chính người dùng **KHÔNG** nằm trong danh sách; có nút "Xem thêm trên Bảng tin" | P3 | Business Rule | MODIFIED |
+| SC-HOME-019 | "Tin mới" — đúng 5 tin, loại trừ MATCHED/EXPIRED/của chính mình | REQ-HOME-011 | DOC-v1.1-01 §6.2 AC-11.1.01 | Toàn hệ thống có 12 tin NEED ở POSTED *(2026-09-17: BA nói tin load **toàn quốc** — `C-HOME-04` vòng 2)*, trong đó có ít nhất 1 tin đã MATCHED, 1 tin đã EXPIRED và 1 tin do chính người dùng đăng | Mở Trang chủ | Section "Tin mới" hiển thị **đúng 5 tin** mới nhất; tin MATCHED, EXPIRED và tin của chính người dùng **KHÔNG** nằm trong danh sách; có nút "Xem thêm trên Bảng tin" | P3 | Business Rule | MODIFIED |
 | SC-HOME-021 | Nút "Xem thêm trên Bảng tin" — điều kiện hiện | REQ-HOME-011 | DOC-v1.1-01 §6.2 AC-11.1.01 · DOC-v1.0-01 §D1b US-D06 L175 | Cộng đồng có **hơn 5** tin NEED hợp lệ (đã loại MATCHED/EXPIRED/của chính mình) | Quan sát cuối section "Tin mới" | Nút "Xem thêm trên Bảng tin" hiển thị và dẫn sang màn Bảng tin; nếu tổng tin hợp lệ ≤5 thì nút KHÔNG hiện | P3 | Functional | MODIFIED |
-| SC-HOME-025 | [Empty state] "Tin mới" — không có tin nào trong khu vực | REQ-HOME-011, REQ-HOME-012 | DOC-v1.1-01 §6.2 AC-11.2.01 · §8.17.1 EMP-01 | Không có tin NEED nào ở POSTED trong khu vực của người dùng | Mở Trang chủ | Section "Tin mới" hiện empty state: icon nét mảnh + "Chưa có tin nào trong khu vực của bạn" + dòng giải thích "Đăng tin để đồng nghiệp nhìn thấy nhu cầu của bạn" + CTA "Đăng tin ngay"; không hiện skeleton kéo dài | P3 | UI | NEW |
-| SC-HOME-026 | [Empty state] "Đơn của tôi" — chưa có đơn đang chạy | REQ-HOME-012 | DOC-v1.1-01 §8.17.1 EMP-02 | Tài khoản không có đơn đang hoạt động | Mở Trang chủ | Section "Đơn của tôi" hiện empty state: icon nét mảnh + "Bạn chưa có đơn nào đang chạy" + CTA "Tạo đơn gửi hàng" | P3 | UI | NEW |
+| SC-HOME-025 | [Empty state] "Tin mới" — không có tin nào trong khu vực | REQ-HOME-011, REQ-HOME-012 | DOC-v1.1-01 §6.2 AC-11.2.01 · §8.17.1 EMP-01 | Toàn hệ thống không có tin NEED hợp lệ nào ở POSTED (ngoài tin của chính người dùng) | Mở Trang chủ | Section "Tin mới" hiện empty state: icon nét mảnh + "Chưa có tin nào trong khu vực của bạn" *(⚠️ chữ "trong khu vực" chờ `C-HOME-04` vòng 2 — tạm ghi nhận chữ, assert cấu trúc)* + dòng giải thích "Đăng tin để đồng nghiệp nhìn thấy nhu cầu của bạn" + CTA "Đăng tin ngay"; không hiện skeleton kéo dài | P3 | UI | NEW |
+| SC-HOME-026 | [Empty state] "Đơn của tôi" — chưa có đơn đang chạy | REQ-HOME-012 | DOC-v1.1-01 §8.17.1 EMP-02 | Tài khoản không có đơn đang hoạt động | Mở Trang chủ | Section "Đơn của tôi" hiện empty state: icon nét mảnh + "Bạn chưa có đơn nào đang chạy" + CTA "Tạo đơn gửi hàng"; section **KHÔNG bị ẩn** (`C-HOME-05` Resolved 2026-09-17 — thay `SC-HOME-010`) | P3 | UI | NEW |
 | SC-HOME-027 | [Empty state] Hero & cộng đồng — tài khoản/cộng đồng chưa có dữ liệu | REQ-HOME-012 | DOC-v1.1-01 §8.17.1 EMP-03 | Tài khoản mới (0 đơn đã giúp) và cộng đồng chưa có đóng góp nào | Mở Trang chủ | Hero hiện "0 · Chưa có đóng góp nào"; cụm cộng đồng hiện "0 đơn · 0 người"; **không** CTA | P3 | UI | NEW |
+| SC-HOME-008 | Card "Đóng góp của bạn" — số liệu hero + cộng đồng *(MODIFIED 2026-09-17)* | REQ-HOME-004 | DOC-v1.0-02 §2 · DOC-v1.1-01 §7.1 · BR14-04 · BA trả lời `C-HOME-06` 2026-09-17 | Tài khoản đã **giúp** (làm Người vận chuyển) N đơn **Hoàn thành**; hệ thống có đơn Hoàn thành của người khác | Mở Trang chủ | Hero hiện **N** (chỉ đơn Hoàn thành, không tính Đã trả người gửi); dòng cộng đồng "[x] đơn · [y] người" với x = **số đơn toàn hệ thống** (không lọc khu vực); KHÔNG hiện CO₂/điểm ECO. ⛔ Không assert y (định nghĩa "người tham gia" chờ vòng 2) | P2 | Business Rule | MODIFIED |
+| SC-HOME-029 | Hero = 0 với tài khoản chưa từng giúp đơn | REQ-HOME-004 | BA trả lời `C-HOME-06(a)` 2026-09-17 · DOC-v1.1-01 AC-26.2.01 | Tài khoản chỉ làm **Người gửi** (hoặc Người nhận) của ≥1 đơn Hoàn thành, **chưa từng** làm Người vận chuyển | Mở Trang chủ | Hero "đơn đã giúp" hiện **0** — đơn Hoàn thành ở vai Người gửi/Người nhận **không** được tính | P3 | Business Rule | NEW |
+| SC-HOME-030 | Số liệu cộng đồng cập nhật realtime | REQ-HOME-004 | BA trả lời `C-HOME-06(b)(c)` 2026-09-17 | Ghi lại x của dòng "[x] đơn · [y] người" trên Trang chủ; có 1 đơn đang Đã giao chờ xác nhận | Người nhận bấm "Xác nhận đã nhận hàng" (đơn → Hoàn thành) ⇒ tài khoản quan sát mở lại Trang chủ (không chờ chu kỳ) | x tăng **đúng 1** ngay lần mở lại; hero của Người vận chuyển đơn đó tăng 1. ⛔ Không assert y | P2 | Business Rule | NEW |
 | SC-HOME-028 | [Performance] Thời gian hiển thị nội dung đầu Trang chủ | REQ-HOME-013 | DOC-v1.1-01 §9 NFR01 | Môi trường load-test: 1.000 người dùng đồng thời, mạng 4G | Mở Trang chủ | Nội dung đầu tiên hiển thị trong < 2 giây (p95) | P2 | Performance | NEW |
 
 #### Source Detail per Scenario (verbatim quotes)
@@ -100,6 +104,23 @@ updated: 2026-09-15
 
 **Analyst Note:** Thay phần "Hero/card Đóng góp của bạn" trong `SC-HOME-024` gộp cũ. Đối chiếu `test_data_catalog.md` v1.0 dòng "Số đơn đã giúp (card)" — trước đây chỉ ghi "0 (tài khoản mới)" mà chưa có text hiển thị cụ thể; giờ PRD cho đúng câu chữ. Không có CTA — khác với 2 SC còn lại (025/026), assert **không có** nút hành động nào ở khu vực này khi rỗng.
 
+##### SC-HOME-008 / SC-HOME-029 / SC-HOME-030 — Số liệu hero & cộng đồng *(2026-09-17)*
+
+**Source Quote (BA):**
+> `C-HOME-06` — "a. 0 / b. toàn hệ thống, người tham gia / c. realtime" (`CL-hoi-BA-v1.1.xlsx` sheet `HOME`)
+
+**Source Quote (PRD):**
+> `BR14-04` (§8.14.1, trang 48): ""Đơn đã giúp" chỉ tính đơn COMPLETED — đơn RETURNED không được tính."
+
+**Analyst Note:** `SC-HOME-008` (v1.0 CARRIED) nay có công thức ⇒ MODIFIED, bản v1.1 authoritative. Fan-out 2 SC mới: nhánh **vai không giúp = 0** (`029`) và **realtime** (`030`). Cả 3 ⛔ không assert **M/y** — *"người tham gia"* chưa định nghĩa (vòng 2).
+
+##### SC-HOME-010 — DEPRECATED 2026-09-17
+
+**Source Quote (BA):**
+> `C-HOME-05` — "hiện emp state chứ ko ẩn nhé"
+
+**Analyst Note:** Then v1.0 (*section không hiển thị*) ngược câu BA. Không sửa thành MODIFIED vì sẽ trùng hệt `SC-HOME-026` (cùng Given, cùng Then) ⇒ DEPRECATED, ⛔ không tái dùng ID.
+
 ##### SC-HOME-028 — [Performance] Thời gian hiển thị nội dung đầu
 
 **Source Quote:**
@@ -120,9 +141,7 @@ updated: 2026-09-15
 | SC-HOME-005 | Chuông — có tin chưa đọc | HOME | v1.0 | P2 | ← |
 | SC-HOME-006 | Chuông — đã đọc hết | HOME | v1.0 | P3 | ← |
 | SC-HOME-007 | Banner tĩnh | HOME | v1.0 | P3 | ← |
-| SC-HOME-008 | Card "Đóng góp của bạn" | HOME | v1.0 | P2 | ← |
 | SC-HOME-009 | Section "Đơn của tôi" — có đơn | HOME | v1.0 | P2 | ← |
-| SC-HOME-010 | Section "Đơn của tôi" — không đơn | HOME | v1.0 | P2 | ← |
 | SC-HOME-011 | Nhãn vai Sender | HOME | v1.0 | P2 | ← |
 | SC-HOME-012 | Nhãn vai Carrier | HOME | v1.0 | P2 | ← |
 | SC-HOME-013 | Nhãn vai Receiver | HOME | v1.0 | P2 | ← |
@@ -140,3 +159,4 @@ updated: 2026-09-15
 | Scenario ID | Tên ngắn | Module | Deprecated ở | Lý do |
 |-------------|----------|--------|-------------|-------|
 | SC-HOME-024 | [GAP] Empty state Trang chủ (gộp) | HOME | v1.1 | PRD v1.1 đặc tả riêng cho 3 khu vực — thay bằng `SC-HOME-025/026/027` theo Scenario Sufficiency Rule. Xem `CHANGELOG.md §2` |
+| SC-HOME-010 | Section "Đơn của tôi" — không đơn (ẩn section) | HOME | v1.1 (2026-09-17) | BA chốt `C-HOME-05`: hiện empty state `EMP-02`, không ẩn ⇒ trùng/ngược `SC-HOME-026`. Thay bằng `SC-HOME-026` |

@@ -6,18 +6,20 @@ version: v1.1
 sprint: 1
 module: HOME
 counts:
-  cl: 3
+  cl: 6
   risk: 7
   cl_open: 0
-  cl_resolved: 3
+  cl_resolved: 4
 status: ANALYZED
-updated: 2026-09-15
+updated: 2026-09-17
 ---
 
 # Risk Assessment — v1.1 · Module HOME (DELTA)
 
 > Tạo bởi: analyze-requirements (DELTA 2026-09-15) · layout **module-first v2**.
 > **Home của Clarification quote (layout v2).** Bảng risk đầy đủ v1.0 (5 dòng, không đổi trừ ghi chú dưới) xem `v1.0/HOME-trang-chu/risk_assessment.md` — KHÔNG lặp lại ở đây.
+
+> ℹ️ `cl_open (0) + cl_resolved (4) = 4 < cl (6)` — đúng, không lệch: `C-HOME-04` và `C-HOME-06` ở trạng thái **🟡 Partially Resolved — chờ BA vòng 2** (2026-09-17), không thuộc 2 ô đó.
 
 ## Tổng quan
 | Module | Risk Level | Rủi ro chính (delta v1.1) |
@@ -40,8 +42,13 @@ updated: 2026-09-15
 | C-HOME-03 | Section "Tin mới" hiển thị **1 tin** hay **5 tin**? | ✅ **Resolved 2026-09-15** | kế thừa `KP-05 §2.1` (2026-07) | REQ-HOME-011, SC-HOME-019 |
 | C-HOME-02 | Section "Đơn của tôi" ẩn theo **điều kiện có đơn** hay theo **vai trò**? | ✅ **Resolved 2026-09-15** (qua app thật, không cần BA) | kế thừa từ v1.0 (mở 2026-09-07) | REQ-HOME-005 |
 | C-HOME-01 | Icon vai trò ở header (mapping) + lệch tagline banner giữa 2 doc | ✅ **Resolved 2026-09-15** (cả (a) và (b)) | kế thừa từ v1.0 (mở 2026-09-07) | REQ-HOME-002, REQ-HOME-003 |
+| C-HOME-04 | "Khu vực của người dùng" (lọc "Tin mới", empty state `EMP-01`) xác định bằng gì và so khớp thế nào | 🟡 **Partially Resolved 2026-09-17 — hỏi vòng 2** (BA: khu vực suy từ địa chỉ mặc định, khớp cả 2 điểm; nhưng câu (d) nói *tin load toàn quốc* — tự mâu thuẫn) | 2026-09-16 | REQ-HOME-011, SC-HOME-019, SC-HOME-025, SC-FEED-013 |
+| C-HOME-05 | Trang chủ khi không có đơn đang chạy: **ẩn** section "Đơn của tôi" (C-HOME-02, demo) hay **hiện empty state** `EMP-02` — `SC-HOME-010` ⟷ `SC-HOME-026` đang mâu thuẫn | ✅ **Resolved 2026-09-17 — HIỆN empty state `EMP-02`, không ẩn** (BA) ⇒ `SC-HOME-010` DEPRECATED | 2026-09-16 | REQ-HOME-005, REQ-HOME-012, SC-HOME-010, SC-HOME-026 |
+| C-HOME-06 | Số liệu hero + cộng đồng ("N đơn đã giúp", "N đơn · M người"): phạm vi và công thức đếm | 🟡 **Partially Resolved 2026-09-17 — hỏi vòng 2 (thấp)** — BA: hero vai không giúp = 0 · N toàn hệ thống · M = người tham gia · realtime; còn định nghĩa "người tham gia" + đơn Đã trả người gửi | 2026-09-16 | REQ-HOME-004, REQ-HOME-012, SC-HOME-008, SC-HOME-027, SC-HOME-029, SC-HOME-030 |
 
 ### C-HOME-02 · Section "Đơn của tôi" — ẩn theo điều kiện hay theo vai trò? *(RESOLVED 2026-09-15)*
+
+⛔ **Cập nhật 2026-09-17 — vế *"ẩn section khi không có đơn"* HẾT HIỆU LỰC** (BA chốt `C-HOME-05`: **hiện empty state `EMP-02`**). Phần còn hiệu lực: nội dung section **không phụ thuộc vai trò** (nhãn vai `SC-HOME-011..013` vẫn đúng). Ảnh `HOME_03` (demo không có section) nay là **lệch demo ↔ rule**, không phải oracle.
 
 **Home canonical gốc:** `v1.0/HOME-trang-chu/risk_assessment.md` (giữ nguyên làm hồ sơ lịch sử — mục này ghi bước RESOLVE, không sửa file v1.0).
 
@@ -75,9 +82,65 @@ updated: 2026-09-15
 
 ↳ **Ghi chú:** PRD chính thức `DOC-v1.1-01` — độc lập với cả PRD-demo cũ (`DOC-v1.0-02` §3.1, "1 tin") lẫn BRD (`DOC-v1.0-01 US-D06`, "5 tin") — xác nhận **5 tin**, đồng thời bổ sung 3 điều kiện lọc (MATCHED/EXPIRED/của chính mình) mà không nguồn v1.0 nào có. **Resolved theo PRD v1.1, thắng cả 2 nguồn cũ theo thứ tự ưu tiên `MASTER-MEMORY §2`.**
 
+### C-HOME-04 · "Khu vực của người dùng" *(PARTIALLY RESOLVED 2026-09-17 — hỏi vòng 2)*
+
+📍 `DOC-v1.1-01 §6.2 AC-11.1.01 / AC-11.2.01 · trang 19-20` · `§5.1 Workflow "[BẢNG TIN]" · trang 10` · `§8.17.1 EMP-01 / EMP-04 · trang 51` ⟷ BA trả lời `C-USR-05(b)` 2026-09-16
+
+> `AC-11.1.01`: "Given: Trong khu vực của người dùng có 12 tin NEED đang ở POSTED."
+
+> `§5.1`: "[BẢNG TIN]   Hiển thị cho CBNV cùng khu vực / thuận tuyến"
+
+> `EMP-04`: "Bảng tin (cả hai tab) | "Chưa có tin nào" + gợi ý mở rộng khu vực hoặc đăng tin"
+
+↳ **Ghi chú:** "Khu vực" là **điều kiện lọc** của "Tin mới" và Bảng tin nhưng PRD **không định nghĩa** ở đâu (không có trong bảng thuật ngữ `§2.2`). BA vừa nói *"khu vực/văn phòng load theo địa chỉ mặc định"* — mà địa chỉ mặc định là **văn bản tự do** ⇒ không thể là khoá lọc tin cậy. **Hỏi:** (a) khu vực = **tỉnh/thành** (34 tỉnh — Executive Summary), **văn phòng** (từ HRIS), hay suy từ **địa chỉ mặc định**? (b) Tin NEED so khớp khu vực theo **điểm lấy**, **điểm giao** hay cả hai? (c) Người dùng **đổi/mở rộng** khu vực ở đâu (*"gợi ý mở rộng khu vực"*)? (d) Không có khu vực (hồ sơ trống) thì thấy tin toàn quốc? ⛔ Chưa chốt thì `SC-HOME-019`/`025` **không dựng được Given** ("12 tin trong khu vực").
+
+### C-HOME-05 · Section "Đơn của tôi" khi trống — ẩn hay empty state? *(RESOLVED 2026-09-17)*
+
+📍 `DOC-v1.1-01 §8.17.1 EMP-02 · trang 51` ⟷ `C-HOME-02` Resolved 2026-09-15 (ảnh `00_input/v1.1/design/HOME_03_trangchu_carrier_chuanhandon_khong-donmoitoi.png`)
+
+> `EMP-02`: "Trang chủ — Đơn của tôi | "Bạn chưa có đơn nào đang chạy" | "Tạo đơn gửi hàng""
+
+↳ **Ghi chú:** Phát hiện khi rà chéo 2 SC cùng module: `C-HOME-02` chốt (theo demo) section "Đơn của tôi" **ẩn hẳn** khi tài khoản không có đơn ⇒ `SC-HOME-010` assert *không có section*; trong khi `SC-HOME-026` (theo `EMP-02`) assert section **hiện empty state** kèm CTA "Tạo đơn gửi hàng". **Hai SC không thể cùng PASS.** Có thể phân biệt theo điều kiện (vd *chưa từng có đơn* ⟷ *có đơn nhưng đã đóng hết*) nhưng PRD không nói. **Hỏi BA:** khi không có đơn đang chạy thì Trang chủ **ẩn** section hay **hiện** `EMP-02`? Nếu tuỳ điều kiện thì điều kiện là gì? ⛔ Chưa chốt: cả 2 SC hạ xuống **ghi nhận**.
+
+### C-HOME-06 · Số liệu hero & cộng đồng *(PARTIALLY RESOLVED 2026-09-17 — hỏi vòng 2, thấp)*
+
+📍 `DOC-v1.1-01 §7.1 Sơ đồ "Hero "N đơn đã giúp" + số liệu cộng đồng" · trang 30` · `§6.2 AC-26.2.01 · trang 27` · `§8.17.1 EMP-03 · trang 51` · `§8.14.1 BR14-04 · trang 48`
+
+> `AC-26.2.01`: "Trên trang chủ, hero hiện "0 · Chưa có đóng góp nào" và cụm cộng đồng hiện "0 đơn · 0 người" nếu hệ thống chưa có dữ liệu."
+
+> `BR14-04`: ""Đơn đã giúp" chỉ tính đơn COMPLETED — đơn RETURNED không được tính."
+
+↳ **Ghi chú:** (a) Hero "N đơn đã giúp" của vai **Sender/Receiver** (không bao giờ "giúp") hiện gì — luôn 0? (b) Cụm cộng đồng **"N đơn · M người"**: N = số đơn **COMPLETED toàn hệ thống** hay trong **khu vực**? M = số **người đã giúp** (Carrier distinct) hay **mọi người tham gia**? Có tính đơn RETURNED? (c) Cập nhật **realtime** hay theo chu kỳ? ⛔ Không có công thức thì `SC-HOME-008`/`027` chỉ assert được ô = 0 với tài khoản trắng, không assert được số > 0.
+
+### C-HOME-04 · ↳ BA trả lời 2026-09-17 *(→ PARTIALLY RESOLVED — hỏi vòng 2)*
+
+📍 BA trả lời · `02_analyze-requirements/v1.1/CL-hoi-BA-v1.1.xlsx` sheet `HOME` · cột "Câu trả lời BA"
+
+> "a. suy tu mặc định nhé
+> b. cả 2
+> c. hiện tại lấy theo data từ file, thêm thì dev bổ sung trong db thôi
+> d. ụa tin là load toàn quốc mà, đâu load theo khu vực? Tìa liệu có mô tả à"
+
+↳ **Ghi chú:** (a)(b)(c) mô tả **cách tính khu vực** (suy từ địa chỉ mặc định = văn phòng trong `location_address_catalog.xlsx`; so cả điểm lấy lẫn điểm giao; danh mục do dev thêm trong DB, người dùng không tự mở rộng). Nhưng (d) nói **tin load toàn quốc, không lọc theo khu vực** — và hỏi ngược tài liệu có mô tả không. ⇒ **Câu trả lời tự mâu thuẫn**: nếu không lọc thì (a)(b) dùng vào đâu? PRD **có** mô tả lọc theo khu vực ở 4 chỗ: `AC-11.1.01` *"Trong khu vực của người dùng có 12 tin NEED"*, `AC-11.2.01`/`EMP-01` *"Chưa có tin nào trong khu vực của bạn"*, `§5.1` *"Hiển thị cho CBNV cùng khu vực / thuận tuyến"*, `EMP-04` *"gợi ý mở rộng khu vực"*. ⇒ **Hỏi vòng 2** (xem sheet `HOME` dòng `C-HOME-04 (vòng 2)`). **Tạm thời:** `SC-HOME-019`/`025` và `SC-FEED-001`/`013` viết Given **toàn quốc** theo câu (d) — câu rõ ràng nhất; ⛔ chưa assert chữ *"trong khu vực của bạn"* và câu *"gợi ý mở rộng khu vực"* cho tới khi chốt.
+
+### C-HOME-05 · ↳ BA trả lời 2026-09-17 *(→ RESOLVED)*
+
+> "hiện emp state chứ ko ẩn nhé"
+
+↳ **Ghi chú:** Khi tài khoản **không có đơn đang chạy**, section "Đơn của tôi" **hiện empty state `EMP-02`** ("Bạn chưa có đơn nào đang chạy" + CTA "Tạo đơn gửi hàng"), **không ẩn**. ⇒ `SC-HOME-026` assert cứng; `SC-HOME-010` (v1.0 — *section không hiển thị*) **DEPRECATED**, thay bằng `SC-HOME-026` (cùng Given, Then ngược). Vế *"ẩn theo điều kiện"* của `C-HOME-02` hết hiệu lực — xem ghi chú đầu mục `C-HOME-02`. Demo (`HOME_03`) đang ẩn ⇒ STG ẩn là **defect**.
+
+### C-HOME-06 · ↳ BA trả lời 2026-09-17 *(→ PARTIALLY RESOLVED — vòng 2 thấp)*
+
+> "a. 0
+> b. toàn hệ thống, người tham gia
+> c. realtime"
+
+↳ **Ghi chú:** (a) Tài khoản **chưa từng giúp đơn nào** (chỉ làm Người gửi/Người nhận) ⇒ hero **luôn 0** dù đã có đơn Hoàn thành ⇒ **+`SC-HOME-029`**. (b) Cụm cộng đồng: **N = đơn toàn hệ thống** (không lọc khu vực), **M = số người tham gia**. (c) **Realtime** ⇒ **+`SC-HOME-030`** (đơn Hoàn thành ⇒ N tăng 1 ngay khi mở lại Trang chủ). ⚠️ Còn mơ hồ, hỏi vòng 2 (thấp, không chặn): *"người tham gia"* = người **distinct** xuất hiện trong đơn Hoàn thành ở **cả 3 vai**, chỉ Người vận chuyển, hay mọi CBNV đã dùng app? N có tính đơn **Đã trả người gửi** (`BR14-04` loại khỏi *"đơn đã giúp"* cá nhân — cộng đồng có áp giống)? ⇒ `SC-HOME-030` chỉ assert **N**, ⛔ không assert M.
+
 ## Khuyến nghị tổng thể
 1. **`C-HOME-03` không còn là blocker** — `SC-HOME-019`/`SC-HOME-021` có thể viết TC assert số cứng (5 tin) thay vì ghi nhận.
-2. **`C-HOME-02` không còn là blocker** — `SC-HOME-009`/`SC-HOME-010`/`SC-HOME-012` có thể assert cứng theo điều kiện có đơn (xem bằng chứng ảnh ở mục CL trên).
+2. **`C-HOME-02` không còn là blocker** — `SC-HOME-009`/`SC-HOME-012` assert cứng. ⛔ *(2026-09-17)* `SC-HOME-010` DEPRECATED theo `C-HOME-05` — khi không có đơn thì assert `SC-HOME-026` (empty state).
 3. **Trước generate-tc:** chuẩn bị ≥1 tài khoản "sạch" (0 lịch sử) cho 3 SC empty state (`SC-HOME-025/026/027`) — xem `test_data_catalog.md`.
 4. **`RISK-HOME-06`** (perf NFR01) không đưa vào TC manual — chuyển thẳng cho `execute-maintain`/automation khi có môi trường load-test.
 5. **`C-HOME-01` không còn là blocker** — (b) tagline dùng text PRD "Tiện đường — Giúp đồng nghiệp"; (a) icon vai trò đã có xác nhận QC (1 icon chung, không phân biệt vai trò) — `SC-HOME-004` có thể viết TC assert cứng thay vì dạng GAP/ghi nhận.
+6. ✅ **`C-HOME-05` Resolved 2026-09-17** — hết mâu thuẫn `SC-HOME-010` ⟷ `026`: hiện empty state. `C-HOME-04` (khu vực) + `C-HOME-06` (M người tham gia) còn vòng 2, **không chặn** generate-tc nếu viết Given toàn quốc + chỉ assert N.
