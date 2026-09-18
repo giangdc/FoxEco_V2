@@ -1,0 +1,100 @@
+{
+  "total": 223,
+  "by_priority": {
+    "High": 22,
+    "Medium": 145,
+    "Low": 56
+  },
+  "by_priority_exec": {
+    "High": 0,
+    "Medium": 0,
+    "Low": 0
+  },
+  "by_group": {
+    "Functional": 175,
+    "UI": 48,
+    "Integration": 0,
+    "Database": 0
+  },
+  "executed": 0,
+  "pass": 0,
+  "fail": 0,
+  "block": 0,
+  "na": 0,
+  "ai_gen": 223,
+  "qc_written": 0,
+  "automated": 0,
+  "vibe": 0,
+  "reviewed": 0,
+  "kpi": {
+    "total_bugs": 0,
+    "bug_fixed": 0,
+    "bug_wont_fix": 0,
+    "bug_unresolved": 0,
+    "critical_major": 0,
+    "critical_major_open": 0,
+    "bug_closed": 0,
+    "pct_bug_closed": 0.0,
+    "pct_coverage": 0.0,
+    "pct_automation": 0.0,
+    "pct_bug_by_ai": 0.0,
+    "pct_tc_pass": 0.0
+  },
+  "project": "foxeco-v2",
+  "version": "v1.1",
+  "phase": "design",
+  "sprint": "",
+  "period": {
+    "start": "",
+    "end": "",
+    "source": "TBD",
+    "rounds": {}
+  },
+  "modules": [
+    {
+      "name": "Hoạt động (Đơn của tôi)",
+      "count": 10
+    },
+    {
+      "name": "Ghép nối",
+      "count": 13
+    },
+    {
+      "name": "Huỷ đơn - Huỷ nhận đơn",
+      "count": 13
+    },
+    {
+      "name": "Giao nhận & Theo dõi đơn",
+      "count": 51
+    },
+    {
+      "name": "Bảng tin & Chi tiết tin",
+      "count": 5
+    },
+    {
+      "name": "Quà cảm ơn",
+      "count": 8
+    },
+    {
+      "name": "Trang chủ",
+      "count": 11
+    },
+    {
+      "name": "Thông báo",
+      "count": 9
+    },
+    {
+      "name": "Đăng tin & Quản lý tin",
+      "count": 48
+    },
+    {
+      "name": "Trust & Safety",
+      "count": 17
+    },
+    {
+      "name": "Tài khoản & Hồ sơ",
+      "count": 38
+    }
+  ],
+  "output": "03_test-cases/v1.1/exports/ISC_foxeco-v2_v1.1_TestCase.xlsx"
+}
