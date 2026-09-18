@@ -1,0 +1,134 @@
+# Coverage — module ORD — SCOPE_TOTAL = 88 TC
+
+> Sổ cái TÍCH LŨY xuyên run cho module ORD (Đăng tin & Quản lý tin).
+> **Cập nhật lần cuối: VR-002 (2026-09-18)** · Nguồn scope: `03_test-cases/v1.1/fragments/TC-ORD-v1.1.md` (48 TC) + `03_test-cases/v1.0/fragments/TC-ORD-v1.0.md` (40 TC CARRIED)
+> **Tổng: có verdict cuối 42/88 · CÒN NỢ 46** (46 NOT_RUN + 0 NOT_EVIDENCED)
+> Verdict hợp lệ: ✅ PASS · ❌ FAIL · 🚫 BLOCKED · ⚠️ NOT_EVIDENCED · ⏳ NOT_RUN · ⛔ N-A
+
+> 🐞 **2026-09-18 (VR-002)** — **F3/F7 CHẶN IM LẶNG là bug lớn nhất của module**: app khoá nút `Tiếp theo` nhưng KHÔNG báo lỗi ở **5 nhánh** — thiếu ảnh (`TC-ORD-063` **P1**) · thiếu TRỌNG LƯỢNG (`064`) · thiếu KÍCH THƯỚC (`066`) · địa chỉ giao trùng địa chỉ lấy (`083`/`084`) · email sai định dạng (`077`). ⚠️ **Không phải thiếu framework**: cùng app vẫn báo lỗi inline đúng ở 3 nhánh khác (ảnh >5MB `068` · chưa chọn buổi `058` · khoảng ngày >7 `057`).
+
+> 🐞 **2026-09-18** — 4 ứng viên bug độc lập khác: **không có popup thoát wizard** (`TC-ORD-053` — mất dữ liệu soạn dở, cùng họ `TC-USR-045` ⇒ nghi lỗi hệ thống) · ~~**trần ảnh chỉ tới 4/5** (`070`/`071`)~~ → **ĐÃ BÁC BỎ khi recheck 2026-09-18 chiều** (xem ghi chú ♻️ dưới) · **autofill người nhận thiếu ô địa chỉ giao** (`074` **P1**, cần BA chốt trước khi log) · **buổi mong muốn không có mặc định** (`058`) + **cho chọn buổi đã qua** (`059`).
+
+> ♻️ **2026-09-18 chiều — RECHECK khối ảnh, huỷ 1 ứng viên bug, sinh 1 cái mới:** ứng viên bug *"trần ảnh 4/5"* **KHÔNG CÓ THẬT** — app nhận **đủ 5 ảnh**, dải ảnh **cuộn ngang bình thường**, ảnh thứ 4/5 **xoá được**. Lượt 1 kết luận nhầm vì dải ảnh là **danh sách cuộn ngang lazy**: tile "thêm ảnh" nằm ở **cuối dải**, ở mức 4 ảnh nó **ngoài viewport** ⇒ không được compose ⇒ **không có trong accessibility tree**, và 3 lệnh swipe của lượt 1 không cuộn được dải. ⛔ **Không suy "không tìm thấy node" = "chức năng không có"**. Đổi verdict: `TC-ORD-071` 🚫→✅. Riêng `TC-ORD-070` đi tiếp 🚫→❌→**✅** — QC chốt 2026-09-18 *"đủ 5 file bỏ bộ đếm luôn"* ⇒ **sửa Expected** (bỏ vế `5/5`), ứng viên bug **B3′ huỷ** ⇒ **khối ảnh ORD không còn bug nào**.
+
+> 🔴 **2026-09-18 — 4 TC CARRIED v1.0 HẾT HIỆU LỰC, ⛔ không phải lỗi app, ⛔ không log bug:** `TC-ORD-006` (`C-ORD-09` chốt CÓ nhãn "Tài liệu") · `TC-ORD-007`/`008`/`014` (v1.1 thêm 3 trường bắt buộc `TRỌNG LƯỢNG`+`KÍCH THƯỚC`+`ẢNH HÀNG` ⇒ vế navigation sai; riêng `014` mâu thuẫn TRỰC TIẾP với `TC-ORD-063`). Chờ QC chốt `DESCOPED` theo `Project_rule §10.5` — giữ nguyên dòng. Thêm `TC-ORD-017` PASS nhưng **câu chữ lỗi thời** (nguồn prefill là địa chỉ hồ sơ, không phải HRIS).
+
+> 🧪 **2026-09-18 — Test data tự dựng trong phiên** (`SEED-ORD-01`): 6 ảnh JPG nhỏ + 1 PNG + 1 ảnh **đúng 5MB** + 1 ảnh **6MB** + 1 `.pdf`, đẩy vào `/sdcard/Pictures/seed_*` của emulator-5554. ⚠️ `.pdf` **không dùng được qua UI** (photo picker của OS lọc sẵn) ⇒ `TC-ORD-069` BLOCKED. Ảnh **đúng 5MB** (biên dưới hợp lệ) **chưa dùng** — dành cho lượt sau.
+
+## Tiến độ theo run
+
+| Run | Ngày | TC chạy trong run | Verdict thu được |
+|-----|------|-------------------|------------------|
+| VR-002 | 2026-09-18 | 43 (lô 1: 12 · lô 2: 16 · lô 3: 15) | 25P / 14F / 3B · 1 TC chạy dở (`TC-ORD-001`, giữ ⏳) |
+| VR-002 *(recheck khối ảnh)* | 2026-09-18 chiều | 2 (`TC-ORD-070` · `TC-ORD-071`) | **27P / 14F / 1B** sau recheck + sửa Expected `070` — `070` 🚫→❌→✅ · `071` 🚫→✅ |
+
+## Chi tiết từng TC
+
+| Testcase ID | Verdict | Scenario ID | Priority | Title | Run | Evidence | Ghi chú |
+|---|---|---|---|---|---|---|---|
+| TC-ORD-001 | ⏳ NOT_RUN | SC-ORD-001 | P2 | Check màn "Đăng tin mới" đủ bốn thành phần và cả hai card bấm được *(CARRIED v1.0)* | — | — | **Lý do:** chạy dở — step 3–4 PASS, còn step 5 (mở form OFFER); gom vào lô OFFER cùng `TC-ORD-003`/`042`/`043`, chưa tới lượt trong phiên VR-002 |
+| TC-ORD-002 | ✅ PASS | SC-ORD-002 | P2 | Check nhấn card "Tôi cần gửi hàng" mở wizard bước 1/3 kèm step indicator *(CARRIED v1.0)* | VR-002 | `VR-002-ORD-2026-09-18/screenshots/TC-ORD-002__verify-buoc-1-3.png` | App ghi "Bước 1 / 3" (có space) — cùng ngữ nghĩa Expected |
+| TC-ORD-003 | ⏳ NOT_RUN | SC-ORD-003 | P2 | Check nhấn card "Tôi nhận giao hàng" mở form một trang không có step indicator *(CARRIED v1.0)* | — | — | **Lý do:** hết sức phiên VR-002 — chưa tới lượt trong thứ tự lô |
+| TC-ORD-004 | ⏳ NOT_RUN | SC-ORD-004 | P1 | Check đăng tin NEED thành công với dữ liệu hợp lệ đầy đủ ba bước *(CARRIED v1.0)* | — | — | **Lý do:** hết sức phiên VR-002 — chưa tới lượt trong thứ tự lô |
+| TC-ORD-005 | ✅ PASS | SC-ORD-005 | P2 | Check field Loại hàng có đúng tám giá trị và mặc định là Tài liệu | VR-002 | `VR-002-ORD-2026-09-18/screenshots/TC-ORD-005__verify-8-chip-mac-dinh-tai-lieu.png` | Đúng 8 chip, đúng thứ tự Expected, mặc định "Tài liệu" ⇒ oracle `C-ORD-09` khớp app |
+| TC-ORD-006 | ❌ FAIL | SC-ORD-006 | P3 | Check danh mục loại hàng có tám chip, không có chip "Tài liệu" *(CARRIED v1.0)* | VR-002 | `VR-002-ORD-2026-09-18/screenshots/TC-ORD-006__step3-FAIL-co-chip-tai-lieu.png` | 🔴 TC hết hiệu lực, KHÔNG phải lỗi app — `C-ORD-09` chốt CÓ nhãn "Tài liệu" (đối chứng `TC-ORD-005` PASS). ⛔ không log bug; QC chốt DESCOPED |
+| TC-ORD-007 | ❌ FAIL | SC-ORD-007 | P3 | Check nhấn lại chip đang chọn không bỏ chọn giá trị *(CARRIED v1.0)* | VR-002 | `VR-002-ORD-2026-09-18/screenshots/TC-ORD-007__step5-FAIL-khong-sang-buoc-2.png` | Step 3 (hành vi chip — điểm kiểm chứng chính) PASS; chỉ step 5 fail vì v1.1 thêm 3 trường bắt buộc (F1). ⛔ không log bug |
+| TC-ORD-008 | ❌ FAIL | SC-ORD-008 | P2 | Check chưa chọn giá trị hàng thì nút "Tiếp theo" bị khoá *(CARRIED v1.0)* | VR-002 | `VR-002-ORD-2026-09-18/screenshots/TC-ORD-008__step6-FAIL-tiep-theo-van-disable.png` | Vế "chưa chọn giá trị ⇒ khoá" ĐÚNG; step 6 fail vì điều kiện enable của v1.1 cần thêm TRỌNG LƯỢNG + KÍCH THƯỚC + ảnh (F1). ⛔ không log bug |
+| TC-ORD-009 | ✅ PASS | SC-ORD-009 | P2 | Check chọn giá trị hàng "Cao" hiện banner cảnh báo đúng nguyên văn *(CARRIED v1.0)* | VR-002 | `VR-002-ORD-2026-09-18/screenshots/TC-ORD-009__verify-banner-gia-tri-cao.png` | Banner khớp NGUYÊN VĂN Expected |
+| TC-ORD-010 | ✅ PASS | SC-ORD-010 | P3 | Check chọn giá trị hàng "Thấp" hoặc "Vừa" không hiện banner cảnh báo *(CARRIED v1.0)* | VR-002 | `VR-002-ORD-2026-09-18/screenshots/TC-ORD-010__verify-vua-khong-banner.png` | Cả "Thấp" và "Vừa" đều không có banner (MCP absence ×2) |
+| TC-ORD-011 | ✅ PASS | SC-ORD-011 | P3 | Check ghi chú nhận đúng 300 ký tự và chặn ký tự thứ 301 *(CARRIED v1.0)* | VR-002 | `VR-002-ORD-2026-09-18/screenshots/TC-ORD-011__verify-ghi-chu-dung-300-ky-tu.png` | 300 ký tự nhận đủ + sống sót vòng bước 1→2→1, ký tự 301 bị chặn. Setup mở rộng theo v1.1 (F1) nhưng không đổi điểm kiểm chứng |
+| TC-ORD-012 | ✅ PASS | SC-ORD-012 | P2 | Check tải một ảnh JPG hợp lệ hiện đúng bộ đếm một trên năm | VR-002 | `VR-002-ORD-2026-09-18/screenshots/TC-ORD-012__verify-bo-dem-1-5.png` | Bộ đếm 0/5 → 1/5, thumbnail + nút xoá hiện đúng |
+| TC-ORD-013 | ✅ PASS | SC-ORD-012 | P2 | Check khối ảnh hàng mang dấu bắt buộc và dòng helper nêu rõ ràng buộc | VR-002 | `VR-002-ORD-2026-09-18/screenshots/TC-ORD-013__verify-anh-hang-bat-buoc-0-5.png` | Nhãn "ẢNH HÀNG *" + bộ đếm "0/5" + helper khớp nguyên văn |
+| TC-ORD-014 | ❌ FAIL | SC-ORD-013 | P3 | Check không tải ảnh vẫn chuyển được sang bước 2 *(CARRIED v1.0)* | VR-002 | `VR-002-ORD-2026-09-18/screenshots/TC-ORD-014__step4-FAIL-khong-sang-buoc-2-khi-khong-co-anh.png` | 🔴 TC hết hiệu lực (F1) — mâu thuẫn TRỰC TIẾP với `TC-ORD-063` (v1.1 P1: thiếu ảnh PHẢI chặn). Nhãn chip trong Steps cũng lỗi thời. ⛔ không log bug; QC chốt DESCOPED |
+| TC-ORD-015 | ✅ PASS | SC-ORD-014 | P2 | Check bước 2 tự điền tên và SĐT người gửi từ hồ sơ *(CARRIED v1.0)* | VR-002 | `VR-002-ORD-2026-09-18/screenshots/TC-ORD-015__verify-tu-dien-ten-va-sdt-nguoi-gui.png` | Tên `Đặng Châu Giang` khớp hồ sơ + SĐT `0912345670` điền sẵn |
+| TC-ORD-016 | ✅ PASS | SC-ORD-015 | P2 | Check field tên người gửi chỉ đọc, không bị xoá khi chạm *(CARRIED v1.0)* | VR-002 | `VR-002-ORD-2026-09-18/screenshots/TC-ORD-016__verify-ten-chi-doc-khong-mo-ban-phim.png` | Chạm field tên: `isKeyboardShown=false`, giá trị không bị xoá ⇒ chỉ đọc |
+| TC-ORD-017 | ✅ PASS | SC-ORD-016 | P2 | Check field địa chỉ lấy hàng điền sẵn theo nơi làm việc *(CARRIED v1.0)* | VR-002 | `VR-002-ORD-2026-09-18/screenshots/TC-ORD-017__verify-prefill-dia-chi-lay-hang.png` | 🚩 Prefill có giá trị thật (không placeholder) ⇒ PASS; nhưng nguồn là **địa chỉ mặc định hồ sơ** (`C-ORD-10`), KHÔNG phải địa chỉ HRIS như câu chữ v1.0. 📨 đề nghị QC sửa câu chữ TC |
+| TC-ORD-018 | ✅ PASS | SC-ORD-017 | P3 | Check SĐT người gửi không tự đổi giá trị trong cùng phiên *(CARRIED v1.0)* | VR-002 | `VR-002-ORD-2026-09-18/screenshots/TC-ORD-018__verify-sdt-nguoi-gui-khong-doi.png` | SĐT người gửi giữ `0912345670` sau khi nhập email/địa chỉ/ngày/buổi |
+| TC-ORD-019 | ⏳ NOT_RUN | SC-ORD-018 | P1 | Check email nội bộ tra được tự điền ba trường người nhận *(CARRIED v1.0)* | — | — | **Lý do:** hết sức phiên VR-002 — chưa tới lượt trong thứ tự lô |
+| TC-ORD-020 | ⏳ NOT_RUN | SC-ORD-019 | P2 | Check email không tra được hiện thông báo nhập thủ công *(CARRIED v1.0)* | — | — | **Lý do:** hết sức phiên VR-002 — chưa tới lượt trong thứ tự lô |
+| TC-ORD-021 | ⏳ NOT_RUN | SC-ORD-020 | P2 | Check email sai định dạng và ngoài tên miền đều bị chặn *(CARRIED v1.0)* | — | — | **Lý do:** hết sức phiên VR-002 — chưa tới lượt trong thứ tự lô |
+| TC-ORD-022 | ⏳ NOT_RUN | SC-ORD-021 | P2 | Check SĐT do app tự điền từ danh bạ được nhận là hợp lệ *(CARRIED v1.0)* | — | — | **Lý do:** hết sức phiên VR-002 — chưa tới lượt trong thứ tự lô |
+| TC-ORD-023 | ⏳ NOT_RUN | SC-ORD-022 | P1 | Check để trống nhóm người nhận thì không qua được bước 3 *(CARRIED v1.0)* | — | — | **Lý do:** hết sức phiên VR-002 — chưa tới lượt trong thứ tự lô |
+| TC-ORD-024 | ⏳ NOT_RUN | SC-ORD-023 | P2 | Check tên người nhận nhận 2 và 60 ký tự, chặn 1 và 61 *(CARRIED v1.0)* | — | — | **Lý do:** hết sức phiên VR-002 — chưa tới lượt trong thứ tự lô |
+| TC-ORD-025 | ⏳ NOT_RUN | SC-ORD-023 | P2 | Check SĐT người nhận chỉ hợp lệ khi đủ 10 số bắt đầu 0 *(CARRIED v1.0)* | — | — | **Lý do:** hết sức phiên VR-002 — chưa tới lượt trong thứ tự lô |
+| TC-ORD-026 | ⏳ NOT_RUN | SC-ORD-024 | P2 | Check địa chỉ giao trùng địa chỉ lấy hàng thì bị chặn *(CARRIED v1.0)* | — | — | **Lý do:** hết sức phiên VR-002 — chưa tới lượt trong thứ tự lô |
+| TC-ORD-027 | ✅ PASS | SC-ORD-025 | P2 | Check ô địa chỉ lấy hàng điền sẵn địa chỉ mặc định của hồ sơ và sửa được | VR-002 | `VR-002-ORD-2026-09-18/screenshots/TC-ORD-027__verify-prefill-va-sua-duoc.png` | Prefill đúng `363 Nguyễn Hữu Thọ, Cẩm Lệ` (khớp hồ sơ) + sửa được |
+| TC-ORD-028 | ✅ PASS | SC-ORD-026 | P3 | Check ô địa chỉ là ô văn bản tự do không phải preset văn phòng | VR-002 | `VR-002-ORD-2026-09-18/screenshots/TC-ORD-028__verify-o-van-ban-tu-do.png` | Ô tự do, không preset/chip gợi ý (`address-suggestion-0` NOT FOUND) |
+| TC-ORD-029 | ⏳ NOT_RUN | SC-ORD-027 | P3 | Check field địa chỉ dùng dropdown autocomplete và không có chip preset văn phòng *(CARRIED v1.0)* | — | — | **Lý do:** hết sức phiên VR-002 — chưa tới lượt trong thứ tự lô |
+| TC-ORD-030 | ✅ PASS | SC-ORD-028 | P2 | Check chọn ngày quá khứ cho Từ ngày bị chặn | VR-002 | `VR-002-ORD-2026-09-18/screenshots/TC-ORD-030__verify-chan-ngay-qua-khu.png` | Ngày quá khứ **mờ/disabled** trong picker; tap ngày 17 không có tác dụng |
+| TC-ORD-031 | ✅ PASS | SC-ORD-028 | P2 | Check chọn Đến ngày sớm hơn Từ ngày bị chặn | VR-002 | `VR-002-ORD-2026-09-18/screenshots/TC-ORD-031__verify-chan-den-ngay-som-hon.png` | Sau khi Từ ngày=21/09, các ngày 19–20 chuyển disabled ⇒ không chọn được Đến ngày sớm hơn |
+| TC-ORD-032 | ⏳ NOT_RUN | SC-ORD-029 | P2 | Check chọn Giờ nào cũng được tự bỏ chọn các buổi đang chọn | — | — | **Lý do:** hết sức phiên VR-002 — chưa tới lượt trong thứ tự lô |
+| TC-ORD-033 | ⏳ NOT_RUN | SC-ORD-030 | P3 | Check khung giờ mặc định đã trôi qua thì bị chặn khi submit *(CARRIED v1.0)* | — | — | **Lý do:** hết sức phiên VR-002 — chưa tới lượt trong thứ tự lô |
+| TC-ORD-034 | ⏳ NOT_RUN | SC-ORD-031 | P2 | Check bước 3 tóm tắt đúng dữ liệu nhập ở bước 1 và 2 *(CARRIED v1.0)* | — | — | **Lý do:** hết sức phiên VR-002 — chưa tới lượt trong thứ tự lô |
+| TC-ORD-035 | ⏳ NOT_RUN | SC-ORD-032 | P3 | Check bước 3 hiện banner cảnh báo hàng cấm *(CARRIED v1.0)* | — | — | **Lý do:** hết sức phiên VR-002 — chưa tới lượt trong thứ tự lô |
+| TC-ORD-036 | ⏳ NOT_RUN | SC-ORD-033 | P2 | Check checkbox điều khoản ở bước 3 mặc định chưa được tick *(CARRIED v1.0)* | — | — | **Lý do:** hết sức phiên VR-002 — chưa tới lượt trong thứ tự lô |
+| TC-ORD-037 | ⏳ NOT_RUN | SC-ORD-034 | P1 | Check chưa tick điều khoản thì không đăng được tin *(CARRIED v1.0)* | — | — | **Lý do:** hết sức phiên VR-002 — chưa tới lượt trong thứ tự lô |
+| TC-ORD-038 | ⏳ NOT_RUN | SC-ORD-035 | P3 | Check đăng tin với loại hàng "Thuốc/Y tế" vẫn thành công ở phiên bản v1.0 *(CARRIED v1.0)* | — | — | **Lý do:** hết sức phiên VR-002 — chưa tới lượt trong thứ tự lô |
+| TC-ORD-039 | ⏳ NOT_RUN | SC-ORD-036 | P2 | Check màn Đăng tin thành công không hiển thị mã đơn và có đủ hai nút điều hướng | — | — | **Lý do:** hết sức phiên VR-002 — chưa tới lượt trong thứ tự lô |
+| TC-ORD-040 | ⏳ NOT_RUN | SC-ORD-037 | P2 | Check màn "Đăng tin thành công" có hai lựa chọn điều hướng đúng đích *(CARRIED v1.0)* | — | — | **Lý do:** hết sức phiên VR-002 — chưa tới lượt trong thứ tự lô |
+| TC-ORD-041 | ⏳ NOT_RUN | SC-ORD-038 | P3 | Check màn "Đăng tin thành công" không hiển thị mã tin *(CARRIED v1.0)* | — | — | **Lý do:** hết sức phiên VR-002 — chưa tới lượt trong thứ tự lô |
+| TC-ORD-042 | ⏳ NOT_RUN | SC-ORD-039 | P2 | Check form OFFER đủ các nhóm trường trên một trang và không có step indicator *(CARRIED v1.0)* | — | — | **Lý do:** hết sức phiên VR-002 — chưa tới lượt trong thứ tự lô |
+| TC-ORD-043 | ⏳ NOT_RUN | SC-ORD-040 | P2 | Check điểm xuất phát form OFFER sửa được, điểm đến trùng bị chặn *(CARRIED v1.0)* | — | — | **Lý do:** hết sức phiên VR-002 — chưa tới lượt trong thứ tự lô |
+| TC-ORD-044 | ⏳ NOT_RUN | SC-ORD-041 | P2 | Check vai người gửi không tìm thấy và không mở được tin OFFER của người khác | — | — | **Lý do:** hết sức phiên VR-002 — chưa tới lượt trong thứ tự lô |
+| TC-ORD-045 | ⏳ NOT_RUN | SC-ORD-042 | P1 | Check tin OFFER không xuất hiện trên Bảng tin của người khác *(CARRIED v1.0)* | — | — | **Lý do:** hết sức phiên VR-002 — chưa tới lượt trong thứ tự lô |
+| TC-ORD-046 | ⏳ NOT_RUN | SC-ORD-043 | P2 | Check sửa tin đang chờ ghép lưu được dữ liệu mới và giữ nguyên trạng thái | — | — | **Lý do:** hết sức phiên VR-002 — chưa tới lượt trong thứ tự lô |
+| TC-ORD-047 | ⏳ NOT_RUN | SC-ORD-044 | P2 | Check tin đã ghép không còn nút Chỉnh sửa | — | — | **Lý do:** hết sức phiên VR-002 — chưa tới lượt trong thứ tự lô |
+| TC-ORD-048 | ⏳ NOT_RUN | SC-ORD-045 | P2 | Check tin chưa ai ghép quá Đến ngày chuyển sang hết hạn và biến khỏi Bảng tin | — | — | **Lý do:** hết sức phiên VR-002 — chưa tới lượt trong thứ tự lô |
+| TC-ORD-049 | ⏳ NOT_RUN | SC-ORD-046 | P2 | Check block Lịch sử của tin vừa đăng có mốc đăng tin kèm timestamp *(CARRIED v1.0)* | — | — | **Lý do:** hết sức phiên VR-002 — chưa tới lượt trong thứ tự lô |
+| TC-ORD-050 | ⏳ NOT_RUN | SC-ORD-047 | P2 | Check nút gửi của NEED và OFFER chỉ bật khi đủ trường và tick *(CARRIED v1.0)* | — | — | **Lý do:** hết sức phiên VR-002 — chưa tới lượt trong thứ tự lô |
+| TC-ORD-051 | ⏳ NOT_RUN | SC-ORD-048 | P3 | Check lỗi validate hiện ngay dưới ô nhập khi rời ô *(CARRIED v1.0)* | — | — | **Lý do:** hết sức phiên VR-002 — chưa tới lượt trong thứ tự lô |
+| TC-ORD-052 | ⏳ NOT_RUN | SC-ORD-049 | P3 | Check hệ thống cắt khoảng trắng tên và chuẩn hoá SĐT khi lưu *(CARRIED v1.0)* | — | — | **Lý do:** hết sức phiên VR-002 — chưa tới lượt trong thứ tự lô |
+| TC-ORD-053 | ❌ FAIL | SC-ORD-050 | P2 | Check chọn ở lại ở popup thoát wizard giữ nguyên dữ liệu đã nhập | VR-002 | `VR-002-ORD-2026-09-18/screenshots/TC-ORD-053__step4-FAIL-khong-co-popup-thoat.png` | 🐞🔴 Bug thật — KHÔNG có popup "Thoát và bỏ nội dung đã nhập?", app thoát thẳng + xoá dữ liệu soạn dở (trái `AC-01.2.01`/`C-ORD-08`). Cùng họ `TC-USR-045` ⇒ nghi lỗi hệ thống chung (F4) |
+| TC-ORD-054 | ✅ PASS | SC-ORD-051 | P3 | Check bước 1 không có field nhập số tiền hay ngưỡng giá trị hàng *(CARRIED v1.0)* | VR-002 | `VR-002-ORD-2026-09-18/screenshots/TC-ORD-054__verify-khong-co-field-so-tien.png` | Chỉ 1 EditText ở bước 1 (Ghi chú); chọn "Cao" cũng không sinh ô nhập số tiền |
+| TC-ORD-055 | ✅ PASS | SC-ORD-026 | P3 | Check ô địa chỉ nhận đúng hai trăm ký tự và chặn ký tự thứ hai trăm lẻ một | VR-002 | `VR-002-ORD-2026-09-18/screenshots/TC-ORD-055__verify-giu-dung-200-ky-tu.png` | 200 ký tự nhận đủ, ký tự 201 bị chặn (`max-text-length=200`) |
+| TC-ORD-056 | ✅ PASS | SC-ORD-028 | P2 | Check khoảng đúng bảy ngày được chấp nhận | VR-002 | `VR-002-ORD-2026-09-18/screenshots/TC-ORD-056__verify-khoang-7-ngay-duoc-nhan.png` | Khoảng đúng 7 ngày (18→25/09) được nhận, không lỗi ⇒ biên trên hợp lệ đúng `C-ORD-15(a)` |
+| TC-ORD-057 | ✅ PASS | SC-ORD-028 | P2 | Check khoảng tám ngày bị chặn | VR-002 | `VR-002-ORD-2026-09-18/screenshots/TC-ORD-057__verify-loi-toi-da-7-ngay.png` | Nhận giá trị +8 nhưng **hiện lỗi inline** "Đến ngày tối đa 7 ngày kể từ Từ ngày" ⇒ thoả nhánh "hoặc hiện lỗi" của Expected. 🔑 Ca đối chứng cho F3/F7 |
+| TC-ORD-058 | ❌ FAIL | SC-ORD-029 | P2 | Check buổi mong muốn mặc định là Sau giờ làm khi vừa mở bước hai | VR-002 | `VR-002-ORD-2026-09-18/screenshots/TC-ORD-058__verify-buoi-mac-dinh.png` | 🐞 Không có buổi nào được chọn sẵn (Expected: `Sau giờ làm (17–19)`); app hiện luôn lỗi "Chọn ít nhất 1 buổi". Căn cứ log bug: PRD `§8.1.4` |
+| TC-ORD-059 | ❌ FAIL | SC-ORD-029 | P2 | Check buổi đã trôi qua trong ngày hôm nay bị chặn chọn | VR-002 | `VR-002-ORD-2026-09-18/screenshots/TC-ORD-059__step4-FAIL-chon-duoc-buoi-da-qua.png` | 🐞 13:44 vẫn chọn được buổi `Sáng (8–12h)` của hôm nay ⇒ trái `C-ORD-15(b)`. Khi log bug PHẢI dẫn `C-ORD-15(b)` (rule không có trong PRD) |
+| TC-ORD-060 | ⏳ NOT_RUN | SC-ORD-043 | P2 | Check huỷ chỉnh sửa trả tin về dữ liệu cũ và không lưu thay đổi | — | — | **Lý do:** hết sức phiên VR-002 — chưa tới lượt trong thứ tự lô |
+| TC-ORD-061 | ⏳ NOT_RUN | SC-ORD-045 | P2 | Check tin đã ghép quá Đến ngày không chuyển sang hết hạn | — | — | **Lý do:** hết sức phiên VR-002 — chưa tới lượt trong thứ tự lô |
+| TC-ORD-062 | ✅ PASS | SC-ORD-050 | P2 | Check chọn thoát ở popup mở lại wizard là form trắng không có bản nháp | VR-002 | `VR-002-ORD-2026-09-18/screenshots/TC-ORD-062__verify-form-trang-khong-nhap.png` | Form mở lại trắng + 2 tab Hoạt động không có tin nháp. Step 3 thực hiện lệch vì popup không tồn tại (defect do `TC-ORD-053` sở hữu) |
+| TC-ORD-063 | ❌ FAIL | SC-ORD-054 | P1 | Check chưa tải ảnh nào thì bị chặn sang bước hai | VR-002 | `VR-002-ORD-2026-09-18/screenshots/TC-ORD-063__step6-FAIL-chan-nhung-khong-co-thong-bao-loi.png` | 🐞🔴 Ứng viên bug P1 — CHẶN ĐÚNG nhưng chặn IM LẶNG, không có thông báo lỗi ở khối ẢNH HÀNG (F3) |
+| TC-ORD-064 | ❌ FAIL | SC-ORD-052 | P2 | Check chưa chọn Trọng lượng thì bị chặn và ba chip hiện đúng nhãn chính thức | VR-002 | `VR-002-ORD-2026-09-18/screenshots/TC-ORD-064__step6-FAIL-chan-nhung-khong-co-thong-bao-loi.png` | 🐞 F3 — chặn đúng + 3 nhãn chip khớp oracle `C-ORD-18` ("TRỌNG LƯỢNG", Nhẹ/Trung bình/Nặng), nhưng KHÔNG có thông báo lỗi ở khối |
+| TC-ORD-065 | ⏳ NOT_RUN | SC-ORD-052 | P2 | Check chọn Trọng lượng trên mười kg vẫn đăng tin được bình thường | — | — | **Lý do:** hết sức phiên VR-002 — chưa tới lượt trong thứ tự lô |
+| TC-ORD-066 | ❌ FAIL | SC-ORD-053 | P2 | Check chưa chọn Kích thước thì bị chặn và ba chip hiện đúng nhãn | VR-002 | `VR-002-ORD-2026-09-18/screenshots/TC-ORD-066__step5-FAIL-chan-nhung-khong-co-thong-bao-loi.png` | 🐞 F3 — chặn đúng + 3 nhãn chip Kích thước khớp Expected, nhưng KHÔNG có thông báo lỗi ở khối |
+| TC-ORD-067 | ⏳ NOT_RUN | SC-ORD-053 | P2 | Check chọn Kích thước lớn vẫn đăng tin được bình thường | — | — | **Lý do:** hết sức phiên VR-002 — chưa tới lượt trong thứ tự lô |
+| TC-ORD-068 | ✅ PASS | SC-ORD-055 | P2 | Check ảnh vượt năm MB bị từ chối và bộ đếm không tăng | VR-002 | `VR-002-ORD-2026-09-18/screenshots/TC-ORD-068__verify-tu-choi-anh-6mb-0-5.png` | Từ chối + thông báo "Ảnh vượt quá 5MB, vui lòng chọn ảnh nhỏ hơn." + bộ đếm vẫn 0/5 |
+| TC-ORD-069 | 🚫 BLOCKED | SC-ORD-055 | P2 | Check file sai định dạng bị từ chối và bộ đếm không tăng | VR-002 | `VR-002-ORD-2026-09-18/screenshots/TC-ORD-069__step2-BLOCKED-picker-chi-co-anh.png` | Không có đường UI để chọn `.pdf` (chỉ camera + Android Photo Picker, picker lọc sẵn ảnh) ⇒ không quan sát được thông báo lỗi của app. 📨 QC chốt N-A hoặc đổi Expected; ⛔ không PASS vì thiếu đường thử |
+| TC-ORD-070 | ✅ PASS | SC-ORD-056 | P2 | Check tải đủ năm ảnh thì bộ đếm đạt trần và không thêm được ảnh thứ sáu | VR-002 *(recheck)* | `VR-002-ORD-2026-09-18/screenshots/TC-ORD-070__verify-du-5-anh-an-o-them-anh.png` | ♻️ **2 lần đổi verdict**: 🚫 BLOCKED → ❌ FAIL → ✅ **PASS**. QC GiangDC2 chốt 2026-09-18 *"đủ 5 file bỏ bộ đếm luôn"* ⇒ **Expected đã sửa** (bỏ vế `5/5`, assert bộ đếm ở `4/5`) ⇒ app đúng, ⛔ không bug |
+| TC-ORD-071 | ✅ PASS | SC-ORD-056 | P2 | Check xoá một ảnh làm bộ đếm giảm đúng một đơn vị | VR-002 *(recheck)* | `VR-002-ORD-2026-09-18/screenshots/TC-ORD-071__verify-bo-dem-4-tren-5-nut-them-hien-lai.png` | ♻️ **Recheck 2026-09-18 chiều — đổi 🚫 BLOCKED → ✅ PASS.** Dựng được 5 ảnh, xoá **đúng ảnh thứ ba**, bộ đếm về `4/5`, nút thêm hiện lại |
+| TC-ORD-072 | ⏳ NOT_RUN | SC-ORD-057 | P3 | Check dải ảnh ở chi tiết tin lướt ngang được và có badge đếm ảnh | — | — | **Lý do:** hết sức phiên VR-002 — chưa tới lượt trong thứ tự lô |
+| TC-ORD-073 | ⏳ NOT_RUN | SC-ORD-057 | P3 | Check lightbox ảnh đóng được bằng cả nút đóng lẫn chạm nền | — | — | **Lý do:** hết sức phiên VR-002 — chưa tới lượt trong thứ tự lô |
+| TC-ORD-074 | ❌ FAIL | SC-ORD-058 | P1 | Check nhập email có trên danh bạ tự điền ba trường và cả ba vẫn sửa được | VR-002 | `VR-002-ORD-2026-09-18/screenshots/TC-ORD-074__step5-FAIL-dia-chi-giao-khong-tu-dien.png` | 🐞 P1 — chỉ 2/3 ô tự điền (tên ✓ SĐT ✓, **địa chỉ giao RỖNG**). Cần BA chốt trước khi log bug: HRIS có địa chỉ ⇒ bug app, hay spec chỉ autofill 2 ô ⇒ sửa Expected. 📨 route analyze |
+| TC-ORD-075 | ✅ PASS | SC-ORD-059 | P2 | Check email đúng tên miền công ty nhưng không có trên danh bạ thì chặn tạo đơn | VR-002 | `VR-002-ORD-2026-09-18/screenshots/TC-ORD-075__verify-email-la-chan-tao-don.png` | Chặn đúng `C-ORD-14` (nút disable kể cả khi điền tay đủ). 🚩 Chuỗi hướng dẫn còn của v1.0 ("vui lòng nhập tay…") ⇒ text-defect, xem F5 |
+| TC-ORD-076 | ✅ PASS | SC-ORD-059 | P2 | Check email của người đã nghỉ việc cũng chặn tạo đơn | VR-002 | `VR-002-ORD-2026-09-18/screenshots/TC-ORD-076__verify-email-nghi-viec-chan.png` | Email người nghỉ việc cũng chặn; app không phân biệt "nghỉ việc" vs "không tồn tại" (cùng 1 chuỗi) |
+| TC-ORD-077 | ❌ FAIL | SC-ORD-060 | P2 | Check email sai định dạng bị chặn và không kích hoạt tra danh bạ | VR-002 | `VR-002-ORD-2026-09-18/screenshots/TC-ORD-077__step4-FAIL-khong-co-loi-dinh-dang.png` | 🐞 F3 — vế "không tra danh bạ" đúng (3 ô vẫn trống), vế "hiện lỗi định dạng" SAI: không có thông báo nào |
+| TC-ORD-078 | ✅ PASS | SC-ORD-060 | P2 | Check email ngoài tên miền công ty bị chặn | VR-002 | `VR-002-ORD-2026-09-18/screenshots/TC-ORD-078__verify-email-ngoai-ten-mien.png` | Có dòng lỗi + 3 ô vẫn trống ⇒ PASS. 🚩 Chuỗi là thông báo chung "không tìm thấy email", không nói rõ ngoài tên miền (F5) |
+| TC-ORD-079 | ⏳ NOT_RUN | SC-ORD-061 | P2 | Check số điện thoại uỷ quyền sai định dạng bị báo lỗi và chặn | — | — | **Lý do:** hết sức phiên VR-002 — chưa tới lượt trong thứ tự lô |
+| TC-ORD-080 | ⏳ NOT_RUN | SC-ORD-061 | P2 | Check khai người nhận uỷ quyền hợp lệ gắn nhãn Người gửi chỉ định vào đơn | — | — | **Lý do:** hết sức phiên VR-002 — chưa tới lượt trong thứ tự lô |
+| TC-ORD-081 | ⏳ NOT_RUN | SC-ORD-061 | P2 | Check tên người nhận uỷ quyền nhận đúng hai và sáu mươi ký tự | — | — | **Lý do:** hết sức phiên VR-002 — chưa tới lượt trong thứ tự lô |
+| TC-ORD-082 | ⏳ NOT_RUN | SC-ORD-062 | P3 | Check xoá khối uỷ quyền đã điền vẫn đăng tin được và đơn không mang dữ liệu uỷ quyền | — | — | **Lý do:** hết sức phiên VR-002 — chưa tới lượt trong thứ tự lô |
+| TC-ORD-083 | ❌ FAIL | SC-ORD-063 | P2 | Check địa chỉ giao trùng hệt địa chỉ lấy bị chặn | VR-002 | `VR-002-ORD-2026-09-18/screenshots/TC-ORD-083__step5-FAIL-chan-nhung-khong-co-thong-bao-loi.png` | 🐞 Chặn đúng nhưng im lặng — không có lỗi ở ô "Địa chỉ giao hàng" (F3). Gộp 1 bug với `063`/`084` |
+| TC-ORD-084 | ❌ FAIL | SC-ORD-063 | P2 | Check địa chỉ giao chỉ khác khoảng trắng đầu cuối vẫn bị chặn | VR-002 | `VR-002-ORD-2026-09-18/screenshots/TC-ORD-084__step5-FAIL-chan-nhung-khong-co-thong-bao-loi.png` | 🐞 So sánh CÓ trim (biên khoảng trắng chặn đúng) nhưng vẫn im lặng (F3). Gộp 1 bug với `063`/`083` |
+| TC-ORD-085 | ⏳ NOT_RUN | SC-ORD-064 | P3 | Check icon copy cạnh địa chỉ giao ở chi tiết tin sao chép đúng nội dung | — | — | **Lý do:** hết sức phiên VR-002 — chưa tới lượt trong thứ tự lô |
+| TC-ORD-086 | ⏳ NOT_RUN | SC-ORD-064 | P3 | Check icon copy cạnh số điện thoại ở chi tiết tin sao chép đúng nội dung | — | — | **Lý do:** hết sức phiên VR-002 — chưa tới lượt trong thứ tự lô |
+| TC-ORD-087 | ✅ PASS | SC-ORD-065 | P3 | Check xoá được ảnh khi đang soạn tin chưa đăng | VR-002 | `VR-002-ORD-2026-09-18/screenshots/TC-ORD-087__verify-xoa-anh-1-con-1-5.png` | Xoá đúng ảnh được chọn, bộ đếm 2/5 → 1/5 |
+| TC-ORD-088 | ⏳ NOT_RUN | SC-ORD-065 | P3 | Check không xoá được ảnh của tin đã đăng | — | — | **Lý do:** hết sức phiên VR-002 — chưa tới lượt trong thứ tự lô |
+
+## Tổng hợp
+
+| Verdict | Số | TC |
+|---|---|---|
+| ✅ PASS | 27 | 27 TC *(+`TC-ORD-070`/`071` sau recheck)* |
+| ❌ FAIL | 14 | `TC-ORD-006` · `TC-ORD-007` · `TC-ORD-008` · `TC-ORD-014` · `TC-ORD-053` · `TC-ORD-058` · `TC-ORD-059` · `TC-ORD-063` · `TC-ORD-064` · `TC-ORD-066` · `TC-ORD-074` · `TC-ORD-077` · `TC-ORD-083` · `TC-ORD-084` |
+| 🚫 BLOCKED | 1 | `TC-ORD-069` |
+| ⚠️ NOT_EVIDENCED | 0 | — |
+| ⏳ NOT_RUN | 46 | 46 TC |
+| ⛔ N-A | 0 | — |
+| **Tổng** | **88** | |
+
+**Có verdict cuối: 42/88 · CÒN NỢ: 46** ⇒ §8 = **PARTIAL**.
+
+> 🔴 **46/88 TC còn nợ — module ORD CHƯA đóng được.** Phần chưa chạy tập trung ở: bước 3 wizard + luồng đăng tin hoàn tất (`034`–`041`, `065`, `067`, `039`), luồng OFFER (`003`, `042`–`045`), sửa/huỷ/hết hạn tin (`046`–`052`, `060`, `061`, `088`), uỷ quyền (`079`–`082`), copy/carousel ảnh (`072`, `073`, `085`, `086`) và nhóm địa chỉ gợi ý carried (`019`–`026`, `029`, `032`, `033`). 
+> ⚠️ **14 FAIL KHÔNG đồng nghĩa 14 bug**: 4 là **nợ QC** (TC hết hiệu lực, chờ DESCOPED), 10 còn lại thuộc **5–6 ứng viên bug thật** (nhiều TC dẫn chứng chung 1 lỗi) ⇒ `/log-bug` phải **gộp**, ⛔ đừng mở 10 bug. 
+> ⛔ **Tuyệt đối không sửa Expected theo app để làm xanh** — `TC-ORD-063`/`083`/`084`/`077` đang là bằng chứng của bug chặn-im-lặng.
