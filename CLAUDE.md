@@ -11,19 +11,36 @@
 - **Jira:** Chưa cấu hình — link sẽ bổ sung sau (xem `Project_rule.md §Jira Integration`)
 
 ## Version Info
-- **Current version:** v1.0
-- **Version history:** v1.0 (initial)
+- **Version đang phân tích/sinh TC:** **v1.1** (delta của v1.0) — `02_analyze-requirements/v1.1/` · `03_test-cases/v1.1/`
+- **Version đang thực thi/test:** **v1.0** — pipeline v1.0 còn dở (`review-tc` REJECTED, `vibe-test`/`log-bug` chưa chạy)
+  nên `MASTER-MEMORY §10 Version Cutover` **chưa áp dụng**; §8 vẫn là bảng sống của v1.0, v1.1 dùng bảng riêng **§8b**.
+- **Version history:** v1.0 (initial, 2026-09-07) → v1.1 (delta, ANALYZED 2026-09-17)
 - **MASTER-MEMORY:** `02_analyze-requirements/MASTER-MEMORY.md`
 - **Project Rules:** `02_analyze-requirements/Project_rule.md`
-- **TC-MASTER:** `03_test-cases/v1.0/TC-MASTER-v1.0.xlsx` — **219 TC** / 211 SC, mode `standard`, consolidate 2026-09-07
-  (bản copy `03_test-cases/TC-MASTER-LATEST.xlsx`; TC Gen Log ở `03_test-cases/v1.0/CHANGELOG.md`)
+
+### TC-MASTER — 🔴 đọc kỹ, có **2 file** và phải mở **song song**
+
+| File | TC | Phủ | Trạng thái |
+|---|--:|---|---|
+| `03_test-cases/v1.1/TC-MASTER-v1.1.xlsx` | **223** | 139 SC NEW+MODIFIED của v1.1 | ✅ Consolidated 2026-09-17 · ⏳ chưa review |
+| `03_test-cases/v1.0/TC-MASTER-v1.0.xlsx` | 219 | 211 SC của v1.0 (chứa **163 TC CARRIED** mà v1.1 KHÔNG gộp lại) | ✅ Consolidated 2026-09-07 · ❌ review 0/100 REJECTED |
+
+- 🔒 **SỐ LƯỢNG TC ĐÃ CHỐT VỚI TEAM 2026-09-18 — FREEZE** (`Project_rule.md §Custom Rules §10.5`): trong quá trình test ⛔ **không thêm/xoá/tách/gộp TC**, chỉ được sửa Steps · Expected · Test Data · Pre-condition · Notes · Status · Lifecycle. Case không còn đúng nghiệp vụ ⇒ đánh `DESCOPED` + `Skipped`, **giữ nguyên dòng**. Bảng chốt per-module + phép kiểm nhanh nằm ở §10.5.
+- 🔴 **v1.1 KHÔNG gộp CARRIED** (QC chốt 2026-09-17) ⇒ muốn phủ đủ **302 SC** thì phải mở **cả 2 file**.
+- ⚠️ **54 TC ID trùng giữa 2 file** (SC MODIFIED giữ ID v1.0) — **LUÔN lấy bản v1.1**.
+  5 TC kỳ vọng **NGƯỢC nhau**: `TC-ACT-008/013/014` · `TC-USR-003/008`. Lấy nhầm bản ⇒ kết luận ngược mà không có gì báo lỗi.
+- **`03_test-cases/TC-MASTER-LATEST.xlsx` = bản copy của `v1.1`** *(verify md5 2026-09-17 — trước đây file này bị khai nhầm là copy của v1.0)*.
+- TC Gen Log: `03_test-cases/v1.1/CHANGELOG.md` (v1.1) · `03_test-cases/v1.0/CHANGELOG.md` (v1.0).
+- 🔑 **Số canonical không nằm ở file này.** REQ/SC/priority → frontmatter `counts:` của `<module>/test_scenario_map.md`;
+  CL/RISK → `<module>/risk_assessment.md`. File này chỉ trỏ đường.
 
 ## Quy trình làm việc (Workflow)
+> Thay `v[X]` bằng version đang làm (hiện hành: **v1.1** cho analyze/generate-tc, **v1.0** cho execute).
 ```
-00_input/v1.0/ (tài liệu gốc)
+00_input/v[X]/ (tài liệu gốc)
   → 01_test-plans/ (create-test-plan)
-    → 02_analyze-requirements/v1.0/ (analyze-requirements)
-      → 03_test-cases/v1.0/ (generate-tc → consolidate → TC-MASTER)
+    → 02_analyze-requirements/v[X]/ (analyze-requirements)
+      → 03_test-cases/v[X]/ (generate-tc → consolidate → TC-MASTER)
         → 11_tc-review/ (review-tc + review-src-tc)
           → 08_test-runs/ (execute)
             → 05_bug-reports/ (log bugs)
@@ -32,7 +49,9 @@
 
 ## MEMORY Files
 - **MASTER-MEMORY:** `02_analyze-requirements/MASTER-MEMORY.md` — cross-version registry
-- **Version MEMORY:** `02_analyze-requirements/v1.0/MEMORY.md` — version-scoped analysis
+- **Version MEMORY (router):** `02_analyze-requirements/v1.1/MEMORY.md` (hiện hành) · `02_analyze-requirements/v1.0/MEMORY.md`
+  ⛔ Router **chỉ có §1 Function Register + §2 Module Summary** (layout `module-first v2`) — nội dung thật ở `v[X]/<MODULE>/` (5 file/module).
+  ⚠️ `FEED` **không có thư mục v1.1** — home duy nhất của nó là `v1.0/FEED-bang-tin/`.
 - **Source-code MEMORY:** `10_source-code/MEMORY.md` — *(chưa có: project không automation)*
 
 ## Naming Conventions
@@ -45,12 +64,12 @@ Template bug: `assets/bug-report-template.md` của skill `log-bug` (KHÔNG copy
 ## Folder Reference
 | # | Folder | Mục đích | Skill liên quan |
 |---|--------|----------|----------------|
-| 00 | input/v1.0/ | Tài liệu đầu vào (theo version) | analyze-requirements |
+| 00 | input/v[X]/ | Tài liệu đầu vào (theo version) — `v1.0/` · `v1.1/` | analyze-requirements |
 | 00 | input/shared/ | Tài liệu dùng chung | analyze-requirements |
 | 01 | test-plans/ | Test plan tổng thể | create-test-plan |
 | 02 | analyze-requirements/ | MASTER-MEMORY + Project_rule | analyze-requirements |
-| 02 | analyze-requirements/v1.0/ | Analysis output theo version | analyze-requirements |
-| 03 | test-cases/v1.0/ | TC-MASTER + fragments | generate-tc |
+| 02 | analyze-requirements/v[X]/ | Analysis output theo version — router + `<MODULE>/` (5 file) | analyze-requirements |
+| 03 | test-cases/v[X]/ | TC-MASTER + fragments — ⚠️ v1.0 và v1.1 **cùng sống**, xem §Version Info | generate-tc |
 | 04 | test-data/ | Dữ liệu test | — |
 | 05 | bug-reports/ | Báo cáo lỗi | log-bug |
 | 06 | checklists/ | Smoke + release checklists | — |

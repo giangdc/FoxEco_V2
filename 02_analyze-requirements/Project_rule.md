@@ -155,28 +155,38 @@ req_notation: FR/VR
 
 ## Jira Integration
 
-> ⛔ **CHƯA CẤU HÌNH** — project init không có link Jira (sẽ cung cấp sau).
-> `fetch-us` / `log-bug --push-jira` / `sync-jira-bugs` sẽ **dừng và hỏi** chừng nào block dưới còn comment.
+> ✅ **ĐÃ CẤU HÌNH 2026-09-18** — kết nối qua Atlassian connector (claude.ai OAuth), xác nhận bằng
+> `atlassianUserInfo` (account `GiangDC2`) + `getAccessibleAtlassianResources` (site `foxproject.atlassian.net`).
+> Project khớp app đang test: `FE` — "Fox Eco". Bug đầu tiên push thủ công: `FE-290` (B2, module USR).
 >
-> **Bật Jira:** bỏ comment khối dưới, điền `site` + `project_key` (parse từ link
-> `https://<site>.atlassian.net/browse/<KEY>-1`) và chọn `mcp_axis`:
-> - `connector` — Atlassian connector của claude.ai, OAuth qua browser, không cài gì (chỉ dùng tương tác)
-> - `sooperset` — `sooperset/mcp-atlassian` tự host, token riêng mỗi người (bắt buộc nếu chạy headless/cron/CI)
+> ⚠️ Subject convention của Jira project này **khác** convention local (`§Naming Conventions` trên):
+> project FE đang dùng `[TC_NN - <mô tả ngắn>]` (số TC theo cách đánh số riêng trong Jira, không phải mã module
+> ACT/ORD/USR...). Đã quan sát qua các bug có sẵn (`FE-175`..`FE-202`). Giữ nguyên convention này khi push tiếp
+> để nhất quán với lịch sử project, trừ khi QC/BA chốt đổi.
 >
-> Template đầy đủ các field còn lại: `~/.claude/skills/init-project/references/jira-block-template.md`.
-> Chọn `sooperset` thì chạy lại `/init-project` (hoặc copy tay) để sinh `.mcp.json` +
-> `07_environments/jira-mcp-setup.md`.
+> Custom field bắt buộc của issue type Bug trong `FE` (ngoài field chuẩn Jira):
+> `Severity` (thang 0/2/5/10/20, cascading select) · `Test Round` (1-7, **mặc định = 1** — QC chốt 2026-09-18,
+> áp dụng mọi bug từ đây) · `Platform` (App/Web/Web,App) ·
+> `Effect` (Functionality/Performance/Security/Serviceability/Usability) · `Test method` (Auto/Manual, default Manual) ·
+> `Defect Type` (Data/Interface/Logic/Requirement/Server/Other) · `Duplicate` (No/Yes, default No) ·
+> **`Parent` (bắt buộc) = `FE-1`** (`"[FoxEco] Triển khai Phase 1 - Nền tảng chung & Gửi hàng (MVP)"`, issue type Request) ·
+> **`Fix versions` (bắt buộc) = `V1.0`**.
+>
+> ⚠️ `FE-290`/`FE-291` (B2/B3) push lúc đầu bị set `Test Round=2` nhầm — QC đã tự sửa tay trên Jira về `1`
+> ngày 2026-09-18; local mirror đã cập nhật khớp. Từ bug tiếp theo trở đi dùng thẳng `test_round_default: 1` dưới đây.
 
-<!--
 ```yaml
-mcp_axis:    <connector | sooperset>   # BẮT BUỘC — skill đọc để biết gọi họ tool nào
+mcp_axis:    connector
 qc_name:     GiangDC2
-site:        https://<site>.atlassian.net
-project_key: <KEY>
-# các field còn lại (severity_map, custom_fields, match_jql, userstory…):
-# log-bug tự khám phá lần đầu chạy --push-jira rồi ghi ngược vào đây
+site:        https://foxproject.atlassian.net
+project_key: FE
+parent_issue: FE-1        # bắt buộc khi tạo Bug — không set sẽ bị Jira reject
+fix_version:  V1.0         # bắt buộc khi tạo Bug — không set sẽ bị Jira reject
+test_round_default: 1     # customfield_10679, id option "1" = 10365 — QC chốt 2026-09-18, áp dụng MỌI bug từ đây
+subject_convention: "[TC_NN - <mô tả ngắn>]"   # khác local §Naming Conventions, giữ theo lịch sử Jira project FE
+# custom_fields đầy đủ (id + allowedValues) — xem 05_bug-reports/jira/FE-290-*.md làm ví dụ mapping
+# severity_map, match_jql, userstory…: log-bug tự khám phá + bổ sung khi chạy --push-jira lần sau
 ```
--->
 
 ## Automation Rules
 
@@ -200,6 +210,16 @@ test data đúng giá trị TC · theo convention `10_source-code/MEMORY.md`) v�
   ⛔ KHÔNG inline password vào command · ⛔ KHÔNG đọc file credentials rồi copy giá trị ra context.
   Check bằng `test -n "$<VAR>" && echo ENV_OK || echo ENV_MISSING` (KHÔNG echo giá trị).
 - **Env vars cần thiết:** `FOXECO_STG_USER` · `FOXECO_STG_PASS` (KHÔNG ghi giá trị ở đây).
+- 🚪 **Mở app FoxEco trên STG — 3 bước** *(QC GiangDC2 hướng dẫn 2026-09-18)*:
+  1. Mở **app FoxPro** (`vn.fpt.ftel.sop.stg`) và **đăng nhập thành công** (tài khoản `stag_*@fpt.com` + pass dùng chung + **mã OTP**).
+  2. Vào menu bar **"Chức năng"**.
+  3. Nhấn **icon FoxEco** → vào thẳng FoxEco với danh tính SSO của tài khoản vừa đăng nhập.
+  🔑 **FoxPro = HRIS, cùng 1 hệ thống, khác bề mặt** (QC chốt 2026-09-18): **HRIS là bản WEB**, **FoxPro là bản APP mobile**.
+  ⇒ Test FoxEco **luôn đi đường app FoxPro**; ⛔ không tìm FoxEco trên web HRIS. Dữ liệu hồ sơ/SĐT/địa chỉ mà TC gọi là *"HRIS"* chính là dữ liệu của hệ thống này.
+  ⇒ FoxEco **không có icon riêng ngoài launcher** và **không có URL** — mọi TC đều bắt đầu từ 3 bước này.
+  ⚠️ **OTP phải nhập tay** — AI không lấy được mã ⇒ `vibe-test` cần người mở app + đăng nhập **1 lần đầu phiên**, sau đó AI chạy tiếp.
+  ⛔ Đổi tài khoản (vd sang vai B) = **đăng xuất khỏi app FoxPro rồi lặp lại 3 bước**, không chỉ thoát FoxEco.
+  📌 Tài khoản + vai: `04_test-data/valid/USR-accounts.md`.
 - **Thiết bị:** Android thật, SDK trong host app `vn.fpt.ftel.sop.stg`. Trước khi chạy: `adb` set
   `screen_off_timeout` ≥ 30 phút (auto-lock đã cắt ngang 2 phiên vibe-test v1.0).
 - **Evidence vibe-test:** ≥1 ảnh riêng / TC tại điểm verify; giữ ảnh phụ chỉ khi FAIL/BLOCKED.
@@ -317,6 +337,8 @@ N/A — chưa scaffold source code. Chạy `/init-source-code --archetype <stack
 | 2026-07-24 | `§Custom Rules §10.1` — UI phải khớp tài liệu mới được viết TC khẳng định | QA GiangDC2 |
 | 2026-07-27 | `§Custom Rules §10.2` — màn có tab ⇒ mỗi tab ≥1 TC riêng verify data | QA GiangDC2 |
 | 2026-09-15 | `§Custom Rules §10.3` — gộp seed dữ liệu dùng chung cho nhóm TC cùng module, ưu tiên tạo trạng thái qua UI flow thay vì nhờ dev seed DB | QA GiangDC2 |
+| 2026-09-17 | `§Custom Rules §10.4` — Expected Result chỉ ghi tại step cuối cùng, không liệt kê Expected cho các bước giữa | QA GiangDC2 |
+| 2026-09-17 | Xác nhận scope `CNL` = **IN scope v1.1** (`RISK-CNL-06` Resolved) — không còn treo PM. `NTF`/`TS` vẫn Pending, xử lý riêng khi tới lượt | QC GiangDC2 |
 | 2026-07-27 | "Đánh giá" trong scope Phase 1 = **Quà ảo** (`GIFT-01`); chấm 1–5 sao là phase sau | BA/PO |
 | 2026-09-07 | Tách 11 module (thêm `HOME`/`FEED`/`ACT`) thay 8 mã domain của đợt v1.0 cũ | QC GiangDC2 |
 | 2026-09-07 | Phân tích lại v1.0 từ đầu theo bộ skill v1.1 (`module-first v2`); **scope = toàn bộ 11 module**, không giới hạn 5 luồng Phase 1 | QC GiangDC2 |
@@ -382,7 +404,82 @@ cần cùng một nhóm trạng thái đơn:
    biết cần chuẩn bị trước, không phải chờ giữa chừng.
 3. Rà nhóm trạng thái/tài khoản đặc biệt dùng chung được (vd tài khoản "trắng" 0 đơn) và gộp seed tương
    tự bước 1, kể cả khi các TC không liền kề ID nhau.
+4. 🔴 **CONSOLIDATE PHẢI MANG KHỐI SEED SANG TC-MASTER** *(bổ sung 2026-09-17 sau `review-tc` M-1)*.
+   `/generate-tc --consolidate` phải sinh sheet **`Seed`** trong `TC-MASTER-v[X].xlsx` chứa **đủ định nghĩa của
+   MỌI mã `SEED-*` mà TC trong file đó trỏ tới**, và mọi ô `Pre-condition`/`Test Data` chỉ được trỏ **sheet `Seed`
+   của chính file**, ⛔ KHÔNG trỏ `"đầu fragment"` hay file khác.
+   **Vì sao bắt buộc:** `TC-MASTER.xlsx` là artifact mà `execute`/`vibe-test` mở (`MASTER-MEMORY §6` · `CLAUDE.md`).
+   Bước 1 ở trên chỉ bắt **fragment** khai khối Seed ⇒ trước lượt sửa này, **88/223 TC (39%) của v1.1** trỏ 21 mã
+   `SEED-*` mà workbook **không có định nghĩa nào**; riêng `SEED-DLV-01` còn nằm ở **file thứ ba**
+   (`03_test-cases/v1.0/CHANGELOG.md`). Người chạy mở workbook không tra được ⇒ đúng thứ mà §10.3 sinh ra để tránh.
+   **Kiểm nhanh:** tập `SEED-*` bị TC trỏ **phải bằng** tập được định nghĩa ở sheet `Seed`; lệch ⇒ chưa consolidate xong.
 
 **Lý do:** seed lặp lại theo từng TC khiến `/vibe-test` phải dừng xin dev/QA seed nhiều lần cho cùng
 1 module thay vì 1 lần, giảm mạnh hiệu quả "AI thay manual tester". **Case gốc:** `ACT` — 8/14 TC lặp
 lại bước seed riêng lẻ dù dùng chung được 1 bộ đơn (`SEED-ACT-01`) + 1 tài khoản trắng (`SEED-ACT-02`).
+
+### §10.4 — Expected Result chỉ ghi tại step cuối cùng *(2026-09-17, QA GiangDC2)*
+
+Mỗi TC chỉ có **ĐÚNG 1 dòng Expected Result**, neo vào **step CUỐI CÙNG** của TC. **KHÔNG** liệt kê
+Expected cho các step giữa — vd TC có 9 step thì Expected chỉ ghi cho step 9, không ghi step 6/7/8
+(kể cả khi step 6/7/8 là step quan sát/`Check`).
+
+> Ghi đè `testcase-guide.md §B.4.3` của skill `generate-tc` (bản gốc cho phép TC validation/security
+> nhiều tầng có 2–3 dòng Expected neo nhiều step) — dự án này chỉ áp **1 dòng Expected/TC**, không có
+> ngoại lệ nhiều tầng.
+
+Khi 1 scenario vốn có nhiều điểm kiểm chứng độc lập (không gộp được vào 1 câu Expected cuối mà không
+mất khả năng bắt lỗi riêng của từng điểm), xử lý theo đúng thứ tự ưu tiên:
+
+1. **Ưu tiên sắp xếp lại Steps** để điểm kiểm chứng **quan trọng nhất** rơi đúng vào step cuối. Các
+   quan sát phụ (không tự thân là 1 case fail độc lập, hoặc đã được TC khác trong cùng lô cover) giữ
+   làm Steps bình thường (không gắn Expected) — hoặc nếu nhiều quan sát cùng thuộc **1 trạng thái tĩnh
+   không đổi giữa các quan sát** (vd nhấn lần lượt vào nhiều field chỉ-đọc rồi check chung 1 lần) thì
+   **gộp thành 1 step Check cuối cùng + 1 câu Expected duy nhất** liệt kê đủ các quan sát.
+2. **Chỉ khi (1) làm mất khả năng vibe-test một hành vi/case cụ thể** — case đó có thể FAIL độc lập với
+   các case còn lại trong TC (vd 2 định dạng invalid khác nhau, 2 chiều Given/Then đối lập, cặp biên
+   BVA) — thì **tách thành TC riêng**, mỗi TC 1 điểm kiểm chứng đúng ở step cuối. Áp dụng chiến lược ID
+   theo `testcase-guide.md §A.2` (renumber liên tục + `*-ID-MAPPING.md`, hoặc để lỗ) khi tách TC làm
+   lệch dải ID đã phát hành.
+3. **CẤM xoá âm thầm coverage đã có** — mọi điểm kiểm chứng đang tồn tại phải được giữ lại bằng (1)
+   hoặc (2), không được bỏ hẳn để "cho gọn". Mục tiêu tối thượng là **tối đa số case vibe-test được**,
+   không phải tối thiểu số dòng Expected.
+
+**Case gốc:** lô `TC-USR-v1.1` (generate 2026-09-16/17) — nhiều TC có 2–5 dòng Expected neo nhiều step
+giữa (vd `TC-USR-022` cũ neo cả step 13 "đơn cũ giữ nguyên" và step 15 "wizard nhận giá trị mới";
+`TC-USR-021` cũ neo 5 step kiểm 5 trường chỉ-đọc khác nhau).
+
+### §10.5 — 🔒 SỐ LƯỢNG TC ĐÃ CHỐT VỚI TEAM — AI KHÔNG ĐƯỢC THAY ĐỔI *(2026-09-18, QA GiangDC2)*
+
+> Áp cho **mọi skill chạm TC sau ngày chốt**: `vibe-test` · `execute-maintain` · `log-bug` · `test-report`
+> · `export-tc-rp` · `health-check` — và cả khi liệt kê/sửa TC trực tiếp trong chat.
+
+**Số lượng test case tính đến 2026-09-18 đã chốt với team dự án ⇒ FREEZE.** Trong quá trình test, AI
+**KHÔNG được thay đổi số lượng TC** dưới bất kỳ hình thức nào: ⛔ không thêm TC mới · ⛔ không xoá TC ·
+⛔ không tách 1 TC thành nhiều · ⛔ không gộp nhiều TC thành 1 · ⛔ không đổi dải ID.
+
+**Bảng chốt (nguồn: `TC-MASTER`, sheet `ALL`, đếm 2026-09-18):**
+
+| Version | Σ TC | ACT | ASN | CNL | DLV | FEED | GIFT | HOME | NTF | ORD | TS | USR |
+|---|--:|--:|--:|--:|--:|--:|--:|--:|--:|--:|--:|--:|
+| **v1.1** | **223** | 10 | 13 | 13 | 51 | 5 | 8 | 11 | 9 | 48 | 17 | 38 |
+| **v1.0** | **219** | 14 | 21 | 14 | 30 | 14 | 12 | 24 | 16 | 54 | 7 | 13 |
+
+**Được phép sửa (không đụng số lượng):** `Steps` · `Expected Result` · `Test Data` · `Pre-condition` ·
+`Notes` · `Status` (`Pass`/`Fail`/`Blocked`/`Skipped`) · `Lifecycle` (vd `DESCOPED` cho case không còn
+xảy ra trong thực tế) · `Assigned To`.
+
+**Case không chạy được / không còn đúng nghiệp vụ:** đánh `DESCOPED` + `Skipped` kèm lý do và nguồn
+chốt, **giữ nguyên dòng TC trong fragment + TC-MASTER để truy vết** — ⛔ TUYỆT ĐỐI KHÔNG xoá dòng.
+Mẫu số coverage khi báo cáo thì trừ các TC `DESCOPED` ra, nhưng Σ TC của bảng trên **không đổi**.
+
+**Phát hiện thiếu case / thừa case khi test:** ghi vào `Notes` của TC gần nhất + 1 dòng ở
+`<module>/CHANGELOG.md`, rồi **báo QC** — ⛔ không tự thêm/bớt. Số lượng chỉ được đổi qua một lượt
+`generate-tc` / `review-tc-ba` **mới, có QC duyệt và chốt lại với team**, và lượt đó phải cập nhật
+lại bảng chốt ở trên.
+
+**Kiểm nhanh (mọi skill tự chạy trước khi ghi kết quả):** đếm số dòng TC theo module ở `TC-MASTER`
+phải **khớp đúng bảng chốt**; lệch ⇒ dừng, không ghi §8, báo QC.
+
+**Lý do:** số lượng TC là con số đã cam kết với team dự án (scope + effort + tiến độ báo cáo). Tự ý
+thêm/bớt giữa lượt test làm lệch mọi mẫu số coverage, báo cáo round và cam kết đã phát hành.
