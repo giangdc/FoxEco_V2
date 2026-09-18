@@ -8,10 +8,10 @@ module: NTF
 counts:
   cl: 4
   risk: 7
-  cl_open: 2
-  cl_resolved: 2
+  cl_open: 0
+  cl_resolved: 4
 status: ANALYZED
-updated: 2026-09-16
+updated: 2026-09-17
 ---
 
 # Risk Assessment — v1.1 · Module NTF (Delta)
@@ -44,8 +44,8 @@ updated: 2026-09-16
 |---|---|---|---|---|
 | C-NTF-01 | 🔴 Danh sách loại thông báo chính thức (3 nguồn, nay đã hợp nhất) | ✅ **Resolved 2026-09-15** — chính thức **15 sự kiện** theo `DOC-v1.1-01 §8.13.1` | 2026-09-15 (mở từ 2026-07) | REQ-NTF-001..004, REQ-NTF-010, REQ-NTF-012 |
 | C-NTF-03 | Đánh dấu đã đọc **(a)** — mark-all hay từng item (bản gốc `v1.0/NTF-thong-bao/`) | ✅ **Resolved 2026-09-16 — BA: bấm "Đánh dấu đã đọc" = đánh dấu TẤT CẢ đã đọc** | 2026-07-29 | REQ-NTF-007, REQ-NTF-008, SC-NTF-011, SC-NTF-013 |
-| C-NTF-04 | Chạm từng loại thông báo (`NTF-01..15`) mở màn nào; chạm 1 thông báo có đánh dấu đã đọc riêng thông báo đó không | 🔴 **Open (mới 2026-09-16)** | 2026-09-16 | REQ-NTF-007, REQ-NTF-010, SC-NTF-010, SC-NTF-014 |
-| C-NTF-05 | Người nhận thông báo ở các sự kiện PRD viết mơ hồ: Carrier huỷ nhận · giao uỷ quyền/quầy có gửi kèm `NTF-05` · `NTF-08` "các bên còn lại" khi đơn còn POSTED | 🔴 **Open (mới 2026-09-16)** | 2026-09-16 | REQ-NTF-003, REQ-NTF-012, SC-NTF-006, SC-NTF-017, SC-NTF-018 |
+| C-NTF-04 | Chạm từng loại thông báo (`NTF-01..15`) mở màn nào; chạm 1 thông báo có đánh dấu đã đọc riêng thông báo đó không | ✅ **Resolved 2026-09-17** — BA: v1.1 mọi loại → "Theo dõi đơn"; tự đánh dấu đã đọc riêng | 2026-09-16 | REQ-NTF-007, REQ-NTF-010, SC-NTF-010, SC-NTF-014 |
+| C-NTF-05 | Người nhận thông báo ở các sự kiện PRD viết mơ hồ: Carrier huỷ nhận · giao uỷ quyền/quầy có gửi kèm `NTF-05` · `NTF-08` "các bên còn lại" khi đơn còn POSTED | ✅ **Resolved 2026-09-17** — BA trả lời đủ (a)(b)(c) | 2026-09-16 | REQ-NTF-003, REQ-NTF-012, SC-NTF-006, SC-NTF-017, SC-NTF-018 |
 
 ### C-NTF-01 · 🔴 Danh sách loại thông báo chính thức — RESOLVED 2026-09-15
 
@@ -66,7 +66,7 @@ updated: 2026-09-16
 
 ↳ **Ghi chú:** Nút "Đánh dấu đã đọc" là **mark-all** — một lần bấm đưa **mọi** thông báo về trạng thái đã đọc. ⇒ `SC-NTF-011` hết `[GAP]`: Then assert sau khi bấm, **không còn** chấm đỏ ở bất kỳ item nào; `SC-NTF-013`: badge chuông về **0 / ẩn**. Vế (b) phân trang vẫn N/A như v1.0. BA **không nói** chạm vào **một** thông báo có đánh dấu riêng item đó không → gộp vào `C-NTF-04`.
 
-### C-NTF-04 · Đích điều hướng khi chạm thông báo + đọc từng item *(OPEN — mới 2026-09-16)*
+### C-NTF-04 · Đích điều hướng khi chạm thông báo + đọc từng item *(RESOLVED 2026-09-17)*
 
 📍 `DOC-v1.1-01 §8.13 Post-Conditions · trang 47` · `§8.13.1 NTF-07 · trang 47` · `§11 DoD #7 · trang 56`
 
@@ -78,7 +78,9 @@ updated: 2026-09-16
 
 ↳ **Ghi chú:** DoD bắt test *"mở đúng màn đích"* cho cả 15 loại, nhưng PRD chỉ nêu đích của **1** loại (`NTF-07` → Trang cá nhân). **Hỏi:** (a) bảng đích cho từng `NTF-01..15` — vd `NTF-03` → màn chi tiết đơn có nút "Nhận giao" (`AC-22.1.01`); `NTF-06` → Theo dõi đơn hay thẳng màn Tặng quà (cho Sender)?; `NTF-09` → đơn hết hạn hay wizard đăng lại? (b) chạm **1** thông báo có tự đánh dấu **riêng nó** đã đọc không (ảnh demo `NTF_03_thongbao_sau_tap_item_CNTF03.png`)? (c) Chạm thông báo của **đơn đã đóng/đã bị người khác nhận** thì mở màn gì?
 
-### C-NTF-05 · Người nhận thông báo ở các sự kiện mơ hồ *(OPEN — mới 2026-09-16)*
+↳ **KẾT LUẬN (theo BA) 2026-09-17:** (a) ở **v1.1** (bản này), **TẤT CẢ 15 loại thông báo** chạm vào đều mở màn **"Theo dõi đơn"** — BA đơn giản hoá, chưa phân loại đích riêng theo từng `NTF-01..15` như DoD #7 kỳ vọng (không có bảng đích chi tiết như câu hỏi gợi ý, vd `NTF-06`/`NTF-09`). (b) chạm 1 thông báo **CÓ** tự đánh dấu **riêng** thông báo đó đã đọc (ngoài cơ chế "đánh dấu tất cả" đã chốt ở `C-NTF-03`). (c) chạm thông báo của đơn đã đóng/đã bị người khác nhận ⇒ hiển thị thông báo **"đơn không tồn tại"** (không mở "Theo dõi đơn" của đơn đó). `C-NTF-04` ĐÓNG HẲN — `SC-NTF-010/014` + DoD #7 có oracle: màn đích thống nhất = "Theo dõi đơn" cho mọi loại (trừ đơn không tồn tại).
+
+### C-NTF-05 · Người nhận thông báo ở các sự kiện mơ hồ *(RESOLVED 2026-09-17)*
 
 📍 `DOC-v1.1-01 §6.2 AC-25.1.02 · trang 26` · `§8.13.1 NTF-05 / NTF-08 / NTF-10 / NTF-11 · trang 47` · `§8.7.2 bước 6 · trang 40`
 
@@ -89,6 +91,8 @@ updated: 2026-09-16
 > `NTF-10`: "Giao cho người được uỷ quyền | Người nhận · Người gửi | "Hàng đã được giao cho {tên người nhận thay} (uỷ quyền bởi {người gửi/người nhận}) — có ảnh bằng chứng""
 
 ↳ **Ghi chú:** (a) **Carrier huỷ nhận** (đơn về POSTED, *không* bị huỷ): *"người gửi nhận thông báo"* — là `NTF-08` (câu *"Đơn đã bị huỷ bởi…"* sai nghĩa) hay thông báo riêng chưa có trong danh mục? **Người nhận** có được báo không? (b) Giao cho **người uỷ quyền / quầy**: người nhận chỉ nhận `NTF-10`/`NTF-11` (không có lời nhắc *"vui lòng xác nhận"*), hay nhận **thêm `NTF-05`**? Người nhận vẫn là người duy nhất bấm được "Xác nhận đã nhận hàng" nên thiếu lời nhắc là rủi ro kẹt đơn. (c) `NTF-08` khi Sender huỷ đơn còn **POSTED** (chưa có Carrier): "các bên còn lại" = chỉ người nhận?
+
+↳ **KẾT LUẬN (theo BA) 2026-09-16:** (a) Carrier **HUỶ NHẬN**: người gửi nhận `NTF-08`; người nhận **CŨNG** được báo (không chỉ người gửi). (b) giao cho người uỷ quyền/quầy: người nhận **CÓ** nhận THÊM `NTF-05` "vui lòng xác nhận đã nhận hàng" (không chỉ `NTF-10`/`NTF-11`) — giảm rủi ro kẹt đơn vì thiếu lời nhắc. (c) người gửi huỷ đơn khi còn "Chờ ghép"/POSTED: "các bên còn lại" của `NTF-08` = **CHỈ người nhận** (đúng như giả định). `C-NTF-05` ĐÓNG HẲN — `SC-NTF-006`, `SC-NTF-017/018` xác định rõ người nhận thông báo cho cả 3 tình huống.
 
 ## Vibe-check bổ sung 2026-09-15 (không resolve CL nào — ghi nhận để không lặp lại hướng đã thử)
 

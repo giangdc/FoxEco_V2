@@ -17,7 +17,7 @@ id_range:
   cl: "C-NTF-01 (Resolved, giữ ID sprint 1 — không mở CL mới) + C-NTF-04, C-NTF-05 (NEW 2026-09-16) · C-NTF-03 → Resolved (2026-09-16)"
   risk: "RISK-NTF-07 (NEW) + RISK-NTF-01, RISK-NTF-02, RISK-NTF-04 (Status cập nhật, giữ ID sprint 1)"
 status: ANALYZED
-updated: 2026-09-16
+updated: 2026-09-17
 ---
 
 # Changelog — Module NTF (`NTF`)
@@ -28,6 +28,7 @@ updated: 2026-09-16
 
 | Ngày | Loại | Thay đổi | Nguồn / Lý do | Ảnh hưởng |
 |---|---|---|---|---|
+| 2026-09-17 | UPDATE | **Rà soát toàn bộ workbook (không chỉ mục nhắc demo) theo yêu cầu QC — đồng bộ câu trả lời BA từ `CL-hoi-BA-v1.1.xlsx` vào file này (đã nằm sẵn trong xlsx từ 2026-09-16/17 nhưng chưa đóng sổ).** `C-NTF-04` → **Resolved** (v1.1: mọi loại thông báo chạm vào → "Theo dõi đơn"; chạm 1 tin tự đánh dấu đã đọc riêng; đơn không tồn tại thì báo "đơn không tồn tại"). `C-NTF-05` → **Resolved** (Carrier huỷ nhận báo cả người gửi lẫn người nhận; giao quầy/uỷ quyền có thêm `NTF-05` nhắc xác nhận; huỷ khi POSTED chỉ báo người nhận) | BA trả lời `CL-hoi-BA-v1.1.xlsx` sheet `NTF` 2026-09-16/17 (bỏ sót ở lượt trước) | `counts` cl_open 2→0, cl_resolved 2→4 — module NTF **HẾT điểm hỏi BA** |
 | 2026-09-16 | ĐÍNH CHÍNH | **Sửa WARNING health-check G-03:** thay 1 trích dẫn bị chép lặp sang file khác bằng dòng trỏ `↪` về đúng home (REQ → `requirement_traceability.md` · CL → `risk_assessment.md`) | `/health-check` 2026-09-16 · QC GiangDC2 yêu cầu sửa | Nội dung quote không mất — chỉ còn 1 home |
 | 2026-09-16 | ĐÍNH CHÍNH | **Sửa theo health-check VERSION v1.1 (G-06b CRITICAL):** các đoạn register sống còn kể lại kết luận cũ của CL vừa Resolved (`C-NTF-03` — Khuyến nghị #4) — đổi mục Khuyến nghị / heading / data catalog sang kết luận hiện hành và thêm dòng *"⛔ Cập nhật 2026-09-16 — đoạn trên HẾT HIỆU LỰC"* sau các ghi chú gốc (giữ nguyên nội dung cũ làm hồ sơ, không xoá lặng lẽ) | `/health-check` 2026-09-16 · QC GiangDC2 yêu cầu sửa | Không đổi `counts`, không đổi Then SC — chỉ đồng bộ chữ với CL section |
 | 2026-09-16 | UPDATE | **Áp câu trả lời BA** + rà sâu `FR13` (15 dòng danh mục ⟷ AC các module). (a) `C-NTF-03(a)` → **Resolved**: "Đánh dấu đã đọc" = **mark-all**; `SC-NTF-011` hết GAP, `SC-NTF-013` rõ bước đọc hết. (b) **Mở 2 CL mới:** `C-NTF-04` (đích điều hướng khi chạm 14/15 loại thông báo PRD không nêu — trong khi DoD #7 bắt test; chạm 1 item có đánh dấu riêng không) · `C-NTF-05` (người nhận thông báo khi Carrier huỷ nhận / giao uỷ quyền-quầy / huỷ ở POSTED) | BA trả lời 2026-09-16 · rà kỹ theo yêu cầu QC GiangDC2 | `counts` cl 2→4; `SC-NTF-011`/`013` regenerate TC |

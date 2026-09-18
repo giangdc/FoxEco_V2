@@ -84,7 +84,7 @@
 
 ↳ **Ghi chú:** Doc tự đặt câu hỏi mở ⇒ SC assert **placeholder tĩnh** (không tương tác được, không zoom/pan), ⛔ không viết TC bản đồ thật. `~X km` là **số ước tính tĩnh** ⇒ không assert giá trị khoảng cách. Cross-ref `GPS-01` (`REQ-DLV-013`) — chia sẻ vị trí là nhánh phụ khác, đừng trộn.
 
-⛔ **Cập nhật 2026-09-16 — đoạn trên HẾT HIỆU LỰC, đừng trích lại:** BA trả lời `C-FEED-01(b)` 2026-09-16 — *"có hiển thị được map nhé (sẽ có vài case không hiển thị được map cho data văn phòng bị thiếu location)"*. Hiện hành: **bản đồ thật**; `SC-FEED-009` assert bản đồ thật, nhánh thiếu location chờ `C-FEED-02`. Nguồn quote gốc giữ nguyên làm hồ sơ; chi tiết `risk_assessment.md §C-FEED-01`.
+⛔ **Cập nhật 2026-09-16 — đoạn trên HẾT HIỆU LỰC, đừng trích lại:** BA trả lời `C-FEED-01(b)` 2026-09-16 — *"có hiển thị được map nhé (sẽ có vài case không hiển thị được map cho data văn phòng bị thiếu location)"*. Hiện hành: **bản đồ thật**; `SC-FEED-009` assert bản đồ thật. ✅ Nhánh thiếu location **đã chốt** (`C-FEED-02` Resolved 2026-09-17): hiện **placeholder + thông báo**, khoảng cách **"0 km"**, km đo từ điểm nhận → điểm giao, ảnh tĩnh có vẽ tuyến ⇒ `SC-FEED-015`. Nguồn quote gốc giữ nguyên làm hồ sơ; chi tiết `risk_assessment.md §C-FEED-01`.
 
 ---
 

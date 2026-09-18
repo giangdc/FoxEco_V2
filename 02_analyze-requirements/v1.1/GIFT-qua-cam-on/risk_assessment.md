@@ -9,7 +9,7 @@ counts:
   cl: 4
   risk: 6
   cl_open: 0
-  cl_resolved: 3
+  cl_resolved: 4
 status: ANALYZED
 updated: 2026-09-17
 ---
@@ -37,7 +37,7 @@ updated: 2026-09-17
 | C-GIFT-01 | Rating 1–5 sao (`RAT-01/02`) có thuộc v1.0? | ✅ **Resolved 2026-09-15 — nâng cấp: out of scope VĨNH VIỄN, không phải hoãn tới phase sau** | 2026-07-27 | REQ-GIFT-005 |
 | C-GIFT-03 | Text popup sau khi gửi quà + có "danh sách lịch sử nhận quà" hay không | ✅ **Resolved 2026-09-15 — cả 2 vế** | 2026-09-07 | REQ-GIFT-002, REQ-GIFT-004 |
 | C-GIFT-02 | Nút back màn "Tặng quà" nhảy sang màn của đơn khác | ✅ **Resolved 2026-09-16 — BA: lỗi của demo; quy tắc là back về màn hình trước đó** | kế thừa 2026-07-29 | REQ-GIFT-006, SC-GIFT-010 |
-| C-GIFT-04 | Tặng quà: mỗi đơn mấy lần · bỏ qua rồi tặng lại sau được không / có hạn không · đã tặng thì mở đơn thấy gì · NTF-06 có dẫn thẳng tới màn Tặng quà | 🟡 **Partially Resolved 2026-09-17 — hỏi vòng 2** — BA: tặng **1 lần** rồi đóng; câu (b) trả lời *"không"* (mơ hồ + mâu thuẫn `C-ACT-01`); (c)(d) chưa trả lời. *(`cl_open 0 + cl_resolved 3 < cl 4` vì CL này Partially)* | 2026-09-16 | REQ-GIFT-001, REQ-GIFT-002, SC-GIFT-001, SC-GIFT-005 |
+| C-GIFT-04 | Tặng quà: mỗi đơn mấy lần · bỏ qua rồi tặng lại sau được không / có hạn không · đã tặng thì mở đơn thấy gì · NTF-06 có dẫn thẳng tới màn Tặng quà | ✅ **Resolved 2026-09-17 (vòng 2) — BA trả lời đủ (1)(2)(3)(4), hết mâu thuẫn `C-ACT-01`** | 2026-09-16 | REQ-GIFT-001, REQ-GIFT-002, SC-GIFT-001, SC-GIFT-005 |
 
 ### C-GIFT-03 · Text popup + danh sách lịch sử nhận quà *(RESOLVED 2026-09-15 — cả 2 vế)*
 
@@ -69,7 +69,7 @@ updated: 2026-09-17
 
 ↳ **Ghi chú:** Back nhảy sang đơn khác là **lỗi của demo**, không phải hành vi được chấp nhận. Rule: nút back (←) ở màn "Tặng quà" **quay về đúng màn đã mở nó** (vd tab "Đã hoàn thành" của Đơn của tôi — theo `C-ACT-01` BA vừa chốt; hoặc màn Theo dõi đơn). ⇒ `SC-GIFT-010` hết `[GAP·bug]` dạng chờ: Then assert back về màn trước đó; STG nhảy sang màn/đơn khác ⇒ **bug** (mức cao — có thể thao tác nhầm đơn khác). ⚠️ Ghi chú 2026-09-16 trước đó *"tái hiện với đơn thật"* là **trên demo** ⇒ không mâu thuẫn với câu trả lời BA.
 
-### C-GIFT-04 · Vòng đời bước tặng quà *(PARTIALLY RESOLVED 2026-09-17 — hỏi vòng 2)*
+### C-GIFT-04 · Vòng đời bước tặng quà *(RESOLVED 2026-09-17 — vòng 2)*
 
 📍 `DOC-v1.1-01 §6.2 AC-24.1.01 · trang 26` · `§8.10 Post-Conditions · trang 43` · `§8.12.3 dòng COMPLETED · trang 46` ⟷ BA trả lời `C-ACT-01` 2026-09-16
 
@@ -88,6 +88,19 @@ updated: 2026-09-17
 > c. "
 
 ↳ **Ghi chú:** (a) **Chốt:** mỗi đơn tặng quà **đúng 1 lần**, gửi xong **đóng**, không tặng lại ⇒ `SC-GIFT-005` (*nút disable, không gửi lại được*) nay có nguồn BA thay cho `QA-obs` — phần *"không gửi lại được"* assert cứng; **nhãn nút** (*"Bạn đã đánh giá"*) vẫn chỉ từ `QA-obs` v1.0 ⇒ chờ (c). (b) *"không nhé"* trả lời cho câu gộp *"vào lại tặng sau được không? Có thời hạn không?"* ⇒ **2 cách hiểu**: *không cho tặng sau* **hoặc** *không có thời hạn*. ⚠️ Nếu hiểu *không cho tặng sau* thì **mâu thuẫn** `C-ACT-01` (BA 2026-09-16: *"hoàn thành chưa tặng quà thì ra màn tặng quà"* — tức đơn Hoàn thành chưa tặng vẫn mở lại được màn Tặng quà). (c)(d) BA để trống. ⇒ **Hỏi vòng 2** (sheet `GIFT` dòng `C-GIFT-04 (vòng 2)`). `SC-GIFT-001` giữ nguyên (mở Tặng quà lần đầu).
+
+### C-GIFT-04 · ↳ BA trả lời vòng 2, 2026-09-17 *(→ RESOLVED)*
+
+📍 BA trả lời · `02_analyze-requirements/v1.1/CL-hoi-BA-v1.1.xlsx` sheet `GIFT` dòng `C-GIFT-04 (vòng 2)`
+
+> "1. có nhé, không có thời hạn
+> 2. Chỉ hiện bạn đã đánh giá thôi + disable (nếu chưa có UI thì vào tìm lại thông tin nhé )
+> 3. Theo dõi đơn nhé, như
+> 4. tặng quà nhé nếu chưa tặng, nếu đã tặng rồi thì ra màn hình theo dõi đơn"
+
+↳ **KẾT LUẬN (theo BA) 2026-09-17:** (1) Sender thoát màn "Tặng quà" **KHÔNG gửi** rồi vào lại **SAU VẪN tặng được**, **KHÔNG có thời hạn** ⇒ **giải toả mâu thuẫn với `C-ACT-01`** — câu (b) ở lượt trả lời đầu ("không nhé") phải hiểu là *"không có thời hạn"*, KHÔNG phải *"không cho tặng sau"*; đơn Hoàn thành chưa tặng luôn mở lại được màn "Tặng quà" bất kể vào lại lúc nào — khớp `C-ACT-01`. "Đóng" ở câu (a) chỉ tính từ lúc **BẤM GỬI** tặng, không phải từ lúc thoát màn. (2) Sau khi đã tặng: nút đổi thành **"Bạn đã đánh giá"**, **DISABLE** (không bấm lại được) — BA chưa có ảnh UI đính kèm, sẽ bổ sung khi có (theo dõi ở `§3 Nợ đang mở`). (3) Tap card đơn Hoàn thành **ĐÃ** tặng quà (mọi vai) → mở màn **"Theo dõi đơn"** (không mở lại "Tặng quà") — khớp `C-ACT-03`. (4) Chạm `NTF-06` "Đơn đã hoàn tất" (vai Sender): **CHƯA** tặng → mở thẳng **"Tặng quà"**; **ĐÃ** tặng → mở **"Theo dõi đơn"**. `SC-GIFT-005` nay có nguồn BA đầy đủ cho cả 2 vế (không gửi lại được + nhãn nút "Bạn đã đánh giá" + disable); `SC-ACT-009/010` (tap card đã tặng) hết gap. Đã thử vibe-check demo 2026-09-17 để đối chứng trực quan nút "Bạn đã đánh giá" nhưng **KHÔNG tới được trạng thái "Hoàn thành"** — màn "Xác nhận đã giao" bắt buộc tối thiểu 1 "Ảnh bằng chứng" và ô tải ảnh trong bản demo này không mở được trình chọn file (không phản hồi thao tác click), chặn giữa luồng trước khi tới bước tặng quà. Không ảnh hưởng việc đóng CL vì đã có câu trả lời BA bằng lời cho cả 4 ý; ảnh UI "Bạn đã đánh giá" xin BA/QA bổ sung khi có STG thật.
+
+↳ **Cập nhật 2026-09-17 (BA đính kèm ảnh mới):** `00_input/v1.1/design/gift_tang_qua_man_doncuatoi.png` — màn "Đơn của tôi" tab "Đã hoàn thành": card đơn ĐÃ tặng quà hiện badge nhỏ **"🎖 Đã tặng quà"** ngay trên card (không cần mở chi tiết); card đơn CHƯA tặng quà (vd "Gửi thuốc/y tế") hiện dòng gợi ý **"Chạm để tặng quà"**. ⚠️ Đây là UI ở **màn danh sách "Đơn của tôi"**, KHÁC với nút "Bạn đã đánh giá" (disable) được mô tả nằm **trong màn "Tặng quà"/chi tiết đơn** — 2 vị trí UI khác nhau cho cùng 1 trạng thái "đã tặng quà", cả hai đều cần assert riêng. Ảnh này bổ sung test data cho `SC-GIFT-001`/card list ở `ACT`/`HOME` ("Đơn đã giúp"), KHÔNG thay thế nợ ảnh nút "Bạn đã đánh giá" trong màn Tặng quà (vẫn còn treo, xem `CHANGELOG §3` nợ #4).
 
 ## Khuyến nghị tổng thể
 1. **⛔ Không chạy `SC-GIFT-013`/`SC-GIFT-014` trước khi xác nhận nhánh `RETURNING → RETURNED` đã có trên STG** — cả 2 là vế phủ định, không có tiền đề thì PASS là PASS oan (`RISK-GIFT-06`). Gộp lô với `SC-DLV-053..056`.

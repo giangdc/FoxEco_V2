@@ -16,7 +16,7 @@ counts:
   p2: 9
   p3: 5
 status: ANALYZED
-updated: 2026-09-15
+updated: 2026-09-17
 ---
 
 # Test Scenario Map — v1.1 · Module GIFT
@@ -109,7 +109,7 @@ updated: 2026-09-15
 |-------------|----------|--------|---------------|----------|-----------|
 | SC-GIFT-001 | Mở màn Tặng quà sau Hoàn thành | GIFT | v1.0 | P2 | → `v1.0/GIFT-qua-cam-on/test_scenario_map.md` — `FR14` Trigger xác nhận lại |
 | SC-GIFT-004 | Không quy đổi tiền / thanh toán | GIFT | v1.0 | P3 | → như trên — `BR14-01` xác nhận lại nguyên văn |
-| SC-GIFT-005 | Nút đổi nhãn sau khi gửi quà | GIFT | v1.0 | P2 | → như trên — *(2026-09-17)* vế **"không gửi lại được"** nay có nguồn BA (`C-GIFT-04(a)`: tặng 1 lần rồi đóng); **nhãn nút** vẫn `QA-obs`, chờ `C-GIFT-04` vòng 2 |
+| SC-GIFT-005 | Nút đổi nhãn sau khi gửi quà | GIFT | v1.0 | P2 | → như trên — *(2026-09-17)* ✅ **`C-GIFT-04` Resolved 2026-09-17 (vòng 2), đủ (1)–(4):** sau khi **BẤM GỬI** thì nút đổi nhãn **"Bạn đã đánh giá"** + **DISABLE** ⇒ nhãn nút nay có nguồn BA, ⛔ không còn là `QA-obs`. ⚠️ Phân biệt: *"đóng"* tính từ lúc **bấm gửi**, KHÔNG phải từ lúc thoát màn — thoát giữa chừng thì **vẫn tặng lại được, không thời hạn** (hết mâu thuẫn với `C-ACT-01`) |
 | SC-GIFT-009 | Back từ "Quà đã nhận" | GIFT | v1.0 | P3 | → như trên |
 | SC-GIFT-010 | [GAP·bug] Back từ "Tặng quà" nhảy sai màn | GIFT | v1.0 | P3 | → như trên — ✅ **2026-09-16 BA: lỗi demo; rule = back về màn hình trước đó** (`C-GIFT-02` Resolved) ⇒ Then assert back về đúng màn đã mở "Tặng quà"; nhảy sang đơn/màn khác = **bug** |
 | SC-GIFT-012 | Thông báo cho Carrier khi nhận quà | GIFT | v1.0 | P2 | → như trên — `NTF-07` nay nằm trong danh mục 15 loại chính thức (`NTF` v1.1) |

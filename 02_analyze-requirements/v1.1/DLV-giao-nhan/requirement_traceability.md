@@ -146,7 +146,7 @@
 ### REQ-DLV-023 · Icon copy nhanh SĐT/địa chỉ ở màn Theo dõi đơn *(NEW)*
 📍 `DOC-v1.1-01 §8.18.1 "FR18" BR18-04 · trang 52`  ·  Clarif: —
 
-> "BR18-04 | Icon copy đặt cạnh địa chỉ giao và số điện thoại ở màn chi tiết tin và màn theo dõi đơn; sau khi copy, icon đổi trạng thái và màu xanh trong khoảng 1,8 giây."
+> ↪ *Quote `BR18-04` (icon copy) — home ở `../ORD-dang-tin/requirement_traceability.md` (không chép lại — tránh lặp home, health-check G-03 2026-09-17)*
 
 ↳ **Ghi chú:** `FR18` là tiện ích dùng chung nhiều màn (chi tiết tin ở `FEED`, theo dõi đơn ở `DLV`) — REQ này chỉ phủ instance ở **màn Theo dõi đơn** (thuộc `DLV`). Instance ở màn Chi tiết tin (`FEED`) **chưa được rà lại** ở lượt delta này (`FEED` ngoài scope `DOC-v1.1-01`, xem `MASTER-MEMORY.md`) — không tạo REQ/SC bên đó. Trần ảnh dùng chung (`BR18-01/02/03/05`) đã áp trực tiếp vào `REQ-DLV-012`/`REQ-DLV-017` thay vì tạo REQ `FR18` riêng, tránh trùng lặp SC cho cùng 1 hành vi ảnh.
 

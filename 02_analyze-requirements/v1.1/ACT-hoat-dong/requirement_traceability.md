@@ -92,7 +92,7 @@
 > Nguồn (v1.0) — `DOC-v1.0-06 KP-01 §3 KB-ORD-07 (#4,#6)` (quan sát app): card "Hết hạn" **có** lý do, nhưng **chuỗi lý do lấy từ màn hình**, không từ tài liệu.
 
 > Nguồn (v1.1) — BR05-03 (§8.5.1, trang 38):
-> "Hết ngày cuối của khoảng ngày mà đơn vẫn POSTED thì chuyển EXPIRED; hiện badge "Hết hạn" kèm lý do "Không có ai nhận mang giúp trong thời gian đăng"."
+> ↪ *Quote `§8.5.1 BR05-03` (chuyển EXPIRED + chuỗi lý do) — home ở `../ORD-dang-tin/requirement_traceability.md` (không chép lại — tránh lặp home, health-check G-03 2026-09-17)*
 
 ↳ **Ghi chú (diff):** Hành vi không đổi; **chuỗi lý do nay là text chính thức** ⇒ `SC-ACT-008` đổi từ *"card có kèm lý do"* (PASS với bất kỳ chuỗi nào) sang **assert verbatim**. `BR05-03` còn phát biểu rõ **điều kiện kích hoạt** — *"hết ngày cuối của khoảng ngày mà đơn **vẫn POSTED**"* — tức đơn đã `MATCHED` thì không chuyển `EXPIRED` dù quá ngày; v1.0 chưa nêu vế `vẫn POSTED` này. ⚠️ Cross-ref: ngưỡng `EXPIRED` = **"Đến ngày"** đã Resolved ở `C-ORD-03` (v1.0) — PRD xác nhận lại, không đảo.
 
@@ -104,10 +104,10 @@
 > Nguồn (v1.0) — `DOC-v1.0-02 §3.7 đoạn 3` + `KP-01 §6 KB-GIFT-02`, gắn `C-GIFT-01` Resolved *"Out of scope **v1.0**"* ⇒ SC chỉ **ghi nhận**.
 
 > Nguồn (v1.1) #1 — BR14-03 (§8.14.1, trang 49):
-> "Không có chấm sao 1–5, không điểm, không tier/xếp hạng, không chỉ số môi trường."
+> ↪ *Quote `BR14-03` — home ở `../GIFT-qua-cam-on/requirement_traceability.md` (không chép lại — tránh lặp home, health-check G-03 2026-09-17)*
 
 > Nguồn (v1.1) #2 — §4 SCOPES, Out of Scope (trang 9):
-> "Đánh giá sao 1–5 và mọi hình thức xếp hạng/tier/điểm thưởng — thay bằng quà ảo"
+> ↪ *Quote `§4 SCOPES` (loại trừ đánh giá sao/tier) — home ở `../GIFT-qua-cam-on/requirement_traceability.md` (không chép lại — tránh lặp home, health-check G-03 2026-09-17)*
 
 ↳ **Ghi chú (diff):** 🔴 **Đổi phân loại, không đổi hành vi.** Ở v1.0, phán quyết *"out of scope **v1.0**"* khiến ★ leftover đọc được thành *"tính năng phase sau lộ sớm"* ⇒ `SC-ACT-013` chỉ dám gắn nhãn `[GAP]` và **không log bug**. v1.1 đưa đánh giá sao vào **Out of Scope của cả sản phẩm** với chữ *"thay bằng quà ảo"* (thay thế, không phải hoãn) ⇒ ★ còn sót **là defect**, đủ căn cứ log bug. Home của phán quyết là `C-GIFT-01` ở module `GIFT` — ở đây chỉ **áp dụng**, ⛔ không tạo CL trùng.
 

@@ -8,8 +8,8 @@ module: FEED
 counts:
   cl: 7
   risk: 5
-  cl_open: 1
-  cl_resolved: 6
+  cl_open: 0
+  cl_resolved: 7
 status: ANALYZED
 updated: 2026-09-17
 ---
@@ -18,7 +18,7 @@ updated: 2026-09-17
 
 > **Structure-lock:** bảng 9 cột. Nguồn PRIMARY duy nhất cho risk module FEED.
 > 🔑 Frontmatter `counts:` = nguồn canonical CL/RISK — **chỉ đếm CL có home ở module này**; CL tham chiếu (home ở module khác) KHÔNG tính vào `counts`. **Layout v2 ⇒ đây là home của Clarification.**
-> ℹ️ `cl_open (1) + cl_resolved (6) = 7 = cl (7)` — cập nhật 2026-09-17 sau BA trả lời `C-FEED-02..04`; mở `C-FEED-05`.
+> ℹ️ `cl_open (0) + cl_resolved (7) = 7 = cl (7)` — cập nhật 2026-09-17 (tối): `C-FEED-05` đóng theo câu trả lời BA — module FEED **HẾT điểm hỏi BA** (chỉ còn hành động chờ BA thực sự cập nhật PRD theo 4 rule đã đồng ý, không chặn `generate-tc`).
 
 ## Tổng quan
 | Module | Risk Level | Rủi ro chính |
@@ -43,9 +43,9 @@ updated: 2026-09-17
 | C-FEED-01 | Vị trí nút CTA (card vs chi tiết) + bản đồ thật hay placeholder | ✅ **Resolved 2026-09-16** — (a) CTA **chỉ ở Chi tiết tin** (demo + BA); (b) **có bản đồ thật**, văn phòng thiếu location thì không hiện map (BA) | mở 2026-09-07 | REQ-FEED-004, REQ-FEED-005 |
 | C-ORD-06 | Text empty state (mở rộng sang màn Bảng tin) | ✅ **Resolved 2026-09-15 ở home `ACT`** — `EMP-04`: "Chưa có tin nào" + gợi ý mở rộng khu vực hoặc đăng tin + CTA "Đăng tin" (tham chiếu, không đếm ở đây) | kế thừa 2026-07-29 | REQ-FEED-009 |
 | C-FEED-02 | Văn phòng **thiếu location**: khung bản đồ hiện gì; khoảng cách "~X km" tính từ đâu | ✅ **Resolved 2026-09-17** — placeholder + thông báo · thiếu ⇒ **0 km** · km từ điểm nhận → điểm giao · **ảnh tĩnh có vẽ tuyến** · data đã cấp (lỗi data → `C-FEED-05`) | 2026-09-16 | REQ-FEED-005, SC-FEED-009 |
-| C-FEED-03 | Bảng tin "cả hai tab" (`EMP-04`) là 2 tab nào; lọc / tìm kiếm / "mở rộng khu vực" hoạt động ra sao | ✅ **Resolved 2026-09-17** — **1 danh sách, không tab, không lọc/tìm kiếm** (như demo); vế "mở rộng khu vực" chuyển `C-HOME-04` vòng 2 | 2026-09-16 | REQ-FEED-001, REQ-FEED-009, SC-FEED-001, SC-FEED-013 |
+| C-FEED-03 | Bảng tin "cả hai tab" (`EMP-04`) là 2 tab nào; lọc / tìm kiếm / "mở rộng khu vực" hoạt động ra sao | ✅ **Resolved 2026-09-17** — **1 danh sách, không tab, không lọc/tìm kiếm** (như demo); vế "mở rộng khu vực" đóng theo `C-HOME-04` vòng 3 (BA: giữ nguyên chữ `EMP-04`) | 2026-09-16 | REQ-FEED-001, REQ-FEED-009, SC-FEED-001, SC-FEED-013 |
 | C-FEED-04 | Trước khi ghép, Chi tiết tin hiện những gì: tên người gửi/người nhận? địa chỉ đầy đủ hay rút gọn (`AC-13.1.02` ⟷ `NFR-10`)? | ✅ **Resolved 2026-09-17** — **chỉ ẩn SĐT**; tên hiện; địa chỉ hiện **đầy đủ theo data đã gửi** (PRD `BR03-03`/`NFR-10` chưa cập nhật) | 2026-09-16 | REQ-FEED-004, REQ-FEED-006, SC-FEED-007, SC-FEED-010 |
-| C-FEED-05 | File `location_address_catalog.xlsx`: 399/399 dòng `coordinate_status = MISSING`, 61 dòng thiếu lat/lng, 34 dòng toạ độ ngoài Việt Nam — bản đồ/"km" lấy toạ độ từ đâu; chỉ 1 trong 2 điểm thiếu thì hiện gì | 🔴 **Open (mới 2026-09-17)** | 2026-09-17 | REQ-FEED-005, SC-FEED-009, SC-FEED-015 |
+| C-FEED-05 | File `location_address_catalog.xlsx`: 399/399 dòng `coordinate_status = MISSING`, 61 dòng thiếu lat/lng, 34 dòng toạ độ ngoài Việt Nam — bản đồ/"km" lấy toạ độ từ đâu; chỉ 1 trong 2 điểm thiếu thì hiện gì | ✅ **Resolved 2026-09-17** — BA: lấy từ cột lat/lng file; thiếu/sai toạ độ là data lỗi, bỏ qua | 2026-09-17 | REQ-FEED-005, SC-FEED-009, SC-FEED-015 |
 
 ### C-ASN-01 · Thời điểm lộ SĐT — rule vs prototype
 
@@ -67,7 +67,7 @@ updated: 2026-09-17
 
 **Analyst Note:** BA/PO chốt 2026-07-27: **không được phép**; prototype là bug. ⚠️ **Ghi rõ phạm vi** (`DOC-v1.0-06` KP-01 §4 KB-ASN-02): bug ở màn **Chi tiết tin (public)**; màn **Theo dõi đơn đã role-aware đúng**. Lưu ý `OPR-05` có **2 mệnh đề**: (a) không **gợi ý** tin của chính mình (thuộc engine — `SC-ASN-012`), (b) người gửi ≠ người vận chuyển cùng đơn (thuộc bề mặt — `SC-FEED-011`). Hai mệnh đề, hai module, đừng gộp.
 
-### C-FEED-01 · 🟡 Vị trí CTA + bản đồ thật hay placeholder *(PARTIALLY RESOLVED 2026-09-16)*
+### C-FEED-01 · ✅ Vị trí CTA + bản đồ thật hay placeholder *(RESOLVED 2026-09-16 — cả 2 vế; xem ↳ BA trả lời bên dưới)*
 
 **Source Quote (ambiguous):**
 > Nguồn A (`DOC-v1.0-01` §D1b `US-D07` L176): "Là Carrier, tôi muốn bấm "Tôi mang giúp được" **ngay tại thẻ tin hoặc màn chi tiết**, để gửi đề nghị nhanh cho Sender."
@@ -154,6 +154,7 @@ updated: 2026-09-17
 > c. "
 
 ↳ **Ghi chú:** Bảng tin = **1 danh sách, không tab, không ô tìm kiếm/bộ lọc** (khớp demo `FEED_01`). ⇒ `§Custom Rules §10.2` (mỗi tab 1 SC) **không áp dụng**; `SC-FEED-001` giữ nguyên. PRD `EMP-04` *"cả hai tab"*, `§7.1` *"lọc/tìm kiếm"*, `AC-20.1.01` *"không tìm được"* ⇒ **PRD chưa cập nhật** (đề nghị BA sửa — sheet `FEED`). Vế (c) *"gợi ý mở rộng khu vực"* BA để trống; vì BA nói tin load toàn quốc (`C-HOME-04(d)`) nên khả năng câu này thừa ⇒ gộp hỏi ở `C-HOME-04` vòng 2. `SC-FEED-013` bỏ chữ *"cả hai tab"*, ⛔ chưa assert câu *"gợi ý mở rộng khu vực"*.
+↳ **Cập nhật 2026-09-17 (BA trả lời `C-HOME-04` vòng 3: *"giữ nguyên nhé"*):** vế (c) **ĐÓNG** — `EMP-04` **giữ nguyên chữ PRD** (*"Chưa có tin nào"* + gợi ý mở rộng khu vực hoặc đăng tin) dù Bảng tin load **toàn quốc**. ⇒ rào ⛔ ở trên **hết hiệu lực**: `SC-FEED-013` **assert cứng** chuỗi `EMP-04`; PRD không nói *"gợi ý mở rộng khu vực"* là nút hay chữ ⇒ assert **nội dung chữ**, ghi nhận dạng hiển thị thực tế, không FAIL vì hình thức. Home của quyết định: `v1.1/HOME-trang-chu/risk_assessment.md` mục `C-HOME-04 · ↳ BA trả lời vòng 3`.
 
 ### C-FEED-04 · ↳ BA trả lời 2026-09-17 *(→ RESOLVED)*
 
@@ -162,14 +163,16 @@ updated: 2026-09-17
 
 ↳ **Ghi chú:** Trước ghép, Chi tiết tin **hiện họ tên** (người gửi) + **địa chỉ lấy/giao đầy đủ theo data đã đăng**; **chỉ ẩn SĐT** (và nút Gọi — `SC-FEED-010` giữ nguyên, vẫn P1). ⇒ `SC-FEED-007` thêm assert *cụm Người gửi có tên, không SĐT*. ⚠️ PRD `BR03-03` (*"Sau khi ghép, lộ họ tên · số điện thoại · phòng ban"*) và `NFR-10` (*"Số điện thoại **và địa chỉ** chỉ trả về cho đúng hai người trong cặp ghép"*) **ngược câu BA** ⇒ đưa vào dòng đề nghị cập nhật PRD. ⛔ Không log bug vì tên/địa chỉ hiện trước ghép.
 
-### C-FEED-05 · Dữ liệu toạ độ văn phòng lỗi *(OPEN — mới 2026-09-17)*
+### C-FEED-05 · Dữ liệu toạ độ văn phòng lỗi *(RESOLVED 2026-09-17)*
 
 📍 `00_input/v1.1/location_address_catalog.xlsx` (`DOC-v1.1-04`) ⟷ BA trả lời `C-FEED-02(b)`
 
 ↳ **Ghi chú:** Rà file BA cấp: **cả 399 dòng** có `coordinate_status = MISSING`; **61 dòng** thiếu lat/lng; **34 dòng** toạ độ nằm ngoài Việt Nam (vd `51.93, -8.62`). Nếu app lấy toạ độ từ file này thì gần như **mọi** tin sẽ rơi vào nhánh placeholder/"0km" — không dựng được Given *"văn phòng có location"* cho `SC-FEED-009`. **Hỏi:** (a) Toạ độ bản đồ lấy từ đâu (cột lat/lng file này, geocode địa chỉ, hay DB khác)? `coordinate_status = MISSING` nghĩa là gì? (b) 34 dòng toạ độ ngoài VN: app vẽ sai vị trí hay coi là thiếu? (c) Chỉ **1 trong 2** điểm thiếu toạ độ ⇒ vẫn "0km" + placeholder? (d) Xin danh sách **cặp văn phòng mẫu**: 1 cặp đủ toạ độ đúng · 1 cặp thiếu toạ độ.
 
+↳ **KẾT LUẬN (theo BA) 2026-09-17:** (a) toạ độ lấy từ đúng **cột lat/lng** của file (đã import vào DB) — cột `coordinate_status` **KHÔNG dùng tới**, bỏ qua hoàn toàn. (b) văn phòng đủ lat/lng cả 2 điểm ⇒ hiện bản đồ thật; thiếu 1 trong 2 là **DO DATA STG SAI** (không phải bug app) — ưu tiên viết TC cho case đủ data. (c) 34 dòng toạ độ ngoài Việt Nam cũng là **DATA SAI** ⇒ bỏ qua case này. (d) dùng đúng file đã cấp, **chọn các dòng có đầy đủ cả 2 lat/lng** làm test data cho case tích cực. `C-FEED-05` ĐÓNG HẲN — `SC-FEED-009` dựng được Given với dữ liệu văn phòng đủ toạ độ; `SC-FEED-015` (thiếu toạ độ) hạ xuống P3/optional vì bản chất là data lỗi diện rộng, không phải rule nghiệp vụ cần test kỹ.
+
 ## Khuyến nghị tổng thể
-1. ✅ **`RISK-FEED-03` Resolved 2026-09-16** — nhãn Loại hàng chuẩn là "Tài liệu" (`C-ORD-09`). *(2026-09-17)* `C-FEED-02..04` Resolved; blocker còn lại trước generate-tc: **`C-FEED-05`** (toạ độ văn phòng lỗi — không dựng được Given bản đồ thật).
+1. ✅ **`RISK-FEED-03` Resolved 2026-09-16** — nhãn Loại hàng chuẩn là "Tài liệu" (`C-ORD-09`). *(2026-09-17)* `C-FEED-02..05` đều **Resolved** — module FEED HẾT điểm hỏi BA (chỉ còn hành động chờ BA cập nhật PRD, không chặn `generate-tc`).
 2. **Ưu tiên test P1 high-risk:** `SC-FEED-010` (SĐT trước ghép) và `SC-FEED-011` (CTA với chủ tin) — chạy sớm để **log 2 bug đã biết mà đợt cũ chưa log** (`KP-05 §5`).
 3. **Cần môi trường/dữ liệu:** 3 tài khoản (chủ tin · người xem · người nhận) + 1 tin OFFER để verify không lên bảng tin. Không có tài khoản thứ ba thì `SC-FEED-012` blocked.
 4. ✅ **`C-FEED-01(a)` đã Resolved 2026-09-16 qua demo** — CTA "Tôi mang giúp được" chỉ ở màn Chi tiết tin, không trên card; dùng luôn cho locator automation sau này.

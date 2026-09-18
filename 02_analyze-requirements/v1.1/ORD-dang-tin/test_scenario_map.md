@@ -16,7 +16,7 @@ counts:
   p2: 36
   p3: 20
 status: ANALYZED
-updated: 2026-09-15
+updated: 2026-09-17
 ---
 
 # Test Scenario Map — v1.1 · Module ORD
@@ -42,15 +42,15 @@ updated: 2026-09-15
 
 | Scenario ID | Feature | Req ID | DOC Source | Given | When | Then | Priority | Test Type | Lifecycle |
 |-------------|---------|--------|-----------|-------|------|------|----------|-----------|-----------|
-| SC-ORD-052 | Khối lượng bắt buộc — thiếu thì chặn | REQ-ORD-024 | DOC-v1.1-01 §8.1.1 BR01-02 · §8.1.4 · §6.2 AC-02.1.02 | Đang ở bước 1 wizard, đã chọn Loại hàng + Giá trị hàng + có ảnh | Để **Khối lượng** ở trạng thái "chưa chọn", bấm Tiếp tục | Nút Tiếp tục **không bật** / bị chặn, có lỗi ở ô Khối lượng. Chọn `> 10 kg` thì **vẫn đăng được bình thường** (`BR01-02`: *"không chặn theo ngưỡng"*) | P2 | Business Rule | NEW |
-| SC-ORD-053 | Kích thước bắt buộc — thiếu thì chặn | REQ-ORD-024 | DOC-v1.1-01 §8.1.1 BR01-02 · §8.1.4 | Như trên, đã chọn Khối lượng | Để **Kích thước** "chưa chọn", bấm Tiếp tục | Bị chặn + lỗi ở ô Kích thước. Chọn `Lớn · > 20×20 cm` thì **vẫn đăng được** | P2 | Business Rule | NEW |
+| SC-ORD-052 | Trọng lượng bắt buộc — thiếu thì chặn | REQ-ORD-024 | DOC-v1.1-01 §8.1.1 BR01-02 · §8.1.4 · §6.2 AC-02.1.02 · `DOC-v1.1-03` ảnh `gia tri hang uoc tinh.png` · BA `C-ORD-18` 2026-09-17 | Đang ở bước 1 wizard, đã chọn Loại hàng + Giá trị hàng + có ảnh | Để **Trọng lượng** ở trạng thái chưa chọn (không chip nào được chọn — 3 chip nằm ngang), nhấn "Tiếp theo" | Bị chặn sang bước 2, có lỗi ở ô Trọng lượng. Nhãn field là **"Trọng lượng"** và 3 chip hiện đúng **"Dưới 5 kg (Nhẹ)" · "5 – 10 kg (Trung bình)" · "Trên 10 kg (Nặng)"**. Chọn `Trên 10 kg (Nặng)` thì **vẫn đăng được bình thường** (`BR01-02`: *"không chặn theo ngưỡng"*) | P2 | Business Rule | NEW |
+| SC-ORD-053 | Kích thước bắt buộc — thiếu thì chặn | REQ-ORD-024 | DOC-v1.1-01 §8.1.1 BR01-02 · §8.1.4 · `DOC-v1.1-03` ảnh `gia tri hang uoc tinh.png` · BA `C-ORD-18` 2026-09-17 | Như trên, đã chọn Trọng lượng | Để **Kích thước** ở trạng thái chưa chọn (3 chip, không chip nào chọn), nhấn "Tiếp theo" | Bị chặn sang bước 2, có lỗi ở ô Kích thước. 3 chip hiện đúng **"Nhỏ · Cầm tay" · "Vừa · ~20×20 cm" · "Lớn · > 20×20 cm"**. Chọn `Lớn · > 20×20 cm` thì **vẫn đăng được** | P2 | Business Rule | NEW |
 | SC-ORD-054 | Ảnh BẮT BUỘC ≥ 1 — thiếu thì chặn sang bước 2 | REQ-ORD-006 | DOC-v1.1-01 §8.1.1 BR01-01 · §6.2 AC-03.1.02 | Bước 1, đã điền đủ 3 dropdown, **chưa tải ảnh nào** | Bấm Tiếp tục | **Bị chặn sang bước 2** (`BR01-01`: *"Thiếu ảnh thì chặn sang bước 2"*), có lỗi ở ô ảnh | P1 | Business Rule | NEW |
 | SC-ORD-055 | Ảnh vượt 5MB hoặc sai định dạng bị từ chối | REQ-ORD-006 | DOC-v1.1-01 §8.1.1 BR01-01 · §8.18.1 BR18-02 · §6.2 AC-03.2.02 | Bước 1, ô tải ảnh sẵn sàng | Lần lượt thử: 1 ảnh **> 5MB**; 1 file **không phải JPG/PNG** | Cả 2 **bị từ chối** kèm thông báo; bộ đếm `n/5` **không tăng** | P2 | Business Rule | NEW |
 | SC-ORD-056 | Đủ 5 ảnh → ẩn nút thêm + bộ đếm "n/5" | REQ-ORD-006 | DOC-v1.1-01 §8.18.1 BR18-02 · §8.18.2 VAL-07 · §6.2 AC-03.2.01 | Bước 1 | Tải lần lượt 1→5 ảnh, quan sát bộ đếm sau mỗi lần; rồi thử thêm ảnh thứ 6 | Bộ đếm hiện đúng `1/5`…`5/5`; khi đủ 5 thì **nút thêm bị ẩn**; **xoá được từng ảnh** và bộ đếm giảm tương ứng | P2 | Business Rule | NEW |
 | SC-ORD-057 | Carousel + lightbox đa ảnh | REQ-ORD-026 | DOC-v1.1-01 §8.18.1 BR18-03 · §6.2 AC-03.1.01 | 1 tin đã đăng có **≥ 2 ảnh**, đang mở màn chi tiết tin | Lướt ngang dải ảnh; chạm 1 ảnh; đóng bằng nút X; mở lại và đóng bằng chạm nền | Carousel lướt ngang có **badge đếm dạng `"2/5"`**; lightbox **nền tối, giữ đúng tỉ lệ ảnh**; đóng được bằng **cả 2 cách** | P3 | UI | NEW |
 | SC-ORD-058 | Tra danh bạ thành công → tự điền 3 trường, vẫn sửa được | REQ-ORD-008 | DOC-v1.1-01 §8.1.1 BR01-09 · §8.1.3 bước 4 · §6.2 AC-04.1.01 | Bước 2 wizard; có sẵn 1 **email công ty CÓ trong danh bạ nội bộ** | Nhập email đó, rời ô | **Tên · số điện thoại · địa chỉ giao** được tự điền; cả 3 ô **vẫn sửa được** (không bị khoá) | P1 | Functional | NEW |
-| SC-ORD-059 | Không thấy trong danh bạ → cho nhập thủ công | REQ-ORD-008 | DOC-v1.1-01 §8.1.1 BR01-09 · §6.2 AC-04.1.02 | Bước 2; có 1 email **đúng tên miền nội bộ nhưng KHÔNG có trong danh bạ** | Nhập email đó, rời ô | 3 ô **mở cho nhập tay** (không bị khoá, không báo lỗi chặn); luồng đăng tin vẫn đi tiếp được | P2 | Functional | NEW |
-| SC-ORD-060 | Email sai định dạng hoặc ngoài tên miền nội bộ | REQ-ORD-008 | DOC-v1.1-01 §8.1.4 · §6.2 AC-04.2.01 | Bước 2 | Lần lượt nhập: email **sai định dạng**; email đúng định dạng nhưng **ngoài tên miền nội bộ** | Cả 2 **bị chặn** kèm lỗi; **không kích hoạt tra danh bạ** | P2 | Business Rule | NEW |
+| SC-ORD-059 | Không tra thấy trên HRIS → **CHẶN tạo đơn** *(đảo 2026-09-17)* | REQ-ORD-008 | BA trả lời `C-ORD-14` 2026-09-17 *(đảo `DOC-v1.1-01 §8.1.1 BR01-09` · `§6.2 AC-04.1.02`)* | Bước 2; có 1 email **đúng tên miền công ty `@fpt.com` nhưng KHÔNG tra thấy trên HRIS** (không tồn tại **hoặc đã nghỉ việc** — 2 case cùng kết quả) | Nhập email đó, rời ô, thử bấm "Tiếp theo" | Nút **"Tiếp theo" DISABLE** — ⛔ **KHÔNG cho tạo đơn**, ⛔ KHÔNG mở 3 ô cho nhập tay. ⚠️ **Đảo PRD:** `BR01-09`/`AC-04.1.02` ghi *"không thấy thì cho nhập thủ công"* — BA chốt ngược 2026-09-17, **lấy câu trả lời BA**; nếu STG cho nhập tay và tạo được đơn ⇒ **log bug** (không sửa oracle) | P2 | Business Rule | NEW |
+| SC-ORD-060 | Email sai định dạng hoặc ngoài tên miền công ty | REQ-ORD-008 | DOC-v1.1-01 §8.1.4 · §6.2 AC-04.2.01 · QC GiangDC2 chốt tên miền 2026-09-17 | Bước 2 | Lần lượt nhập: email **sai định dạng**; email đúng định dạng nhưng **ngoài tên miền công ty** (vd `...@gmail.com`) | Cả 2 **bị chặn** kèm lỗi; **không kích hoạt tra danh bạ**. Tên miền hợp lệ duy nhất đã chốt: **`@fpt.com`** (email công ty) | P2 | Business Rule | NEW |
 | SC-ORD-061 | Khai người nhận uỷ quyền — validate tên & SĐT | REQ-ORD-023 | DOC-v1.1-01 §8.1.1 BR01-06 · §8.1.4 · §6.2 AC-05.1.01, AC-05.1.02 | Bước 2, khối "+ Thêm người nhận uỷ quyền" đang **thu gọn** | Mở khối; nhập tên hợp lệ + SĐT **sai định dạng**; sửa lại SĐT đúng; hoàn tất đăng tin | SĐT sai → **báo lỗi, chặn**; SĐT đúng → đăng được; dữ liệu uỷ quyền gắn vào đơn kèm nhãn **"Người gửi chỉ định"**. Biên tên: **2** và **60** ký tự đều hợp lệ | P2 | Business Rule | NEW |
 | SC-ORD-062 | Xoá khối uỷ quyền sau khi đã mở | REQ-ORD-023 | DOC-v1.1-01 §6.2 AC-05.2.01 | Bước 2, khối uỷ quyền **đã mở và đã điền** | Xoá/đóng khối rồi hoàn tất đăng tin | Đơn tạo thành công **không mang dữ liệu uỷ quyền**; ⛔ không báo lỗi "thiếu trường" (khối là **không bắt buộc**) | P3 | Business Rule | NEW |
 | SC-ORD-063 | Địa chỉ giao phải KHÁC địa chỉ lấy | REQ-ORD-028, REQ-ORD-009 | DOC-v1.1-01 §8.1.4 dòng "Địa chỉ giao hàng" | Bước 2, đã có địa chỉ lấy hàng | Nhập địa chỉ giao **trùng hệt** địa chỉ lấy → quan sát; rồi nhập bản **chỉ khác khoảng trắng đầu/cuối** → quan sát | Trùng hệt → **bị chặn**. Khác mỗi khoảng trắng → GHI NHẬN hành vi (`VAL-03` có trim, nhưng PRD **không định nghĩa** so sánh hoa/thường) — ⛔ không assert cứng | P2 | Business Rule | NEW |
@@ -87,13 +87,14 @@ updated: 2026-09-15
 ---
 
 ##### SC-ORD-058 / SC-ORD-059 / SC-ORD-060 — Tra danh bạ nội bộ: 3 nhánh
+> 🔁 **ĐẢO 2026-09-17 — đọc trước khi dùng 3 SC này.** *(⚠️ đính chính 2026-09-17 lượt 2: đảo Then là sửa NỘI DUNG — `SC-ORD-059` giữ lifecycle **`NEW`**, không đổi sang `MODIFIED`; xem `MASTER-MEMORY §3`.)* (1) `SC-ORD-059`: PRD `BR01-09`/`AC-04.1.02` nói *"không thấy thì cho nhập thủ công"*, và BA vòng 2 (2026-09-16, `C-ORD-13(4)`) còn xác nhận *"email đã nghỉ việc xử lý giống Không tìm thấy · nhập thủ công, KHÔNG chặn đăng tin"* — **cả hai HẾT HIỆU LỰC**: BA `C-ORD-14` (2026-09-17, mới hơn) chốt **nút "Tiếp theo" disable, KHÔNG cho tạo đơn**. ⛔ ~~Lifecycle `SC-ORD-059` NEW → MODIFIED~~ **HẾT HIỆU LỰC** — giữ **`NEW`** (SC sinh ở v1.1, v1.0 chỉ có `SC-ORD-001..051`). (2) Tên miền nội bộ: câu trả lời BA cũ (`@fpt.vn`, `@gmail.com`) **bị QC GiangDC2 đính chính 2026-09-17** — hợp lệ là **email công ty `@fpt.com`**; `@gmail.com` nay là **dữ liệu INVALID** của `SC-ORD-060`. `@fpt.vn` **chưa được xác nhận lại** ⇒ ⛔ không dùng làm test data cho cả 2 nhánh.
 📍 `DOC-v1.1-01 §8.1.1 BR01-09 · trang 34` · `§8.1.4 dòng "Email công ty người nhận" · trang 35` · `§6.2 AC-04.x · trang 20` · `§4 SCOPES Tích hợp · trang 9`
 
 > ↪ *Quote `BR01-09` — home ở `risk_assessment.md` · `C-ORD-13` (không chép lại — tránh lặp home, health-check G-03 2026-09-16)*
 
 > §8.1.4: "Email công ty người nhận | Có | Văn bản · trống | Đúng định dạng và thuộc tên miền nội bộ; kích hoạt tra danh bạ"
 
-> §4 SCOPES: "Danh bạ nội bộ — tra email công ty người nhận để tự điền tên · số điện thoại · địa chỉ"
+> ↪ *Quote `§4 SCOPES` (Danh bạ nội bộ) — home ở `risk_assessment.md` · `C-ORD-13` (không chép lại — tránh lặp home, health-check G-03 2026-09-17)*
 
 **Analyst Note:** ⭐ **Tích hợp hệ thống ngoài được nêu tên lần đầu trong cả chuỗi phân tích.** v1.0 biết có autofill (`USR-EML`) nhưng **không biết nguồn dữ liệu** ⇒ không viết được TC cho nhánh *không tìm thấy* — một nhánh chắc chắn xảy ra trong thực tế (người nhận là CBNV mới, hoặc email gõ đúng nhưng chưa có trong danh bạ).
 **Ba nhánh, ba SC** vì ba kết cục khác hẳn: tự điền + **vẫn sửa được** (mệnh đề trong ngoặc của `BR01-09`, dễ bị bỏ — nhiều app khoá ô sau autofill) · mở cho nhập tay · **chặn trước khi tra**. Nhánh 3 có **2 điều kiện chặn khác nhau** (sai định dạng ⟷ đúng định dạng nhưng **ngoài tên miền nội bộ**) — gộp 1 SC vì cùng kết cục và cùng thao tác.
@@ -174,7 +175,7 @@ updated: 2026-09-15
 
 > ↪ *Quote enum "Buổi mong muốn" (Sáng 8–12 · Chiều 13–17 · Sau giờ làm 17–19 · Giờ nào cũng được) — home ở `requirement_traceability.md` · `REQ-ORD-012`*
 
-**Analyst Note (diff):** Bảng SC mới assert **một chiều** (chọn "Giờ nào cũng được" → các buổi khác bỏ chọn). `AC-06.2.01` có **3 mệnh đề**: (1) chiều thuận; (2) **chiều ngược** — đang ở "Giờ nào cũng được" mà tick 1 buổi cụ thể thì "Giờ nào cũng được" tự bỏ; (3) **không cho bỏ chọn hết** (tối thiểu 1 buổi). ⇒ TC khi generate phải có **đủ 3 bước quan sát** trong cùng 1 luồng; chiều ngược và "bỏ hết" là 2 chỗ dev hay sót nhất. ⚠️ Buổi đã trôi qua trong ngày hôm nay có bị chặn không — chờ `C-ORD-15(b)`, ⛔ không assert.
+**Analyst Note (diff):** Bảng SC mới assert **một chiều** (chọn "Giờ nào cũng được" → các buổi khác bỏ chọn). `AC-06.2.01` có **3 mệnh đề**: (1) chiều thuận; (2) **chiều ngược** — đang ở "Giờ nào cũng được" mà tick 1 buổi cụ thể thì "Giờ nào cũng được" tự bỏ; (3) **không cho bỏ chọn hết** (tối thiểu 1 buổi). ⇒ TC khi generate phải có **đủ 3 bước quan sát** trong cùng 1 luồng; chiều ngược và "bỏ hết" là 2 chỗ dev hay sót nhất. ✅ **Chốt 2026-09-17 (`C-ORD-15(b)` Resolved):** app **CHẶN** chọn buổi đã trôi qua trong ngày ⇒ **assert cứng**, ⛔ bỏ rào *"không assert"*. Kèm (a) Từ X → Đến tối đa **X+7** · (c) job chuyển `EXPIRED` chạy **cuối ngày**.
 
 ---
 
@@ -222,6 +223,7 @@ updated: 2026-09-15
 ---
 
 ##### SC-ORD-052 / SC-ORD-053 — Khối lượng, kích thước bắt buộc; không chặn theo ngưỡng
+> 🔴 **Cập nhật 2026-09-17 (tối) — `C-ORD-18` Resolved, BA chốt *"lấy UI làm chuẩn"* ⇒ HẾT rào ghi-nhận, assert cứng:** nhãn field chính thức là **"Trọng lượng"** (PRD ghi "Khối lượng" **HẾT HIỆU LỰC**), option giữ nhãn phụ **"Dưới 5 kg (Nhẹ)" · "5 – 10 kg (Trung bình)" · "Trên 10 kg (Nặng)"**, kiểu control là **3 chip** (PRD ghi Dropdown **HẾT HIỆU LỰC**). Enum tương đương PRD ⇒ rule không đổi; Steps viết thao tác **nhấn chip**, ⛔ không viết "mở dropdown". App hiện nhãn "Khối lượng" hoặc dropdown ⇒ **defect UI**, ⛔ không phải TC sai. Chi tiết `risk_assessment.md C-ORD-18`.
 📍 `DOC-v1.1-01 §6.2 AC-02.1.02 · trang 15` · `§8.1.1 BR01-02 · trang 34` · `§8.18.2 VAL-02 · trang 52`
 
 > `AC-02.1.02` Then: "Chặn sang bước 2. Hiện lỗi ngay dưới ô còn trống và cuộn tới ô lỗi đầu tiên. Không tạo tin."
@@ -270,7 +272,7 @@ updated: 2026-09-15
 
 > ↪ *Quote `BR18-04` — home ở `requirement_traceability.md` · `REQ-ORD-025`*
 
-**Analyst Note:** SC giữ bề mặt **màn chi tiết tin**; bề mặt **màn theo dõi đơn** ở `SC-DLV-064` (`AC-10.1.01` — cùng thời lượng 1,8 giây), ⛔ không nhân bản. Thời lượng **~1,8s** assert với dung sai (*"trở lại sau khoảng 2 giây"*). ⚠️ **Phụ thuộc bảo mật:** `BR18-04` đặt icon copy **cạnh SĐT ở màn chi tiết tin**, nhưng SĐT **không được hiện trước khi ghép** (`BR01-08`, `AC-13.1.02`, `SC-FEED-010`) ⇒ trước ghép chỉ assert copy **địa chỉ**; icon copy SĐT chỉ kiểm khi đang xem tin **đã ghép** với tư cách một trong 2 người của cặp. Phạm vi địa chỉ hiện đầy đủ hay rút gọn trước ghép chờ `C-FEED-04`.
+**Analyst Note:** SC giữ bề mặt **màn chi tiết tin**; bề mặt **màn theo dõi đơn** ở `SC-DLV-064` (`AC-10.1.01` — cùng thời lượng 1,8 giây), ⛔ không nhân bản. Thời lượng **~1,8s** assert với dung sai (*"trở lại sau khoảng 2 giây"*). ⚠️ **Phụ thuộc bảo mật:** `BR18-04` đặt icon copy **cạnh SĐT ở màn chi tiết tin**, nhưng SĐT **không được hiện trước khi ghép** (`BR01-08`, `AC-13.1.02`, `SC-FEED-010`) ⇒ trước ghép chỉ assert copy **địa chỉ**; icon copy SĐT chỉ kiểm khi đang xem tin **đã ghép** với tư cách một trong 2 người của cặp. ✅ **Chốt 2026-09-17 (`C-FEED-04` Resolved):** trước ghép **chỉ ẩn SĐT** — tên **hiện**, địa chỉ hiện **đầy đủ theo data đã gửi**. `BR03-03`/`NFR-10` (rút gọn) là **PRD chưa cập nhật**, ⛔ không assert theo.
 
 ---
 

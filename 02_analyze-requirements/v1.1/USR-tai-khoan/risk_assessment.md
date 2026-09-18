@@ -6,17 +6,17 @@ version: v1.1
 sprint: 1
 module: USR
 counts:
-  cl: 6
+  cl: 7
   risk: 8
-  cl_open: 0
+  cl_open: 1
   cl_resolved: 6
 status: ANALYZED
-updated: 2026-09-16
+updated: 2026-09-18
 ---
 
 > Tạo bởi: analyze-requirements (DELTA 2026-09-15, **lượt bù thứ hai**) · layout **module-first v2**.
 > **Home của Clarification quote (layout v2).** Bảng risk đầy đủ v1.0 (5 dòng, `RISK-USR-01..05`) xem `v1.0/USR-tai-khoan/risk_assessment.md` — KHÔNG lặp lại ở đây. **ID mới bắt đầu từ `RISK-USR-06`.**
-> ℹ️ `cl_open (0) + cl_resolved (6) = cl (6)` — toàn bộ CL module USR đã Resolved (2026-09-16).
+> ℹ️ `cl_open (1) + cl_resolved (6) = cl (7)` — **`C-USR-07` mở lại 2026-09-18** sau khi vibe-test VR-003 có dữ kiện thực nghiệm; 6 CL còn lại đã Resolved (2026-09-16).
 
 ## Tổng quan
 | Module | Risk Level | Rủi ro chính (delta v1.1) |
@@ -41,6 +41,7 @@ updated: 2026-09-16
 | C-USR-05 | Avatar · khu vực/văn phòng · kênh liên hệ — sửa được, chỉ đọc, hay đã bỏ? | ✅ **Resolved 2026-09-16** — (a) avatar chữ viết tắt không dấu 2 từ cuối, giống nhau 2 màn; (b) khu vực/văn phòng = địa chỉ mặc định (HRIS, chọn từ danh sách văn phòng), prefill CÓ sang lấy hàng/giao hàng/điểm xuất phát; (c) kênh liên hệ bỏ hẳn — BA chốt qua 5 lượt | 2026-09-15 | REQ-USR-002, REQ-USR-008, SC-USR-002, SC-USR-010, SC-USR-020..024 |
 | C-USR-06 | Badge **"Hạng Đồng hành"** trên trang Cá nhân — PRD cấm mọi tier/xếp hạng (`BR14-03`, `AC-26.1.01`) nhưng `SC-USR-007` v1.0 assert badge **tồn tại** | ✅ **Resolved 2026-09-16 — KHÔNG hiển thị badge** (BA) | 2026-09-16 | REQ-USR-007, SC-USR-007, SC-USR-011 |
 | C-USR-04 | Nhãn mục menu thứ hai + 3 trường hồ sơ chưa có bằng chứng UI | ✅ **Resolved 2026-09-16 — qua demo, xem mục Vibe-check bổ sung** | mở 2026-09-07 | REQ-USR-002, REQ-USR-006 |
+| C-USR-07 | **Địa chỉ mặc định để RỖNG có hợp lệ không**, và có đường nào để **xoá** địa chỉ đã lưu? (chính là câu **(v)** của `C-USR-05` — *"còn cho bỏ trống không (PRD ghi Không bắt buộc)?"* — BA **chưa bao giờ trả lời thẳng**, nhưng `C-USR-05` đã bị đóng `Resolved` ⇒ câu hỏi rơi mất) | 🟡 **Open — mở lại 2026-09-18**, nay đã có **dữ kiện thực nghiệm** từ `VR-003` | 2026-09-18 | REQ-USR-008, SC-USR-019, SC-USR-020 |
 | C-USR-01 · C-USR-02 | *(giữ nguyên Resolved từ v1.0 — PRD không nhắc, không đảo)* | ✅ Resolved | 2026-07-27 | xem `v1.0/USR-tai-khoan/risk_assessment.md` |
 
 ### C-USR-03 · "Xem/cập nhật hồ sơ" — ĐẢO kết luận *(RESOLVED 2026-09-15)*
@@ -131,6 +132,14 @@ Biên chưa có đặc tả: tên **1 từ** · chữ cái đầu **có dấu** 
 🔗 Rule này **khớp một phần** câu BA (b) *"khu vực/văn phòng sẽ load giá trị tại Địa chỉ mặc định"* — địa chỉ mặc định nay chính là **một văn phòng** ⇒ (b) thu hẹp còn phạm vi prefill sang **giao hàng / điểm xuất phát**.
 **Câu hỏi mở lúc đầu (đã trả lời phần lớn ở lượt dưới):** (i) danh sách văn phòng lấy từ nguồn nào (HRIS / master data FoxEco)? (ii) gõ bao nhiêu ký tự thì bắt đầu gợi ý; tìm có dấu/không dấu, theo tên hay theo địa chỉ? (iii) không có kết quả thì hiện gì? (iv) gõ tay không chọn rồi bấm Lưu: báo lỗi (text gì) / tự xoá / disable nút Lưu? (v) còn cho **bỏ trống** không (PRD ghi *Không bắt buộc*)? (vi) HRIS không có địa chỉ làm việc thì ô hiện gì?
 
+🔴 **CHỐT 2026-09-18 (QC GiangDC2) — câu (vi) ĐÓNG, và nó biến một "nhánh dữ liệu" thành một BUG:**
+
+> *"địa chỉ data hris luôn luôn có nhé, nếu mặc định, hiện tại ko có do bị bug không load data từ hris ấy"*
+
+↳ **Ghi chú:** HRIS **luôn** có địa chỉ làm việc mặc định cho mọi CBNV ⇒ nhánh *"HRIS không có địa chỉ"* **không tồn tại trong thực tế** (khớp với việc `TC-USR-041` đã DESCOPED và gap #1 của `USR-accounts.md §4` đã đóng). ⇒ Việc `VR-003` quan sát ô địa chỉ **rỗng** ở lần mở màn đầu tiên **KHÔNG phải** nhánh dữ liệu thiếu, mà là **lỗi app không nạp dữ liệu từ HRIS** — đã log `BUG-008` (ứng viên `B9`, `TC-USR-040` + `TC-USR-043`).
+⇒ **Hệ quả cho `TC-USR-044`:** giữ nguyên `⛔ N-A / DESCOPED`. Lập luận *"ô SĐT rỗng khi mở lần đầu CÓ xảy ra thật nên `TC-USR-044` nên sống lại"* (nêu ở `VR-001`/`VR-003`) **BỊ BÁC** — ô rỗng đó là **triệu chứng của `BUG-008`**, không phải trạng thái *"HRIS trống SĐT"* mà TC mô tả. Đúng như nhận định: **TC mô tả sai nguyên nhân**, và nguyên nhân thật đã có bug riêng.
+⚠️ **Rule `SC-USR-022`/`SC-USR-023` (*"prefill từ HRIS"*) được QC xác nhận là ĐÚNG** ⇒ ⛔ **không** sửa 2 SC này theo hành vi app; app phải sửa cho khớp spec.
+
 ### C-USR-05 · ↳ Rule địa chỉ mặc định — BA trả lời chi tiết 2026-09-16
 
 📍 BA trả lời · 2026-09-16
@@ -180,11 +189,28 @@ Biên chưa có đặc tả: tên **1 từ** · chữ cái đầu **có dấu** 
 
 ↳ **Ghi chú:** (1) Tên luôn đủ để lấy 2 từ cuối — ví dụ ngắn nhất "Trần A" → `TA` ⇒ **không có trường hợp tên 1 từ**. (2) Bấm ← khi chưa lưu ⇒ **không lưu, không hỏi xác nhận** ⇒ thêm `SC-USR-024`. ⛔ Dòng *"Còn mở"* ngay trên hết hiệu lực — **`C-USR-05` Resolved**.
 
+### C-USR-07 · Địa chỉ mặc định RỖNG — hợp lệ hay không? *(OPEN — mở lại 2026-09-18)*
+
+📍 Nguồn: quan sát thực nghiệm khi chạy `TC-USR-027` · `VR-003-USR-2026-09-18` · tài khoản MNV 00002352
+
+↳ **Dữ kiện (không phải suy diễn):** trong 1 phiên đã bấm **"Lưu thay đổi" 2 lần liên tiếp** với ô **"Địa chỉ mặc định" để TRỐNG hoàn toàn**. Cả 2 lần app **lưu thành công**: không chặn, không báo lỗi dưới field, không hiện cảnh báo, và điều hướng về màn "Cá nhân" đúng như khi dữ liệu đầy đủ. Mở lại màn thì SĐT persist đúng, địa chỉ vẫn rỗng.
+
+**Vì sao đây là câu hỏi chứ không phải bug:** PRD `§8.15.2` ghi địa chỉ mặc định là **"Không bắt buộc"** ⇒ cho lưu rỗng **có thể là đúng spec**. Nhưng `SC-USR-020`/`SC-USR-022` lại được viết theo tinh thần *"luôn có một địa chỉ"* (load HRIS, chọn từ danh sách), và `TC-USR-029` đang **FAIL** một phần vì điểm này ⇒ hai hướng đọc cho ra 2 verdict ngược nhau.
+
+**Câu hỏi cho BA/PM:**
+(a) Địa chỉ mặc định **rỗng** có phải trạng thái hợp lệ của hồ sơ không? Nếu có, các màn tiêu thụ nó (`ORD` địa chỉ lấy hàng · `ASN` điểm xuất phát) xử lý thế nào khi rỗng?
+(b) Người dùng **có đường nào để XOÁ** địa chỉ đã lưu về rỗng không (ô chỉ nhận giá trị chọn từ danh sách gợi ý — `C-USR-05` chốt ⛔ không nhận text tự do)?
+(c) Nếu **không** cho rỗng thì app phải chặn ở đâu — disable nút Lưu, hay báo lỗi dưới field như `BR15-02` làm với SĐT?
+
+**Ảnh hưởng nếu để treo:** `TC-USR-029` không kết luận dứt điểm được (đang FAIL kép, 1 vế đã hết hiệu lực sau khi bug `B1` bị rút lại) · `TC-USR-030` cùng dải cũng dính.
+
+⚠️ **Đừng lẫn với `BUG-008`:** `BUG-008` là *app không NẠP dữ liệu HRIS vào form*; `C-USR-07` là *có được phép LƯU rỗng hay không*. Hai việc khác nhau — fix `BUG-008` xong thì `C-USR-07` **vẫn còn** cần BA trả lời.
+
 ### C-USR-06 · Badge "Hạng Đồng hành" — giữ hay bỏ? *(RESOLVED 2026-09-16 — không hiện)*
 
 📍 `DOC-v1.1-01 §8.14.1 BR14-03 · trang 48` · `§6.2 AC-26.1.01 · trang 27` · `§4 SCOPES Out of Scope · trang 9` ⟷ `DOC-v1.0-02 §3.9` · ảnh `00_input/v1.1/design/USR_01_trangcanhan_fields_CUSR04.png`
 
-> `BR14-03`: "Không có chấm sao 1–5, không điểm, không tier/xếp hạng, không chỉ số môi trường."
+> ↪ *Quote `BR14-03` — home ở `../GIFT-qua-cam-on/test_scenario_map.md` (không chép lại — tránh lặp home, health-check G-03 2026-09-17)*
 
 > `AC-26.1.01`: "…Không có điểm, tier, xếp hạng hay quy đổi tiền."
 

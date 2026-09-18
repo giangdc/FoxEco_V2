@@ -162,7 +162,7 @@
 > Nguồn (v1.1) #3 — §4 SCOPES, Tích hợp với các hệ thống khác (trang 9):
 > "Danh bạ nội bộ — tra email công ty người nhận để tự điền tên · số điện thoại · địa chỉ"
 
-↳ **Ghi chú (diff):** ⭐ **Tích hợp hệ thống ngoài được nêu tên lần đầu.** v1.0 biết có autofill nhưng không biết **lấy từ đâu** ⇒ không viết được TC cho nhánh *không tìm thấy*. Nay có đủ **3 nhánh**: tìm thấy → tự điền 3 trường **và vẫn sửa được** (`SC-ORD-058`) · không thấy → cho nhập thủ công (`SC-ORD-059`) · email sai định dạng **hoặc ngoài tên miền nội bộ** → chặn trước khi tra (`SC-ORD-060`). ⚠️ **Rủi ro tiền đề lớn nhất của module:** cần **2 email thật trong danh bạ** và **1 email đúng tên miền nhưng không có trong danh bạ** — loại dữ liệu chỉ môi trường có tích hợp danh bạ thật mới cung cấp được. Nếu STG chưa nối danh bạ thì 3 SC này `BLOCKED`. ⇒ mở `C-ORD-13`.
+↳ **Ghi chú (diff):** ⭐ **Tích hợp hệ thống ngoài được nêu tên lần đầu.** v1.0 biết có autofill nhưng không biết **lấy từ đâu** ⇒ không viết được TC cho nhánh *không tìm thấy*. Nay có đủ **3 nhánh**: tìm thấy → tự điền 3 trường **và vẫn sửa được** (`SC-ORD-058`) · không thấy → ~~cho nhập thủ công~~ **CHẶN tạo đơn, nút "Tiếp theo" disable** (`SC-ORD-059` — ⛔ **đảo 2026-09-17** theo BA `C-ORD-14`; vế *"cho nhập thủ công"* của `BR01-09`/`AC-04.1.02` **hết hiệu lực, đừng trích lại**, PRD cần sửa) · email sai định dạng **hoặc ngoài tên miền công ty `@fpt.com`** → chặn trước khi tra (`SC-ORD-060`). ⚠️ **Rủi ro tiền đề lớn nhất của module:** cần **2 email thật trong danh bạ** và **1 email đúng tên miền nhưng không có trong danh bạ** — loại dữ liệu chỉ môi trường có tích hợp danh bạ thật mới cung cấp được. Nếu STG chưa nối danh bạ thì 3 SC này `BLOCKED`. ⇒ mở `C-ORD-13`.
 
 ---
 

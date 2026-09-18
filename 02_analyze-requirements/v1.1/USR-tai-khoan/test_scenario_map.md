@@ -16,7 +16,7 @@ counts:
   p2: 14
   p3: 7
 status: ANALYZED
-updated: 2026-09-16
+updated: 2026-09-18
 ---
 
 # Test Scenario Map — v1.1 · Module USR
@@ -51,8 +51,8 @@ updated: 2026-09-16
 | SC-USR-019 | Banner tự ẩn khi người dùng sửa tiếp | REQ-USR-008 | DOC-v1.1-01 §8.15.1 BR15-05 | Vừa lưu thành công, banner xanh **đang hiển thị** | Chạm vào ô SĐT hoặc địa chỉ và sửa tiếp | Banner **tự ẩn** khi bắt đầu sửa; ⛔ không cần bấm đóng thủ công | P3 | UI | NEW |
 | SC-USR-020 | Gõ tay không chọn từ danh sách → ô rỗng, lưu rỗng | REQ-USR-008 | BA chốt 2026-09-16 (`C-USR-05` rule địa chỉ) · DOC-v1.1-01 §8.15.2 | Đang ở màn "Cập nhật thông tin", SĐT hợp lệ, ô địa chỉ **đang có giá trị** (ghi lại) | Gõ 1 chuỗi bất kỳ (vd `asdfghjkl1`) **nhưng KHÔNG chọn** mục nào trong danh sách → **bấm ra ngoài ô** → bấm "Lưu thay đổi" → thoát ra, mở lại màn | Ra khỏi ô ⇒ ô **bị xoá thành rỗng** (⛔ không giữ chuỗi gõ tay, ⛔ không quay về giá trị cũ); Lưu **thành công** (để trống là hợp lệ); mở lại màn ô địa chỉ **vẫn rỗng** — ⛔ **không tự load lại địa chỉ HRIS** | P2 | Business Rule | NEW |
 | SC-USR-021 | Gõ ≥ 3 ký tự → gợi ý văn phòng theo tên (không phân biệt dấu, hoa thường) → chọn | REQ-USR-008 | BA chốt 2026-09-16 (`C-USR-05` rule địa chỉ) | Đang ở màn "Cập nhật thông tin"; có file danh sách văn phòng `DOC-v1.1-04` làm oracle; bộ từ khoá K1–K6 ở `04_test-data/valid/USR-office-catalog.md` | Xoá ô địa chỉ; gõ lần lượt: `fp` (2 ký tự) → `fpt` (3 ký tự); `Lê Thái Tổ`; 3 dạng `Cẩm Lệ` · `cam le` · `CAM LE`; `xyz`; `hcm`; `tan`; cuối cùng chọn 1 mục | `fp`: **chưa gợi ý** · `fpt`: **8** văn phòng · `Lê Thái Tổ`: **1** · 3 dạng Cẩm Lệ: **cùng 2** văn phòng · `xyz`: **không hiện gợi ý** (không có dòng thông báo) · `hcm`: **không hiện gợi ý** (chỉ tìm theo tên, không theo mã tỉnh) · `tan`: **36** (khớp **chứa chuỗi**, gồm cả "Tầng…") · chọn 1 mục ⇒ ô điền **đúng chuỗi `name`** của văn phòng · chọn 1 mục ⇒ ô điền đúng văn phòng đó, giữ nguyên khi ra khỏi ô | P2 | Functional | NEW |
-| SC-USR-022 | Địa chỉ mặc định khởi tạo từ HRIS, đã lưu thì ưu tiên giá trị đã lưu | REQ-USR-008 | BA chốt 2026-09-16 · DOC-v1.1-01 §8.15.2 cột Kiểu (*"địa chỉ làm việc trong hồ sơ"*) | (A) Tài khoản **chưa từng lưu** địa chỉ mặc định, HRIS **có** địa chỉ làm việc · (B) chưa từng lưu, HRIS **không có** địa chỉ · (C) tài khoản **đã lưu** 1 văn phòng khác địa chỉ HRIS | Mở màn "Cập nhật thông tin" | (A) Ô hiển thị sẵn **đúng địa chỉ làm việc theo HRIS**, sửa được · (B) Ô **rỗng** · (C) Ô hiển thị **giá trị đã lưu**, ⛔ không bị HRIS ghi đè | P2 | Functional | NEW |
-| SC-USR-023 | SĐT mặc định khởi tạo từ HRIS | REQ-USR-008 | BA chốt 2026-09-16 · DOC-v1.1-01 §8.15.2 cột Kiểu (*"số điện thoại hiện tại"*) | (A) Tài khoản **chưa từng lưu** SĐT mặc định, HRIS **có** SĐT · (B) chưa từng lưu, HRIS **không có** SĐT | Mở màn "Cập nhật thông tin"; ở (B) bấm "Lưu thay đổi" luôn | (A) Ô SĐT hiển thị sẵn **đúng SĐT theo HRIS**, sửa được · (B) Ô SĐT **rỗng**; bấm Lưu ⇒ **bị chặn**, lỗi dưới ô (SĐT bắt buộc — `BR15-02`). Trường hợp đã lưu trước đó ⇒ hiện giá trị đã lưu: kiểm ở `SC-USR-014` | P2 | Functional | NEW |
+| SC-USR-022 | Địa chỉ mặc định khởi tạo từ HRIS, đã lưu thì ưu tiên giá trị đã lưu | REQ-USR-008 | BA chốt 2026-09-16 · DOC-v1.1-01 §8.15.2 cột Kiểu (*"địa chỉ làm việc trong hồ sơ"*) | (A) Tài khoản **chưa từng lưu** địa chỉ mặc định, HRIS **có** địa chỉ làm việc · ~~(B) chưa từng lưu, HRIS **không có** địa chỉ~~ 🚫 **DESCOPED 2026-09-18** · (C) tài khoản **đã lưu** 1 văn phòng khác địa chỉ HRIS | Mở màn "Cập nhật thông tin" | (A) Ô hiển thị sẵn **đúng địa chỉ làm việc theo HRIS**, sửa được · ~~(B) Ô **rỗng**~~ 🚫 DESCOPED · (C) Ô hiển thị **giá trị đã lưu**, ⛔ không bị HRIS ghi đè | P2 | Functional | NEW |
+| SC-USR-023 | SĐT mặc định khởi tạo từ HRIS | REQ-USR-008 | BA chốt 2026-09-16 · DOC-v1.1-01 §8.15.2 cột Kiểu (*"số điện thoại hiện tại"*) | (A) Tài khoản **chưa từng lưu** SĐT mặc định, HRIS **có** SĐT · ~~(B) chưa từng lưu, HRIS **không có** SĐT~~ 🚫 **DESCOPED 2026-09-18** | Mở màn "Cập nhật thông tin" | (A) Ô SĐT hiển thị sẵn **đúng SĐT theo HRIS**, sửa được · ~~(B) Ô SĐT **rỗng**; bấm Lưu ⇒ bị chặn~~ 🚫 DESCOPED — vế *SĐT rỗng ⇒ Lưu bị chặn* vẫn phủ bởi `SC-USR-015` (người dùng tự xoá trắng ô). Trường hợp đã lưu trước đó ⇒ hiện giá trị đã lưu: kiểm ở `SC-USR-014` | P2 | Functional | NEW |
 | SC-USR-024 | Thoát màn khi chưa lưu → bỏ thay đổi, không hỏi xác nhận | REQ-USR-008 | BA chốt 2026-09-16 (`C-USR-05`) | Đang ở màn "Cập nhật thông tin"; ghi lại SĐT + địa chỉ **đang lưu** | Sửa SĐT sang số hợp lệ khác + chọn 1 văn phòng khác, **KHÔNG bấm Lưu**, bấm ← quay lại trang Cá nhân; mở lại màn | Bấm ← **quay ra ngay**, ⛔ **không có hộp thoại/cảnh báo** xác nhận nào; mở lại màn thấy **giá trị cũ** — thay đổi chưa lưu **bị bỏ**, ⛔ không được giữ lại dạng bản nháp. ⚠ Demo v4.0 **giữ bản nháp** khi mở lại ⇒ lệch rule; STG giống demo là **defect** | P3 | Functional | NEW |
 | SC-USR-003 | Vùng SSO của hồ sơ vẫn chỉ đọc *(lật một phần)* | REQ-USR-002 | DOC-v1.1-01 §8.15.1 BR15-01 · §8.15 Description | Đang ở **trang Cá nhân** (không phải màn "Cập nhật thông tin") | Rà toàn bộ trang tìm control sửa trực tiếp trên từng trường | Tên · phòng ban · MNV · email **không sửa trực tiếp được tại trang Cá nhân**. ⚠ **KHÁC v1.0**: nay **CÓ** lối vào màn sửa qua mục "Cập nhật thông tin" ⇒ ⛔ không assert *"không có bất kỳ control sửa nào"* | P2 | Business Rule | MODIFIED |
 | SC-USR-002 | Hồ sơ cá nhân — các trường hiển thị *(hết gap 2026-09-16)* | REQ-USR-002 | Vibe-check demo 2026-09-16 (`00_input/v1.1/design/USR_01...png`) | Đã vào FoxEco bằng tài khoản có hồ sơ đầy đủ | Mở tab "Cá nhân" | Hiển thị đúng: avatar = **chữ viết tắt ghép từ chữ cái đầu của 2 từ cuối trong Tên** (vd "Trần Văn A" → "VA"; "Đồng Công Chí Linh" → "CL"), **không dấu** (vd "Đặng Ánh" → "DA") — ⛔ không phải icon người mặc định; **giống hệt** avatar ở màn "Cập nhật thông tin" · Tên · "[Phòng ban] · MNV: [mã]" · 2 chỉ số "[N] đơn đã giúp" / "[N] quà đã nhận" · 3 mục menu đúng thứ tự "Đơn của tôi" → "Quà đã nhận" → "Cập nhật thông tin". ⛔ KHÔNG gồm SĐT/Email/Địa chỉ — 3 trường đó chỉ ở màn "Cập nhật thông tin" (`SC-USR-013..016`), không lấy `§8.15.2` làm danh sách cho màn này. **KHÔNG có** badge "Hạng Đồng hành" (`C-USR-06` chốt 2026-09-16 — assert ở `SC-USR-007`) | P2 | UI | MODIFIED |
@@ -99,7 +99,7 @@ updated: 2026-09-16
 ##### SC-USR-003 — Lật một phần: "view-only hoàn toàn" không còn đúng
 📍 `DOC-v1.1-01 §8.15 Description · trang 48` · `§8.15.1 BR15-01 · trang 48`
 
-> Description: "Cho phép sửa số điện thoại và địa chỉ mặc định dùng để prefill khi đăng tin; các trường đồng bộ từ SSO là chỉ đọc."
+> ↪ *Quote `FR15` Description — home ở `risk_assessment.md` · `C-USR-03` (không chép lại — tránh lặp home, health-check G-03 2026-09-17)*
 
 > `BR15-01`: "Tên, phòng ban · MNV và email công ty là chỉ đọc — đồng bộ từ SSO; email hiển thị kèm icon khoá, không có ô nhập."
 
@@ -112,7 +112,7 @@ updated: 2026-09-16
 ##### SC-USR-012 / SC-USR-002 — Menu trang cá nhân có tên; danh sách trường hết gap qua demo 2026-09-16
 📍 `DOC-v1.1-01 §8.15 dòng Trigger · trang 48` · `§8.15.2 UI/Field Spec · trang 49` · vibe-check demo 2026-09-16
 
-> Trigger: "Mở "Cập nhật thông tin" trong trang cá nhân (nằm dưới mục "Quà đã nhận")"
+> ↪ *Quote `FR15` Trigger — home ở `risk_assessment.md` · `C-USR-03` (không chép lại — tránh lặp home, health-check G-03 2026-09-17)*
 
 > Ảnh `00_input/v1.1/design/USR_01_trangcanhan_fields_CUSR04.png` — trang Cá nhân: avatar (placeholder) · Tên · "Phòng Kỹ thuật · MNV: FTEL2291" · badge "Hạng Đồng hành" (ngoài đặc tả, không assert) · "12 đơn đã giúp" / "8 quà đã nhận" · menu "Đơn của tôi" → "Quà đã nhận" → "Cập nhật thông tin".
 > Ảnh `00_input/v1.1/design/USR_02_capnhatthongtin_fields.png` — màn "Cập nhật thông tin": avatar chữ tắt "CL" + Tên + Phòng ban/MNV (đọc) · Số điện thoại mặc định (sửa được) · Email công ty (icon khiên, chỉ đọc) · Địa chỉ mặc định (sửa được) · nút "Lưu thay đổi".
@@ -162,7 +162,8 @@ Fan-out 3 SC theo 3 trục fail độc lập: **nguồn giá trị khi mở màn
 > ↪ *Quote `BR15-02` / field spec SĐT — home ở `requirement_traceability.md` · `REQ-USR-008`; quote BA — home ở `risk_assessment.md` · `C-USR-05 · ↳ BA trả lời lượt 4`*
 
 **Analyst Note:** Rule SĐT chốt: **bắt đầu bằng 0 · đúng 10 ký tự · cả 10 là số** ⇒ khoảng trắng, `+84`, chữ đều **invalid**. ⚠️ Demo hiển thị `0912 345 678` (có khoảng trắng) — nếu STG cũng **hiển thị** có khoảng trắng thì đó là định dạng hiển thị; chỉ assert: **gõ** chuỗi có khoảng trắng thì bị chặn. Text lỗi: PRD không có ⇒ ⛔ không assert chuỗi (demo: *"Vui lòng nhập số điện thoại"* / *"Số điện thoại không hợp lệ (10 số, bắt đầu bằng 0)"*).
-`SC-USR-023` tách khỏi `SC-USR-022` (địa chỉ) vì 2 trường khởi tạo độc lập, fail độc lập; nhánh (B) HRIS không có SĐT ⇒ ô rỗng và **Lưu bị chặn** — người dùng buộc phải nhập SĐT trước khi lưu được địa chỉ.
+`SC-USR-023` tách khỏi `SC-USR-022` (địa chỉ) vì 2 trường khởi tạo độc lập, fail độc lập.
+🚫 **Nhánh (B) của `SC-USR-022` + `SC-USR-023` DESCOPED 2026-09-18 (QC GiangDC2 chốt):** khi tạo nhân viên trên HRIS, **SĐT và địa chỉ làm việc là trường bắt buộc** ⇒ **không tồn tại CBNV có HRIS trống 2 trường này**, không seed được data hợp lệ. 2 TC của nhánh này (`TC-USR-041` · `TC-USR-044`) đánh `DESCOPED`, giữ trong TC-MASTER để truy vết, ⛔ không chạy. Hệ quả rule vẫn được phủ: vế *"SĐT rỗng ⇒ Lưu bị chặn"* kiểm ở `SC-USR-015` (`TC-USR-017` — người dùng tự xoá trắng ô rồi bấm Lưu), nên **không mất coverage `BR15-02`**.
 
 ---
 

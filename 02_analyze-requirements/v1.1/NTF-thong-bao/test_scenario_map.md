@@ -16,7 +16,7 @@ counts:
   p2: 15
   p3: 6
 status: ANALYZED
-updated: 2026-09-15
+updated: 2026-09-16
 ---
 
 # Test Scenario Map — v1.1 · Module NTF (Delta)

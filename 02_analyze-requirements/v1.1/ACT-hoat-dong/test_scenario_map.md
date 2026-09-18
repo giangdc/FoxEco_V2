@@ -16,7 +16,7 @@ counts:
   p2: 11
   p3: 6
 status: ANALYZED
-updated: 2026-09-15
+updated: 2026-09-17
 ---
 
 # Test Scenario Map — v1.1 · Module ACT
@@ -115,7 +115,7 @@ updated: 2026-09-15
 ##### SC-ACT-013 — ★ leftover: từ `[GAP]` thành defect
 📍 `DOC-v1.1-01 §8.14.1 BR14-03 · trang 49` · `§4 SCOPES dòng Out of Scope · trang 9`
 
-> `BR14-03`: "Không có chấm sao 1–5, không điểm, không tier/xếp hạng, không chỉ số môi trường."
+> ↪ *Quote `BR14-03` — home ở `../GIFT-qua-cam-on/test_scenario_map.md` (không chép lại — tránh lặp home, health-check G-03 2026-09-17)*
 
 > §4 Out of Scope: "Đánh giá sao 1–5 và mọi hình thức xếp hạng/tier/điểm thưởng — thay bằng quà ảo"
 
@@ -131,10 +131,10 @@ updated: 2026-09-15
 | SC-ACT-003 | Cơ chế switch tab | ACT | v1.0 | P3 | → như trên |
 | SC-ACT-004 | Data tab đang-chạy | ACT | v1.0 | P2 | → như trên |
 | SC-ACT-006 | Completeness card đơn | ACT | v1.0 | P2 | → như trên |
-| SC-ACT-007 | Đơn "Đã huỷ" bị ẩn | ACT | v1.0 | P2 | → như trên — ⭐ dùng làm **đối chứng** cho `SC-ACT-015`. ⚠️ **2026-09-16:** PRD §8.12.3 cho mọi vai *"Xem lý do"* đơn CANCELLED ⇒ rule *"ẩn"* có thể hết hiệu lực — chờ `C-ACT-04` |
-| SC-ACT-009 | Card "Hết hạn" không thao tác được | ACT | v1.0 | P3 | → như trên — ⚠️ **2026-09-16:** PRD §8.12.3 + `NTF-09` nói *"xem lý do · đăng lại"* ⇒ card có thể phải mở được — chờ `C-ACT-03` / `C-ORD-17` |
+| SC-ACT-007 | Đơn "Đã huỷ" bị ẩn | ACT | v1.0 | P2 | → như trên — ⭐ dùng làm **đối chứng** cho `SC-ACT-015`. ✅ **Chốt 2026-09-17 (`C-ACT-04(b)` Resolved):** đơn **"Đã huỷ" vẫn ẨN khỏi cả 2 tab** — rule v1.0 **CÒN HIỆU LỰC**. PRD `§8.12.3` (*"Xem lý do"* cho đơn huỷ) là **PRD chưa cập nhật**, ⛔ không assert theo nó |
+| SC-ACT-009 | Card "Hết hạn" không thao tác được | ACT | v1.0 | P3 | → như trên — ✅ **Chốt 2026-09-17 (`C-ACT-03` + `C-ORD-17` Resolved):** card **"Hết hạn"** nằm tab "Đã hoàn thành", label **"Hết hạn"**; **KHÔNG có chức năng "gỡ"** (câu chữ dư trong PRD); **"đăng lại" = mở luồng đăng tin MỚI**, chọn lại từ đầu, ⛔ không nạp dữ liệu cũ. ⚠️ `C-ACT-03(c)` nói tin Hết hạn *không cho tương tác* — 2 câu trả lời BA còn vênh, TC này **chỉ đọc card, không tap** (xem `ACT/risk_assessment.md §C-ACT-03`) |
 | SC-ACT-010 | Tap card (≠ Hết hạn) | ACT | v1.0 | P2 | → như trên |
-| SC-ACT-011 | Đích tap card = "Theo dõi đơn" *(hết gap 2026-09-16)* | ACT | v1.0 | P3 | `C-ACT-01` Resolved qua demo + **BA xác nhận 2026-09-16**: tab Đang diễn ra → **"Theo dõi đơn"**; tab Đã hoàn thành, đơn **chưa tặng quà** (vai Sender) → màn **"Tặng quà"**. Các ô còn lại chờ `C-ACT-03` |
+| SC-ACT-011 | Đích tap card = "Theo dõi đơn" *(hết gap 2026-09-16)* | ACT | v1.0 | P3 | `C-ACT-01` Resolved qua demo + **BA xác nhận 2026-09-16**: tab Đang diễn ra → **"Theo dõi đơn"**; tab Đã hoàn thành, đơn **chưa tặng quà** (vai Sender) → màn **"Tặng quà"**. ✅ **Các ô còn lại chốt 2026-09-17 (`C-ACT-03` Resolved):** Hoàn thành **đã tặng quà** (Sender) · vai **Carrier/Receiver** tab Đã hoàn thành · đơn **RETURNED/EXPIRED** · đơn **INCIDENT/RESCHEDULED/RETURNING** — **tất cả → "Theo dõi đơn"** |
 
 > ℹ️ **8 SC CARRIED** — `SC-ACT-001` `005` `008` `012` `013` `014` KHÔNG ở bảng này vì đã MODIFIED (xem §NEW & MODIFIED ở trên).
 

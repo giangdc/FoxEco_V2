@@ -8,10 +8,10 @@ module: TS
 counts:
   cl: 3
   risk: 7
-  cl_open: 2
-  cl_resolved: 1
+  cl_open: 0
+  cl_resolved: 3
 status: ANALYZED
-updated: 2026-09-16
+updated: 2026-09-17
 ---
 
 # Risk Assessment — v1.1 · Module TS (DELTA)
@@ -37,10 +37,10 @@ updated: 2026-09-16
 
 | CL ID | Nội dung | Status | Mở | REQ/SC liên quan |
 |-------|----------|--------|-----|-------------------|
-| C-TS-02 | Nút "Báo cáo sự cố" hiện ở **trạng thái** nào; gửi form có **tự chuyển đơn sang INCIDENT** không | 🔴 **Open (mới 2026-09-16)** | 2026-09-16 | REQ-TS-006, SC-TS-015, SC-CNL-006, SC-CNL-015, SC-DLV-034 |
-| C-TS-03 | Trường prefill: chỉ mã đơn (`BR16-02`) hay 9 trường (`AC-31.1.01`); mã đơn chỉ đọc hay sửa được (`BR16-03`); Custom Tabs có làm được nút "Thử lại"/"Quay lại đơn hàng" | 🔴 **Open (mới 2026-09-16)** | 2026-09-16 | REQ-TS-006, SC-TS-008, SC-TS-012, SC-TS-014 |
+| C-TS-02 | Nút "Báo cáo sự cố" hiện ở **trạng thái** nào; gửi form có **tự chuyển đơn sang INCIDENT** không | ✅ **Resolved 2026-09-17 — xác nhận qua vibe-check demo** | 2026-09-16 | REQ-TS-006, SC-TS-015, SC-CNL-006, SC-CNL-015, SC-DLV-034 |
+| C-TS-03 | Trường prefill: chỉ mã đơn (`BR16-02`) hay 9 trường (`AC-31.1.01`); mã đơn chỉ đọc hay sửa được (`BR16-03`); Custom Tabs có làm được nút "Thử lại"/"Quay lại đơn hàng" | ✅ **Resolved 2026-09-17** — Dev xác nhận nút "Thử lại" do APP hiển thị, không phải WebView/Custom Tabs | 2026-09-17 | REQ-TS-006, SC-TS-008, SC-TS-012, SC-TS-014 |
 
-### C-TS-02 · Phạm vi hiển thị nút + hệ quả trạng thái *(OPEN — mới 2026-09-16)*
+### C-TS-02 · Phạm vi hiển thị nút + hệ quả trạng thái *(RESOLVED 2026-09-17)*
 
 📍 `DOC-v1.1-01 §6.2 AC-31.1.01 · trang 29` · `§8.12.2 dòng INCIDENT · trang 45` · `§8.12.3 · trang 46` · `§5.2 S-14 · trang 12` ⟷ BA trả lời `C-CNL-03` 2026-09-16
 
@@ -54,7 +54,9 @@ updated: 2026-09-16
 
 ↳ **Ghi chú:** (a) `AC-31.1.01` nói nút có ở màn theo dõi đơn **mọi trạng thái** (vai bất kỳ), nhưng `§8.12.3` chỉ liệt kê "Báo sự cố" ở **IN_TRANSIT** (3 vai) và **DELIVERED** (chỉ Sender) — còn POSTED/MATCHED/COMPLETED/đơn đã đóng thì sao? (b) Từ điển nói INCIDENT = *"có báo cáo sự cố sau IN_TRANSIT"* ⇒ gửi form là **tự động** chuyển INCIDENT; nhưng S-14 viết *"có thể"*, và BA vừa nói *"dev hỗ trợ tay, không có tool"* — form Google **không gọi được API** của app ⇒ gần như chắc chắn **không tự chuyển**. **Hỏi:** ai/cái gì đưa đơn **vào** INCIDENT? Nếu không ai ⇒ trạng thái INCIDENT **không bao giờ xuất hiện** trên app ⇒ `SC-CNL-015`/`SC-DLV-034` **out of scope**. (c) Loại yêu cầu "Lỗi ứng dụng"/"Góp ý" (không phải sự cố đơn) có làm đơn đổi trạng thái không?
 
-### C-TS-03 · Prefill form + khả thi kỹ thuật của WebView *(OPEN — mới 2026-09-16)*
+↳ **BA trả lời 2026-09-17:** (a) "vào demo coi xem đươc không" — **đã vibe-check demo (Playwright MCP) 2026-09-17**: nút "Báo cáo sự cố" **HIỆN Ở MỌI TRẠNG THÁI** đã thử (Chờ ghép, Đã ghép, Đang giao) và **MỌI VAI** (Người gửi, Người vận chuyển) — không giới hạn theo `§8.12.3` như PRD liệt kê ⇒ `AC-31.1.01` ("mọi trạng thái") là bản đúng, `§8.12.3` (chỉ liệt IN_TRANSIT/DELIVERED) là PRD thiếu, đề nghị BA cập nhật PRD. (b) "ver hiện tại không chuyển trạng thái gì" — khớp thao tác thật: gửi form "Báo cáo sự cố" xong, bấm "Quay lại đơn hàng" quay đúng về "Theo dõi đơn" và trạng thái đơn KHÔNG đổi (vẫn "Chờ ghép") ⇒ **INCIDENT không bao giờ tự xuất hiện qua app**, chỉ vào được qua xử lý tay của Dev (khớp `C-CNL-03`) ⇒ `SC-CNL-015`/`SC-DLV-034` xác nhận **out of scope test qua UI**. (c) "Khong" — loại "Lỗi ứng dụng"/"Góp ý" KHÔNG làm đơn đổi trạng thái. **CL-TS-02 ĐÓNG HẲN.**
+
+### C-TS-03 · Prefill form + khả thi kỹ thuật của WebView *(RESOLVED 2026-09-17 — Dev xác nhận nút "Thử lại" do APP hiển thị)*
 
 📍 `DOC-v1.1-01 §8.16.1 BR16-01 / BR16-02 / BR16-03 / BR16-04 · trang 50` · `§8.16.2 dòng "Mã đơn hàng" · trang 51` · `§6.2 AC-31.1.01 / AC-31.2.01 · trang 29-30`
 
@@ -69,6 +71,10 @@ updated: 2026-09-16
 > `BR16-01`: "Mở WebView toàn màn hình (SFSafariViewController trên iOS · Chrome Custom Tabs trên Android) có thanh URL chỉ đọc và nút đóng."
 
 ↳ **Ghi chú:** 3 mâu thuẫn trong cùng `FR16`: (a) **Số trường prefill**: `BR16-02` chỉ nói **mã đơn**, `AC-31.1.01` liệt kê **9 trường** — demo 2026-09-15 (`TS_02`) cho thấy bao nhiêu? (b) **Mã đơn**: `§8.16.2` *"Chỉ đọc · Không sửa"* ⟷ `BR16-03` *"trường prefill… người dùng vẫn sửa được"* — Google Form **không khoá được** câu trả lời ngắn đã prefill ⇒ `SC-TS-014` assert chiều nào? (c) `BR16-01` dùng **Custom Tabs / SFSafariViewController** (trình duyệt hệ thống) — app **không vẽ được** màn lỗi + nút "Thử lại" bên trong (`AC-31.2.01`), và nút **"Quay lại đơn hàng"** nằm trên trang xác nhận của Google Form thì **không điều khiển được app**. **Hỏi BA/Dev:** đang build bằng WebView nhúng hay Custom Tabs? Nút "Thử lại" và "Quay lại đơn hàng" do **app** hay **Google Form** hiển thị? ⛔ Chưa chốt thì `SC-TS-012`/`SC-TS-014` ghi nhận.
+
+↳ **BA trả lời 2026-09-17 + vibe-check demo (Playwright MCP):** (a) BA "mã đơn" — **xác nhận qua demo**: form chỉ prefill đúng 1 trường "Mã đơn hàng" (hiện `FE-2508-0472`, ghi chú "Tự động điền từ ứng dụng"); Loại yêu cầu/Mô tả chi tiết/SĐT đều TRỐNG, phải nhập tay ⇒ `BR16-02` (chỉ mã đơn) đúng, `AC-31.1.01` (9 trường) là PRD sai/thừa, đề nghị BA cập nhật PRD. (b) BA "chỉ đọc" — **xác nhận qua demo**: ô "Mã đơn hàng" hiển thị dạng nhãn tĩnh, không phải textbox, không sửa được ⇒ `§8.16.2` đúng, `BR16-03` ("người dùng vẫn sửa được") là PRD sai, đề nghị BA cập nhật PRD. (c) BA "nhưng link docs.google.com/forms/foxeco-ho-tro" — ảnh `TS_02` (2026-09-15) đã cho thấy khung nhúng có icon "✕" (đóng) + THANH ĐỊA CHỈ hiện rõ URL — đây là chrome đặc trưng của **Custom Tabs/SFSafariViewController** (WebView trần thường không tự vẽ thanh địa chỉ), nên nhiều khả năng ý định thiết kế là Custom Tabs; vẫn là mock tĩnh nên **chưa chắc chắn 100% công nghệ thật** — cần Dev xác nhận trực tiếp, ảnh hưởng khả năng vẽ nút "Thử lại" khi mất mạng. (d) BA "không rõ, dev xử lý sao cũng được, btn Quay lại đơn hàng thì thao tác thêm trên demo" — **đã thao tác demo**: sau khi Gửi, màn "Đã ghi nhận phản hồi" + nút "Quay lại đơn hàng" là do CHÍNH APP hiển thị (giao diện native cùng theme app, không phải trang xác nhận riêng của Google Form) và bấm vào quay thẳng về "Theo dõi đơn" — vậy nút này do APP điều khiển.
+
+↳ **Dev trả lời 2026-09-17 (vòng 3, duy nhất câu (c) còn treo):** "App hiển thị nhé" — Dev xác nhận nút "Thử lại" khi mất mạng do **CHÍNH APP** vẽ/điều khiển (không phải nội dung do WebView/Custom Tabs tự sinh). ⇒ `SC-TS-012` assert được: mất mạng khi đang mở "Báo cáo sự cố" → nút "Thử lại" do app hiển thị, tách biệt khỏi khung nhúng Google Form. Câu hỏi phụ "WebView trần hay Custom Tabs" giờ **không còn chặn viết TC** — Dev không cần xác nhận thêm công nghệ nhúng cụ thể vì hành vi observable (ai vẽ nút) đã có câu trả lời trực tiếp. **`C-TS-03` ĐÓNG HẲN 2026-09-17.**
 
 ## Vibe-check bổ sung 2026-09-15 — xác nhận luồng end-to-end trên demo
 

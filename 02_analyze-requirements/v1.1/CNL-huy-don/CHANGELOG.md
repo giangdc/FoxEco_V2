@@ -17,7 +17,7 @@ id_range:
   cl: "C-CNL-03 (NEW) + C-CNL-01, C-CNL-02 (giữ ID sprint 1 — cùng câu hỏi, trả lời lại bằng nguồn mạnh hơn) + C-CNL-03 → Resolved (2026-09-16)"
   risk: "RISK-CNL-07, RISK-CNL-08 (NEW) + RISK-CNL-01, RISK-CNL-02, RISK-CNL-03, RISK-CNL-06 (Severity/Why/Status cập nhật, giữ ID sprint 1)"
 status: ANALYZED
-updated: 2026-09-16
+updated: 2026-09-17
 ---
 
 # Changelog — Module CNL (`CNL`)
@@ -28,6 +28,7 @@ updated: 2026-09-16
 
 | Ngày | Loại | Thay đổi | Nguồn / Lý do | Ảnh hưởng |
 |---|---|---|---|---|
+| 2026-09-17 | UPDATE | **Xác nhận scope `CNL` = IN scope v1.1.** `RISK-CNL-06` Pending → **Resolved**. Câu hỏi con đã dời sang module khác (đơn vào `INCIDENT` bằng cách nào → `C-TS-02`; "chuyển admin" ở các mốc nhắc → `C-DLV-07`) xử lý tại module đó, không mở lại ở `CNL` | QC GiangDC2 xác nhận 2026-09-17 | Nợ #3 (§3) đóng lại; chạy đủ 17 SC không cần chờ xác nhận PM thêm |
 | 2026-09-16 | ĐÍNH CHÍNH | **Sửa WARNING health-check G-03:** thay 1 trích dẫn bị chép lặp sang file khác bằng dòng trỏ `↪` về đúng home (REQ → `requirement_traceability.md` · CL → `risk_assessment.md`) | `/health-check` 2026-09-16 · QC GiangDC2 yêu cầu sửa | Nội dung quote không mất — chỉ còn 1 home |
 | 2026-09-16 | ĐÍNH CHÍNH | **Sửa theo health-check VERSION v1.1 (G-06b CRITICAL):** các đoạn register sống còn kể lại kết luận cũ của CL vừa Resolved (`C-CNL-03`/`RISK-CNL-07` — heading CL, Khuyến nghị #3) — đổi mục Khuyến nghị / heading / data catalog sang kết luận hiện hành và thêm dòng *"⛔ Cập nhật 2026-09-16 — đoạn trên HẾT HIỆU LỰC"* sau các ghi chú gốc (giữ nguyên nội dung cũ làm hồ sơ, không xoá lặng lẽ) | `/health-check` 2026-09-16 · QC GiangDC2 yêu cầu sửa | Không đổi `counts`, không đổi Then SC — chỉ đồng bộ chữ với CL section |
 | 2026-09-16 | UPDATE | **Áp câu trả lời BA**: `C-CNL-03` → **Resolved** — không có màn/tool admin, dev hỗ trợ tay qua Google Form, trạng thái đích tuỳ dev, người dùng không thấy gì. `RISK-CNL-07` High → **Accepted** (rủi ro vận hành đã biết). Câu hỏi còn lại về cách đơn **vào** INCIDENT chuyển sang `C-TS-02` (home `TS`); "chuyển admin" ở các mốc nhắc chuyển sang `C-DLV-07` | BA trả lời 2026-09-16 | `counts` cl_open 1→0, cl_resolved 2→3; `SC-CNL-017` assert cứng thay vì GAP |
@@ -59,5 +60,5 @@ updated: 2026-09-16
 |---|---|---|---|
 | 1 | 🟡 **`RISK-CNL-07` Accepted** — đơn INCIDENT phụ thuộc dev xử lý tay | BA xác nhận 2026-09-16 không có tool/SLA | Ghi rõ trong test report như rủi ro vận hành được chấp nhận; báo PM nếu cần SLA |
 | 2 | 🟡 **`SC-CNL-015` có thể không seed được** | Cần đơn ở trạng thái `INCIDENT`; app STG có thể chưa build `FR16` | Verdict đúng khi đó là **BLOCKED**, ⛔ không PASS. Chạy sau khi `vibe-test` xác nhận `FR16` đã có trên STG |
-| 3 | 🟡 **Xác nhận scope `CNL` với PM** | `KP-03 §3.1` (2026-07) xếp out-of-scope Phase 1 ⟷ PRD v1.1 (09/2026) đặc tả đầy đủ + đặt vào business process chính | Mặc định lập kế hoạch là **IN scope** (nguồn mới hơn 2 tháng); vẫn xin xác nhận bằng văn bản (`RISK-CNL-06`) |
+| 3 | ✅ ~~Xác nhận scope `CNL` với PM~~ | **Đóng 2026-09-17** — QC GiangDC2 xác nhận IN scope (`RISK-CNL-06` Resolved) | Không còn treo — chạy đủ 17 SC |
 | 4 | 🟡 **`v1.0/DLV-giao-nhan/` còn trích `C-CNL-01` theo nghĩa cũ** | 2 chỗ: dòng CL ở `risk_assessment.md` và `REQ-DLV-015` ở `requirement_traceability.md`. Thuộc v1.0 ⇒ **không sửa** theo `Project_rule` | Người đọc lần ra bản hiện hành qua `v1.1/CNL-huy-don/risk_assessment.md` + mục 🔁 trên. Nếu sau này `DLV` chạy delta lượt 2 thì ghi 1 dòng trỏ về đây |

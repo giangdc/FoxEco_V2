@@ -8,10 +8,10 @@ module: ACT
 counts:
   cl: 5
   risk: 8
-  cl_open: 2
-  cl_resolved: 3
+  cl_open: 0
+  cl_resolved: 5
 status: ANALYZED
-updated: 2026-09-16
+updated: 2026-09-17
 ---
 
 > Tạo bởi: analyze-requirements (DELTA 2026-09-15) · layout **module-first v2**.
@@ -39,8 +39,8 @@ updated: 2026-09-16
 | C-ORD-06 | Text empty state của các màn khi không có data (**home canonical ở đây**) | ✅ **Resolved 2026-09-15 — bằng tài liệu đã phê duyệt, không phải lời chốt miệng** | mở lại 2026-07-29 (từng Resolved 2026-07-28 → REVERT) | REQ-ACT-008, REQ-GIFT-007, REQ-HOME-012, và các SC empty state của FEED/NTF |
 | C-ACT-02 | Nhãn 2 tab + tên màn: theo PRD hay theo app? | ✅ **Resolved 2026-09-16 — BA: theo app** (màn "Đơn của tôi", tab "Đang diễn ra"/"Đã hoàn thành", nav "Hoạt động"; PRD chưa cập nhật) | 2026-09-15 | REQ-ACT-001, SC-ACT-001 |
 | C-ACT-01 | Tap card ở màn Hoạt động mở "Chi tiết tin" hay "Theo dõi đơn"? | ✅ **Resolved 2026-09-16 — demo + BA xác nhận**: Đang diễn ra → "Theo dõi đơn"; Hoàn thành **chưa tặng quà** → màn "Tặng quà" | mở 2026-09-07 | REQ-ACT-006, SC-ACT-011 |
-| C-ACT-03 | Đích tap card cho các ô BA chưa nói: đã tặng quà · vai Carrier/Receiver ở tab Đã hoàn thành · RETURNED/EXPIRED · INCIDENT | 🔴 **Open (mới 2026-09-16)** | 2026-09-16 | REQ-ACT-006, SC-ACT-009, SC-ACT-010, SC-ACT-011 |
-| C-ACT-04 | 12 trạng thái chia vào 2 tab thế nào; đơn "Đã huỷ" ẩn (rule v1.0) hay hiện "Xem lý do" (PRD §8.12.3); tin OFFER hiển thị ở đâu | 🔴 **Open (mới 2026-09-16)** | 2026-09-16 | REQ-ACT-004, SC-ACT-004, SC-ACT-005, SC-ACT-007, SC-ACT-015 |
+| C-ACT-03 | Đích tap card cho các ô BA chưa nói: đã tặng quà · vai Carrier/Receiver ở tab Đã hoàn thành · RETURNED/EXPIRED · INCIDENT | ✅ **Resolved 2026-09-17 — BA** | 2026-09-16 | REQ-ACT-006, SC-ACT-009, SC-ACT-010, SC-ACT-011 |
+| C-ACT-04 | 12 trạng thái chia vào 2 tab thế nào; đơn "Đã huỷ" ẩn (rule v1.0) hay hiện "Xem lý do" (PRD §8.12.3); tin OFFER hiển thị ở đâu | ✅ **Resolved 2026-09-17** — (c) format card OFFER quan sát được qua demo (tab "Đang diễn ra") | 2026-09-17 | REQ-ACT-004, SC-ACT-004, SC-ACT-005, SC-ACT-007, SC-ACT-015 |
 
 ### C-ORD-06 · Text empty state *(RESOLVED 2026-09-15 — lần thứ hai, lần này có bằng chứng)*
 
@@ -101,7 +101,7 @@ updated: 2026-09-16
 
 ↳ **Ghi chú:** Khớp kết luận demo 2026-09-16 (**Đang diễn ra → "Theo dõi đơn"**) và bổ sung nhánh mới: **Đã hoàn thành + chưa tặng quà → màn "Tặng quà"**. ⚠️ BA bảo *"đọc lại ver cũ, không đổi"* — nhưng bản v1.0 `KP-01 §3 KB-ORD-07` dòng 5 ghi *"→ mở màn Chi tiết tin"*, **ngược** với câu trả lời này. Theo nguyên tắc *kết luận bị đảo không xoá lặng lẽ*: dòng đó của KP-01 **hết hiệu lực** (ghi ở `CHANGELOG §2`), không sửa file v1.0. Các ô BA chưa nói → mở `C-ACT-03`.
 
-### C-ACT-03 · Đích tap card cho các trường hợp còn lại *(OPEN — mới 2026-09-16)*
+### C-ACT-03 · Đích tap card cho các trường hợp còn lại *(RESOLVED 2026-09-17)*
 
 📍 BA trả lời `C-ACT-01` 2026-09-16 ⟷ `DOC-v1.1-01 §8.12.3 Hành động khả dụng theo trạng thái · trang 46` · `DOC-v1.0-06 KP-01 §3 KB-ORD-07` dòng 5–6
 
@@ -111,7 +111,9 @@ updated: 2026-09-16
 
 ↳ **Ghi chú:** BA mới trả lời 2 ô (Đang diễn ra · Hoàn thành *chưa tặng quà*). Ma trận thật là **trạng thái × vai × đã/chưa tặng quà**, còn thiếu: (a) Hoàn thành **đã tặng quà** (vai Sender) → "Theo dõi đơn" chỉ xem? (b) Vai **Carrier / Receiver** ở tab Đã hoàn thành (không bao giờ tặng quà) → màn nào? (c) Đơn **RETURNED** và **EXPIRED** — mở được để *"Xem lý do · đăng lại"* như PRD, hay **không cho tap** như rule v1.0 (`SC-ACT-009`)? (d) Đơn **INCIDENT / RESCHEDULED / RETURNING** mở "Theo dõi đơn" như đơn đang chạy? ⛔ Chưa chốt thì `SC-ACT-010/011` chỉ assert 2 ô BA đã trả lời.
 
-### C-ACT-04 · Phân bổ trạng thái vào 2 tab + đơn "Đã huỷ" + tin OFFER *(OPEN — mới 2026-09-16)*
+↳ **KẾT LUẬN (theo BA) 2026-09-17:** (a) Hoàn thành **đã tặng quà** (Sender) → "Theo dõi đơn". (b) vai **Carrier/Receiver** ở tab Đã hoàn thành → "Theo dõi đơn". (c) đơn **RETURNED/EXPIRED** → "Theo dõi đơn" (nhưng riêng tin **Hết hạn thì KHÔNG cho tương tác** — khác chút so với câu hỏi gốc, xem `C-ORD-17`: BA xác nhận card Hết hạn ở tab Đã hoàn thành có "Xem lý do/đăng lại" — cần đối chiếu lại 2 câu trả lời này với BA nếu TC phát sinh mâu thuẫn). (d) đơn **INCIDENT/RESCHEDULED/RETURNING** → "Theo dõi đơn". **Tóm gọn theo BA:** Hoàn thành + CHƯA tặng quà (Sender) → màn "Tặng quà"; **mọi trường hợp còn lại đều → "Theo dõi đơn"**, trừ tin đã Hết hạn không tương tác được.
+
+### C-ACT-04 · Phân bổ trạng thái vào 2 tab + đơn "Đã huỷ" + tin OFFER *(RESOLVED 2026-09-17 — vòng 3)*
 
 📍 `DOC-v1.1-01 §8.12.2 · trang 45` · `§8.12.3 · trang 46` · `§6.2 AC-19.1.01 / AC-20.1.01 · trang 23` ⟷ `DOC-v1.0-06 KP-01 §3 KB-ORD-07` dòng 7
 
@@ -123,9 +125,15 @@ updated: 2026-09-16
 
 ↳ **Ghi chú:** PRD v1.1 có **12 trạng thái** (v1.0 chỉ 5) nhưng **không nói trạng thái nào nằm tab nào**. (a) `RESCHEDULED` · `RETURNING` · `INCIDENT` → tab **Đang diễn ra**? `RETURNED` · `EXPIRED` → **Đã hoàn thành** (`SC-ACT-005` đang giả định vậy)? (b) Đơn **CANCELLED**: rule v1.0 (BA-chat 2026-07-27) là **ẩn khỏi cả 2 tab** (`SC-ACT-007`) — nhưng PRD cho mọi vai *"Xem lý do"* đơn đã huỷ ⇒ nếu ẩn thì xem lý do ở đâu? Rule v1.0 **còn hiệu lực** không? (c) Tin **OFFER** (tuyến đường) hiện ở tab nào, card trông ra sao, nhãn trạng thái gì, tap vào mở màn nào? `SC-ACT-015` (đối chứng CANCELLED ẩn ⟷ RETURNED hiện) phụ thuộc trực tiếp câu (b).
 
+↳ **BA trả lời 2026-09-17:** (a) Hẹn giao lại/Đang hoàn hàng/Có sự cố → tab **"Đang diễn ra"**. (b) đơn **"Đã huỷ" vẫn ẨN khỏi cả 2 tab** — rule v1.0 CÒN HIỆU LỰC, PRD §8.12.3 "Xem lý do" cho đơn huỷ chưa cập nhật theo rule này. (c) tin OFFER: tab **"Đang diễn ra"**; card trông ra sao/nhãn trạng thái gì — BA trả lời "vào link demo xem". Đã thử vibe-check demo 2026-09-17 (Playwright) đăng tin OFFER để soi card, nhưng gặp đúng giới hạn demo đã ghi ở `C-ORD-16` (vòng 2) / `C-ASN-03`: demo không tạo tin OFFER độc lập (ghi đè lên đơn NEED đang có, không sinh thêm card ở "Đơn của tôi") ⇒ **KHÔNG quan sát được** hình dạng card/nhãn cho tuyến OFFER qua demo. **Còn treo (c):** cần BA gửi ảnh chụp màn hình thật (STG/Figma) thay vì yêu cầu thao tác qua demo này — tab mở màn "Theo dõi đơn" (BA đã xác nhận, không treo).
+
+↳ **BA trả lời 2026-09-17 (vòng 3) + tái vibe-check demo (Playwright MCP, theo đúng chỉ dẫn BA "click vào Hoạt động sẽ xem được"):** lượt vibe-check trước chỉ kiểm màn "Theo dõi đơn" sau khi submit OFFER (đúng là bị ghi đè, không quan sát được) — lượt này **điều hướng đúng vào tab "Hoạt động" → "Đang diễn ra"** như BA chỉ, và **QUAN SÁT ĐƯỢC card tin OFFER**: Title **"Nhận giao hàng &lt;tên tuyến&gt;"** (khác hẳn format card NEED "Gửi: &lt;loại hàng&gt; | &lt;giá trị&gt;"), badge trạng thái **"Chờ ghép"** (dùng chung từ vựng trạng thái với đơn NEED), có 2 dòng **"Từ:"/"Đến:"** cùng layout card NEED, CTA gợi ý **"Chạm để xem tuyến đường của bạn"** (khác câu "Chạm để theo dõi đơn của bạn" của card NEED). Tap card mở màn "Theo dõi đơn" (khớp câu (b) BA đã chốt trước đó). ⚠️ Ghi chú: đây vẫn là quan sát qua demo (giới hạn 1-đơn-toàn-cục khiến nội dung chi tiết bên trong "Theo dõi đơn" khi tap vào có thể lệch dữ liệu thật) nhưng **định dạng card ở list "Đang diễn ra" đã quan sát được rõ ràng, không còn bị giới hạn demo che khuất như lượt trước**. **`C-ACT-04` ĐÓNG HẲN 2026-09-17** — `SC-ACT-004/005/015` viết được Then chính xác theo format card này.
+
+↳ **Nâng cấp bằng chứng 2026-09-17 (cùng ngày):** QC cung cấp thêm ảnh UI thật `00_input/v1.1/design/ORD_08_card toi nhan giao hang.png` — khớp 100% với quan sát demo ở trên (title "Nhận giao hàng Thuận đường", badge "Chờ ghép", "Từ:"/"Đến:", CTA "Chạm để xem tuyến đường của bạn"). Kết luận nay có 2 nguồn độc lập (demo + ảnh thật), không còn chỉ dựa 1 nguồn.
+
 ## Khuyến nghị tổng thể
 0. ✅ **`C-ACT-01` đã Resolved 2026-09-16** — đích tap card = "Theo dõi đơn" (role-aware), không phải "Chi tiết tin". `SC-ACT-011` hết GAP.
-1. ✅ **`C-ACT-02` Resolved 2026-09-16** — nhãn theo app ("Đơn của tôi" · "Đang diễn ra"/"Đã hoàn thành" · nav "Hoạt động"). Việc cần chốt **trước `generate-tc`** nay là **`C-ACT-03`** (đích tap card các ô còn thiếu) và **`C-ACT-04`** (12 trạng thái chia 2 tab, đơn Đã huỷ ẩn/hiện, tin OFFER).
+1. ✅ **`C-ACT-02` Resolved 2026-09-16** — nhãn theo app ("Đơn của tôi" · "Đang diễn ra"/"Đã hoàn thành" · nav "Hoạt động"). **`C-ACT-03` Resolved 2026-09-17** (đích tap card mọi ô còn lại → "Theo dõi đơn", trừ Hoàn thành-chưa-tặng → "Tặng quà"). Còn treo trước `generate-tc`: **`C-ACT-04` câu (c)** — hình dạng/nhãn card tin OFFER ở tab "Đang diễn ra", demo không hỗ trợ verify, cần BA gửi ảnh thật.
 2. **2 SC hết gap phải regenerate TC, không patch** (`SC-ACT-012`/`SC-ACT-014`) — Then đổi từ *ghi nhận text là gì* sang *assert verbatim + assert bất đối xứng CTA + assert ẩn khối lịch sử*.
 3. **`SC-ACT-015` phải giữ nguyên dạng đối chứng 2 đơn** — tách rời sẽ mất đúng cái nó sinh ra để bắt (`RISK-ACT-07`).
 4. **`SC-ACT-013` nay đủ căn cứ log bug** — phối hợp với `SC-GIFT-011` (cùng phán quyết `C-GIFT-01`), chạy cùng lô để log 1 bug 2 bề mặt.
