@@ -23,3 +23,12 @@ Thumbs.db
 
 # Test run local (lớn / có PII) — che qua archive-run-evidence trước khi track
 daily-runs/
+
+# Test account + credentials do QC cung cấp (chứa pass dùng chung) — giữ local
+00_input/v1.1/datatest
+
+# Playwright MCP session artifacts (console/page dumps) — ephemeral, không thuộc repo
+.playwright-mcp/
+
+# LibreOffice lock files khi mở .xlsx
+.~lock.*#
