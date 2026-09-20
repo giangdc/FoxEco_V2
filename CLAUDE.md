@@ -34,6 +34,23 @@
 - 🔑 **Số canonical không nằm ở file này.** REQ/SC/priority → frontmatter `counts:` của `<module>/test_scenario_map.md`;
   CL/RISK → `<module>/risk_assessment.md`. File này chỉ trỏ đường.
 
+## 🔑 Tài khoản test STG + OTP (đọc TRƯỚC khi chạy `vibe-test`)
+
+| Cần gì | Ở đâu |
+|---|---|
+| **Secret** — OTP dùng chung, (mật khẩu nếu có) | **`~/.foxeco-v2/credentials.env`** (`chmod 600`, **ngoài repo**, đã `.gitignore`) — biến `FOXECO_STG_OTP` · `FOXECO_STG_PASS` · `FOXECO_STG_USER_1..5` |
+| **Không secret** — email · MNV · vai · chiến lược luân phiên · dữ liệu đã tạo trên STG | **`04_test-data/valid/USR-accounts.md`** ⭐ |
+| Nguồn gốc QC cung cấp | `04_test-data/account.txt` — 🔒 **đã gitignore, ⛔ KHÔNG commit, ⛔ không in ra output** |
+
+🔑 **OTP staging CỐ ĐỊNH, dùng chung cho MỌI account, không đổi theo thời gian.**
+⇒ **AI TỰ ĐĂNG NHẬP ĐƯỢC**, ⛔ không cần người nhập tay — ✅ **đã kiểm chứng thật 2026-09-19** (tự logout → login `stag_taipm@` thành công).
+🔑 **Login chỉ cần EMAIL + OTP — ⛔ KHÔNG có trường mật khẩu.** Luồng 5 bước dùng lại được ở `USR-accounts.md §0b`.
+🔴 **Mọi ghi chép cũ nói *"OTP nhập tay, AI không lấy được"*** (VR-001 `§0` · VR-003 · VR-004 ledger · các dòng `NOT_RUN` viện lý do OTP) **ĐÃ LỖI THỜI** — viết khi chưa biết OTP là cố định. TC nào từng `NOT_RUN` **chỉ vì OTP** thì nay **chạy được**.
+
+**Đăng xuất / đổi tài khoản:** FoxPro → `Cá nhân` → cuộn cuối → **`Đăng xuất`**. ⛔ Không có trong FoxEco.
+**Vào lại FoxEco:** FoxPro → `Chức năng` → `scroll_to_element` tới icon **`FoxEco`**.
+**Luân phiên:** gom việc **theo TÀI KHOẢN**, không theo TC (mỗi lần đổi tốn ~8–10 MCP call) — bảng phân vai A/B/C/D ở `USR-accounts.md §2`.
+
 ## Quy trình làm việc (Workflow)
 > Thay `v[X]` bằng version đang làm (hiện hành: **v1.1** cho analyze/generate-tc, **v1.0** cho execute).
 ```

@@ -8,6 +8,10 @@
 *credentials*.env
 *.env
 .env
+# Tài khoản test STG (email + OTP dùng chung) — nguồn QC cung cấp, KHÔNG commit.
+# Bản không-secret (email/MNV/vai, KHÔNG có OTP) ở 04_test-data/valid/USR-accounts.md
+04_test-data/account.txt
+04_test-data/**/account*.txt
 
 # Node / build
 node_modules/

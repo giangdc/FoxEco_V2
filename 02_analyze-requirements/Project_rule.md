@@ -246,9 +246,16 @@ test data đúng giá trị TC · theo convention `10_source-code/MEMORY.md`) v�
 - **HTTP Status Contract:** chưa có đặc tả API ⇒ TBD (tài liệu v1.0 chỉ mô tả UI/nghiệp vụ).
 - **Bộ `error.code`:** chưa có ⇒ TBD.
 - **Response envelope:** chưa có ⇒ TBD.
-- **Tài khoản test theo role:** cần **3 vai** SENDER · CARRIER · RECEIVER. Tài khoản STG dùng ở
-  2 phiên vibe-test v1.0: pre-logged-in tên hiển thị "Chung Hoàng Liêm"; email nội bộ dùng để test
-  auto-fill người nhận: `stag_anhdc4@fpt.com`. Giá trị đăng nhập thật để ở credentials.env.
+- **Tài khoản test theo role:** 🔑 **QC cấp 5 tài khoản STG 2026-09-19.**
+  ⭐ **Registry canonical (email · MNV · vai · chiến lược luân phiên · dữ liệu đã tạo): `04_test-data/valid/USR-accounts.md`**
+  — ⛔ đừng nhân bản danh sách ra chỗ khác, mọi skill đọc ở đó.
+  Secret (OTP dùng chung, mật khẩu) ở `~/.foxeco-v2/credentials.env` (`chmod 600`, ngoài repo).
+  🔑 **OTP staging CỐ ĐỊNH, dùng chung mọi account, không đổi theo thời gian ⇒ AI TỰ ĐĂNG NHẬP ĐƯỢC.**
+  🔴 Ghi chép cũ *"OTP nhập tay, AI không lấy được"* (VR-001 `§0` · VR-003 · VR-004) **ĐÃ LỖI THỜI**;
+  TC từng `NOT_RUN` **chỉ vì OTP** nay chạy được.
+  Đăng xuất: **FoxPro → `Cá nhân` → cuộn cuối → `Đăng xuất`** (⛔ không có trong FoxEco).
+  Email nội bộ test auto-fill người nhận: `stag_anhdc4@fpt.com` (= *Đặng Châu Anh*, MNV `00286248`).
+  *(⛔ Câu cũ "pre-logged-in tên hiển thị Chung Hoàng Liêm" là của 2 phiên vibe-test **đợt v1.0 CŨ** — không còn dùng.)*
 - **Định dạng dữ liệu đặc thù:**
   - **Khung giờ mong muốn phải TƯƠNG ĐỐI so với "now"**, ⛔ KHÔNG hardcode giờ — app validate theo
     đồng hồ thật, giá trị mặc định hết hạn nếu form mở lâu (`DOC-v1.0-06 KP-01 §10.11`).
