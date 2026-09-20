@@ -142,3 +142,34 @@ updated: 2026-09-17
 | #4 `SC-ORD-041` vế "mở link trực tiếp" | ⏳ chưa tới (thuộc 46 TC còn nợ) |
 | #5 `SC-ORD-044` vế "request sửa bị từ chối" | ⏳ chưa tới |
 | **MỚI** | 🐞 trần ảnh 4/5 (`SC-ORD-056` không kiểm được hết) · 🔴 `KB-VIBE-01` lỗi thời · 🔴 4 TC CARRIED hết hiệu lực (`006`/`007`/`008`/`014`) chờ QC chốt `DESCOPED` |
+
+---
+
+**VR-004 · 2026-09-18 · mobile (Appium MCP, emulator-5554) · tài khoản A (MNV `00131946`) · mode `--all`**
+`08_test-runs/vibe/VR-004-ORD-2026-09-18/` — chạy **46 TC / 5 lô** ⇒ module ORD từ **42/88 → 69/88 có verdict cuối, CÒN NỢ 19**. Evidence **46/46**. Gate: **0 vi phạm fabrication**.
+
+| SC / vùng | Kết quả đo trên app (VR-004) |
+|---|---|
+| `SC-ORD-004` **happy path đăng tin NEED** | 🔴🔴 **VỠ — không đăng được tin.** Điền hợp lệ đủ 3 bước + tick điều khoản ⇒ bấm `Đăng tin ngay` **không có gì xảy ra**. logcat: `FoxEcoApiError code REQ_400 "Dữ liệu đầu vào không hợp lệ", retryable:false, details:undefined`. 3 lần bấm / 3 lần lỗi; đã loại trừ giả thuyết ghi chú 300 ký tự; **không đơn nào được tạo**. ⛔ **Chặn 17 TC khác** ⇒ module không đóng được |
+| `SC-ORD-025/026` **địa chỉ** — 🔴 **ĐÍNH CHÍNH VR-002** | VR-002 ghi *"ô văn bản tự do, ⛔ không preset/gợi ý"* — **SAI một nửa**. Thực tế **CẢ HAI ô** (`Địa chỉ lấy hàng` + `Địa chỉ giao hàng`) là **autocomplete có dropdown `address-suggestion-N`**, và **BẮT BUỘC chạm gợi ý**; gõ tay ⇒ `Tiếp theo` khoá **vĩnh viễn, không báo gì**. Dropdown chỉ hiện **khi đang gõ** nên VR-002 không thấy. ✅ Vế *"không có chip preset văn phòng"* thì **vẫn đúng** (`TC-ORD-029` PASS) |
+| `SC-ORD-016` **prefill địa chỉ lấy hàng** | ❌ **HỒI QUY so với VR-002** — ô nay **RỖNG** (chỉ còn placeholder). Gốc: hồ sơ A mất "Địa chỉ mặc định" (`TC-USR-040`, VR-003). ⇒ `TC-ORD-017` **đổi verdict ✅ → ❌**; cùng bug với `TC-ORD-043` (điểm xuất phát OFFER cũng không prefill) |
+| `SC-ORD-063` **địa chỉ giao trùng địa chỉ lấy** — 🔴 **ĐÍNH CHÍNH VR-002** | Luật này **CÓ thông báo lỗi đầy đủ**: `Địa chỉ giao phải khác địa chỉ lấy hàng` (`TC-ORD-026` **PASS**, 2 địa chỉ chọn từ gợi ý). VR-002 kết luận *"chặn im lặng"* vì Steps của `083` bảo **gõ tay** ⇒ validate **chưa chạy tới** luật trùng. ⇒ **gỡ `083`/`084` khỏi 5 nhánh dẫn chứng của bug chặn-im-lặng**; ghi chú *"so sánh CÓ trim"* của VR-002 là **suy diễn không căn cứ** |
+| `SC-ORD-031` **tóm tắt bước 3** *(lần đầu tới được màn này)* | ✅ 6/6 mục Expected khớp (loại hàng · khung giờ · ghi chú · người gửi · người nhận). 🔴 **NHƯNG thiếu `TRỌNG LƯỢNG` + `KÍCH THƯỚC` + ảnh** — 3 trường v1.1 mới thêm và **đều bắt buộc** — mà **không TC nào của v1.1 assert** chúng xuất hiện ở bước 3 ⇒ **spec gap, cần `--update`** |
+| `SC-ORD-032/033/034` **banner cấm + consent** | ✅ Banner hàng cấm **có**, nêu đủ 4 nhóm, hiện với **mọi** loại hàng ⇒ đúng `C-ORD-04` (thông tin tĩnh, không phải cơ chế chặn). ✅ Checkbox **mặc định chưa tick** (đúng `C-ORD-12`) · ✅ `TC-ORD-037` (**P1**) PASS đủ 3 expected |
+| `SC-ORD-018/019/020` **email người nhận** | ✅ email tra được → thông báo đúng · ✅ email không có trên HRIS → *"Không tìm thấy email này…"* + 3 ô để trống. ❌ **email sai định dạng (thiếu `@`) KHÔNG báo gì** (`021`) · ❌ autofill chỉ **2/3 ô** (thiếu địa chỉ giao — `019` **P1**, trùng `074`). 🚩 email **ngoài tên miền** nhận thông báo *"không tìm thấy… nhập tay"* thay vì báo sai tên miền |
+| `SC-ORD-023` **biên tên/SĐT người nhận** | ✅ SĐT: **5/5 nhánh** báo lỗi đúng (`Số điện thoại không hợp lệ`) · ✅ tên: biên 2/60/61 đúng. ❌ tên **1 ký tự không báo lỗi** — trong khi ô tên **uỷ quyền** cùng màn **CÓ** lỗi `Tên phải từ 2–60 ký tự` ⇒ **bằng chứng mạnh nhất** rằng app có framework lỗi, chỉ **thiếu theo từng nhánh** |
+| `SC-ORD-061` **người nhận uỷ quyền** *(lần đầu chạy)* | ✅ `TC-ORD-079` + `081` **PASS**: SĐT sai định dạng → chặn + lỗi đúng ô; tên 1 ký tự → lỗi `Tên phải từ 2–60 ký tự`, 2/60 đi tiếp được, 61 không nhập được. 5 locator mới `alt-receiver-*` |
+| `SC-ORD-039/040` **form OFFER** *(lần đầu chạy)* | ✅ 7/7 nhóm trường, không step indicator. ❌ điểm xuất phát **không prefill**; ❌ điểm đến trùng điểm xuất phát bị chặn **im lặng**. 💡 **Nhưng OFFER dùng cơ chế tốt hơn NEED**: nút luôn bật + **lỗi đỏ inline** khi submit (`Chọn ít nhất 1 buổi`) ⇒ **đề nghị port cơ chế này sang NEED** thay vì fix OFFER |
+| `SC-ORD-044` **tin đã ghép** | ✅ `TC-ORD-047` PASS — đơn `Đã ghép` **không còn** nút `Chỉnh sửa` (chỉ `Báo cáo sự cố` · `Huỷ đơn` · `Bản đồ`) |
+| `SC-ORD-064` **icon copy** | ✅ copy **đúng nguyên văn** địa chỉ giao (đo bằng **sentinel clipboard**) · ❌ **không có phản hồi thị giác** (đo bằng **lấy mẫu pixel**, 2 ảnh liên tiếp trong 2s đều xám). 🚫 `TC-ORD-086` BLOCKED — màn chi tiết **không hiển thị SĐT nào**, 🚩 **trái banner cam kết** *"sau khi ghép SĐT hai bên sẽ được lộ"* |
+| **Bề mặt chưa có trong scenario_map** | (1) **2 ô địa chỉ bắt buộc chọn từ dropdown gợi ý** · (2) tóm tắt bước 3 thiếu 3 trường bắt buộc mới · (3) thông báo lỗi validate **không tự xoá khi đã sửa input** |
+
+### Nợ đã gỡ / phát sinh từ VR-004
+
+| Nợ | Trạng thái sau VR-004 |
+|---|---|
+| #3 *"nút Tiếp theo hiện cam dù chưa chọn gì"* | ✅ **Khẳng định lại lần 2, lần này có SỐ ĐO**: nền nút disable `(253,175,62)` cam nhạt vs enable `(255,160,0)` cam bão hoà ⇒ **CÓ làm mờ**, không phải defect. ♻️ VR-004 có lúc kết luận ngược (nhìn bằng mắt) và **đã tự rút** |
+| #4 `SC-ORD-041` vế "mở link trực tiếp" | ⏳ vẫn chưa tới — nay **chặn bởi bug đăng tin** |
+| #5 `SC-ORD-044` vế "request sửa bị từ chối" | ⏳ vẫn chưa tới |
+| ~~trần ảnh 4/5~~ | ✅ đã bác bỏ từ recheck VR-002 (2026-09-18 chiều) |
+| **MỚI** | 🔴 **bug đăng tin API 400** (chặn 17 TC) · 🔴 **2 đính chính map/kết luận VR-002** (dropdown địa chỉ · lỗi trùng địa chỉ) · 🔴 **`TC-ORD-017` đổi verdict** ⇒ 3 TC / 2 module gộp 1 bug prefill · 🔴 **5 TC hết hiệu lực** chờ `DESCOPED` (`006`/`007`/`008`/`014`/`033`) · 🟡 `TC-ORD-011` chỉ cần **bỏ step 4-5** · 🟡 `TC-ORD-084` **không thực thi được đúng ý đồ** trên v1.1 ⇒ QC xem lại thiết kế · 🟡 **lỗi validate dính, không tự xoá** |

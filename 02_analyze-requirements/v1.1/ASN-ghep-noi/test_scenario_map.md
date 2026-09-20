@@ -107,6 +107,25 @@ updated: 2026-09-17
 
 ---
 
+🔴🔴 **QUAN SÁT vibe-test VR-010 (2026-09-19) — APP MÂU THUẪN với vế (e) của `C-ASN-04`.**
+BA chốt *"mỗi tuyến có trần **ĐỘC LẬP** 5 (đăng 2 tuyến ⇒ tối đa 10, ⛔ không cộng dồn chung)"*.
+Đo thật trên STG: trần 5 được áp cho **TOÀN TÀI KHOẢN**. Chuỗi số đo (tài khoản `stag_giangdc2@`):
+baseline **1** → `OFFER-R1` + **5** tin NEED khớp ⇒ tổng **5** (chỉ +4) → thêm tin NEED thứ 6 ⇒ **5** →
+thêm **`OFFER-R2` tuyến hoàn toàn khác (0/5 slot) + 1 tin NEED trùng khít** ⇒ **vẫn 5, +0**.
+Đo 2 lần cách nhau 5 phút, tin đã 2–13 phút tuổi ≫ `NFR-04` (≤60s) ⇒ loại trừ "thông báo đến chậm".
+⇒ `TC-ASN-016` ❌ FAIL · `TC-ASN-025` ❌ FAIL. Bằng chứng: `08_test-runs/vibe/VR-010-ASN-2026-09-19/vibe-log.md`.
+⛔ **Đây là quan sát vibe-test, KHÔNG phải thay đổi requirement** — `Then` ở bảng SC giữ nguyên theo `C-ASN-04`;
+việc app sai hay tài liệu sai do BA/DEV chốt. Hành động tiếp theo: **`/log-bug`**.
+
+🆕 **2 bề mặt CHƯA CÓ trong scenario_map, phát hiện ở VR-010** ⇒ cần `/analyze-requirements --update`:
+1. **Thông báo khớp tuyến bắn HỒI TỐ**: đăng 1 tin OFFER mới ⇒ hệ thống gửi thông báo cho các tin NEED **đã tồn tại từ trước** khớp tuyến (đo được: chuông từ 0 → 2 trong ~2 phút). Mọi SC hiện có đều chỉ mô tả chiều **NEED đăng sau OFFER**.
+2. **Thông báo biến mất khỏi danh sách sau khi MỞ** — quan sát trên `stag_taipm@` (2 → 1 → 0), nhưng **không** xảy ra trên `stag_giangdc2@` (mục đã đọc vẫn nằm lại). Hành vi không nhất quán, chưa có SC nào mô tả vòng đời hiển thị của thông báo.
+
+✅ **`SC-ASN-016` (tin quá hạn bị loại khỏi luồng khớp) — ĐÃ KIỂM CHỨNG THẬT** ở VR-010 (`TC-ASN-019` PASS):
+tin NEED `Hết hạn` đề **ngày hôm nay**, cùng tuyến với tin OFFER, sinh **0** thông báo và **vắng mặt** khỏi Bảng tin;
+đối chứng dương: cùng lúc đó 2 tin **còn sống** cùng tuyến **có** sinh thông báo.
+📌 Ghi chú test data: tiền đề *"cần dev/QA seed tin hết hạn"* **không còn đúng** — STG tự sinh, xem ở `Đơn của tôi → Đã hoàn thành`.
+
 ##### SC-ASN-015 — Thứ tự ưu tiên gợi ý — 2 tầng
 
 **Source Quote (cũ):**

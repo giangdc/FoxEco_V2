@@ -119,3 +119,54 @@ updated: 2026-09-17
 | Scenario ID | Tên ngắn | Module | Deprecated ở | Lý do |
 |-------------|----------|--------|-------------|-------|
 | — | *(không có)* | — | — | — |
+
+---
+
+## 🧪 Kết quả vibe-test VR-011 (2026-09-19) — module GIFT chạy thật lần đầu trên STG
+
+> Nguồn đầy đủ: `08_test-runs/vibe/VR-011-GIFT-2026-09-19/vibe-log.md` · sổ cái: `08_test-runs/vibe/coverage/coverage-GIFT.md`
+> **11/14 TC có verdict cuối** — 7 PASS · 2 FAIL · 2 BLOCKED (+1 NOT_EVIDENCED · 2 NOT_RUN).
+
+### ✅ 3 điểm ĐÓNG ĐƯỢC bằng quan sát app thật
+
+| # | Nội dung | Ảnh hưởng |
+|---|---|---|
+| 1 | **`C-GIFT-03` vế (b) — CÓ danh sách lịch sử nhận quà.** Màn "Quà đã nhận" gồm **2 khối**: card đếm theo loại **và** khối `LỊCH SỬ NHẬN QUÀ` (loại quà · người gửi · ngày giờ); số dòng khớp số quà đã nhận | `SC-GIFT-007` hết `[GAP]`; `AC-26.1.01` (*"kèm lịch sử nhận quà"*) được app đáp ứng. `RISK-GIFT-03` (Open — *"chỉ có 1 nguồn văn bản `US-D20`, không có ảnh Figma/app"*) ⇒ **đề nghị ĐÓNG** |
+| 2 | **`KB-GIFT-03` (loại quà count = 0 thì KHÔNG hiện ô) — có bằng chứng 3 tài khoản, cả 2 chiều.** Ẩn khi = 0: `stag_taipm@` 1/4 ô · `stag_anhptm17@` 2/4 ô. Hiện đủ khi > 0: `stag_giangdc2@` 4/4 ô, tổng khớp `3+3+4+3=13` | Quy tắc này trước nay **không có nguồn PRD** (chỉ là suy diễn) ⇒ **đề nghị BA đưa vào tài liệu chính thức** |
+| 3 | **`KB-GIFT-04` KHÔNG tái hiện.** Back ở màn "Tặng quà" **không** nhảy sang màn "Xác nhận đã nhận hàng" của đơn khác; app về **đúng màn đã mở "Tặng quà"** (danh sách `Đơn của tôi → Đã hoàn thành`) — thử **2 lượt trên đơn thật** | Khớp `C-GIFT-02` **Resolved** (*rule = back về màn hình trước đó*) và nằm trong Then của `SC-GIFT-010` (*"Theo dõi đơn **/ Đơn của tôi**"*) ⇒ **đề nghị hạ `RISK-GIFT-05` Medium → Low hoặc đóng** |
+
+### 🔴 1 SPEC-GAP phải sửa — `/analyze-requirements --update`
+
+**Nút `"✓ Cảm ơn người vận chuyển"` KHÔNG tồn tại trên app.** `textContains("Cảm ơn người vận chuyển")` **chỉ** khớp TextView **phụ đề** của màn "Tặng quà" (`get_text` xác nhận nguyên văn: *"Hành trình hoàn thành!\nGửi một món quà cảm ơn người vận chuyển"*).
+Thực tế app **route theo trạng thái tặng quà của đơn** — **đúng như `C-GIFT-04` (Resolved 2026-09-17)** đã chốt:
+
+| Trạng thái đơn `Hoàn thành` | Card hiển thị | Tap card mở |
+|---|---|---|
+| **Chưa tặng quà** | hint `Chạm để tặng quà` | màn **"Tặng quà"** |
+| **Đã tặng quà** | hint `🏅 Đã tặng quà` | màn **"Theo dõi đơn"** (nút cuối màn = `Bạn đã đánh giá`, **disable**) |
+| Đơn đóng, không qua luồng quà | *(không hint)* | màn **"Theo dõi đơn"** (nút cuối màn = `Đơn đã hoàn thành ✓`) |
+
+⇒ **Phải sửa 2 chỗ cho khớp `C-GIFT-04`:** (a) **When của `SC-GIFT-001`** (đang ghi *"Bấm nút '✓ Cảm ơn người vận chuyển'"*) · (b) **ma trận nhãn nút `KB-GIFT-01`** (`KP-01 §5.1`, ô 5·Sender).
+⚠️ Then của `SC-GIFT-001` (*"Mở màn 'Tặng quà' với 4 lựa chọn quà"*) **đúng, giữ nguyên** — app đạt.
+
+### 🆕 4 bề mặt CHƯA CÓ trong scenario_map ⇒ cần bổ sung SC
+
+| # | Bề mặt / hành vi |
+|---|---|
+| 1 | Nút cuối màn "Theo dõi đơn" có **3 biến thể nhãn** (bảng trên) — hiện chỉ `SC-GIFT-005` phủ biến thể `Bạn đã đánh giá` |
+| 2 | **Popup cảm ơn không đóng được bằng nút back hệ thống** — mỗi `back` chỉ pop **màn nền** (Tặng quà → danh sách → Trang chủ), popup vẫn nổi; chỉ nút `Về trang chủ` đóng được |
+| 3 | Thông báo `NTF-07` **deep-link vào màn "Quà đã nhận"**, ⛔ không phải "Trang cá nhân" như chính câu chữ thông báo nói |
+| 4 | Màn "Quà đã nhận" có **khối `LỊCH SỬ NHẬN QUÀ`** kèm **người gửi + ngày giờ** *(chi tiết field chưa được mô tả ở SC nào)* |
+
+### 🐞 2 lệch nội dung — CHỜ BA CHỐT trước khi `/log-bug`
+
+| # | Lệch | Hỏi BA |
+|---|---|---|
+| 1 | Popup sau khi gửi quà hiện tiêu đề **`"Đã gửi lời cảm ơn!"`** (chuỗi **v1.0** mà v1.1 đã chủ ý thay) + thân *"Món quà và lời cảm ơn của bạn đã được gửi đến người vận chuyển."*, thay vì chuỗi `BR14-02`. ⚠ Chuỗi *"cảm ơn của bạn đã được gửi"* **có** xuất hiện, nhúng trong câu thân | Đọc **chặt** (app sai copy ⇒ fix app) hay **lỏng** (chấp nhận dạng nhúng ⇒ sửa Expected `TC-GIFT-003`)? |
+| 2 | Thông báo `NTF-07` hiển thị **đúng verbatim phần chữ** nhưng **thiếu emoji 🎁**; đồng thời deep-link mở sai màn (mục 3 bảng trên) | Bổ sung emoji vào app hay bỏ khỏi `NTF-07`? Sửa đích deep-link hay sửa câu chữ? |
+
+### 🔒 2 TC BLOCKED + nợ seed
+
+- `SC-GIFT-013` / `SC-GIFT-014` (`TC-GIFT-013/014`): **STG chưa build `FR09`** — thanh trạng thái đơn chỉ **5 bước** (`Chờ ghép → Lấy hàng → Đang giao → Đã giao → Hoàn thành`), ⛔ không có nhánh `RETURNING`/`RESCHEDULED`/`RETURNED`; hành động duy nhất của Người gửi ở đơn `Đã ghép` là `Huỷ đơn`. Chạy lại **cùng lô** `SC-DLV-053..056`.
+- `SC-GIFT-008` (`TC-GIFT-008`): 🔴 **STG KHÔNG CÒN tài khoản CBNV "trắng"** — `stag_anhptm17@` (vốn được giữ làm account sạch) thực tế **5 đơn / 5 quà**. Cần dev/QA cấp account mới, **dùng chung** với `SEED-ACT-02` + `SEED-HOME-01`.
+- `SEED-GIFT-05`: đề nghị **bỏ ràng buộc tên loại quà** (mệnh đề cần kiểm chỉ là *5 quà / 2 loại / 3+2*) ⇒ `TC-GIFT-006` chạy lại được ngay bằng `stag_anhptm17@`, ⛔ không cần dev seed.

@@ -61,3 +61,61 @@ updated: 2026-09-17
 |---|---|---|---|
 | 1 | 🔴 `C-ASN-04` + `C-ASN-05` (mới 2026-09-16) — rule 5 thông báo chưa đủ định nghĩa; phép so "trùng điểm" với địa chỉ tự do chưa định nghĩa | Open — `C-ASN-05` chặn dựng data cho `SC-ASN-011` (4 nhánh) | Hỏi BA (sheet `ASN`) **trước `generate-tc`**; hỏi chung quy tắc so sánh địa chỉ với `RISK-ORD-12` |
 | 2 | 🟡 `SC-ASN-019` cần công cụ gọi API trực tiếp (Postman/tương đương) | Chưa có kế hoạch môi trường | Lên kế hoạch trước khi `vibe-test`/`execute-maintain` chạy nhánh security |
+
+## 4. Vibe Status — kết quả thực thi trên STG
+
+> ⚠️ **Vì sao ghi ở đây, không ở `v1.1/MEMORY.md §4`:** router v1.1 theo layout `module-first v2` **chỉ có**
+> §1 Function Register + §2 Module Summary (`CLAUDE.md §MEMORY Files`) — không có §4 Vibe Status.
+> Sổ cái verdict per-TC canonical là **`08_test-runs/vibe/coverage/coverage-ASN.md`**; mục này là bản trỏ đường.
+
+**Trạng thái module sau VR-009 (2026-09-19):**
+
+| Chỉ số | Giá trị |
+|---|---|
+| SCOPE_TOTAL | **26 TC** = 13 (v1.1) + 21 (CARRIED v1.0) − 8 ID trùng *(lấy bản v1.1)* |
+| ✅ PASS | **15** |
+| ⛔ N-A | **2** (`TC-ASN-024` concurrency API · `TC-ASN-026` API + audit log) |
+| ⏳ NOT_RUN | **9** |
+| ❌ FAIL / 🚫 BLOCKED / ⚠️ NOT_EVIDENCED | **0 / 0 / 0** |
+| **Có verdict cuối** | **17/26** ⇒ §8 = **PARTIAL** |
+
+| Phiên | Ngày | TC thu verdict |
+|---|---|---|
+| `VR-007` | 2026-09-19 | 3 — `013` · `021` · `023` |
+| `VR-008` | 2026-09-19 | 5 — `001` · `002` · `003` · `004` · `009` |
+| **`VR-009`** | 2026-09-19 | **7** — `005` · `007` · `010` · `011` · `012` · `020` · `022` |
+
+**9 TC còn nợ + lý do:**
+
+| TC | Lý do |
+|---|---|
+| `014` `015` `016` `017` `018` `025` | Hết sức phiên — nhóm trần/thứ tự gợi ý cần **tuyến OFFER mới sạch + 3–6 tin NEED + 3 lượt đổi tài khoản**; ⛔ không bị chặn kỹ thuật |
+| `006` · `008` | Cần **2–3 thiết bị** (bấm cách <2s / đo ≤5s) — máy chỉ có 1 AVD. **QC chốt 2026-09-19: giữ `NOT_RUN`** |
+| `019` | Cần dev/QA lùi `Đến ngày` để có tin **Hết hạn** — ⛔ không tạo được qua UI |
+
+### 🔴 Spec-gap phát hiện khi vibe-test — cần route `/analyze-requirements --update`
+
+> **Vòng đời / hết hiệu lực của THÔNG BÁO GỢI Ý khớp tuyến hiện KHÔNG có scenario nào mô tả.**
+> Quan sát VR-009 (2026-09-19, ⚠️ **giả thuyết chưa chốt**): lúc **14:49** chuông của tài khoản B có **3** thông báo
+> `Tìm thấy đơn hàng phù hợp tuyến của bạn` — tất cả thuộc các tin buổi **`Sáng (8–12h)`**; sau đó nhóm `HÔM NAY`
+> **rỗng**, và **`force-stop` + relaunch app vẫn rỗng** ⇒ ⛔ không phải lỗi refresh phía client.
+>
+> Đối chứng ngược cùng phiên (15:46): thông báo của tin **đã được ghép** thì **VẪN CÒN** trong danh sách
+> (chỉ chuyển sang trạng thái *đã đọc*) ⇒ **việc bị ghép KHÔNG phải nguyên nhân biến mất**.
+>
+> ⇒ Nghi vấn: **thông báo gợi ý hết hiệu lực khi khung giờ khớp trôi qua.**
+> `test_scenario_map.md` hiện chỉ mô tả **điều kiện SINH** thông báo (`SC-ASN-011`, `SC-ASN-014` trần 5) và
+> **thứ tự** (`SC-ASN-015`), ⛔ **không có SC nào** cho *thời điểm thông báo mất hiệu lực / bị gỡ*.
+> Đây đúng loại spec-gap mà `SKILL.md §Phản hồi ngược` yêu cầu đưa về `analyze-requirements`, ⛔ không chỉ ghi vào MEMORY.
+>
+> 📌 Lệnh đề xuất:
+> `/analyze-requirements --update "Vòng đời thông báo gợi ý khớp tuyến: thông báo có tự hết hiệu lực/bị gỡ khi khung giờ (buổi) của tin trôi qua không? Quan sát VR-009 2026-09-19: 3 thông báo của các tin buổi Sáng biến mất sau 12h, force-stop+relaunch vẫn mất; trong khi thông báo của tin ĐÃ GHÉP thì vẫn còn (chỉ đổi sang đã đọc)."`
+
+### 📨 Sai lệch tài liệu ↔ app (đề nghị QC/BA sửa TC, ⛔ không phải bug app)
+
+| TC | Tài liệu ghi | App thật | Bằng chứng |
+|---|---|---|---|
+| `TC-ASN-010` | nút **`"Nhận giao"`** | **`Tôi mang giúp được`** | `find textContains("Nhận giao")` 🚫 **NOT FOUND**; nghiệp vụ chạy đúng ⇒ TC vẫn **PASS** |
+| `TC-ASN-012` | khung giờ `08:00–09:00` vs `20:00–21:00` | app dùng **khoảng NGÀY + tập BUỔI**, ⛔ không nhập giờ tự do | đã hiện thực đúng *ý định* TC bằng khoảng ngày (Hôm nay vs 22/09) |
+| `TC-ASN-021` | loại hàng `"Giấy tờ, hồ sơ"` | `Tài liệu` (`C-ORD-09`) | VR-007 |
+| fragment `§0` | buổi *"Sáng (6–12h)"* | **`Sáng (8–12h)`** | xác nhận **3 lần** (VR-007/008/009) |

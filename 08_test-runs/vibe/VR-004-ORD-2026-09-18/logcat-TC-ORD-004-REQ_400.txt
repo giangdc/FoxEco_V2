@@ -1,0 +1,9 @@
+09-19 00:18:34.884  3279  3383 E ReactNativeJS: 'Failed to create post:', { [FoxEcoApiError: Dữ liệu đầu vào không hợp lệ]
+09-19 00:18:34.884  3279  3383 E ReactNativeJS:   name: 'FoxEcoApiError',
+09-19 00:18:34.925  3279  3385 E unknown:ReactNative: console.error: Failed to create post: FoxEcoApiError: Dữ liệu đầu vào không hợp lệ, js engine: hermes, stack:
+09-19 00:19:11.880  3279  3383 E ReactNativeJS: 'Failed to create post:', { [FoxEcoApiError: Dữ liệu đầu vào không hợp lệ]
+09-19 00:19:11.880  3279  3383 E ReactNativeJS:   name: 'FoxEcoApiError',
+09-19 00:19:11.889  3279  3385 E unknown:ReactNative: console.error: Failed to create post: FoxEcoApiError: Dữ liệu đầu vào không hợp lệ, js engine: hermes, stack:
+09-19 00:21:44.035  3279  3383 E ReactNativeJS: 'Failed to create post:', { [FoxEcoApiError: Dữ liệu đầu vào không hợp lệ]
+09-19 00:21:44.035  3279  3383 E ReactNativeJS:   name: 'FoxEcoApiError',
+09-19 00:21:44.065  3279  3385 E unknown:ReactNative: console.error: Failed to create post: FoxEcoApiError: Dữ liệu đầu vào không hợp lệ, js engine: hermes, stack:
