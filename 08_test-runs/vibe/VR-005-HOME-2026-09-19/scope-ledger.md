@@ -12,7 +12,7 @@
 | TC-HOME-004 | ⏳ NOT_RUN | — | — | **Lý do:** cần **3 tài khoản** giữ 3 vai trên cùng 1 đơn + đăng xuất/đăng nhập ×3 (**OTP nhập tay**). 🔍 Quan sát rời: header của tài khoản A **KHÔNG có node icon vai trò nào** (tree chỉ có `Quay lại` · lời chào · `Thông báo`) ⇒ nghi vấn bề mặt chưa build, cần BA xác nhận trước khi chạy |
 | TC-HOME-005 | ✅ PASS | 1 | run này | `VR-005-HOME-2026-09-19/screenshots/TC-HOME-005__verify-chuong-cham-do.png` |
 | TC-HOME-006 | ✅ PASS | 1 | run này | `VR-005-HOME-2026-09-19/screenshots/TC-HOME-006__verify-chuong-khong-cham-do.png` |
-| TC-HOME-007 | ❌ FAIL | 1 | run này | `VR-005-HOME-2026-09-19/screenshots/TC-HOME-007__step2-FAIL-tagline-sai-chuoi.png` |
+| TC-HOME-007 | ✅ PASS | 1 | run này | `VR-005-HOME-2026-09-19/screenshots/TC-HOME-007__verify-tagline-giup-dong-nghiep.png` — *đổi từ FAIL 2026-09-21: sửa Expected theo chuỗi PRD, không chạy lại* |
 | TC-HOME-008 | ⏳ NOT_RUN | — | — | **Lý do:** cần chạy trọn vòng giao–nhận với **3 tài khoản** (A/B/C) + đăng được tin NEED — đang bị chặn bởi bug `B1` của `VR-004` (`400 REQ_400`). 🔍 2/3 vế của Expected đã đo được sẵn: card **không** có chỉ số CO₂/điểm ECO, dòng cộng đồng đúng dạng `[số] đơn · [số] người` (`317 đơn · 23743 người`); chỉ thiếu vế **hero +1** |
 | TC-HOME-009 | ✅ PASS | 1 | run này | `VR-005-HOME-2026-09-19/screenshots/TC-HOME-009__verify-6-thanh-phan-don-cua-toi.png` |
 | TC-HOME-011 | ✅ PASS | 1 | run này | `VR-005-HOME-2026-09-19/screenshots/TC-HOME-011__verify-nhan-vai-gui.png` |
@@ -39,7 +39,7 @@
 
 ## Ghi chú phiên
 
-- **Chạy 14/30**, thu **12 PASS · 1 FAIL · 1 BLOCKED**; **15 ⏳ NOT_RUN** + **1 ⛔ N-A**.
+- **Chạy 14/30**, thu **13 PASS · 0 FAIL · 1 BLOCKED**; **15 ⏳ NOT_RUN** + **1 ⛔ N-A**. *(`TC-HOME-007` FAIL → PASS 2026-09-21 do sửa Expected, không chạy lại.)*
 - 🛑 **Dừng KHÔNG phải vì hết sức phiên** — đã chạy hết mọi TC mà dữ liệu STG hiện tại cho phép.
   16 TC còn lại chặn ở **tiền đề dữ liệu/môi trường**, ⛔ không gỡ được bằng cách chạy lâu hơn:
   8 TC cần tài khoản B đăng tin · 5 TC cần 3 tài khoản + trọn vòng giao–nhận · 2 TC cần môi trường riêng · 1 TC là NFR load-test (`N-A`).

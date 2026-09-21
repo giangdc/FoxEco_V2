@@ -38,8 +38,8 @@
 
 | Result | Count | % trên 14 |
 |--------|-------|---|
-| ✅ PASS | 12 | 86% |
-| ❌ FAIL | 1 | 7% |
+| ✅ PASS | 13 | 93% |
+| ❌ FAIL | 0 | 0% |
 | 🚫 BLOCKED | 1 | 7% |
 | ⚠️ NOT_EVIDENCED | 0 | 0% |
 
@@ -67,12 +67,8 @@ Hệ quả kép, ngược chiều nhau:
 
 ## Failed TCs — cần review TC hoặc fix app
 
-| TC ID | Failed at | Expected | Actual |
-|-------|----------|----------|--------|
-| **TC-HOME-007** | Step 2 / E1 | tagline `Tiện đường — Đồng nghiệp giúp nhau` | `Tiện đường —\nGiúp đồng nghiệp` *(MCP `get_text`, nguyên văn)* |
-
-🐞 **Ứng viên bug H1 — ⛔ CHƯA log bug.** Cần QC/BA chốt **chuỗi nào là oracle** trước: rất có thể đây là **TC/tài liệu lỗi thời** chứ không phải app sai (cùng họ với `TC-ORD-006` ở VR-002 và `KB-VIBE-01`). Vế 2 của TC (*nhấn banner không điều hướng*) **PASS**.
-ℹ️ App còn có dòng phụ `Gửi hàng nội bộ · Không phí · Không chat` ngay dưới tagline — **không nằm trong Expected**, đề nghị BA rà khi chốt chuỗi.
+Không có. `TC-HOME-007` (ứng viên bug H1) đã **đổi FAIL → PASS ngày 2026-09-21**: run 2026-09-19 ghi FAIL so với Expected cũ (chuỗi BRD). 2026-09-21 QC GiangDC2 chốt chuỗi PRD là oracle (`C-HOME-01(b)`), sửa Expected của TC, đổi verdict FAIL → PASS theo dữ liệu đo ngày 2026-09-19, **không chạy lại**.
+ℹ️ App còn có dòng phụ `Gửi hàng nội bộ · Không phí · Không chat` ngay dưới tagline — **không nằm trong Expected**, đề nghị BA rà khi cập nhật tài liệu.
 
 ## Blocked TCs — ⚠️ KHÔNG automate
 
@@ -88,6 +84,7 @@ Hệ quả kép, ngược chiều nhau:
 | TC-HOME-003 | 2 | 2 | `screenshots/TC-HOME-003__verify-greeting-name.png` |
 | TC-HOME-005 | 2 | 1 | `screenshots/TC-HOME-005__verify-chuong-cham-do.png` |
 | TC-HOME-006 | 4 | 2 | `screenshots/TC-HOME-006__verify-chuong-khong-cham-do.png` |
+| TC-HOME-007 | 3 | 3 | `screenshots/TC-HOME-007__verify-tagline-giup-dong-nghiep.png` *(FAIL → PASS 2026-09-21, sửa Expected, không chạy lại)* |
 | TC-HOME-009 | 3 | 2 | `screenshots/TC-HOME-009__verify-6-thanh-phan-don-cua-toi.png` |
 | TC-HOME-011 | 3 | 1 | `screenshots/TC-HOME-011__verify-nhan-vai-gui.png` |
 | TC-HOME-012 | 3 | 1 | `screenshots/TC-HOME-012__verify-nhan-vai-giao.png` |
@@ -138,8 +135,8 @@ Không có — **14/14 TC đã chạy đều có ảnh riêng**.
 
 ## Recommendation
 
-- **Automate now:** **12 TC** — locators sẵn trong `vibe-locators-latest.md` (⚠️ 3 TC cần **đo pixel**: `001` trạng thái tab · `005`/`006` chấm đỏ · `009` thanh progress)
-- **Cần QC/BA quyết:** **1 TC** — `TC-HOME-007`, chốt chuỗi tagline nào là oracle rồi mới log bug hoặc sửa TC
+- **Automate now:** **13 TC** — locators sẵn trong `vibe-locators-latest.md` (⚠️ 3 TC cần **đo pixel**: `001` trạng thái tab · `005`/`006` chấm đỏ · `009` thanh progress)
+- ~~Cần QC/BA quyết `TC-HOME-007`~~ — đã chốt 2026-09-21 (chuỗi PRD), TC → PASS.
 - **Chờ dữ liệu (tài khoản B + OTP):** **8 TC** — `017` `018` `019` `020` `021` `023` `025` `030`, cộng `002` để đóng nốt
 - **Chờ 3 tài khoản + fix bug `B1`:** **5 TC** — `004` `008` `014` `029` `031`
 - **Chờ môi trường riêng:** **2 TC** — `027` `028` (riêng `028` ⛔ bất khả trên STG dùng chung)
@@ -153,7 +150,7 @@ Không có — **14/14 TC đã chạy đều có ảnh riêng**.
 
 | Quyết định | Lý do |
 |---|---|
-| Giữ `TC-HOME-007__pre-banner-before-tap.png` | TC **FAIL** ⇒ đúng luật giữ ảnh phụ; nó là vế "trước khi tap" của cặp so sánh chứng minh **không điều hướng** |
+| Giữ `TC-HOME-007__pre-banner-before-tap.png` **(ngoại lệ có chủ ý)** | Luật mặc định bỏ ảnh `__pre` của TC PASS, nhưng ảnh này là vế "trước khi tap" của cặp so sánh chứng minh **không điều hướng** (E2). Ảnh verify đã đổi tên `__step2-FAIL-tagline-sai-chuoi` → `__verify-tagline-giup-dong-nghiep` khi verdict đổi thành PASS |
 | Giữ `TC-HOME-015__pre-card-truoc-khi-cham.png` **(ngoại lệ có chủ ý)** | Luật mặc định bỏ ảnh `__pre` của TC **PASS**, nhưng ảnh này là **vế "trước"** của phép đối chiếu card ↔ màn Theo dõi đơn — bỏ đi thì Expected *"trùng khớp"* mất một nửa căn cứ |
 | Giữ 3 ảnh `_setup__`/`_recon__` | `_recon__bang-tin-empty-0-tin.png` là **căn cứ chung** cho verdict BLOCKED/NOT_RUN của 9 TC |
 | Không có `_snapshots/` để xoá | page source do MCP tự ghi ra **ngoài repo** (thư mục tool-results), ⛔ không lọt vào cây evidence |

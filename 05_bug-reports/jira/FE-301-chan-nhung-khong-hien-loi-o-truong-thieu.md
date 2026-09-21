@@ -2,15 +2,15 @@
 bug_id: BUG-009
 jira_project: FE
 jira_issue_type: Bug
-jira_key:
-jira_url:
+jira_key: FE-301
+jira_url: https://foxproject.atlassian.net/browse/FE-301
 module: ORD - Đăng tin & Quản lý tin
 bug_desc: Chặn sang bước sau nhưng không hiện lỗi ở trường thiếu
-priority: P2
-severity: Major
+priority: P3            # QC đổi High→Medium trên Jira 2026-09-21 08:29
+severity: Medium        # QC đổi 10→5 trên Jira 2026-09-21 08:29
 components: [ORD]
 affects_versions: [v1.1]
-traceability: TC-ORD-063 → SC-ORD-054 → REQ-ORD-006 · TC-ORD-064 → SC-ORD-052 → REQ-ORD-024 · TC-ORD-066 → SC-ORD-053 → REQ-ORD-024 · TC-ORD-083 → SC-ORD-063 → REQ-ORD-028 · TC-ORD-084 → SC-ORD-063 → REQ-ORD-028 · TC-ORD-077 → SC-ORD-060 → REQ-ORD-008
+traceability: TC-ORD-063 → SC-ORD-054 → REQ-ORD-006 · TC-ORD-064 → SC-ORD-052 → REQ-ORD-024 · TC-ORD-066 → SC-ORD-053 → REQ-ORD-024 · TC-ORD-083 → SC-ORD-063 → REQ-ORD-028 · TC-ORD-084 → SC-ORD-063 → REQ-ORD-028 · TC-ORD-077 → SC-ORD-060 → REQ-ORD-008 · TC-ORD-023 → SC-ORD-022 → REQ-ORD-009 · TC-ORD-021 → SC-ORD-020 → REQ-ORD-008 · TC-ORD-024 → SC-ORD-023 → REQ-ORD-009 · TC-ORD-051 → SC-ORD-048 → REQ-ORD-020 · TC-ORD-043 → SC-ORD-040 → REQ-ORD-016
 status: To Do
 effect: Usability
 defect_type: Interface
@@ -20,17 +20,17 @@ test_round: R1
 reject_number:
 resolution:
 reason_for_wontfix:
-attachments: [08_test-runs/vibe/VR-002-ORD-2026-09-18/screenshots/TC-ORD-063__step6-FAIL-chan-nhung-khong-co-thong-bao-loi.png, 08_test-runs/vibe/VR-002-ORD-2026-09-18/screenshots/TC-ORD-064__step6-FAIL-chan-nhung-khong-co-thong-bao-loi.png, 08_test-runs/vibe/VR-002-ORD-2026-09-18/screenshots/TC-ORD-066__step5-FAIL-chan-nhung-khong-co-thong-bao-loi.png, 08_test-runs/vibe/VR-002-ORD-2026-09-18/screenshots/TC-ORD-083__step5-FAIL-chan-nhung-khong-co-thong-bao-loi.png, 08_test-runs/vibe/VR-002-ORD-2026-09-18/screenshots/TC-ORD-084__step5-FAIL-chan-nhung-khong-co-thong-bao-loi.png, 08_test-runs/vibe/VR-002-ORD-2026-09-18/screenshots/TC-ORD-077__step4-FAIL-khong-co-loi-dinh-dang.png]
+attachments: [08_test-runs/vibe/VR-002-ORD-2026-09-18/screenshots/TC-ORD-063__step6-FAIL-chan-nhung-khong-co-thong-bao-loi.png, 08_test-runs/vibe/VR-002-ORD-2026-09-18/screenshots/TC-ORD-064__step6-FAIL-chan-nhung-khong-co-thong-bao-loi.png, 08_test-runs/vibe/VR-002-ORD-2026-09-18/screenshots/TC-ORD-066__step5-FAIL-chan-nhung-khong-co-thong-bao-loi.png, 08_test-runs/vibe/VR-002-ORD-2026-09-18/screenshots/TC-ORD-083__step5-FAIL-chan-nhung-khong-co-thong-bao-loi.png, 08_test-runs/vibe/VR-002-ORD-2026-09-18/screenshots/TC-ORD-084__step5-FAIL-chan-nhung-khong-co-thong-bao-loi.png, 08_test-runs/vibe/VR-002-ORD-2026-09-18/screenshots/TC-ORD-077__step4-FAIL-khong-co-loi-dinh-dang.png, 08_test-runs/vibe/VR-004-ORD-2026-09-18/screenshots/TC-ORD-023__step5-FAIL-khong-co-thong-bao-loi-nhom-nguoi-nhan.png, 08_test-runs/vibe/VR-004-ORD-2026-09-18/screenshots/TC-ORD-021__step3-FAIL-khong-bao-loi-email-sai-dinh-dang.png, 08_test-runs/vibe/VR-004-ORD-2026-09-18/screenshots/TC-ORD-024__step3-FAIL-ten-1-ky-tu-khong-bao-loi.png, 08_test-runs/vibe/VR-004-ORD-2026-09-18/screenshots/TC-ORD-051__step3-FAIL-khong-co-loi-duoi-o-ten-nguoi-nhan.png, 08_test-runs/vibe/VR-004-ORD-2026-09-18/screenshots/TC-ORD-051__step7-FAIL-man-khong-cuon-toi-o-loi-dau-tien.png, 08_test-runs/vibe/VR-004-ORD-2026-09-18/screenshots/TC-ORD-043__step8-FAIL-khong-co-thong-bao-loi-diem-den-trung.png, 08_test-runs/vibe/VR-004-ORD-2026-09-18/screenshots/TC-ORD-043__step8-FAIL-diem-den-trung-diem-xuat-phat.png]
 reported_by: GiangDC2
 reported_on: 2026-09-18
-assignee:
+assignee: Tuanvm37     # QC đổi từ NhungPTH13 trên Jira 2026-09-21 08:29
 due_date:
-last_synced:
+last_synced: 2026-09-21
 ---
 
 # [ORD - Đăng tin & Quản lý tin] - Chặn sang bước sau nhưng không hiện lỗi ở trường thiếu
 
-> Jira: [chưa push] · Status: Open
+> Jira: [FE-301](https://foxproject.atlassian.net/browse/FE-301) · Status: To Do
 
 <!-- jira:description:start — copy nguyên khối dưới đây vào field Description của Jira -->
 
@@ -105,6 +105,8 @@ last_synced:
 | Ngày | Status | Ghi chú | Ref |
 |---|---|---|---|
 | 2026-09-18 | Open | Log từ 6 TC FAIL cùng 1 nguyên nhân — ứng viên bug **B1** của VR-002 | VR-002-ORD-2026-09-18 |
+| 2026-09-21 | To Do | Push Jira → FE-301 (QC GiangDC2 yêu cầu) | — |
+| 2026-09-21 | To Do | Bổ sung lên Jira nhánh chặn-im-lặng còn thiếu (`023` `021` `024` `051` `043`) + đính chính cơ chế nhánh địa chỉ (`083`/`084` = địa chỉ gõ tay không chạm gợi ý, không phải lỗi luật trùng) + 7 ảnh + label. Priority/Severity/Assignee do QC sửa tay, giữ nguyên. ⚠️ Khối Description ở file này chưa đồng bộ — chạy `/sync-jira-bugs` để kéo bản mới | VR-002 · VR-004 |
 
 ## Ghi chú nội bộ (không push Jira)
 
@@ -112,4 +114,4 @@ last_synced:
 - **`severity: Major`** (report đề xuất *High* — enum local không có `High`, `High` là Priority Jira). Có 1 TC **P1** trong nhóm (`TC-ORD-063`); nếu QC muốn nâng `priority` lên `P1` thì sửa trước khi push — AI không tự quyết.
 - **`effect: Usability` / `defect_type: Interface`:** rule nghiệp vụ được **thi hành đúng**, phần hỏng là phản hồi cho người dùng. Nếu QC coi "hiện lỗi" là yêu cầu chức năng chưa làm thì đổi sang `Functionality`/`Logic`.
 - ⛔ **Không được sửa Expected của 6 TC này theo app để làm xanh** — chúng là bằng chứng của bug (ghi rõ ở `vibe-report` VR-002).
-- **Chưa push Jira** theo yêu cầu QC 2026-09-18. Khi push: `/log-bug --push-jira BUG-009` (nhớ `Parent = FE-1`, `Fix versions = V1.0`, `Test Round = 1`).
+- **Đã push Jira 2026-09-21** → [FE-301](https://foxproject.atlassian.net/browse/FE-301) (Parent `FE-1` · Fix version `V1.0` · Test Round `1`, evidence đính kèm qua REST).

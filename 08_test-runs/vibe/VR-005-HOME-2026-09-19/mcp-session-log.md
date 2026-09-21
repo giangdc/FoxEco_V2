@@ -34,7 +34,7 @@
 |----|------|------:|--------------|-----------|---------|
 | TC-HOME-001 | 05:53 | 6 | find×5, screencap×1 | 0 (dùng map Pha A) | ✅ PASS |
 | TC-HOME-003 | 05:54 | 3 | find×1, get_text×1, screencap×1 | 0 | ✅ PASS |
-| TC-HOME-007 | 05:55 | 5 | find×1, get_text×1, tap×1, screencap×2 | 0 | ❌ FAIL step 2 |
+| TC-HOME-007 | 05:55 | 5 | find×1, get_text×1, tap×1, screencap×2 | 0 | ✅ PASS *(đổi từ FAIL 2026-09-21 — sửa Expected, không chạy lại)* |
 | TC-HOME-005 | 05:56 | 2 | find×1, screencap×1 (+đo pixel) | 0 | ✅ PASS |
 | TC-HOME-006 | 05:56–05:58 | 6 | tap×2, find×1, back×1, screencap×2 | **1** *(A6: màn Thông báo — màn mới, L2a)* | ✅ PASS |
 | TC-HOME-022 | 05:58 | 3 | find×1, tap×1, screencap×2 (1 recon) | 0 | ✅ PASS |

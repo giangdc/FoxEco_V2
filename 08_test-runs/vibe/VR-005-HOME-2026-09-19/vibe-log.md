@@ -52,15 +52,15 @@
 | # | Step | Action | Result | Evidence | Notes |
 |---|------|--------|--------|----------|-------|
 | 1 | Đăng nhập FoxEco *(setup)* | tài khoản A | ✅ PASS | — | — |
-| 2 | Check vùng banner quảng bá | `find_element(textContains "Tiện đường")` + `get_text` | ❌ **FAIL** | `TC-HOME-007__step2-FAIL-tagline-sai-chuoi.png` (+ `__pre-banner-before-tap.png`) | **tagline SAI chuỗi** — xem E1 |
+| 2 | Check vùng banner quảng bá | `find_element(textContains "Tiện đường")` + `get_text` | ✅ PASS | `TC-HOME-007__verify-tagline-giup-dong-nghiep.png` (+ `__pre-banner-before-tap.png`) | tagline khớp Expected đã sửa — xem E1 |
 | 3 | Nhấn vào banner | `gesture(tap)` trên chính element tagline | ✅ PASS | ↑ | — |
-| E1 | Banner hiện logo "FOX ECO" + tagline "Tiện đường — Đồng nghiệp giúp nhau" | logo ✅ có (`FOX ECO`) · tagline ❌ | ❌ **FAIL** | ↑ | **Expected:** `Tiện đường — Đồng nghiệp giúp nhau` · **Actual (MCP `get_text`, nguyên văn):** `Tiện đường —\nGiúp đồng nghiệp` |
+| E1 | Banner hiện logo "FOX ECO" + tagline "Tiện đường — Giúp đồng nghiệp" | logo ✅ có (`FOX ECO`) · tagline ✅ | ✅ **PASS** | ↑ | **Expected (đã sửa 2026-09-21):** `Tiện đường — Giúp đồng nghiệp` · **Actual (MCP `get_text`, nguyên văn):** `Tiện đường —\nGiúp đồng nghiệp` |
 | E2 | Nhấn banner không mở màn nào, không popup, Trang chủ giữ nguyên | so ảnh trước/sau tap | ✅ PASS | ↑ | không điều hướng, không popup, scroll giữ nguyên |
 
-**Result: ❌ FAIL at Step 2 / E1** — hỏng **vế chuỗi tagline**; vế "nhấn banner không điều hướng" (E2) thì đúng.
-**Evidence:** `screenshots/TC-HOME-007__step2-FAIL-tagline-sai-chuoi.png` (+ `TC-HOME-007__pre-banner-before-tap.png`)
-**Reason:** app hiển thị `Tiện đường — Giúp đồng nghiệp`, TC kỳ vọng `Tiện đường — Đồng nghiệp giúp nhau`.
-⚠️ **CHƯA đủ căn cứ log bug** — cần QC/BA chốt chuỗi nào là oracle: đây có thể là **TC/tài liệu lỗi thời** chứ không phải app sai.
+**Result: ✅ PASS** — vế chuỗi tagline (E1) và vế "nhấn banner không điều hướng" (E2) đều đúng.
+**Evidence:** `screenshots/TC-HOME-007__verify-tagline-giup-dong-nghiep.png` (+ `TC-HOME-007__pre-banner-before-tap.png`)
+**Reason:** app hiển thị `Tiện đường — Giúp đồng nghiệp` = Expected sau khi sửa (chuỗi PRD, khớp design `HOME_01/02/04`).
+📌 Lịch sử: run 2026-09-19 ghi FAIL so với Expected cũ (chuỗi BRD). 2026-09-21 QC GiangDC2 chốt chuỗi PRD là oracle (`C-HOME-01(b)`), sửa Expected của TC, đổi verdict FAIL → PASS theo dữ liệu đo ngày 2026-09-19, **không chạy lại**. ⛔ Không log bug.
 Dòng phụ dưới tagline (`Gửi hàng nội bộ · Không phí · Không chat`) **không nằm trong Expected** của TC — ghi nhận để BA rà.
 
 ---

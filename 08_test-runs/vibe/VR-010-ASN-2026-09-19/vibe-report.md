@@ -1,5 +1,7 @@
 # Vibe Test Report — VR-010 — v1.1 — 2026-09-19
 
+> 🟢 **ĐÍNH CHÍNH 2026-09-21 (QC recheck):** `TC-ASN-016` và `TC-ASN-025` **KHÔNG phải bug** — trần 5 thông báo khớp tuyến tính theo **tài khoản** là quy tắc thực tế; Expected đã sửa, cả 2 TC đổi FAIL → PASS. Các mục *"Failed TCs"*, *"Nguyên nhân gốc"*, *"Log bug ngay"* bên dưới **đã bị bác bỏ** (giữ lại để truy vết). Xem `coverage/coverage-ASN.md`.
+
 > Platform: **mobile** (Appium MCP · UiAutomator2 · emulator-5554)
 > Environment: STG — host app FoxPro `com.hrisproject.stag`, SDK nhúng FoxEco
 > Module: **ASN (Ghép nối)** · Tập chạy phiên này: **7 TC pending**

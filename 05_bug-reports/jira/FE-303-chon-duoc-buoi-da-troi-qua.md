@@ -2,8 +2,8 @@
 bug_id: BUG-011
 jira_project: FE
 jira_issue_type: Bug
-jira_key:
-jira_url:
+jira_key: FE-303
+jira_url: https://foxproject.atlassian.net/browse/FE-303
 module: ORD - Đăng tin & Quản lý tin
 bug_desc: Vẫn chọn được buổi đã trôi qua trong ngày hôm nay
 priority: P3
@@ -25,12 +25,12 @@ reported_by: GiangDC2
 reported_on: 2026-09-18
 assignee:
 due_date:
-last_synced:
+last_synced: 2026-09-21
 ---
 
 # [ORD - Đăng tin & Quản lý tin] - Vẫn chọn được buổi đã trôi qua trong ngày hôm nay
 
-> Jira: [chưa push] · Status: Open
+> Jira: [FE-303](https://foxproject.atlassian.net/browse/FE-303) · Status: To Do
 
 <!-- jira:description:start — copy nguyên khối dưới đây vào field Description của Jira -->
 
@@ -81,10 +81,11 @@ last_synced:
 | Ngày | Status | Ghi chú | Ref |
 |---|---|---|---|
 | 2026-09-18 | Open | Log từ `TC-ORD-059` FAIL — ứng viên bug **B6** của VR-002 | VR-002-ORD-2026-09-18 |
+| 2026-09-21 | To Do | Push Jira → FE-303 (QC GiangDC2 yêu cầu) | — |
 
 ## Ghi chú nội bộ (không push Jira)
 
 - 🔴 **Bắt buộc dẫn `C-ORD-15` khi trao đổi với dev/BA:** rule không nằm trong PRD nên dev có thể phản hồi *"spec không yêu cầu"*. Phần **Căn cứ** trong Description đã ghi rõ — ⛔ đừng cắt bỏ khi push.
 - **`severity: Medium`** đúng như report VR-002 đề xuất: rule bị bỏ sót hoàn toàn nhưng chỉ ảnh hưởng một khung chọn, không chặn luồng chính.
 - **Pre-condition phụ thuộc thời điểm chạy** — retest phải thực hiện **sau 12h trưa**, nếu không sẽ PASS giả.
-- **Chưa push Jira** theo yêu cầu QC 2026-09-18. Khi push: `/log-bug --push-jira BUG-011` (nhớ `Parent = FE-1`, `Fix versions = V1.0`, `Test Round = 1`).
+- **Đã push Jira 2026-09-21** → [FE-303](https://foxproject.atlassian.net/browse/FE-303) (Parent `FE-1` · Fix version `V1.0` · Test Round `1`, evidence đính kèm qua REST).

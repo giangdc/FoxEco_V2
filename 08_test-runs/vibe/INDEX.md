@@ -9,15 +9,18 @@
 | **VR-001** | 2026-09-18 | **USR** | mobile (Appium) | 46 | 40 | **20P / 14F** / 5B · N-A 2 · NOT_RUN 5 🔄 | 40/40 ✅ | PARTIAL | `VR-001-USR-2026-09-18/` |
 | **VR-002** | 2026-09-18 | **ORD** | mobile (Appium) | 88 | 43 | 25P / 14F / 3B · 1 chạy dở | 43/43 ✅ | PARTIAL | `VR-002-ORD-2026-09-18/` |
 | **VR-003** | 2026-09-18 | **USR** | mobile (Appium) | 46 | 4 | **2P / 2F** · còn nợ **1** | 4/4 ✅ | PARTIAL | `VR-003-USR-2026-09-18/` |
-| **VR-004** | 2026-09-18 | **ORD** | mobile (Appium) | 88 | **46** | **27P / 17F / 2B** · còn nợ **19** | 46/46 ✅ | PARTIAL | `VR-004-ORD-2026-09-18/` |
-| **VR-005** | 2026-09-19 | **HOME** | mobile (Appium) | 30 | **14** | **12P / 1F / 1B** · N-A 1 · còn nợ **15** | 14/14 ✅ | PARTIAL | `VR-005-HOME-2026-09-19/` |
+| **VR-004** | 2026-09-18 | **ORD** | mobile (Appium) | 88 | **46** | **27P / 17F / 2B** · còn nợ **19** → **22** *(♻️ 2026-09-21 QC reset `083`/`084`/`085` về NOT_RUN)* | 46/46 ✅ | PARTIAL | `VR-004-ORD-2026-09-18/` |
+| **VR-005** | 2026-09-19 | **HOME** | mobile (Appium) | 30 | **14** | **13P / 0F / 1B** · N-A 1 · còn nợ **15** | 14/14 ✅ | PARTIAL | `VR-005-HOME-2026-09-19/` |
 | *(không mở VR)* | 2026-09-19 | **ASN** | mobile (Appium) | 26 | **0** | ⛔ **0 verdict** → chuyển thành phiên **repro** · N-A 2 · còn nợ **24** | n/a *(hợp đồng nhẹ)* | PARTIAL | `repro/RP-ASN-lo-sdt-sau-ghep-2026-09-19/` |
 | **VR-007** | 2026-09-19 | **ASN** | mobile (Appium) | 26 | **3** | **3P / 0F / 0B** · N-A 2 · còn nợ **21** | 3/3 ✅ | PARTIAL | `VR-007-ASN-2026-09-19/` |
 | **VR-008** | 2026-09-19 | **ASN** | mobile (Appium) | 26 | **5** | **5P / 0F / 0B** *(3 P1)* · N-A 2 · còn nợ **16** | 5/5 ✅ | PARTIAL | `VR-008-ASN-2026-09-19/` |
 | **VR-009** | 2026-09-19 | **ASN** | mobile (Appium) | 26 | **7** | **7P / 0F / 0B** · N-A 2 · còn nợ **9** | 7/7 ✅ | PARTIAL | `VR-009-ASN-2026-09-19/` |
-| **VR-010** | 2026-09-19 | **ASN** | mobile (Appium) | 26 | **7** | **5P / 2F / 0B** 🐛 · N-A 2 · còn nợ **2** *(QC để lại)* | 7/7 ✅ | PARTIAL | `VR-010-ASN-2026-09-19/` |
-| **VR-011** | 2026-09-19 | **GIFT** | mobile (Appium) | **14** | **12** | **7P / 2F / 2B / 1 NE** 🐛 · còn nợ **3** | 11/11 ✅ | PARTIAL | `VR-011-GIFT-2026-09-19/` |
+| **VR-010** | 2026-09-19 | **ASN** | mobile (Appium) | 26 | **7** | **5P / 2F / 0B** 🐛 *(⚠️ 2026-09-21: 2 FAIL `016`/`025` đã đổi PASS — QC recheck, không phải bug)* · N-A 2 · còn nợ **2** *(QC để lại)* | 7/7 ✅ | PARTIAL | `VR-010-ASN-2026-09-19/` |
+| **VR-015** | 2026-09-21 | **ASN** | mobile (Appium · **real device + emulator**) | 26 | **1** | **1P / 0F / 0B** — `TC-ASN-006` *(lần 1 không hợp lệ: bên thua chưa chấp nhận điều khoản; lần 2 hợp lệ)* · sổ ASN: **26/26 có verdict** (sau recheck 016/025: **23P·0F·3 BLOCKED**; chỉ v1.1 **10P·3B/13**) | 1/1 ✅ | COMPLETED-WITH-OPEN-ITEMS | `VR-015-ASN-2026-09-21/` |
+| *(không mở VR)* | 2026-09-21 | **FEED** | mobile (Appium) | — | **0** | ⛔ 0 verdict — kiểm tra 1 hành vi theo QC → phiên **repro**: chủ tin mở tin từ **Bảng tin** ra `Chi tiết tin` (không có `Chỉnh sửa`/`Huỷ đơn`), từ **Hoạt động** ra `Theo dõi đơn` · PRD **không có rule** ⇒ bug `BUG-028` / `FE-312` | n/a *(hợp đồng nhẹ)* | — | `repro/RP-FEED-chu-tin-bang-tin-khong-theo-doi-don-2026-09-21/` |
+| **VR-011** | 2026-09-19 | **GIFT** | mobile (Appium) | **14** | **12** | **8P / 1F / 2B / 1 NE** 🐛 FE-308 · còn nợ **3** *(♻️ 2026-09-21: `TC-GIFT-012` FAIL→PASS theo QC)* | 11/11 ✅ | PARTIAL | `VR-011-GIFT-2026-09-19/` |
 | **VR-012** | 2026-09-19 | **DLV** | mobile (Appium) | **81** | **15** | **13P / 2F / 0B** · N-A 4 · còn nợ **62** 🚫 | 15/15 ✅ | PARTIAL | `VR-012-DLV-2026-09-19/` |
+| **VR-016** | 2026-09-21 | **FEED** | mobile (Appium) | 15 | **5** | **4P / 0F / 1B** *(`009` BLOCKED→PASS retest data QC cấp; `015` FAIL→PASS, QC chấp nhận hành vi app + sửa Expected, `BUG-029` rút lại; `007` FAIL→PASS retest account `anhdc4` + data hợp lệ)* · còn nợ **10** *(carried v1.0, ngoài phạm vi — chỉ chạy TC v1.1 theo QC)* | 5/5 ✅ | PARTIAL | `VR-016-FEED-2026-09-21/` |
 
 ## Ghi chú theo phiên
 
@@ -68,7 +71,7 @@
 - 📌 Đính chính bookkeeping: §Tổng hợp của `coverage-USR.md` trước phiên ghi `BLOCKED 6 / NOT_RUN 4`, đếm thật là `5 / 5` (sót lúc `TC-USR-027` đổi BLOCKED→NOT_RUN). Đã sửa; dòng VR-001 ở bảng trên cũng sửa theo.
 
 **VR-004 — ORD (`--all`, chạy lại toàn scope), tài khoản A, emulator-5554**
-- Chạy **46 TC / 5 lô** ⇒ module ORD từ **42/88** lên **69/88 có verdict cuối, CÒN NỢ 19**. **Evidence 46/46.**
+- Chạy **46 TC / 5 lô** ⇒ module ORD từ **42/88** lên **69/88 có verdict cuối, CÒN NỢ 19**. **Evidence 46/46.** *(♻️ 2026-09-21: QC reset `TC-ORD-083`/`084`/`085` ⇒ nay **66/88, CÒN NỢ 22** — xem `coverage/coverage-ORD.md`.)*
 - 🛑 **Còn nợ KHÔNG phải vì hết sức phiên** — đã chạy hết mọi TC chạy được. 19 TC còn lại **chặn tiền đề**: **17** cần 1 đơn NEED đăng thành công (bug B1 dưới), **2** cần tài khoản B.
 - 🐞🔴 **B1 — P1 BLOCKER MỚI, nặng nhất module: KHÔNG ĐĂNG ĐƯỢC TIN NEED** (`TC-ORD-004`). Bấm `Đăng tin ngay` với dữ liệu hợp lệ đủ 3 bước ⇒ API trả **400 `REQ_400`** *"Dữ liệu đầu vào không hợp lệ"* và app **im lặng tuyệt đối** (không toast/banner/spinner, nút vẫn bật). 3 lần bấm/3 lần lỗi; đã loại trừ giả thuyết ghi chú 300 ký tự; xác nhận **không đơn nào được tạo**. Log: `logcat-TC-ORD-004-REQ_400.txt`.
 - 🔑 **Tìm ra nguyên nhân gốc của "chặn im lặng" ở bước 2 (bẫy T11):** **CẢ HAI ô địa chỉ bắt buộc chạm gợi ý `address-suggestion-N`**; gõ tay đủ chữ ⇒ `Tiếp theo` khoá **vĩnh viễn**, app không báo gì. Mất ~20 MCP call để khoanh vùng. Hồ sơ A **mất địa chỉ mặc định** (gốc `TC-USR-040`) nên ô này nay **rỗng** ⇒ mọi phiên sau **buộc** gõ + chạm gợi ý.
@@ -86,7 +89,7 @@
 - 🔢 **SCOPE_TOTAL = 30, ⛔ KHÔNG phải 33** như `TC-HOME-v1.1.md §0.1` ghi. Phép *"24 − 2 + 11"* của fragment **đếm trùng 3 TC MODIFIED** (`TC-HOME-008/019/021` có ở **cả 2 file**, `CLAUDE.md` chốt *"LUÔN lấy bản v1.1"*). Hợp nhất theo ID duy nhất: 24 − 2 (`010`/`024` DEPRECATED) − 3 (trùng) + 11 = **30** = 19 CARRIED + 11 v1.1. ⛔ Không sửa fragment (`§10.5` FREEZE Σ TC) — đây là đính chính **cách ĐẾM**, không thêm/bớt TC.
 - 🔴 **Blocker chi phối cả module: STG có 0 tin NEED hợp lệ** — xác nhận **2 bề mặt độc lập** (Trang chủ §Tin mới `home-news-empty` + màn Bảng tin *"Chưa có tin nào"*) ⇒ ⛔ không phải lỗi lọc riêng của Trang chủ. Vì *"Tin mới"* **loại trừ tin của chính mình** (`SC-HOME-019`), tài khoản A ⛔ **không tự seed được** ⇒ **8 TC** phải chờ **tài khoản B + OTP nhập tay** (cùng blocker VR-001/VR-003).
 - 🍀 **Chính dữ kiện đó lại MỞ KHOÁ `TC-HOME-026`:** `fragment §0.3` xếp TC này vào nhóm *"không dựng được trên STG dùng chung ⇒ ghi Blocked"*, nhưng STG tình cờ sạch tin nên empty state `EMP-01` verify được **thật**, đủ **4/4 vế nguyên văn** ⇒ 🟢 **xác nhận oracle phản trực giác của `C-HOME-04`**: chuỗi *"…trong khu vực của bạn"* **giữ nguyên** dù tin load toàn quốc, đúng như BA chốt *"giữ nguyên nhé"*. ⚠️ PASS **neo vào 05:59 2026-09-19** — cửa sổ đóng ngay khi có người đăng tin.
-- 🐞 **1 ứng viên bug H1, ⛔ CHƯA log:** `TC-HOME-007` — tagline app `Tiện đường — Giúp đồng nghiệp` ≠ Expected `Tiện đường — Đồng nghiệp giúp nhau`. ⚠️ Nhiều khả năng **TC/tài liệu lỗi thời** chứ không phải app sai (cùng họ `TC-ORD-006` · `KB-VIBE-01`) ⇒ **chờ QC/BA chốt chuỗi nào là oracle** rồi mới quyết log bug hay sửa TC. Vế *"nhấn banner không điều hướng"* **PASS**.
+- ✅ **Ứng viên bug H1 ĐÃ ĐÓNG (2026-09-21):** `TC-HOME-007` — app hiện `Tiện đường — Giúp đồng nghiệp` (chuỗi PRD, `C-HOME-01(b)`); Expected cũ theo BRD là lỗi thời ⇒ **sửa Expected, FAIL → PASS, không chạy lại, không log bug**. Vế *"nhấn banner không điều hướng"* PASS.
 - 🚫 **1 BLOCKED** — `TC-HOME-002` ở step 2 (0 tin ⇒ không mở được Chi tiết tin). **3/4 màn con còn lại đã kiểm và ĐÚNG** (Theo dõi đơn · Wizard · Thông báo: không bottom nav, có nút quay lại) ⇒ ⛔ vẫn **không** khai PASS một phần.
 - ⚠️ **5 TC PASS kèm khai báo lệch step** (`009`/`011`/`012`/`013`/`015`): dùng **đơn có sẵn** thay vì tự đăng tin ở step 1 — **bug `B1` của VR-004 vẫn chặn đăng tin NEED**. Cả 5 ca Expected **không assert trạng thái đơn** (chỉ assert thành phần/nhãn/điều hướng) ⇒ verdict tin được. Lệch được ghi rõ trong `vibe-log.md`, ⛔ không giấu.
 - 🔧 **3 bẫy locator MỚI T15–T17** + **T2 tái hiện lần 3** → merge `locators/vibe-locators-latest.md` (**51/51 = 100%**), **màn Trang chủ lần đầu harvest đầy đủ** (8 màn).
@@ -172,7 +175,7 @@
 ## VR-011 — GIFT — 2026-09-19 — **lần đầu vibe-test module GIFT**
 
 - 📋 **Scope 14 TC = HỢP của 2 file TC-MASTER** (v1.1 `Quà cảm ơn` 8 TC ∪ v1.0 6 TC chỉ có ở v1.0: `001/004/005/009/010/012`). ⚠️ Chỉ đọc v1.1 sẽ **sót 6 TC**.
-- ✅ **11/14 có verdict cuối trong 1 phiên** — **7 PASS · 2 FAIL · 2 BLOCKED** (+ 1 ⚠️ NOT_EVIDENCED). Dừng vì **hết tiền đề dữ liệu**, ⛔ không phải hết sức phiên.
+- ✅ **11/14 có verdict cuối trong 1 phiên** — **8 PASS · 1 FAIL · 2 BLOCKED** (+ 1 ⚠️ NOT_EVIDENCED) *(♻️ 2026-09-21: `TC-GIFT-012` FAIL→PASS theo QC chốt; `TC-GIFT-003` đã log FE-308)*. Dừng vì **hết tiền đề dữ liệu**, ⛔ không phải hết sức phiên.
 - 🔁 **ĐÍNH CHÍNH TRONG PHIÊN — `TC-GIFT-001` + `TC-GIFT-010` đổi ❌ FAIL → ✅ PASS.** Lúc chạy bị chấm FAIL vì luồng app khác chữ trong TC; đối chiếu **tài liệu phân tích của chính dự án** thì chấm vậy là **sai quy kết**:
   · `SC-GIFT-001` **Then** = *"Mở màn "Tặng quà" với 4 lựa chọn quà"* → app **đạt**; `C-GIFT-04` **Resolved 2026-09-17** chốt app route **theo trạng thái tặng quà** (chưa tặng → "Tặng quà" · đã tặng → "Theo dõi đơn").
   · `SC-GIFT-010` **Then** = *"Về đúng màn trước đó **(Theo dõi đơn / Đơn của tôi)**"* → app về `Đơn của tôi` **nằm trong tập chấp nhận**; `C-GIFT-02` **Resolved 2026-09-16**: rule = *"back về màn hình trước đó"*.
@@ -207,3 +210,29 @@
 > 🪤 **4 bẫy mới `T-DLV-01..04`** — 2 bẫy **đã thực sự làm hỏng thao tác trong phiên**: **bản đồ Google nuốt gesture cuộn**, và **`scroll_to_element` dừng khi card mới chạm mép dưới** ⇒ card cao 5px nằm dưới FAB ⇒ `tap` **trúng nút `Đăng tin`** (dính 2 lần). ✅ Cách chắc: `get_attribute("bounds")` trước khi tap; cuộn quá rồi `scroll_to_element` **ngược lên**.
 > ⚡ **`appium_get_page_source` của app này ~135–252k ký tự ⇒ MCP tự ghi RA FILE, không vào context** (`T-DLV-03`) ⇒ dump page source **gần như miễn phí**; `grep` bằng script. 🔴 Điều này **đổi hẳn cách tính chi phí** so với VR-008/009 — cột `Snapshot?` không còn là đồng hồ đo context.
 > 📌 **4 việc cho QC/BA:** (1) 🔴 **người nhận MẤT cụm liên hệ ở `Đang giao`** — có ở `Đã ghép`, có lại ở `Đã giao`, **mất đúng khoảng giữa**; chưa SC nào phủ ⇒ `/analyze-requirements --update`; (2) 🐛 icon copy **không đổi màu** (`080`+`081`) — **cùng lỗi gốc `TC-ORD-085`/VR-004**, mở **1 bug component**; (3) ⚠️ **`TC-DLV-017/018/019` (CARRIED v1.0) có thể đã LỖI THỜI** — chúng tả popup 2 nút, còn v1.1 (`043`–`053`) tả **cả một màn "Xác nhận đã giao"** cho **cùng một nút**; phiên sau FAIL ở đây thì ⛔ **đừng log bug**, route về `review-tc`; (4) **4 TC P1 (`074`–`076`, `078`) là API-tier** — đánh `⛔ N-A` ở tier vibe, cần chạy ở tier security/API.
+
+## VR-013 — module **ORD** — 2026-09-21 (mobile · 2 thiết bị song song: emulator=Giang, máy thật=Anh)
+
+> **Retest theo chỉ định QC:** 22 TC còn nợ + `TC-ORD-004` (`BUG-020`) + `TC-ORD-068` (`BUG-019`). **21 TC chạy: 20 PASS · 0 FAIL · 1 BLOCKED (`084`)** *(đính chính 2026-09-21: `073` lightbox chạm nền · `088` xoá được ảnh tin đã đăng — ban đầu FAIL, QC xác nhận app đúng ⇒ PASS, TC sửa theo app; `BUG-023/024` đã huỷ)*. Coverage ORD **66/88 → 85/88**, còn nợ **3** (`067` `080` `082`) — §8 = PARTIAL. Dừng theo yêu cầu QC (sắp hết hạn mức).
+> 🔑 **`BUG-020` KHÔNG tái hiện** (cùng Giang, cùng payload, đăng được ban ngày ⇒ còn giả thuyết lệch ngày nửa đêm) · **`BUG-019` KHÔNG tái hiện** (5 MiB được nhận; >5 MiB có thông báo nhưng **nằm dưới viewport**) ⇒ **đề nghị không push cả hai**.
+> ✅ **`TC-ORD-085` xác nhận KHÔNG phải bug** (chip xanh `Đã copy` ~1,6–2,1 s, đo bằng burst screencap) ⇒ nghi `DLV-080/081` cùng âm tính giả.
+> 📁 `VR-013-ORD-2026-09-21/vibe-report.md` (kết luận + việc cho QC) · sổ cái `coverage/coverage-ORD.md`.
+
+> 📊 **Tiến độ chỉ TC v1.1:** `coverage/PROGRESS-v1.1.md` (dẫn xuất từ `TC-MASTER-v1.1` + sổ coverage; sổ từng module vẫn giữ mẫu số gồm CARRIED v1.0).
+
+## VR-014 — module **HOME** — 2026-09-21 (mobile · emulator · chỉ TC v1.1)
+
+> **`/vibe-test --module Home` chỉ TC v1.1 đang nợ (9 TC).** Chạy **5**: **2 PASS** (`019` `021`) · **2 FAIL** (`025` nút `Xem thêm` hiện khi đúng 5 tin · `027` empty state `Đơn của tôi` sai `EMP-02`) · **1 BLOCKED** (`028` STG không thể về 0 đơn). Giữ nợ **4** (`008 029 030 031`) vì QC không cho ghép đơn / vòng giao–nhận. **v1.1 HOME: 2/11 → 7/11 có verdict (64%).** Coverage HOME 17→22/32, nợ 10 (6 trong đó là CARRIED v1.0 ngoài phạm vi).
+> 🔑 Tài khoản "sạch" nay có: `stag_thuyntt22@` (0 đơn · 0 đóng góp) — `USR-accounts.md §2` cần đính chính. STG bị người khác thao tác song song (tin lạ giữa phiên).
+> 📁 `VR-014-HOME-2026-09-21/vibe-report.md`
+
+## VR-016 — module **FEED** — 2026-09-21 (mobile · emulator · chỉ TC v1.1)
+
+> **`/vibe-test --module feed` chỉ TC thuộc v1.1 theo yêu cầu QC** (`TC-FEED-002/007/009/013/015` — 5/15 TC của module; 10 TC carried v1.0 chưa từng vibe-test, ngoài phạm vi phiên này). Kết quả ban đầu: **1 PASS · 2 FAIL · 2 BLOCKED**.
+> 🔁 **Retest cùng ngày:** QC cấp 2 địa chỉ cụ thể có toạ độ hợp lệ → tự tạo 1 tin NEED → `TC-FEED-009` BLOCKED → **✅ PASS** (bản đồ Google Maps thật + "17.2 km · 15 phút"). Phát hiện kèm: `location_address_catalog.xlsx` không đáng tin làm oracle (100% dòng gắn `MISSING` kể cả toạ độ hợp lệ) ⇒ đính chính `TC-FEED-007` **không cùng root cause** với `TC-FEED-015` như ghi nhận lúc đầu — `007` nghi do chọn nhầm data (chưa log bug).
+> ✅ **QC review `BUG-029` (`TC-FEED-015`) cùng ngày — chấp nhận hành vi hiện tại, không phải bug.** Expected Result sửa lại theo app (fragment + `TC-MASTER-v1.1.xlsx` + `TC-MASTER-LATEST.xlsx`), verdict FAIL → **PASS**, `BUG-029` rút khỏi `draft/`, không push Jira.
+> ✅ **Retest `TC-FEED-007` cùng ngày (QC yêu cầu):** đăng xuất → đăng nhập `stag_anhdc4@fpt.com` → mở tin của Giang (data hợp lệ) → **PASS đủ 4/4 sub-clause**, xác nhận FAIL lần 1 chỉ do chọn nhầm data. 🔍 Phát hiện kèm: CTA "Tôi mang giúp được" vắng mặt **chọn lọc theo tin** (2/3 tin khác vẫn có CTA, chỉ 1 tin không) — khớp `OPR-05`/`SC-FEED-012`, không phải bug, data hữu ích cho `TC-FEED-012`.
+> **Kết quả cuối: 4 PASS (`002`,`007`,`009`,`015`) / 0 FAIL / 1 BLOCKED (`013`)**. Coverage FEED: 0 → **5/15** có verdict — cả 4 TC chạy được đều PASS.
+> 🔑 App đã đăng nhập sẵn (`stag_giangdc2@fpt.com`) từ đầu phiên; retest `009` cần tạo tin mới qua wizard Đăng tin; retest `007` cần đổi tài khoản qua FoxPro (FoxEco không có nút đăng xuất).
+> 🎯 **Không còn case v1.1 nào cần hành động của QC** (`013` là case xác nhận BLOCKED, chờ dev/QA — không phải nợ kiểm thử).
+> 📁 `VR-016-FEED-2026-09-21/vibe-report.md` · sổ cái `coverage/coverage-FEED.md`.

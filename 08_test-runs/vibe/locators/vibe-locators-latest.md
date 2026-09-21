@@ -430,7 +430,7 @@
 |---|---|---|---|
 | **T11** ⭐ **quan trọng nhất** | **CẢ HAI ô địa chỉ ở Bước 2/3 là autocomplete BẮT BUỘC chạm gợi ý.** Gõ tay đủ chữ, text hiển thị đúng, nhưng không tap `address-suggestion-N` ⇒ `Tiếp theo` **giữ `enabled=false` vĩnh viễn và app KHÔNG báo gì** | Mất ~20 MCP call để khoanh vùng ở `TC-ORD-004`. Ghi chú VR-002 *"KHÔNG có dropdown gợi ý ở ô này"* chỉ đúng khi ô **chưa được gõ** | Luôn `set_value` **một phần** tên (vd `"Cẩm Lệ"`) → `find(accessibility id "address-suggestion-0")` → `tap` → `get_text` xác nhận giá trị đã đổi thành chuỗi gợi ý |
 | **T12** | **`(//android.widget.EditText)[N]` KHÔNG ổn định** ở Bước 2/3 — màn render **lazy**, số EditText trong cây đổi theo vị trí cuộn | Khi đang ở cuối form, `[2]` trả về **`alt-receiver-name-input`** chứ không phải SĐT người gửi (`TC-ORD-018`) | Dùng `xpath` theo **`@hint` + `@enabled`**: `//android.widget.EditText[@hint="Số điện thoại" and @enabled="true"]`, hoặc `resourceId` |
-| **T13** | **Thông báo lỗi validate KHÔNG tự xoá khi đã sửa input** (lỗi "dính") | `TC-ORD-083`: lỗi `Địa chỉ giao phải khác địa chỉ lấy hàng` **vẫn hiện** sau khi đổi ô địa chỉ giao sang chuỗi hoàn toàn khác | ⛔ **KHÔNG** đọc thông báo lỗi ngay sau TC trước — phải **thoát wizard, vào lại form sạch**, nếu không sẽ kết luận PASS/FAIL sai |
+| **T13** | **Lỗi validate chỉ cập nhật khi RỜI Ô (on blur — `VAL-02`)** — ⛔ *không phải bug "lỗi dính"* | `TC-ORD-083` (VR-004): lỗi `Địa chỉ giao phải khác địa chỉ lấy hàng` **vẫn hiện** khi ô đang được sửa mà **chưa rời ô** | ⛔ Sau mỗi lần nhập/sửa PHẢI **rời ô** (tap nhãn/vùng trống; `hideKeyboard` không đảm bảo mất focus) rồi mới đọc lỗi, và ghi bước rời ô thành dòng riêng trong log. Đồng thời **không** đọc lỗi ngay sau TC trước — vào lại form sạch. Không blur ⇒ kết luận sai cả PASS lẫn FAIL |
 | **T14** | Element ở **cuối form** bị **bottom bar cố định che** ⇒ `find` được nhưng thao tác/đọc lỗi bên dưới nó thì không thấy | `TC-ORD-081`: lỗi `Tên phải từ 2–60 ký tự` chỉ hiện sau khi cuộn thêm 1 nhịp | Sau khi tap nút submit, **cuộn 1 nhịp** rồi mới assert vùng lỗi |
 
 ## 🔑 Bảng vàng: điều kiện enable của 2 nút `Tiếp theo` (đo được trong phiên này)
@@ -1420,3 +1420,165 @@ Ca mới của phiên này: **`home-news-empty`** → `id` 🚫 NOT FOUND, `-and
 | 3 (`Đơn của tôi` 2 tab · `Theo dõi đơn` · `Cá nhân`) | **33** | **33** | 0 | 0 |
 
 > Tổng `appium_get_page_source` = **24**, trên **3 màn** — cao hơn số màn vì **12 lần là phép ĐO** (liệt kê tồn kho đơn ở 5 vị trí cuộn; quét chuỗi chứng minh **vế âm** của `TC-DLV-011/026/028`), ⛔ không phải harvest lặp. Nhờ bẫy `T-DLV-03`, mỗi lần dump **không tốn context**.
+
+# MERGE VR-013 — module ORD — 2026-09-21 (2 thiết bị song song)
+
+## 🪤 Bẫy MỚI (T22–T29)
+| # | Bẫy | Cách làm đúng |
+|---|---|---|
+| **T22** | Lỗi ảnh `Ảnh vượt quá 5MB…` nằm **dưới khối ảnh, bị thanh nút cố định che** ⇒ `find textContains("5MB")` NOT FOUND ở viewport mặc định | cuộn 1 nhịp trước khi kết luận "không có thông báo" (nguyên nhân dương tính giả của `BUG-019`) |
+| **T23** | Lightbox ảnh **không đóng khi chạm nền tối** (6 điểm, 2 thiết bị); chỉ nút × | đóng bằng tap `(//android.view.ViewGroup[@clickable="true"])[1]` hoặc toạ độ nút × |
+| **T24** | `appium_get_page_source` **trả inline** khi cây nhỏ (~18k ký tự) | màn nhỏ dùng `find_element`; chỉ dump màn lớn (tự ghi file) |
+| **T25** | `feed-post-card-N` resolve bằng `accessibility id`, **không** bằng `resourceId`; `activity-order-card-N` đôi khi NOT FOUND (T2) | fallback `descriptionStartsWith("Gửi: Tài liệu \| Giá trị thấp, Chờ ghép")` |
+| **T26** | Tap nhãn/tiêu đề **không chắc làm ô mất focus** | rời ô bằng cách **tap 1 EditText khác** |
+| **T27** | Photo Picker: `content-desc` chứa **timestamp** ảnh ⇒ đặt mtime riêng (`touch -t`) rồi chọn bằng `descriptionContains("11:10:02")` — chắc hơn `.instance(N)` | quét media: `am broadcast MEDIA_SCANNER_SCAN_FILE` |
+| **T28** | Long-press ảnh trong form sửa **mở lightbox**, không có menu xoá; nút xoá là `multi-photo-remove-N` (**có cả ở tin đã đăng**) | — |
+| **T29** | `tap` bằng `elementUUID` cũ (màn đã đổi) vẫn báo *success* | luôn find lại sau khi đổi màn |
+
+## Màn: FoxPro đăng nhập/đăng xuất (re-verify)
+| Element | Action | Strategy | Value | Verified | TC refs |
+|---|---|---|---|---|---|
+| Tab `Cá nhân` → `Đăng xuất` → `Đồng ý` | tap / scroll_to_element | -android uiautomator | `text("Cá nhân")` · `text("Đăng xuất")` · `text("Đồng ý")` | ✅ | (setup) |
+| Email / gửi OTP / đăng nhập | set_value / tap | -android uiautomator | `text("Nhập email đăng nhập")` · `text("NHẬN MÃ OTP")` · `text("ĐĂNG NHẬP")` | ✅ | (setup) |
+| Vào FoxEco | scroll_to_element / tap | -android uiautomator | `text("Chức năng")` → `text("FoxEco")` | ✅ | (setup) |
+
+## Màn: Wizard Bước 1 — nâng ⚠️ Inferred → ✅
+| Element | Action | Strategy | Value | Verified | TC refs |
+|---|---|---|---|---|---|
+| Chip giá trị / trọng lượng / kích thước | tap | -android uiautomator | `resourceId("value-tier-chip-option-low")` · `("weight-tier-chip-option-light")` · `("weight-tier-chip-option-heavy")` · `("size-tier-chip-option-small")` · `("size-tier-chip-option-large")` | ✅ | 004 038 065 067* |
+| Nút thêm ảnh / xoá ảnh N | tap | -android uiautomator | `resourceId("multi-photo-add-button")` · `resourceId("multi-photo-remove-0")` | ✅ | 004 068 088 |
+| Bộ đếm ảnh | find | accessibility id | `0/5` · `1/5` · `4/5` | ✅ | 068 088 |
+| Lỗi ảnh quá 5MB | get_text | -android uiautomator | `textContains("5MB")` → `Ảnh vượt quá 5MB, vui lòng chọn ảnh nhỏ hơn.` | ✅ *(sau khi cuộn)* | 068 |
+| Photo Picker theo timestamp | tap | -android uiautomator | `descriptionContains("11:10:02")` | ✅ | 068 |
+
+## Màn: Wizard Bước 2
+| Element | Action | Strategy | Value | Verified | TC refs |
+|---|---|---|---|---|---|
+| Tên / SĐT người nhận | set_value | -android uiautomator | `resourceId("receiver-name-input")` · `("receiver-phone-input")` | ✅ | 052 083 084 |
+| Địa chỉ lấy / giao | set_value | xpath | `//android.widget.EditText[@hint="Địa chỉ lấy hàng"]` · `[@hint="Địa chỉ giao hàng"]` | ✅ | 004 083 084 |
+| Gợi ý địa chỉ | tap | accessibility id | `address-suggestion-0` · `address-suggestion-1` | ✅ | 004 046 045 |
+| Lỗi trùng địa chỉ | find | -android uiautomator | `text("Địa chỉ giao phải khác địa chỉ lấy hàng")` | ✅ *(chỉ hiện sau khi bấm `Tiếp theo` đã enable)* | 083 |
+| Khối uỷ quyền | tap / set_value | -android uiautomator | `descriptionStartsWith("Thêm người nhận uỷ quyền")` · `resourceId("alt-receiver-name-input")` · `("alt-receiver-phone-input")` | ✅ | 080 |
+| Ngày / buổi | tap | -android uiautomator | `descriptionStartsWith("Đến ngày")` · `text("22")` · `descriptionStartsWith("Chiều")` · `descriptionStartsWith("Giờ nào cũng được")` | ✅ | 004 038 |
+
+## Màn: Thành công / Theo dõi đơn / Sửa tin
+| Element | Action | Strategy | Value | Verified | TC refs |
+|---|---|---|---|---|---|
+| 2 nút màn thành công | tap | accessibility id | `Theo dõi đơn` · `Về trang chủ` | ✅ | 039 040 |
+| Nút Chỉnh sửa / Huỷ đơn / Báo cáo sự cố | tap | -android uiautomator | `resourceId("track-edit-post")` · `("track-cancel-post")` · `("track-report-incident")` | ✅ *(2 nút đầu tap được ở tin `Chờ ghép`)* | 046 060 088 |
+| Icon copy địa chỉ giao | tap | -android uiautomator | `description("Copy").instance(1)` | ✅ | 085 |
+| Ảnh sản phẩm (carousel) | swipe / tap | -android uiautomator | `descriptionStartsWith("Xem ảnh")` · badge `text("2/5")` | ✅ | 072 073 |
+| Nút × lightbox | tap | xpath | `(//android.view.ViewGroup[@clickable="true"])[1]` | ✅ | 073 |
+| Nút huỷ sửa (theo bước N) + xác nhận | tap | accessibility id | `Huỷ chỉnh sửa` (`post-n1/n2/n3-cancel-edit`) · `dialog-confirm-button` · `Cập nhật đơn` | ✅ | 060 046 |
+| Popup lưu | tap | -android uiautomator | `text("Đồng ý")` sau `Đã lưu — Đã cập nhật tin đăng.` | ✅ | 046 |
+
+## Màn: Hoạt động / Bảng tin / OFFER
+| Element | Action | Strategy | Value | Verified | TC refs |
+|---|---|---|---|---|---|
+| Card đơn (đang diễn ra) | tap | -android uiautomator | `descriptionStartsWith("Gửi: Tài liệu \| Giá trị thấp, Chờ ghép")` | ✅ | 004 060 |
+| Card `Đã hoàn thành` | find | resource-id | `completed-card-#ECO-2026-NNNN` · badge `text("Hết hạn")` | ✅ | 048 |
+| Card Bảng tin | tap | accessibility id | `feed-post-card-0` | ✅ | 048 045 080 |
+| Chip buổi OFFER | tap | -android uiautomator | `resourceId("offer-day-part-anytime")` | ✅ | 045 |
+| Ô OFFER | set_value | xpath | `//android.widget.EditText[@hint="Bạn đang ở đâu / xuất phát từ đâu"]` · `[@hint="Bạn sẽ đến đâu"]` | ✅ | 045 |
+
+## 🚫 NOT FOUND (đúng kỳ vọng / ghi nhận)
+`textContains("Xoá")` sau long-press ảnh (không có menu xoá) · ô tìm kiếm + tab con ở Bảng tin (không tồn tại) · khối uỷ quyền trên màn chủ tin (`Bảy`/`chỉ định` — 0) · nút `Tôi mang giúp được` khi B là người nhận · `textContains("phải khác")` ở đường gõ tay · lỗi trùng địa chỉ trước khi bấm `Tiếp theo`.
+
+# MERGE VR-014 — module HOME — 2026-09-21
+
+## Màn: Trang chủ (Thủy — tài khoản sạch)
+| Element | Action | Strategy | Value | Verified | TC refs |
+|---|---|---|---|---|---|
+| Số đơn đã giúp (hero) | get_text | id | `home-helped-count` → `0` | ✅ | 027 028 |
+| Chuỗi hero rỗng | get_text | -android uiautomator | `text(" · Chưa có đóng góp nào")` | ✅ | 028 |
+| Dòng cộng đồng | get_text | -android uiautomator | `textContains("Cộng đồng FoxEco")` → `Cộng đồng FoxEco: 325 đơn · 23743 người` | ✅ | 028 |
+| Nút CTA vùng hero | find | accessibility id | `Xem bảng tin gửi hàng` | ✅ | 028 |
+| Section `Đơn của tôi` (rỗng) | find | -android uiautomator | `text("Đơn của tôi")` · `text("Chưa có đơn nào")` | ✅ | 027 |
+| CTA `Tạo đơn gửi hàng` / chuỗi `Bạn chưa có đơn nào đang chạy` | find | -android uiautomator | `textContains(...)` | 🚫 NOT FOUND | 027 |
+| Nút cuối `Tin mới` | tap | -android uiautomator | `text("Xem thêm trên Bảng tin")` | ✅ | 019 021 025 |
+| Card `Bảng tin` | find | accessibility id | `feed-post-card-0` … `-6` | ✅ | 021 025 |
+
+## 🪤 Bẫy mới
+| # | Bẫy | Cách làm đúng |
+|---|---|---|
+| T30 | Dữ liệu STG bị **người khác đăng song song** (xuất hiện tin lạ `FTEL SG07 → FTEL SG03` giữa phiên) ⇒ số tin thay đổi giữa lúc kiểm tiền đề và lúc chạy | đo lại số tin ngay trước khi kết luận các TC về biên (`019/021/025`) |
+| T31 | Card `Tin mới` ở Trang chủ có `content-desc` gộp, còn cây con đủ `TextView`; phải cuộn để card đầu không bị cắt | đếm theo cụm `Nhận:`/`Giao:` hoặc dùng ảnh chụp |
+
+# MERGE VR-016 — module FEED — 2026-09-21
+
+## Screen: Bảng tin (Feed list, không rỗng)
+| Element | Action | Strategy | Value | Verified | TC refs |
+|---|---|---|---|---|---|
+| Card tin theo index | find + tap | -android uiautomator | `new UiSelector().resourceId("feed-post-card-N")` (N=0..4 quan sát được) | ✅ | 002 007 009 015 |
+| Badge "Tin của bạn" | verify | id | `feed-post-own-badge` | ✅ | 002 *(đối chứng phủ định — card KHÔNG có badge vẫn KHÔNG có CTA)* |
+| CTA "Tôi mang giúp được" trên card | verify_absent | -android uiautomator | `text("Tôi mang giúp được")` → không xuất hiện ở màn danh sách, chỉ ở Chi tiết tin | ✅ | 002 |
+
+## Screen: Chi tiết tin (Feed detail)
+| Element | Action | Strategy | Value | Verified | TC refs |
+|---|---|---|---|---|---|
+| Nút CTA "Tôi mang giúp được" (sticky bottom) | verify | -android uiautomator | `text("Tôi mang giúp được")` | ✅ | 007 |
+| Cảnh báo thiếu toạ độ (thay cho khung bản đồ) | verify | -android uiautomator | `text("Chưa xác định được toạ độ trên bản đồ cho địa chỉ này")` | ✅ | 007 009 015 |
+| Cụm NGƯỜI GỬI — tên đầy đủ | get_text | (vùng "NGƯỜI GỬI", không resource-id riêng) | — | ✅ | 007 |
+| Nút "Gọi" cạnh Người gửi (trước ghép) | verify (quan sát) | -android uiautomator | `text("Gọi")` | ⚠️ Inferred — thấy hiển thị nhưng chưa verify enabled/disabled; liên quan nợ CHANGELOG FEED #1 (lộ SĐT trước ghép), KHÔNG thuộc TC nào hôm nay | — |
+
+## 🪤 Bẫy mới
+| # | Bẫy | Cách làm đúng |
+|---|---|---|
+| T32 | `feed-post-card-N` là **index theo vị trí hiển thị**, không phải ID cố định của tin — đổi khi có tin mới | luôn `get_page_source` lại màn Bảng tin đầu mỗi phiên trước khi map N↔nội dung, đừng hardcode từ phiên trước |
+| T33 | **Toàn bộ office đã kiểm trên STG (`FTEL SG09/SG07/SG03`, `Tòa V-City`, `FPT Cầu Giấy`) đều thiếu toạ độ** — khi thiếu, app **KHÔNG** render khung "Bản đồ · ~X km" hay placeholder box + "0km" như PRD mô tả (`C-FEED-02` Resolved); thay vào đó chỉ có 1 dòng chữ cảnh báo lồng trong card LỘ TRÌNH, không có khung riêng, không có "0km" | muốn test nhánh "bản đồ thật" (`TC-FEED-009`) cần seed 1 tin với văn phòng **đã xác nhận có toạ độ hợp lệ** qua Đăng tin — hiện chưa xác định được văn phòng nào đạt điều kiện này trên STG |
+
+# MERGE VR-016 (retest) — module FEED — Đăng tin wizard — 2026-09-21
+
+## Screen: Đăng tin — Bước 1/3 "Thông tin hàng"
+| Element | Action | Strategy | Value | Verified | TC refs |
+|---|---|---|---|---|---|
+| Chip Loại hàng/Giá trị/Trọng lượng/Kích thước | tap | text | `text("<label>")` vd `text("Thấp")`, `text("Dưới 5 kg")`, `text("Nhỏ")` | ✅ | 009 |
+| Ô ảnh hàng (bắt buộc ≥1) | tap | -android uiautomator | `textContains("0/5")` | ✅ | 009 |
+| ⚠️ Ảnh >5MB bị chặn không cảnh báo trước | — | — | toast "Ảnh vượt quá 5MB" chỉ hiện SAU khi chọn | — | 009 |
+
+## Screen: Đăng tin — Bước 2/3 "Địa điểm & Thời gian"
+| Element | Action | Strategy | Value | Verified | TC refs |
+|---|---|---|---|---|---|
+| Ô địa chỉ Người gửi (Lấy hàng) — prefill nhưng EDITABLE | tap→set_value→chọn gợi ý | -android uiautomator | `className("android.widget.EditText").focused(true)` | ✅ | 009 |
+| Gợi ý autocomplete địa chỉ | tap | -android uiautomator | `textContains("<office name>")` | ✅ | 009 |
+| Ô Email người nhận (auto-fill tên+SĐT nếu có trong hệ thống) | set_value | -android uiautomator | `text("Email công ty người nhận")` | ✅ | 009 |
+| Ô Địa chỉ giao hàng | set_value→chọn gợi ý | -android uiautomator | `text("Địa chỉ giao hàng")` | ✅ | 009 |
+| Chip buổi mong muốn | tap | -android uiautomator | `textContains("Sáng (8")` | ✅ | 009 |
+| ⚠️ "Tiếp theo" luôn màu cam dù thiếu field bắt buộc — không toast lỗi, phải cuộn tìm | — | — | field "Buổi mong muốn" hay bị bỏ sót vì nằm dưới scroll | — | 009 |
+
+## Screen: Đăng tin — Bước 3/3 "Xác nhận & Đăng tin"
+| Element | Action | Strategy | Value | Verified | TC refs |
+|---|---|---|---|---|---|
+| Checkbox đồng ý điều khoản | tap | -android uiautomator | `textContains("Tôi đã đọc và đồng ý")` | ✅ | 009 |
+| Nút "Đăng tin ngay" | tap | -android uiautomator | `description("Đăng tin ngay")` | ✅ | 009 |
+
+## 🔑 Fixture cố định — văn phòng CÓ toạ độ hợp lệ
+| Field | Giá trị |
+|---|---|
+| Lấy hàng | `FTEL An Giang Trần Hưng Đạo - Long Xuyên` |
+| Giao hàng | `FTEL An Giang VPGD Bình Hòa` |
+| Xác nhận | Bản đồ Google Maps thật, vẽ tuyến, "17.2 km · 15 phút" (`VR-016-FEED-2026-09-21/screenshots/TC-FEED-009__verify-real-map-route.png`) |
+
+## 🪤 Bẫy mới
+| # | Bẫy | Cách làm đúng |
+|---|---|---|
+| T34 | `location_address_catalog.xlsx` (`DOC-v1.1-04`) **KHÔNG dùng được** để tra văn phòng có toạ độ hợp lệ — 399/399 dòng đều `coordinate_status=MISSING` kể cả khi lat/lng hợp lệ (đã xác nhận với `FTEL An Giang Trần Hưng Đạo - Long Xuyên` / `FTEL An Giang VPGD Bình Hòa`) | Kiểm THẬT qua app (tạo tin, xem Chi tiết tin) — không suy đoán từ file |
+| T35 | Ô địa chỉ "Người gửi" ở wizard Đăng tin trông như label tĩnh (prefill từ hồ sơ) nhưng thực ra là `EditText` editable — tap vào rồi `set_value` để đổi | Không cần đổi địa chỉ mặc định hồ sơ (rủi ro ảnh hưởng module khác) — chỉ cần sửa ngay tại field này trong wizard |
+| T36 | Nút "Tiếp theo" ở Bước 2/3 luôn hiển thị màu cam (trông như enabled) kể cả khi thiếu field bắt buộc "Buổi mong muốn" — tap không có phản ứng, không toast | Luôn cuộn hết form trước khi tap "Tiếp theo", kiểm còn field nào ghi "Chọn ít nhất..." không |
+
+# MERGE VR-016 (retest TC-FEED-007) — module FEED — 2026-09-21
+
+## Screen: FoxEco — Cá nhân / FoxPro — Cá nhân (account switch)
+| Element | Action | Strategy | Value | Verified | TC refs |
+|---|---|---|---|---|---|
+| Tab "Cá nhân" (FoxEco — KHÔNG có Đăng xuất) | tap | text | `text("Cá nhân")` | ✅ | 007 |
+| Thoát FoxEco → FoxPro `Chức năng` | gesture back ×2 | — | — | ✅ | 007 |
+| Tab "Cá nhân" (FoxPro — CÓ Đăng xuất) | tap | text | `text("Cá nhân")` | ✅ | 007 |
+| Nút "Đăng xuất" | scroll_to_element + tap | -android uiautomator | `textContains("Đăng xuất")` | ✅ | 007 |
+| Popup xác nhận | tap | text | `text("Đồng ý")` | ✅ | 007 |
+
+## 🪤 Bẫy mới
+| # | Bẫy | Cách làm đúng |
+|---|---|---|
+| T37 | CTA "Tôi mang giúp được" **vắng mặt có chọn lọc theo TỪNG TIN**, không phải theo tài khoản viewer nói chung — 2/3 tin không phải của `anhdc4` vẫn có CTA, chỉ 1 tin (viewer = người nhận đã khai, theo `OPR-05`) thì không | automation KHÔNG được assert "mọi tin của người khác đều có CTA" — phải tham số hoá theo cặp (viewer, tin); `TC-FEED-012` test đúng nhánh này |
+| T38 | FoxEco **không có** nút Đăng xuất trong tab "Cá nhân" của chính nó — phải back ra FoxPro host rồi mới thấy | luồng đổi tài khoản luôn phải qua FoxPro `Cá nhân`, không phải FoxEco `Cá nhân` (đã ghi ở `USR-accounts.md §0b`, xác nhận lại lần nữa ở VR-016) |

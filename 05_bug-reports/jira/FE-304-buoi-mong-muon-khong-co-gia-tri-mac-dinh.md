@@ -2,8 +2,8 @@
 bug_id: BUG-012
 jira_project: FE
 jira_issue_type: Bug
-jira_key:
-jira_url:
+jira_key: FE-304
+jira_url: https://foxproject.atlassian.net/browse/FE-304
 module: ORD - Đăng tin & Quản lý tin
 bug_desc: Buổi mong muốn không có giá trị mặc định Sau giờ làm
 priority: P3
@@ -25,12 +25,12 @@ reported_by: GiangDC2
 reported_on: 2026-09-18
 assignee:
 due_date:
-last_synced:
+last_synced: 2026-09-21
 ---
 
 # [ORD - Đăng tin & Quản lý tin] - Buổi mong muốn không có giá trị mặc định Sau giờ làm
 
-> Jira: [chưa push] · Status: Open
+> Jira: [FE-304](https://foxproject.atlassian.net/browse/FE-304) · Status: To Do
 
 <!-- jira:description:start — copy nguyên khối dưới đây vào field Description của Jira -->
 
@@ -84,6 +84,7 @@ last_synced:
 | Ngày | Status | Ghi chú | Ref |
 |---|---|---|---|
 | 2026-09-18 | Open | Log từ `TC-ORD-058` FAIL — ứng viên bug **B5** của VR-002 | VR-002-ORD-2026-09-18 |
+| 2026-09-21 | To Do | Push Jira → FE-304 (QC GiangDC2 yêu cầu) | — |
 
 ## Ghi chú nội bộ (không push Jira)
 
@@ -91,4 +92,4 @@ last_synced:
 - **`severity: Low`** đúng như report VR-002 đề xuất: chỉ mất tiện lợi, ⛔ không chặn luồng đăng tin (người dùng vẫn chọn buổi tay rồi đi tiếp bình thường).
 - **Chi tiết phụ đáng để dev xem cùng lúc:** lỗi đỏ *"Chọn ít nhất 1 buổi"* hiện **ngay khi màn vừa mở**, trước mọi thao tác. Nếu mặc định được set đúng thì lỗi này cũng tự hết — nên ⛔ **không tách bug riêng**, chỉ ghi trong Actual.
 - **Cần kiểm thêm khi retest:** field `Buổi di chuyển` của form **OFFER** (FR02) dùng cùng rule mặc định, chưa có TC nào chạy ⇒ nếu cũng rỗng thì mở rộng bug này thay vì log mới.
-- **Chưa push Jira** theo yêu cầu QC 2026-09-18. Khi push: `/log-bug --push-jira BUG-012` (nhớ `Parent = FE-1`, `Fix versions = V1.0`, `Test Round = 1`).
+- **Đã push Jira 2026-09-21** → [FE-304](https://foxproject.atlassian.net/browse/FE-304) (Parent `FE-1` · Fix version `V1.0` · Test Round `1`, evidence đính kèm qua REST).

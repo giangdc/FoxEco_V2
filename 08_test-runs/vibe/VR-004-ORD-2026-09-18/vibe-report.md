@@ -7,7 +7,7 @@
 
 ## Summary
 
-Phiên chạy **46 TC / 5 lô** — **27 PASS · 17 FAIL · 2 BLOCKED**. Đưa module từ **42/88** lên **69/88 TC có verdict cuối** (+27).
+Phiên chạy **46 TC / 5 lô** — **27 PASS · 17 FAIL · 2 BLOCKED**. Đưa module từ **42/88** lên **69/88 TC có verdict cuối** *(♻️ 2026-09-21: QC reset `083`/`084`/`085` ⇒ 66/88 — xem `coverage-ORD.md`)* (+27).
 **Còn nợ 19 TC ⇒ §8 = PARTIAL** — nhưng khác mọi phiên trước: **không TC nào còn nợ vì hết sức phiên**. Đã chạy **hết mọi TC có thể chạy**; 19 TC còn lại **chặn tiền đề** (17 TC cần 1 đơn NEED đăng thành công, 2 TC cần tài khoản B).
 
 **3 kết quả quan trọng nhất của phiên:**
@@ -99,9 +99,9 @@ Theo lô: **lô 1** 14 TC (*Đăng tin mới* + *Wizard Bước 1*) · **lô 2**
 | **B3** | 🔴 **Ô địa chỉ bắt buộc chọn từ gợi ý nhưng không báo gì** *(nhánh cụ thể, nặng nhất của B2)* | **P1** | `TC-ORD-083` · `084` | ⭐ **Đây là nguyên nhân thật** mà VR-002 quy nhầm cho *"nhánh trùng địa chỉ"*. Gõ tay đủ chữ ⇒ nút khoá vĩnh viễn, 0 thông báo. Người dùng **không có cách nào biết** phải chạm gợi ý |
 | **B4** | 🟠 **Prefill địa chỉ từ hồ sơ/HRIS không hoạt động** | **P2** | `TC-ORD-017` · `043` **+ `TC-USR-040`** *(module USR)* | **Gộp 3 TC / 2 module vào 1 bug.** Hậu quả kép: vừa sai kỳ vọng, vừa **kích hoạt B3** (ô rỗng ⇒ buộc gõ tay) |
 | **B5** | 🟠 **Autofill người nhận thiếu ô địa chỉ giao** | **P1** *(chờ BA)* | `TC-ORD-019` (P1) **+ `TC-ORD-074`** *(VR-002, P1)* | 2 TC ở 2 version cùng chỉ 1 lỗi. ⚠️ **Cần BA chốt trước khi log**: chính thông báo app nói *"vui lòng bổ sung SĐT/địa chỉ giao còn thiếu"* mà app **lại điền được SĐT** ⇒ hành vi đúng là autofill 3 hay 2 field? |
-| **B6** | 🟡 **Lỗi validate không tự xoá khi đã sửa input** *(lỗi "dính")* | **P2** | phát hiện khi chạy `TC-ORD-083` | **Bug MỚI.** Không chỉ gây hiểu nhầm cho user mà **làm sai lệch kết quả test** — suýt tạo verdict PASS sai ngay trong phiên này (xem bẫy **T13**) |
+| ~~B6~~ | ♻️ **ĐÃ RÚT (2026-09-21)** — *lỗi validate không tự xoá khi đã sửa input* | — | phát hiện khi chạy `TC-ORD-083` | **Không phải bug.** Validate chỉ chạy khi **rời ô** (on blur — `VAL-02`); log không có bước rời ô sau khi sửa. `TC-ORD-083`/`084` được QC reset về NOT_RUN để test lại (phải rời ô trước khi đọc lỗi) |
 | **B7** | 🟡 **Nút gửi form OFFER luôn `enabled`** dù thiếu trường | **P3** | `TC-ORD-050` | Trái `VAL-01` nên TC FAIL đúng, **nhưng OFFER vẫn không cho đăng và có lỗi inline** ⇒ **UX tốt hơn NEED**. 💡 **Khuyến nghị: đừng fix OFFER cho giống NEED — hãy port cơ chế lỗi inline của OFFER sang NEED** để dứt điểm B2 |
-| **B8** | 🟡 **Copy không có phản hồi thị giác** | **Minor** | `TC-ORD-085` | Copy đúng nội dung (đo bằng sentinel clipboard) nhưng icon không đổi màu (đo bằng pixel) |
+| ~~B8~~ | ♻️ **ĐÃ RÚT (2026-09-21, chờ check lại ở VR kế tiếp)** — *copy không có phản hồi thị giác* | — | `TC-ORD-085` | QC xác nhận bấm icon copy **có** hiện `Đã copy` ~2s. Kết luận cũ đo bằng pixel 2 ảnh `adb screencap` → dễ âm tính giả do độ trễ chụp. **Không phải bug cho tới khi có bằng chứng quay màn hình.** Xem ghi chú ở `coverage-ORD.md` dòng `TC-ORD-085` |
 | ~~B9~~ | ♻️ **ĐÃ RÚT LẠI** — *nút disable không làm mờ* | — | `TC-ORD-008` step 3 | **Không phải bug.** Đo pixel: nền disable `(253,175,62)` cam nhạt vs enable `(255,160,0)` cam bão hoà ⇒ **app CÓ làm mờ**. Kết luận ban đầu sai vì **nhìn bằng mắt trên ảnh**; VR-002 (`CHANGELOG ORD §Nợ #3`) đã đúng |
 
 ### 🔴 5 TC FAIL là **nợ QC**, ⛔ KHÔNG phải bug — chờ chốt `DESCOPED` (`Project_rule §10.5`)
@@ -133,7 +133,7 @@ Theo lô: **lô 1** 14 TC (*Đăng tin mới* + *Wizard Bước 1*) · **lô 2**
 ## Recommendation
 
 - **🔴 Ưu tiên tuyệt đối — `/log-bug` bug B1** (P1 Blocker): không đăng được tin NEED. **17/19 TC còn nợ của module phụ thuộc bug này.**
-- **`/log-bug` gộp** B2+B3+B9 thành 1 bug chặn-im-lặng (TC đại diện `TC-ORD-051`), B4 gộp 3 TC / 2 module, B6/B7/B8 log riêng mức thấp *(B9 đã rút — không phải bug)*.
+- **`/log-bug` gộp** B2+B3+B9 thành 1 bug chặn-im-lặng (TC đại diện `TC-ORD-051`), B4 gộp 3 TC / 2 module, B7 log dạng `Suggest` (draft `BUG-016`) *(B6, B8, B9 đã rút — không phải bug; B8 chờ check lại)*.
 - **Chờ BA** trước khi log B5 (`TC-ORD-019`/`074`).
 - **QC chốt DESCOPED** 5 TC hết hiệu lực + xem lại thiết kế `TC-ORD-084`, `TC-ORD-034`.
 - **Cấp tài khoản B** để gỡ `TC-ORD-044`/`045`.

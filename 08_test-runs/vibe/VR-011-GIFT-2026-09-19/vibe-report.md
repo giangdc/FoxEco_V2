@@ -32,10 +32,12 @@
 
 | Result | Count | % trên 12 |
 |--------|-------|---|
-| ✅ PASS | **7** | 58% |
-| ❌ FAIL | **2** | 17% |
+| ✅ PASS | **8** | 67% |
+| ❌ FAIL | **1** | 8% |
 | 🚫 BLOCKED | 2 | 17% |
 | ⚠️ **NOT_EVIDENCED** | **1** | 8% |
+
+> 🔁 **ĐÍNH CHÍNH 2026-09-21 — `TC-GIFT-012` ❌ FAIL → ✅ PASS (QC chốt).** `TC-GIFT-012` đổi **❌ FAIL → ✅ PASS** theo quyết định của QC GiangDC2: nhấn thông báo `NTF-07` mở thẳng màn **"Quà đã nhận"** là **ĐÚNG hành vi**, ⛔ không phải bug. Expected step 4 của TC đã sửa cho khớp (fragment `TC-GIFT-v1.0.md` + `TC-MASTER-v1.0.xlsx` 2 sheet `Quà cảm ơn`/`ALL`, số dòng TC không đổi) và **draft `BUG-022` đã xoá**. Evidence: ảnh `TC-GIFT-012__verify-thong-bao-qua-cam-on.png` (slot `verify`, chứng minh thông báo) + `TC-GIFT-012__step4-FAIL-mo-qua-da-nhan-khong-phai-trang-ca-nhan.png` (màn đích; ⛔ **giữ nguyên tên** file vì chụp lúc đang chấm FAIL — nội dung ảnh chính là màn "Quà đã nhận" mà Expected mới yêu cầu). ⚠️ Chưa chụp lại ảnh màn đích ở slot `verify` — cần đăng nhập lại `stag_giangdc2@` trên thiết bị (đang dùng cho phiên VR-013); làm được bằng thông báo thứ 2 ("17 phút trước") nếu QC muốn ảnh đúng slot. ⚠️ Thiếu emoji 🎁 ở thông báo vẫn là quan sát trang trí, không hạ verdict.
 
 > 🔁 **ĐÍNH CHÍNH TRONG PHIÊN — `TC-GIFT-001` và `TC-GIFT-010` đã đổi ❌ FAIL → ✅ PASS.**
 > Lúc chạy, 2 TC bị chấm FAIL vì luồng app khác chữ trong TC. Đối chiếu **tài liệu phân tích của chính dự án** cho thấy chấm vậy **sai quy kết** — app khớp **Then của scenario** và khớp **câu trả lời BA đã `Resolved`**:
@@ -81,14 +83,13 @@
 
 | TC ID | Failed at | Expected | Actual |
 |-------|----------|----------|--------|
-| `TC-GIFT-012` | Step 4 | Nhấn thông báo quà → mở **màn Cá nhân** | Mở **"Quà đã nhận"** — trái với chính câu chữ thông báo *"mở Trang cá nhân để xem"* |
 | `TC-GIFT-003` | Step 5 | Popup hiện đúng chuỗi **"Cảm ơn của bạn đã được gửi"** (`BR14-02`) | Tiêu đề **"Đã gửi lời cảm ơn!"** — chuỗi **v1.0 mà v1.1 đã chủ ý thay** |
 
-### 🔗 Cả 2 FAIL đều là **lệch nội dung / điều hướng cần BA chốt**, ⛔ chưa log bug ngay
+### 🔗 FAIL còn lại (`TC-GIFT-003`) — đã log **[FE-308](https://foxproject.atlassian.net/browse/FE-308)** (2026-09-21, QC duyệt)
 
 | Gốc | Kéo theo | Bản chất | Cần ai quyết |
 |---|---|---|---|
-| **G2 — Deep-link thông báo `NTF-07` sai đích** | `TC-GIFT-012` | App **tự mâu thuẫn với chính nó**: copy nói *"mở Trang cá nhân"*, điều hướng mở *"Quà đã nhận"* | **BA**: sửa đích deep-link, hay sửa câu chữ + `NTF-07`? |
+| ~~G2 — Deep-link thông báo `NTF-07` sai đích~~ | ~~`TC-GIFT-012`~~ | **ĐÃ ĐÓNG 2026-09-21 — QC chốt app đúng, không phải bug** (xem khối đính chính đầu mục kết quả) | — |
 | **G3 — Copy popup chưa cập nhật theo `BR14-02`** | `TC-GIFT-003` | Lỗi nội dung hiển thị mức thấp — app còn chuỗi v1.0 `"Đã gửi lời cảm ơn!"`. ⚠ Chuỗi `"cảm ơn của bạn đã được gửi"` **có** xuất hiện (nhúng trong câu thân popup) | **BA**: đọc chặt (FAIL, sửa copy) hay đọc lỏng (PASS, sửa Expected)? |
 
 ### 🔴 1 SPEC-GAP tách riêng — ⛔ KHÔNG gắn với TC nào FAIL
@@ -121,7 +122,7 @@ Nút **`"✓ Cảm ơn người vận chuyển"`** mà `KB-GIFT-01` (`KP-01 §5.
 | TC ID | P | Thiếu gì | Chạy lại thế nào |
 |-------|---|----------|------------------|
 | `TC-GIFT-011` | P3 | **1 đơn `Hoàn thành` chưa tặng quà** (`SEED-GIFT-06`, TC tiêu đơn). Phiên này STG chỉ còn **2** đơn đủ điều kiện, đã dùng cho `TC-GIFT-003` + `TC-GIFT-005` (cả hai **P2**, ưu tiên cao hơn) | Tạo 1 đơn Hoàn thành mới qua flow UI (A đăng NEED → B nhận & giao → C xác nhận), rồi `/vibe-test --tc TC-GIFT-011` |
-| `TC-GIFT-008` | P3 | **1 tài khoản CBNV "trắng"** (0 đơn / 0 quà). ⛔ **STG không còn cái nào** | Xin dev/QA cấp account mới tinh — **dùng chung** với `SEED-ACT-02` + `SEED-HOME-01`, chạy hết cụm empty state của 3 module trong 1 lượt |
+| `TC-GIFT-008` | P3 | **1 tài khoản CBNV "trắng"** (0 đơn / 0 quà). ~~STG không còn cái nào~~ → 🆕 **2026-09-21 QC cấp `stag_MinhNDN2@fpt.com`** *(SĐT HRIS chưa cập nhật; chưa login xác nhận trắng)* | Xin dev/QA cấp account mới tinh — **dùng chung** với `SEED-ACT-02` + `SEED-HOME-01`, chạy hết cụm empty state của 3 module trong 1 lượt |
 
 ## 🔴 Phát hiện ngoài phạm vi TC — cần hành động ở bước khác
 
@@ -170,8 +171,8 @@ Quy tắc *"loại quà có count = 0 thì KHÔNG hiện ô trên card đếm"* 
 
 ## Recommendation
 
-- **Automate now:** **7 TC** (`TC-GIFT-001/002/004/005/006/007/009`) — 38 locator đã verified trong `vibe-locators-latest.md`, ⛔ không cần mở lại Appium để dò
-- **Chờ BA chốt rồi mới `/log-bug`:** 2 TC → **G2** (`TC-GIFT-012`) · **G3** (`TC-GIFT-003`)
+- **Automate now:** **8 TC** (`TC-GIFT-001/002/004/005/006/007/009/012`; `012` cần harvest locator icon chuông trước) — 38 locator đã verified trong `vibe-locators-latest.md`, ⛔ không cần mở lại Appium để dò
+- **Bug đã log:** `TC-GIFT-003` → **FE-308** (assignee Tuanvm37) — ⏸ QC chốt 2026-09-21: **chờ FE-308 đổi trạng thái rồi tính tiếp** (không hỏi BA riêng); `TC-GIFT-012` ✅ PASS, không có bug
 - **Sửa TC (⛔ không log bug):** `TC-GIFT-001` (steps 3–4 lỗi thời) · `TC-GIFT-010` (Expected hẹp hơn `SC-GIFT-010`) · `TC-GIFT-009` (2→3 mục menu) · `SEED-GIFT-05` (bỏ ràng buộc tên loại quà)
 - **`/analyze-requirements --update`:** 5 surface chưa có trong `scenario_map` + sửa ma trận nhãn nút `KB-GIFT-01`
 - **Wait for app:** 2 TC (`TC-GIFT-013/014`) — chờ dev build `FR09`

@@ -5,6 +5,7 @@
 > **Phiên này chốt 46 TC** — **27 PASS · 17 FAIL · 2 BLOCKED**. Trong đó **28 TC lần đầu có verdict**, 18 TC chạy lại theo `--all`.
 > **1 TC ĐỔI verdict:** `TC-ORD-017` PASS (VR-002) → **FAIL** (VR-004) — prefill địa chỉ lấy hàng đã mất.
 > Sau phiên: có verdict cuối **69**/88 · **CÒN NỢ 19** ⇒ §8 = **PARTIAL**.
+> ♻️ 2026-09-21: QC reset `TC-ORD-083`/`084`/`085` về NOT_RUN (sổ tích luỹ `coverage-ORD.md` nay 66/88 · nợ 22). Sổ của run này giữ nguyên verdict lúc chạy.
 > Seed data: **SEED-ORD-02** (dựng lại 2026-09-18 23:43 — `/sdcard` emulator đã trống, `SEED-ORD-01` của VR-002 KHÔNG còn)
 
 > 🛑 **Lý do dừng — KHÔNG phải hết sức phiên:** đã chạy **hết mọi TC có thể chạy**. 19 TC còn nợ đều **chặn tiền đề**: 17 TC cần 1 đơn NEED đăng thành công (bug `TC-ORD-004` — API 400), 2 TC cần tài khoản B.

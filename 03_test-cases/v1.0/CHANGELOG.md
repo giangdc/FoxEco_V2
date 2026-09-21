@@ -7,6 +7,8 @@
 
 | Ngày | Action | DOC ID | Module | Tổng TC | File output | Priority | Mode | Techniques | Review Status |
 |---|---|---|---|--:|---|---|---|---|---|
+| 2026-09-21 | EDIT (Lifecycle→`DESCOPED`, Status→`Skipped` — không đổi số lượng, `§10.5`) | DOC-v1.1-01 | HOME | 2 (`TC-HOME-010`, `TC-HOME-024`) | `fragments/TC-HOME-v1.0.md` + `TC-MASTER-v1.0.xlsx` | P2:1, P3:1 | standard | N/A | ⏳ 2 TC v1.0 bị SC DEPRECATED ở v1.1 nhưng chưa đánh dấu — nay đánh dấu, giữ dòng |
+| 2026-09-21 | REVERT (`TC-DLV-028` về bản gốc — không đổi số lượng, `§10.5`) | DOC-v1.0-02 | DLV | 1 (`TC-DLV-028`) | `fragments/TC-DLV-v1.0.md` + `TC-MASTER-v1.0.xlsx` (sheet `ALL` + `Giao nhận & Theo dõi đơn`) | P2 | standard | N/A | ✅ QC GiangDC2 kiểm lại 2026-09-21: `BUG-022` không phải bug, app đúng ⇒ huỷ bản sửa thêm nhánh `Đang giao` cùng ngày, trả `TC-DLV-028` về bản gốc (chỉ kiểm `Đã ghép`) |
 | 2026-09-07 | GENERATE | DOC-v1.0-01 · DOC-v1.0-02 · DOC-v1.0-05 · DOC-v1.0-06 | ACT | 14 | `fragments/TC-ACT-v1.0.md` | P1:0, P2:7, P3:7 | standard | N/A | ❌ 0/100 REJECTED (2026-09-07) |
 | 2026-09-07 | GENERATE | DOC-v1.0-01 · DOC-v1.0-02 · DOC-v1.0-06 | ASN | 21 | `fragments/TC-ASN-v1.0.md` | P1:6, P2:13, P3:2 | standard | N/A | ❌ 0/100 REJECTED (2026-09-07) |
 | 2026-09-07 | GENERATE | DOC-v1.0-01 · DOC-v1.0-06 | CNL | 14 | `fragments/TC-CNL-v1.0.md` | P1:4, P2:8, P3:2 | standard | N/A | ❌ 0/100 REJECTED (2026-09-07) |
