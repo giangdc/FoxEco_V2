@@ -8,8 +8,15 @@
 | Cần gì | Đọc ở đâu |
 |---|---|
 | Bug đã push Jira (mirror, trạng thái mới nhất) | `05_bug-reports/jira/<KEY>-*.md` (glob đệ quy) |
-| Bug local chưa push Jira | `05_bug-reports/draft/BUG-NNN-*.md` (glob đệ quy) — hiện **0** file (`BUG-029` rút lại 2026-09-21, xem ghi chú cuối trang) |
+| Bug local chưa push Jira | `05_bug-reports/draft/BUG-NNN-*.md` (glob đệ quy) — hiện **2** file (`BUG-030/031`, xem kiểm kê bên dưới) |
 | Tổng quan status/aging | `/log-bug --status` (sinh on-demand, không lưu ở đây) |
+
+## Kiểm kê `draft/`
+
+| BUG-NNN | Nguồn | Vì sao còn là draft |
+|---|---|---|
+| BUG-030 | VR-017-ACT-2026-09-21 (`TC-ACT-008`) | ⏳ Chờ QC review — nên hỏi BA PRD v1.1 cố ý rút ngắn chuỗi lý do "Hết hạn" hay chỉ viết tắt |
+| BUG-031 | VR-017-ACT-2026-09-21 (`TC-ACT-012`) | ⏳ Chờ QC review — PRD `EMP-05` không ghi nguyên văn dòng giải thích (chỉ `BR17-01` bắt buộc có) |
 
 ## Bug → ID local → RUN
 
@@ -43,3 +50,5 @@
 > 🗑️ `BUG-020` (API 400 khi đăng NEED), `BUG-022` (người nhận mất cụm liên hệ ở `Đang giao`), `BUG-023` (form sửa cho xoá ảnh tin đã đăng), `BUG-024` (lightbox không đóng khi chạm nền) **đã xoá 2026-09-21** — QC kiểm lại: app đúng, không phải bug (`BUG-020` không tái hiện ở VR-013). TC liên quan đã sửa theo app / trả về bản gốc. Các số này bỏ trống, không tái sử dụng.
 
 > 🗑️ `BUG-029` (`TC-FEED-015` — thiếu khung placeholder + "0km" khi văn phòng thiếu toạ độ) **đã xoá 2026-09-21** — QC chấp nhận hành vi hiện tại của app (chỉ hiện dòng cảnh báo text, không khung, không "0km") là đúng, không phải bug. `TC-FEED-015` Expected Result đã sửa lại theo app (`03_test-cases/v1.1/fragments/TC-FEED-v1.1.md` + `TC-MASTER-v1.1.xlsx` + `TC-MASTER-LATEST.xlsx`), verdict đổi FAIL → PASS. Số `BUG-029` bỏ trống, không tái sử dụng.
+
+> 🗑️ `BUG-032` (`TC-ACT-017` — tab `Hoạt động` rỗng không cuộn được) **đã xoá 2026-09-21** — QC xác nhận app đúng; Expected `TC-ACT-017` đã sửa theo app (fragment + `TC-MASTER-v1.1.xlsx` + `TC-MASTER-LATEST.xlsx`), verdict FAIL → PASS. Số `BUG-032` bỏ trống, không tái sử dụng.

@@ -21,6 +21,8 @@
 | **VR-011** | 2026-09-19 | **GIFT** | mobile (Appium) | **14** | **12** | **8P / 1F / 2B / 1 NE** 🐛 FE-308 · còn nợ **3** *(♻️ 2026-09-21: `TC-GIFT-012` FAIL→PASS theo QC)* | 11/11 ✅ | PARTIAL | `VR-011-GIFT-2026-09-19/` |
 | **VR-012** | 2026-09-19 | **DLV** | mobile (Appium) | **81** | **15** | **13P / 2F / 0B** · N-A 4 · còn nợ **62** 🚫 | 15/15 ✅ | PARTIAL | `VR-012-DLV-2026-09-19/` |
 | **VR-016** | 2026-09-21 | **FEED** | mobile (Appium) | 15 | **5** | **4P / 0F / 1B** *(`009` BLOCKED→PASS retest data QC cấp; `015` FAIL→PASS, QC chấp nhận hành vi app + sửa Expected, `BUG-029` rút lại; `007` FAIL→PASS retest account `anhdc4` + data hợp lệ)* · còn nợ **10** *(carried v1.0, ngoài phạm vi — chỉ chạy TC v1.1 theo QC)* | 5/5 ✅ | PARTIAL | `VR-016-FEED-2026-09-21/` |
+| **VR-017** | 2026-09-21 | **ACT** | mobile (Appium) | 18 | **10** | **6P / 2F / 2B** 🐞 `BUG-030/031` draft *(chờ QC review)* · `015` FAIL→BLOCKED · `017` FAIL→PASS *(QC chốt 2 case này app đúng; `BUG-032` xoá)* · còn nợ **8** *(CARRIED v1.0, ngoài phạm vi — chỉ chạy TC v1.1 theo QC)* | 10/10 ✅ | PARTIAL | `VR-017-ACT-2026-09-21/` |
+| **VR-018** | 2026-09-21 | **CNL** | mobile (Appium) | 22 | **13** | **5P / 6F / 2B** 🐞 4 ứng viên *(chưa log)* · còn nợ **9** *(CARRIED v1.0, ngoài phạm vi — chỉ chạy TC v1.1 theo QC)* | 13/13 ✅ | PARTIAL | `VR-018-CNL-2026-09-21/` |
 
 ## Ghi chú theo phiên
 

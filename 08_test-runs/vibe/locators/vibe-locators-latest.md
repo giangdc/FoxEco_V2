@@ -1,7 +1,7 @@
 # Vibe Locators — LATEST (tích lũy xuyên run)
 
 > ★ **`implement-automation` đọc FILE NÀY.** Pointer không mang ngày; snapshot khi đóng version → `vibe-locators-v[X].md`.
-> Cập nhật lần cuối: **VR-012** (2026-09-19) · module **DLV** · platform **mobile (Appium MCP / UiAutomator2)**
+> Cập nhật lần cuối: **VR-018** (2026-09-21) · module **CNL** · platform **mobile (Appium MCP / UiAutomator2)**
 > App: `com.hrisproject.stag` (host FoxPro → FoxEco)
 >
 > **Lịch sử merge**
@@ -36,6 +36,8 @@
 > | 3 | *(chưa ghi)* nút xoá ảnh | `resourceId("multi-photo-remove-<N>")`; `N=3` **không render** (bug trần ảnh, **T10**) |
 > | 4 | Wizard B1 "Tiếp theo" enable khi đủ 4 chip | **đo lại**: cần **giá trị + trọng lượng + kích thước + ≥1 ẢNH** (ảnh là bắt buộc từ v1.1) |
 > | 5 | *(chưa ghi)* cách rời ô trong wizard | ⛔ **KHÔNG** dùng `appium_mobile_keyboard(hide)` — nó gửi BACK, ở bước 1 = thoát wizard + mất draft (**T9**) |
+> | **VR-017** | **2026-09-21** | **ACT** | **26** | **25** | **0** | **1** |
+> | **VR-018** | **2026-09-21** | **CNL** | **17** | **16** | **0** | **1** |
 
 ---
 
@@ -1582,3 +1584,116 @@ Ca mới của phiên này: **`home-news-empty`** → `id` 🚫 NOT FOUND, `-and
 |---|---|---|
 | T37 | CTA "Tôi mang giúp được" **vắng mặt có chọn lọc theo TỪNG TIN**, không phải theo tài khoản viewer nói chung — 2/3 tin không phải của `anhdc4` vẫn có CTA, chỉ 1 tin (viewer = người nhận đã khai, theo `OPR-05`) thì không | automation KHÔNG được assert "mọi tin của người khác đều có CTA" — phải tham số hoá theo cặp (viewer, tin); `TC-FEED-012` test đúng nhánh này |
 | T38 | FoxEco **không có** nút Đăng xuất trong tab "Cá nhân" của chính nó — phải back ra FoxPro host rồi mới thấy | luồng đổi tài khoản luôn phải qua FoxPro `Cá nhân`, không phải FoxEco `Cá nhân` (đã ghi ở `USR-accounts.md §0b`, xác nhận lại lần nữa ở VR-016) |
+
+---
+
+# ▶ VR-017 — module ACT (2026-09-21) — merge nguyên bảng per-run
+
+## Page: FoxEco — Đơn của tôi (nav `Hoạt động`)
+
+| Element | Action Used | Strategy | Value | Verified | MCP call ref | TC refs |
+|---------|------------|----------|-------|----------|--------------|---------|
+| Nav "Hoạt động" | tap | -android uiautomator | `new UiSelector().text("Hoạt động")` | ✅ | A2 | TC-ACT-001, 012, 014, 016 |
+| Tiêu đề màn | verify_visible | page source text | `Đơn của tôi` | ✅ | A3 | TC-ACT-001 |
+| Tab con "Đang diễn ra" | tap | -android uiautomator | `new UiSelector().text("Đang diễn ra")` | ✅ | TC-ACT-015 | TC-ACT-001, 015, 017 |
+| Tab con "Đã hoàn thành" | tap | -android uiautomator | `new UiSelector().text("Đã hoàn thành")` | ✅ | TC-ACT-005 | TC-ACT-005, 008, 013, 014, 015, 016, 017 |
+| Badge "Đã huỷ" | verify_visible | -android uiautomator | `new UiSelector().text("Đã huỷ")` | ✅ | TC-ACT-015 | TC-ACT-015 |
+| Dòng lý do card Hết hạn | get_text | -android uiautomator | `new UiSelector().textStartsWith("Không có ai nhận mang giúp")` | ✅ | TC-ACT-008 | TC-ACT-008 |
+| Danh sách đơn (khi có dữ liệu) | scroll | class | `android.widget.ScrollView` bounds `[0,276][720,1108]` `scrollable="true"` | ✅ | A3 | TC-ACT-005, 013, 017 (đối chứng) |
+| Phần tử cuộn được khi tab RỖNG | verify_absent | -android uiautomator | `new UiSelector().scrollable(true)` | 🚫 NOT FOUND | TC-ACT-017 | TC-ACT-017 — **kết quả kiểm**, không phải locator hỏng |
+| Empty state tab "Đang diễn ra" — tiêu đề | verify_visible | -android uiautomator | `new UiSelector().text("Không có đơn đang thực hiện")` | ✅ | TC-ACT-016 | TC-ACT-012, 016 |
+| Empty state tab "Đang diễn ra" — CTA | verify_visible | page source text | `Đăng tin gửi hàng` (clickable `[225,658][496,726]`) | ✅ | A4 | TC-ACT-012 |
+| Empty state tab "Đã hoàn thành" — tiêu đề | verify_visible | page source text | `Chưa có đơn hoàn tất` | ✅ | TC-ACT-014 | TC-ACT-014, 018 |
+
+## Page: FoxEco — thanh tab dưới (dùng chung)
+
+| Element | Action Used | Strategy | Value | Verified | MCP call ref | TC refs |
+|---------|------------|----------|-------|----------|--------------|---------|
+| Nav "Trang chủ" | tap | -android uiautomator | `new UiSelector().text("Trang chủ")` | ✅ | TC-ACT-016 | TC-ACT-016, 018 |
+| Nav "Bảng tin" | tap | -android uiautomator | `new UiSelector().text("Bảng tin")` | ✅ | TC-ACT-016 | TC-ACT-016 |
+| Nav "Đăng tin" (nút giữa) | tap | -android uiautomator | `new UiSelector().text("Đăng tin")` | ✅ | TC-ACT-016 | TC-ACT-016 |
+| Nav "Cá nhân" (FoxEco) | tap | -android uiautomator | `new UiSelector().text("Cá nhân")` | ✅ | TC-ACT-016 | TC-ACT-016 |
+| Xác nhận màn Trang chủ | verify_visible | -android uiautomator | `new UiSelector().textContains("Đóng góp của bạn")` | ✅ | TC-ACT-016 | TC-ACT-016 |
+| Xác nhận màn Cá nhân | verify_visible | -android uiautomator | `new UiSelector().text("Quà đã nhận")` | ✅ | TC-ACT-016 | TC-ACT-016 |
+| Xác nhận màn Đăng tin | verify_visible | -android uiautomator | `new UiSelector().text("Đăng tin mới")` | ✅ | TC-ACT-016 | TC-ACT-016 |
+
+## Page: FoxPro host — đăng xuất / đăng nhập
+
+| Element | Action Used | Strategy | Value | Verified | MCP call ref | TC refs |
+|---------|------------|----------|-------|----------|--------------|---------|
+| Tab "Chức năng" | tap | -android uiautomator | `new UiSelector().text("Chức năng")` | ✅ | A1 | setup |
+| Icon FoxEco | scroll_to_element + tap | -android uiautomator | `new UiSelector().textContains("FoxEco")` | ✅ | A1 | setup |
+| Tab "Cá nhân" (FoxPro) | tap | -android uiautomator | `new UiSelector().text("Cá nhân")` | ✅ | A5 | setup |
+| Nút "Đăng xuất" | scroll_to_element + tap | -android uiautomator | `new UiSelector().text("Đăng xuất")` | ✅ | A5 | setup |
+| Popup "Đồng ý" | tap | -android uiautomator | `new UiSelector().text("Đồng ý")` | ✅ | A5 | setup (cả popup đăng xuất lẫn popup lỗi mạng `T-ASN-07`) |
+| Ô email | set_value | -android uiautomator | `new UiSelector().text("Nhập email đăng nhập")` | ✅ | A5 | setup |
+| Nút "NHẬN MÃ OTP" | tap | -android uiautomator | `new UiSelector().text("NHẬN MÃ OTP")` | ✅ | A5 | setup |
+| Nút "ĐĂNG NHẬP" | tap | -android uiautomator | `new UiSelector().text("ĐĂNG NHẬP")` | ✅ | A5 | setup |
+
+## Navigation Flow (MCP-traversed)
+
+| From | Trigger | To | MCP-verified |
+|------|---------|-----|--------------|
+| FoxEco Trang chủ | tap `Hoạt động` | Đơn của tôi, tab `Đang diễn ra` active | TC-ACT-001 |
+| Đơn của tôi (tab bất kỳ) | tap `Trang chủ`/`Bảng tin`/`Cá nhân` rồi tap `Hoạt động` | Đơn của tôi, **luôn về tab `Đang diễn ra`** | TC-ACT-016 |
+| Đơn của tôi (tab `Đã hoàn thành`) | tap `Đăng tin` → `back` | Đơn của tôi, **giữ tab `Đã hoàn thành`** | TC-ACT-016 |
+
+## 🪤 Bẫy mới (VR-017)
+
+- `adb shell uiautomator dump` **xung đột** với session Appium UiAutomator2 đang chạy (dump rỗng) ⇒ đọc danh sách dài bằng `appium_get_page_source` (tự ghi ra file khi >100k ký tự).
+- `appium_gesture scroll_to_element direction=up` trên danh sách `Đơn của tôi` báo *page source did not change* — không cuộn lên được ⇒ về đầu danh sách bằng fling `adb input swipe 360 400 360 1150 150`.
+- Tab `Hoạt động` **rỗng** không có phần tử `scrollable` ⇒ ⛔ đừng dùng `scroll`/`scroll_to_element` ở trạng thái rỗng.
+- Từ mục nav khác quay lại `Hoạt động` ⇒ app **reset về tab `Đang diễn ra`** — phải tap lại `Đã hoàn thành` nếu TC cần.
+
+---
+
+# ▶ VR-018 — module CNL (2026-09-21) — merge nguyên bảng per-run
+
+## Screen: Theo dõi đơn — nút theo vai / trạng thái
+
+| Element | Action Used | Strategy | Value | Verified | MCP call ref | TC refs |
+|---------|------------|----------|-------|----------|--------------|---------|
+| Nút "Báo cáo sự cố" (mọi vai, mọi trạng thái đã thấy) | tap | -android uiautomator | `new UiSelector().resourceId("track-report-incident")` | ✅ | TC-CNL-006/015/016 | TC-CNL-006, 015, 016, 022 |
+| Nút "Chỉnh sửa" (A · Chờ ghép) | verify_visible | page source | `resource-id="track-edit-post"` | ✅ | TC-CNL-022 | TC-CNL-022 |
+| Nút "Huỷ đơn" (A · **Chờ ghép**) | tap | -android uiautomator | `new UiSelector().resourceId("track-cancel-post")` | ✅ | TC-CNL-004 | TC-CNL-004, 012 |
+| Nút "Huỷ đơn" (A · **Đã ghép**) | tap | -android uiautomator | `new UiSelector().resourceId("track-sender-matched-cancel")` | ✅ | TC-CNL-009 | TC-CNL-009 ⚠️ **id khác** với Chờ ghép |
+| Nhãn trạng thái (A · Đã ghép) | verify_visible | page source | `resource-id="track-sender-matched-status"` text `Đã ghép · chờ shipper lấy hàng` | ✅ | TC-CNL-009 | TC-CNL-009 |
+| Nút "Tôi đã lấy hàng" (B · Đã ghép) | tap | -android uiautomator | `new UiSelector().resourceId("track-carrier-pickup")` | ✅ | TC-CNL-021 | TC-CNL-021 |
+| Nút "Huỷ nhận đơn" (B · Đã ghép) | tap | -android uiautomator | `new UiSelector().resourceId("track-carrier-cancel-accept")` | ✅ | TC-CNL-010 | TC-CNL-010 |
+| Nút "Đã giao cho người nhận" (B · Đang giao) | verify_visible | page source | content-desc `Đã giao cho người nhận` (không có resource-id) | ✅ | TC-CNL-018 | TC-CNL-018 |
+| Nhãn tắt chân màn (A · Đang giao) | verify_visible | page source | text `Đang giao đến người nhận` `clickable=false` | ✅ | TC-CNL-017 | TC-CNL-017 |
+| Nhãn tắt chân màn (C · Đang giao) | verify_visible | page source | text `Đơn đang trên đường đến bạn` `clickable=false` | ✅ | TC-CNL-019 | TC-CNL-019 |
+| "Yêu cầu hoàn hàng" (mọi vai · Đang giao) | verify_absent | -android uiautomator | `scroll_to_element new UiSelector().textContains("hoàn hàng")` | 🚫 NOT FOUND | TC-CNL-017/018/019 | **kết quả kiểm** — không phải locator hỏng |
+| Block LỊCH SỬ | scroll_to_element | -android uiautomator | `new UiSelector().text("LỊCH SỬ")` (preset small, ≤15 nhịp) | ✅ | TC-CNL-009/010 | TC-CNL-009, 010 |
+
+## Popup huỷ đơn / huỷ nhận đơn (dùng chung 1 component)
+
+| Element | Action Used | Strategy | Value | Verified | MCP call ref | TC refs |
+|---------|------------|----------|-------|----------|--------------|---------|
+| Ô lý do huỷ | set_value · get_element_attribute text | -android uiautomator | `new UiSelector().resourceId("cancel-order-reason")` | ✅ | TC-CNL-004 | TC-CNL-004, 009, 010, 012 |
+| Nút "Xác nhận" | get_element_attribute enabled · tap | -android uiautomator | `new UiSelector().resourceId("cancel-order-confirm")` | ✅ | TC-CNL-004 | TC-CNL-004, 009, 010, 012 |
+| Nút "Huỷ" (đóng popup) | tap | -android uiautomator | `new UiSelector().resourceId("cancel-order-dismiss")` | ✅ | TC-CNL-004 | TC-CNL-004, 012 |
+| Popup kết quả "Đồng ý" | tap | -android uiautomator | `new UiSelector().text("Đồng ý")` | ✅ | TC-CNL-009/010 | TC-CNL-009, 010 |
+
+## Luồng lấy hàng (B)
+
+| Element | Action Used | Strategy | Value | Verified | MCP call ref | TC refs |
+|---------|------------|----------|-------|----------|--------------|---------|
+| Popup "Xác nhận" — nút | tap | -android uiautomator | `new UiSelector().text("Xác nhận").instance(1)` | ✅ | TC-CNL-018 setup | ⚠️ `instance(0)` là **tiêu đề popup** (cùng chữ) — bấm vào không có tác dụng |
+| Màn trung gian "Xác nhận đã lấy hàng" — nút | tap | -android uiautomator | `new UiSelector().textContains("Bắt đầu giao")` | ✅ | TC-CNL-018 setup | text `Đã lấy hàng — Bắt đầu giao` |
+
+## Navigation Flow (MCP-traversed)
+
+| From | Trigger | To | MCP-verified |
+|------|---------|-----|--------------|
+| Theo dõi đơn (B · Đã ghép) | `Huỷ nhận đơn` → `Xác nhận` → `Đồng ý` | **Chi tiết tin** (không có LỊCH SỬ) | TC-CNL-010 |
+| Theo dõi đơn (A · Đã ghép) | `Huỷ đơn` → `Xác nhận` → `Đồng ý` | **Đơn của tôi** (danh sách) | TC-CNL-009 |
+| Theo dõi đơn (B · Đã ghép) | `Tôi đã lấy hàng` → `Xác nhận` | màn `Xác nhận đã lấy hàng` → `Bắt đầu giao` → popup `Đã lấy hàng` → Theo dõi đơn `Đang giao` | TC-CNL-018 setup |
+| Theo dõi đơn (mọi vai) | `Báo cáo sự cố` | màn `Báo sự cố đơn hàng` = **webview Microsoft Sign in** | TC-CNL-006/015/016 |
+
+## 🪤 Bẫy mới (VR-018)
+
+- Popup lấy hàng: `text("Xác nhận")` khớp **tiêu đề** trước ⇒ dùng `.instance(1)` cho nút.
+- Nút huỷ của người gửi **đổi resource-id theo trạng thái**: `track-cancel-post` (Chờ ghép) ⟷ `track-sender-matched-cancel` (Đã ghép).
+- Sau huỷ nhận / huỷ đơn app **tự rời** màn Theo dõi đơn — muốn đọc LỊCH SỬ phải mở lại đơn (B chỉ đọc được khi còn là bên của đơn).
+- Card ở `Đơn của tôi`: địa chỉ nằm trong text `Đến: …` ⇒ dùng `textContains(...)`, `text(...)` trượt.

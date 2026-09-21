@@ -2,7 +2,7 @@
 
 > 🔐 **File này CỐ TÌNH không chứa OTP/mật khẩu.** Secret nằm ở **`~/.foxeco-v2/credentials.env`** (`chmod 600`, ngoài repo, đã `.gitignore`).
 > Nguồn gốc: QC GiangDC2 cung cấp **2026-09-19** qua `04_test-data/account.txt` *(đã gitignore — ⛔ không commit)*.
-> Cập nhật lần cuối: **2026-09-21** · Dùng chung cho **USR · HOME · ORD · ASN · DLV · GIFT · ACT · CNL**.
+> Cập nhật lần cuối: **2026-09-21 (sau VR-017)** · Dùng chung cho **USR · HOME · ORD · ASN · DLV · GIFT · ACT · CNL**.
 
 ## §0. Đăng nhập — đọc trước khi đổi tài khoản
 
@@ -57,12 +57,12 @@
 
 | Email / danh tính | MNV | Dùng làm gì | Trạng thái |
 |---|---|---|---|
-| `stag_thuyntt22@fpt.com` — Nguyễn Thị Thanh Thủy | `00002352` | từng là tài khoản "trắng" | ⚠️ **đã bẩn** — VR-003 lưu SĐT `0987654322`; 2026-09-19 dùng làm người nhận 1 tin NEED · 🔴 **2026-09-21: CHƯA CHẤP NHẬN ĐIỀU KHOẢN** ⇒ bấm `Xác nhận` ở `Tôi mang giúp được` bị chặn bằng toast *"Bạn cần chấp nhận điều khoản hiện hành trước khi đăng tin hoặc ghép chuyến"* (bug `BUG-027` / [FE-311](https://foxproject.atlassian.net/browse/FE-311)). ⛔ **Đừng dùng làm carrier.** 0 đơn đã giúp · 0 quà · Phòng Hành chính phía Bắc · MNV `00002352`. ⚠️ Chưa thử chấp nhận điều khoản qua wizard *Đăng tin* — làm vậy đổi trạng thái tài khoản (còn cần cho `TC-HOME-027/028/029`, `TC-GIFT-008`) |
+| `stag_thuyntt22@fpt.com` — Nguyễn Thị Thanh Thủy | `00002352` | từng là tài khoản "trắng" | 🔴 **2026-09-21 (VR-017): KHÔNG còn trắng** — tab `Hoạt động › Đang diễn ra` có 1 đơn `Đã ghép` (vai `Giao`, V-City → FPT Cầu Giấy) + 1 tin `Chờ ghép` (vai `Gửi`, FTEL SG09 → SG07); tab `Đã hoàn thành` vẫn rỗng, hero vẫn `0` ⇒ dùng `stag_MinhNDN2@` cho TC cần tài khoản trắng. ⚠️ **đã bẩn** — VR-003 lưu SĐT `0987654322`; 2026-09-19 dùng làm người nhận 1 tin NEED · 🔴 **2026-09-21: CHƯA CHẤP NHẬN ĐIỀU KHOẢN** ⇒ bấm `Xác nhận` ở `Tôi mang giúp được` bị chặn bằng toast *"Bạn cần chấp nhận điều khoản hiện hành trước khi đăng tin hoặc ghép chuyến"* (bug `BUG-027` / [FE-311](https://foxproject.atlassian.net/browse/FE-311)). ⛔ **Đừng dùng làm carrier.** 0 đơn đã giúp · 0 quà · Phòng Hành chính phía Bắc · MNV `00002352`. ⚠️ Chưa thử chấp nhận điều khoản qua wizard *Đăng tin* — làm vậy đổi trạng thái tài khoản (còn cần cho `TC-HOME-027/028/029`, `TC-GIFT-008`) |
 | `stag_binhnt23@fpt.com` | `00026682` | **email người đã nghỉ việc** → `TC-ORD-076` | ⛔ không đăng nhập được (đã nghỉ) |
 | *(email chưa biết)* — **Phan Thị Mỹ Anh** | ? | SĐT `0947153040` · carrier của đơn `Đã ghép` | 🆕 phát hiện 2026-09-19 |
 | ✅ `FOXECO_STG_USER_C` = **`stag_taipm@fpt.com`** | `00041796` | vai C — HRIS có SĐT + địa chỉ `HCM LôB3,E-Office,KCN TânThuận` | ✅ **ĐÃ MAP 2026-09-19** → xem `§1` dòng 4. ⚠️ Điều kiện *"chưa từng lưu hồ sơ"* **CHƯA kiểm lại** — ⛔ đừng bấm Lưu ở `Cập nhật thông tin` trước khi chạy `TC-USR-040/043` |
 | `FOXECO_STG_USER_BLANK1` | `00157112` | tài khoản trắng, 2 chỉ số = 0 | ❓ email chưa biết |
-| 🆕 `stag_MinhNDN2@fpt.com` | ? | **Tài khoản CBNV trắng — QC GiangDC2 cấp 2026-09-21**, cho `TC-GIFT-008` (dùng chung `SEED-ACT-02` + `SEED-HOME-01`) | ⚠️ **CHƯA login xác nhận** (tên/MNV/0 đơn/0 quà đều chưa đo). 📞 **SĐT HRIS CHƯA cập nhật** ⇒ **muốn tạo đơn phải đổi SĐT trước** (Cá nhân → Cập nhật thông tin cá nhân). Đăng nhập = email + OTP cố định, ⛔ chưa có biến `FOXECO_STG_USER_*` riêng trong `credentials.env` |
+| 🆕 `stag_MinhNDN2@fpt.com` — **Nguyễn Đình Nhật Minh** | ? | **Tài khoản CBNV trắng — QC GiangDC2 cấp 2026-09-21**, cho `TC-GIFT-008` (dùng chung `SEED-ACT-02` + `SEED-HOME-01`) | ✅ **ĐÃ LOGIN XÁC NHẬN 2026-09-21 (VR-017)** — có icon FoxEco · hero `0 · Chưa có đóng góp nào` · `Đơn của tôi` = `Chưa có đơn nào` · **cả 2 tab `Hoạt động` rỗng**. VR-017 chỉ đọc ⇒ **vẫn trắng**. MNV chưa đo. 📞 **SĐT HRIS CHƯA cập nhật** ⇒ **muốn tạo đơn phải đổi SĐT trước** (Cá nhân → Cập nhật thông tin cá nhân). Đăng nhập = email + OTP cố định, ⛔ chưa có biến `FOXECO_STG_USER_*` riêng trong `credentials.env` |
 
 **Email KHÔNG tồn tại** (test nhánh âm): `stag_khongtontai@fpt.com` · `stag_khongtontai9999@fpt.com`
 
@@ -191,3 +191,24 @@ A đăng tin NEED khai C là người nhận → B nhấn *"Tôi mang giúp đư
 ⚠️ `stag_giangdc2@` nay có **thêm 2 đơn `Đã ghép`** (vai `Gửi`) — ảnh hưởng số đếm ở `Hoạt động`/`Trang chủ` nếu TC cần 'ít đơn'.
 
 **Trạng thái đăng nhập 2 thiết bị cuối phiên:** real `R58T20PLP8K` = `stag_taipm@` · emulator `emulator-5554` = `stag_giangdc2@` *(trước phiên: `stag_anhdc4@` / `stag_thuyntt22@`)*. Phiên sau **đọc tên ở header trước** khi làm gì.
+
+## §3e. Quan sát VR-017 — 2026-09-21 22:02–22:25 (module ACT, ⛔ không tạo dữ liệu)
+
+| Account | Quan sát | Dùng cho |
+|---|---|---|
+| `stag_anhdc4@` | Tab `Đã hoàn thành`: ~17 đơn `Hoàn thành` + ~30 đơn `Hết hạn`, **0 đơn đã trả lại người gửi**. Tab `Đang diễn ra` có **1 đơn `Đã huỷ`** (`Gửi: Tài liệu \| Giá trị cao` · FTEL SG09 → FTEL Cao Bằng) | `TC-ACT-005/008/013/015`. 🔑 Nên dựng đơn `RETURNED` trên **chính tài khoản này** để chạy lại `005` + vế còn lại của `015` |
+| `stag_anhdc4@` | 🎁 **1 đơn `Hoàn thành` CHƯA tặng quà**: `Gửi hàng nhỏ` · FPT Tân Thuận 1 → FPT Tân Thuận 3 · 21/9/2026 · hint `Chạm để tặng quà` | gỡ nợ `TC-GIFT-010/011` (trái với ghi chú §3c "STG không còn đơn nào") |
+| `stag_thuyntt22@` | không còn trắng — xem §1b | — |
+| `stag_MinhNDN2@` | trắng hoàn toàn — xem §1b | `TC-HOME-027/028/029` · `TC-GIFT-008` · `SEED-ACT-02` |
+
+**Trạng thái máy ảo cuối phiên:** `emulator-5554` đăng nhập **`stag_anhdc4@`** (đăng nhập lại cuối phiên để chấm lại `TC-ACT-015`).
+
+## §3f. Dữ liệu VR-018 tạo trên STG — 2026-09-21 23:09–23:40 (module CNL)
+
+| Đơn | Chủ tin (A) | Tuyến | Người nhận (C) | Carrier (B) | Trạng thái cuối |
+|---|---|---|---|---|---|
+| **O1** | `stag_anhdc4@` | Tòa V-City, Lê Thái Tổ → FPT Cầu Giấy · Hôm nay · Giờ nào cũng được | `stag_huyennhk@` | `stag_anhptm17@` | **Đã huỷ** (A huỷ 23:34, lý do *Huy vi trung lich*) |
+| **O2** | `stag_anhdc4@` | FPT Tân Thuận 1 → Tòa V-City, Lê Thái Tổ · Hôm nay · Giờ nào cũng được | `stag_giangdc2@` | `stag_anhptm17@` (huỷ nhận 23:22, ghép lại 23:24, lấy hàng 23:26) | ⚠️ **Đang giao — còn mở** |
+
+🔑 **O2 là đơn `Đang giao` sẵn có** cho `DLV` (giao · hoàn hàng) — đẩy tiếp tới `RETURNED` qua `TC-DLV-063` là gỡ luôn `TC-ACT-005/015` (A = `anhdc4`). ⛔ Đừng tạo đơn mới nếu chỉ cần 1 đơn Đang giao.
+`stag_anhptm17@` đơn đã giúp 6 (chưa đổi — O2 chưa hoàn thành). **Máy ảo cuối VR-018:** đăng nhập **`stag_giangdc2@`**. Mạng đã trả `speed full` / `delay none`.
