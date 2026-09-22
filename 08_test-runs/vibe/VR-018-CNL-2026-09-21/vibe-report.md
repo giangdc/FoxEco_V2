@@ -18,35 +18,44 @@
 **Còn nợ 9 TC → §8 = PARTIAL.** Cả 9 là **CARRIED v1.0** (`001 002 003 005 007 008 011 013 014`) — ngoài phạm vi QC yêu cầu.
 ⚠️ Header fragment v1.1 ghi 8 CARRIED, **thiếu `TC-CNL-014`** (đối chiếu ID 2 file TC-MASTER ra 9).
 
-**📊 Riêng v1.1: 13/13 có verdict (100%)** · ✅ 5 · ❌ 6 · 🚫 2.
+**📊 Riêng v1.1: 13/13 có verdict cuối (100%)** · ✅ 9 · ❌ 2 · 🚫 2 *(sau đính chính nội dung + follow-up chụp bù evidence 2026-09-22, xem khối dưới)*.
 
 - Sổ tích lũy: `coverage/coverage-CNL.md` · audit phiên: `scope-ledger.md` · lát cắt v1.1: `coverage/PROGRESS-v1.1.md`
+
+> 🔁 **ĐÍNH CHÍNH 2026-09-22 (QC GiangDC2) — 4 TC đổi ❌ FAIL → ✅ PASS:**
+> - **`017`/`018`/`019`** — TC viết sai giả định nút "Yêu cầu hoàn hàng" (không tồn tại trong PRD). Đối chiếu trực tiếp PRD (`AC-25.2.01` §6.2 trang 27 · `BR11-04` §8.11.1 trang 45 · `FR09` §8.9 trang 43): PRD chỉ đảm bảo mức trạng thái, luồng hoàn hàng thật là **Người vận chuyển** bấm xác nhận tại điểm giao → màn "Xử lý đơn hàng" → chọn "Cầm hàng về". Expected 3 TC đã sửa lại theo đúng luồng — app **đúng đặc tả**. `BUG-033` đã xoá.
+> - **`010`** — vế "ghi tên thay vì vai" được QC chấp nhận (app nhất quán ghi tên ở mọi dòng LỊCH SỬ). Expected đã sửa, không còn vướng mắc nào khác.
+> - **`009` vẫn FAIL** — vế "tên thay vai" cũng được chấp nhận như `010`, nhưng vế **nhãn hành động sai** ("Đã huỷ nhận đơn" cho hành động Người gửi huỷ đơn) là lỗi độc lập, giữ nguyên `BUG-034`.
+> ⚠️ **Follow-up evidence 2026-09-22:** ảnh gốc của cả 4 TC mang slot `__step*-FAIL` (chụp lúc chấm FAIL theo Expected cũ) — gate đòi PASS phải có `__verify`, không được đổi tên ảnh để né gate. Đã đăng nhập lại đủ 3 vai (A/B/C) và **chụp bù ảnh đúng slot**, không cần lặp lại thao tác huỷ/ghép nào vì log LỊCH SỬ bất biến (`BR11-03`) và ma trận nút của `Đang giao` không đổi theo thời gian. Chi tiết: `vibe-log.md` §"Follow-up 2026-09-22" · `coverage/coverage-CNL.md` khối "ĐÍNH CHÍNH 2026-09-22" + "FOLLOW-UP 2026-09-22".
 
 ## Kết quả các TC chạy trong run này (13 TC)
 
 | Result | Count | % N_run |
 |--------|-------|---|
-| ✅ PASS | 5 (`006` `012` `015` `016` `022`) | 38% |
-| ❌ FAIL | 6 (`004` `009` `010` `017` `018` `019`) | 46% |
+| ✅ PASS | 9 (`006` `010` `012` `015` `016` `017` `018` `019` `022`) | 69% |
+| ❌ FAIL | 2 (`004` `009`) | 15% |
 | 🚫 BLOCKED | 2 (`020` `021`) | 15% |
 | ⚠️ NOT_EVIDENCED | 0 | 0% |
+
+*(bảng trên đã áp đính chính nội dung + follow-up chụp bù evidence 2026-09-22; số liệu lúc chạy phiên gốc 2026-09-21 là 5 PASS / 6 FAIL / 2 BLOCKED)*
 
 ## Evidence Coverage ★
 
 | Chỉ số | Giá trị |
 |---|---|
 | TC có evidence / tổng TC đã chạy | **13/13** |
-| File ảnh trong `screenshots/` | 25 (19 ảnh TC + 6 `_setup`) · 0 cặp trùng md5 |
+| File ảnh trong `screenshots/` | 29 (23 ảnh TC + 6 `_setup`) · gồm 4 ảnh `__verify` chụp bù follow-up 2026-09-22 · 0 cặp trùng md5 |
 | Gate `.claude/hooks/verify_evidence.py` | xem mục Gate cuối file |
 
-## 🐞 Ứng viên bug (⛔ chưa `/log-bug` — chờ QC review)
+## 🐞 Bug đã log (draft, chờ QC push Jira — 2 ứng viên còn lại đã bị bác, xem đính chính trên)
 
-| # | TC | Nội dung | Mức gợi ý | Căn cứ |
+| # | TC | Nội dung | Mức | Bug |
 |---|---|---|---|---|
-| 1 | **`017` `018` `019`** ❌ | Khi đơn **Đang giao**, cả 3 vai **không có nút "Yêu cầu hoàn hàng"** — chỉ có `Báo cáo sự cố`. Hoàn hàng chỉ đi gián tiếp qua màn giao hàng của người vận chuyển | P1 · Major | `AC-25.2.01` + `BR11-04`. ⚠️ hỏi BA trước: nút riêng hay đường gián tiếp là đủ? Gộp **1 bug** cho 3 vai |
-| 2 | **`009`** ❌ | Người gửi **huỷ đơn** nhưng LỊCH SỬ ghi **"Đã huỷ nhận đơn"** — nhãn của người vận chuyển huỷ nhận ⇒ người đọc log hiểu sai bên huỷ | P2 · Medium | `BR11-02` + `AC-25.1.01` |
-| 3 | **`009` `010`** ❌ | Dòng log huỷ ghi **tên người** thay vì **vai** ("Người gửi" / "Người vận chuyển") | P3 · Low | `BR11-02`. ⚠️ **cần QC chốt** — app ghi tên người ở mọi dòng LỊCH SỬ; chấp nhận thì sửa Expected |
-| 4 | **`004`** ❌ | Lý do huỷ 4 ký tự: nút `Xác nhận` khoá đúng nhưng **không có dòng lỗi dưới ô lý do** | P3 · Low | `VAL-04` + `AC-25.1.03` |
+| 1 | **`009`** ❌ | Người gửi **huỷ đơn** nhưng LỊCH SỬ ghi **"Đã huỷ nhận đơn"** — nhãn của người vận chuyển huỷ nhận ⇒ người đọc log hiểu sai bên huỷ | P2 · Medium | `BUG-034` |
+| 2 | **`004`** ❌ | Lý do huỷ 4 ký tự: nút `Xác nhận` khoá đúng nhưng **không có dòng lỗi dưới ô lý do** | P3 · Low | `BUG-036` |
+
+~~`017`/`018`/`019` — thiếu nút "Yêu cầu hoàn hàng"~~ → **`BUG-033` đã xoá** (TC sai, xem đính chính trên).
+~~`009`/`010` — log ghi tên người thay vì vai~~ → **`BUG-035` đã xoá** (QC chấp nhận hành vi app, xem đính chính trên).
 
 ## 🚫 Blocked
 

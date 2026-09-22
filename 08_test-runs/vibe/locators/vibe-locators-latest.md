@@ -1,7 +1,7 @@
 # Vibe Locators — LATEST (tích lũy xuyên run)
 
 > ★ **`implement-automation` đọc FILE NÀY.** Pointer không mang ngày; snapshot khi đóng version → `vibe-locators-v[X].md`.
-> Cập nhật lần cuối: **VR-018** (2026-09-21) · module **CNL** · platform **mobile (Appium MCP / UiAutomator2)**
+> Cập nhật lần cuối: **VR-019 follow-up** (2026-09-22) · module **TS** · platform **mobile (Appium MCP / UiAutomator2)**
 > App: `com.hrisproject.stag` (host FoxPro → FoxEco)
 >
 > **Lịch sử merge**
@@ -1697,3 +1697,135 @@ Ca mới của phiên này: **`home-news-empty`** → `id` 🚫 NOT FOUND, `-and
 - Nút huỷ của người gửi **đổi resource-id theo trạng thái**: `track-cancel-post` (Chờ ghép) ⟷ `track-sender-matched-cancel` (Đã ghép).
 - Sau huỷ nhận / huỷ đơn app **tự rời** màn Theo dõi đơn — muốn đọc LỊCH SỬ phải mở lại đơn (B chỉ đọc được khi còn là bên của đơn).
 - Card ở `Đơn của tôi`: địa chỉ nằm trong text `Đến: …` ⇒ dùng `textContains(...)`, `text(...)` trượt.
+
+---
+
+# ▶ VR-019 — module TS (Trust & Safety) — 2026-09-22 — merge nguyên bảng per-run
+
+## Screen: Theo dõi đơn — nút Báo cáo sự cố (re-verify mở rộng, cả 3 vai + 4 trạng thái + 1 màn trung gian mới)
+
+| Element | Action Used | Strategy | Value | Verified | MCP call ref | TC refs |
+|---------|------------|----------|-------|----------|--------------|---------|
+| Nút "Báo cáo sự cố" | tap | -android uiautomator | `new UiSelector().resourceId("track-report-incident")` | ✅ | TC-TS-022 | TC-TS-008..024 |
+| ↳ hiện ở **mọi trạng thái đã thử**, không giới hạn `IN_TRANSIT`/`DELIVERED` | verify | — | `Chờ ghép` · `Đã ghép` · **màn "Xác nhận đã lấy hàng"** 🆕 · `Đang giao` | ✅ | TC-TS-022/023 | khớp `C-TS-02(a)` |
+| ↳ hiện ở **cả 3 vai** trên cùng 1 đơn | verify | — | A=`stag_giangdc2@` · B=`stag_anhptm17@` · C=`stag_taipm@` | ✅ | TC-TS-022/023/024 | TC-TS-022/023/024 |
+
+## Screen: Xác nhận đã lấy hàng (màn trung gian giữa MATCHED và IN_TRANSIT) 🆕 MÀN MỚI
+
+| Element | Action Used | Strategy | Value | Verified | MCP call ref | TC refs |
+|---|---|---|---|---|---|---|
+| Nút "Báo cáo sự cố" (cũng có ở màn này) | verify | -android uiautomator | `resourceId("track-report-incident")` | ✅ | setup B | 🆕 chưa từng harvest trước VR-019 |
+| Nút "Đã lấy hàng — Bắt đầu giao" | tap | -android uiautomator | `new UiSelector().textContains("Bắt đầu giao")` | ✅ | setup B | khớp locator CNL đã có |
+
+## Màn: "Báo sự cố đơn hàng" (WebView) — 🔴🔴 CHỈ TỚI ĐƯỢC MÀN ĐĂNG NHẬP MICROSOFT (`BUG-037`)
+
+| Element | Action Used | Strategy | Value | Verified | MCP call ref | TC refs |
+|---|---|---|---|---|---|---|
+| Nút đóng WebView "←" | tap | accessibility id | `Quay lại` | ✅ | TC-TS-018 | TC-TS-018 |
+| Tiêu đề màn (native header) | verify | -android uiautomator | `new UiSelector().text("Báo sự cố đơn hàng")` | ✅ | TC-TS-008 | mọi TC chạm màn |
+| 🔴 Nội dung WebView **luôn là** màn Microsoft "Đăng nhập" | verify | — | logo Microsoft + "Đăng nhập" + hint "Email hoặc điện thoại" + nút "Tiếp theo" | ✅ *(100%, 2 thiết bị, 3 tài khoản, 4 trạng thái)* | TC-TS-008/024 | **`BUG-037`** — form thật KHÔNG BAO GIỜ hiện ra ⇒ 13/17 TC BLOCKED |
+| Trang lỗi mất mạng (Chromium mặc định, không phải app) | verify | — | `Error loading page` / `Domain: undefined` / `Error Code: -2` / `net::ERR_INTERNET_DISCONNECTED` (tiếng Anh) | ✅ | TC-TS-016 | **`BUG-038`** |
+| ↳ Nút "Thử lại" (kỳ vọng theo spec) | find | -android uiautomator | `textContains("Thử lại")` | 🚫 **NOT FOUND** *(= kết quả FAIL đúng, không phải locator sai)* | TC-TS-016/017 | TC-TS-016/017 |
+
+## Kỹ thuật ADB (không phải locator — lifecycle/network control, hữu ích cho implement-automation cần mô phỏng mất mạng)
+
+| Việc | Lệnh |
+|---|---|
+| Mô phỏng mất mạng | `adb -s <udid> shell svc wifi disable` |
+| Khôi phục mạng | `adb -s <udid> shell svc wifi enable` |
+| Chụp evidence (khi `appium_screenshot` MCP trả base64 vượt token limit) | `adb -s <udid> exec-out screencap -p > <path>` |
+
+## Navigation Flow (bổ sung VR-019)
+
+| From | Trigger | To | MCP-verified |
+|------|---------|-----|--------------|
+| Theo dõi đơn (mọi vai, mọi trạng thái) | tap `Báo cáo sự cố` | Màn "Báo sự cố đơn hàng" → WebView → **Microsoft Đăng nhập** (KHÔNG phải form thật) | TC-TS-008..024 |
+| Màn "Báo sự cố đơn hàng" | tap nút đóng "←" | Quay về đúng Theo dõi đơn, giữ nguyên trạng thái đơn | TC-TS-018 |
+| Đã ghép → "Tôi đã lấy hàng" → Xác nhận | tap | Màn "Xác nhận đã lấy hàng" 🆕 (có nút Báo cáo sự cố) → "Bắt đầu giao" → popup → Đồng ý → Theo dõi đơn `Đang giao` | setup B |
+
+## 🪤 Bẫy mới (VR-019)
+
+- `appium_screenshot` MCP (không truyền `filename`) trả base64 **luôn vượt token limit** (~150k ký tự full, vẫn ~66k ở `maxWidth=360`) ⇒ dùng `adb exec-out screencap -p > <path>` thẳng vào `screenshots/` cho MỌI ảnh evidence — không có tham số `filename` khả dụng trên tool `appium_screenshot` của MCP server này (khác giả định trong SKILL.md).
+- `appium_get_page_source` cũng luôn vượt limit trên 2 thiết bị này (>200k ký tự) — chỉ dùng ở pre-flight (liveness check), không đọc nội dung; mọi thao tác khác dùng `find_element` trực tiếp theo locator đã biết.
+- Nút "Báo cáo sự cố" **KHÔNG dẫn tới form thật** — dẫn tới màn đăng nhập Microsoft, tái hiện 100%. Test account STG (OTP-based) không có tài khoản Microsoft tương ứng ⇒ **không có cách nào vượt qua bằng vibe-test**; đây là giới hạn thật của môi trường, không phải lỗi thao tác.
+
+---
+
+# ▶ VR-019 follow-up — module TS — 2026-09-22 — retest sau khi bypass màn login Microsoft (tài khoản thật)
+
+## Màn: "Báo sự cố đơn hàng" (WebView) — nội dung form THẬT (Microsoft Forms)
+
+> 🚫 **Không có locator chuẩn cho input field** — Custom Tab tách biệt, `appium_context(list)` chỉ
+> trả `NATIVE_APP`. Chỉ nút/label (text node) query được qua `-android uiautomator`; input field
+> phải tap qua toạ độ (x,y) đọc từ screenshot. Không dùng cho implement-automation phần điền form.
+
+| Element | Action Used | Strategy | Value | Verified | TC refs |
+|---|---|---|---|---|---|
+| Nút "Gửi" | find + tap | -android uiautomator `text("Gửi")` | luôn ở trạng thái bấm được, **KHÔNG BAO GIỜ disable** | ✅ | TC-TS-010/011/012 |
+| Link "Hủy bỏ" (xoá ảnh đã đính) | find + tap | -android uiautomator `text("Hủy bỏ").instance(N)` | xoá đúng ảnh thứ N | ✅ | TC-TS-015 |
+| Nút "←" Quay lại (màn xác nhận sau Gửi) | find + tap | accessibility description `"Quay lại"` | thoát về Theo dõi đơn | ✅ | TC-TS-009 |
+| Ô "Mã đơn hàng" · "Mô tả chi tiết" · "Số điện thoại liên hệ lại" · radio "Loại yêu cầu" · nút "Tải lên tệp" | tap + `adb shell input text` | — (toạ độ x,y, KHÔNG có locator) | xem chi tiết đầy đủ trong `VR-019-TS-2026-09-22/vibe-locators.md` | ✅ (qua toạ độ) | TC-TS-008/009/010/011/012/013/014/019/021 |
+
+## 🔴 3 phát hiện đảo ngược clarification "Resolved" (dựa trên bằng chứng thật lần đầu, không phải demo/phân tích)
+
+| Clarification cũ | Kết luận cũ (dựa trên demo, TRƯỚC khi login được) | Bằng chứng mới (sau khi login được) |
+|---|---|---|
+| `C-TS-03(b)` Resolved 2026-09-17 | Ô "Mã đơn hàng" là **nhãn tĩnh, không sửa được** | 🔴 **SỬA ĐƯỢC** — bàn phím bật, ký tự chèn vào giá trị (`TC-TS-021` FAIL) |
+| `C-TS-03(d)` Resolved 2026-09-17 | Màn xác nhận sau Gửi do **APP vẽ**, có cam kết 24h + nút "Quay lại đơn hàng" | 🔴 Màn **mặc định Microsoft Forms**, không có 2 nội dung trên (`TC-TS-009` FAIL) |
+| `test_data_catalog.md §TS` (giả định phân tích) | "Hình ảnh đính kèm" **không bắt buộc**, 0 ảnh là biên dưới hợp lệ | 🔴 **BẮT BUỘC** — có dấu `*`, chặn submit khi 0 ảnh (`TC-TS-013` FAIL) |
+
+🔑 **Bài học:** 2 clarification trên được đánh "Resolved" dựa trên quan sát demo/phân tích tài liệu
+**trước khi bất kỳ ai từng đăng nhập qua được màn Microsoft** để thấy nội dung form thật. Route ngược
+`/analyze-requirements --update` để mở lại cả 2 + cập nhật `test_data_catalog.md`.
+
+## 🪤 Bẫy mới (follow-up 2026-09-22)
+
+- Bàn phím Android tự ẩn rồi bấm `appium_mobile_press_key(BACK)` để "chắc chắn ẩn" ⇒ BACK lan xuống
+  Custom Tab, đóng luôn WebView ngoài ý muốn, mất dữ liệu đang điền. Dismiss keyboard an toàn hơn
+  bằng cách tap nút mũi tên ▽ của chính bàn phím (toạ độ góc dưới-phải khu vực keyboard).
+- Ô "Số điện thoại liên hệ lại" trên Microsoft Forms **không có validate định dạng** — chấp nhận
+  bất kỳ chuỗi không rỗng nào, kể cả chữ cái xen số.
+- Sau khi đã Gửi thành công 1 lần trong phiên, mở lại form **tự điền lại** câu trả lời gần nhất
+  (Loại yêu cầu + SĐT) — khác với hành vi "phiên mới sạch" khi phiên trước bị bỏ dở (chưa submit).
+
+# MERGE VR-021 — module **DLV** — 2026-09-22 — hấp thụ 100%
+
+> Nguồn: `VR-021-DLV-2026-09-22/vibe-locators.md`. Tài khoản A `stag_giangdc2@fpt.com` · B `stag_anhptm17@fpt.com`. Phiên tiếp nối VR-020 (chỉ TC v1.1 còn nợ).
+
+## Screen: Theo dõi đơn — kiểm "Không thể liên lạc cho người nhận?" (KHÔNG tồn tại)
+
+| Element | Action Used | Strategy | Value | Verified | MCP call ref | TC refs |
+|---------|------------|----------|-------|----------|--------------|---------|
+| Link/nút "Không thể liên lạc cho người nhận?" (màn Theo dõi đơn chính) | find | -android uiautomator | `new UiSelector().textContains("liên lạc")` | 🚫 NOT FOUND | mcp-log TC-DLV-050 | TC-DLV-050 |
+| Cùng link, trong popup xác nhận giao hàng | find | -android uiautomator | `new UiSelector().textContains("liên lạc")` | 🚫 NOT FOUND | mcp-log TC-DLV-050 | TC-DLV-050 |
+
+## Screen: Xác nhận đã lấy hàng 🆕 HARVEST ĐẦY ĐỦ (trước đây chỉ có 2 element ở VR-018/019)
+
+| Element | Action Used | Strategy | Value | Verified | MCP call ref | TC refs |
+|---|---|---|---|---|---|---|
+| Tiêu đề màn | verify | -android uiautomator | `new UiSelector().text("Xác nhận đã lấy hàng")` | ✅ | mcp-log TC-DLV-041 | TC-DLV-041/042 |
+| Khối "ẢNH BẰNG CHỨNG (TÙY CHỌN)" 🆕 | verify | -android uiautomator | `new UiSelector().textContains("ẢNH BẰNG CHỨNG")` | ✅ | mcp-log TC-DLV-041 | 🔑 đính chính `RISK-DLV-11` — field CÓ tồn tại |
+| Ô thêm ảnh (đếm N/5) | tap | accessibility id | `0/5` → `1/5` | ✅ | mcp-log TC-DLV-041 | TC-DLV-041 |
+| ↳ mở THẲNG camera in-app, KHÔNG có bottom sheet "thư viện" | — | — | — | ✅ | mcp-log TC-DLV-041 | khác Wizard NEED Bước 1 |
+| Camera in-app — nút chụp / nút xác nhận ảnh | tap (coordinate) | — | `(360, 1405)` | ✅ | mcp-log TC-DLV-041 | không có accessibility id ổn định |
+| Nút "Đã lấy hàng — Bắt đầu giao" | tap | -android uiautomator | `new UiSelector().textContains("Bắt đầu giao")` | ✅ | mcp-log TC-DLV-041/042 | TC-DLV-041/042 |
+| Popup 2 "Xác nhận" (sau nút trên) | tap | -android uiautomator | `new UiSelector().text("Xác nhận")` | ✅ ⚠️ | mcp-log TC-DLV-041/042 | animation timing — nếu không ăn, tap toạ độ `(509, 928)` |
+| Popup kết quả "Đã lấy hàng" → "Đồng ý" | tap | -android uiautomator | `new UiSelector().text("Đồng ý")` | ✅ | mcp-log TC-DLV-041/042 | — |
+
+## Navigation Flow (bổ sung VR-021)
+
+| From | Trigger | To | MCP-verified |
+|------|---------|-----|--------------|
+| Theo dõi đơn (B, IN_TRANSIT) | tap CTA chính "Đã giao cho người nhận" | popup xác nhận đơn giản (v1.0-style) | TC-DLV-050 — KHÔNG có nhánh "không liên lạc" |
+| Theo dõi đơn (B, MATCHED) | tap "Tôi đã lấy hàng" → popup quick-confirm → Xác nhận | màn "Xác nhận đã lấy hàng" (khối ảnh optional) | TC-DLV-041/042 |
+| Màn "Xác nhận đã lấy hàng" | tap ô ảnh | camera in-app | TC-DLV-041 |
+| Màn "Xác nhận đã lấy hàng" | tap "Đã lấy hàng — Bắt đầu giao" → popup 2 → Đồng ý | Theo dõi đơn (B, IN_TRANSIT) | TC-DLV-041/042 |
+
+## 🪤 Bẫy mới (VR-021)
+
+- **`RISK-DLV-11` ĐẢO NGƯỢC:** ô đính ảnh lúc lấy hàng CÓ tồn tại, ở lớp popup THỨ 2 ("Xác nhận đã lấy hàng"), không phải lớp quick-confirm đầu.
+- **Popup pickup 2 lớp dễ gây nhầm "app đứng yên/loop"** — 2 lớp popup dùng chung component, nhìn giống hệt nhau. Đợi ≥1.5s sau khi mở popup trước khi tap; không ăn thì tap toạ độ `(509, 928)` thay vì chỉ retry theo `elementUUID` (elementUUID có thể trùng giữa 2 lần hiển thị, không phải bằng chứng màn hình chưa đổi).
+- **Camera in-app màn lấy hàng KHÔNG có "chọn từ thư viện"** — khác Wizard NEED Bước 1.
+- **2 màn "Cá nhân" trùng tên** (FoxEco 3 mục / FoxPro có Đăng xuất) — xác nhận bằng `scroll_to_element("Đăng xuất")`.
+- **Biến OTP thật trong `credentials.env` là `FOXECO_STG_PASS`**, không phải `FOXECO_STG_OTP` như CLAUDE.md ghi.
+- **BLOCKER lớn (kế thừa VR-020):** "Không thể liên lạc cho người nhận?" không tồn tại ở bất kỳ đâu đã kiểm ⇒ nghi vấn cascade sang toàn bộ family `RESCHEDULED/RETURNING/RETURNED` (`TC-DLV-031..039`, `051..056`, `058..067`, `072..073`) — xem `coverage-DLV.md` ghi chú BLOCKER.

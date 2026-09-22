@@ -2,7 +2,7 @@
 
 > Module: **CNL — Huỷ đơn / Huỷ nhận đơn** · Platform: **mobile** (Appium MCP / UiAutomator2) · Device `emulator-5554` · Env: STG · host app `com.hrisproject.stag` (FoxPro) → FoxEco
 > Evidence dir: `screenshots/`
-> Phiên: 2026-09-21 (khởi tạo)
+> Phiên: 2026-09-21 (khởi tạo) · 2026-09-22 (follow-up — chụp bù evidence đúng slot cho `TC-CNL-010/017/018/019`)
 > Tập chạy: **chỉ 13 TC v1.1** (`004 006 009 010 012 015 016 017 018 019 020 021 022`) theo yêu cầu QC — ⛔ không gồm 9 TC CARRIED v1.0 (`001 002 003 005 007 008 011 013 014`) — header fragment v1.1 chỉ liệt kê 8, thiếu `014` (đối chiếu 2 file TC-MASTER).
 > 🔓 **QC cho phép đầy đủ** (2026-09-21): đăng tin NEED, ghép, bấm "Tôi đã lấy hàng", huỷ đơn / huỷ nhận đơn trên STG.
 > Cách chụp ảnh: `adb exec-out screencap -p` ghi thẳng vào `screenshots/` (cùng cách VR-015/017).
@@ -73,14 +73,15 @@
 | 5-7 | Nhấn "✕ Huỷ nhận đơn", nhập "Doi ca lam viec", nhấn "Xác nhận" | `resourceId("track-carrier-cancel-accept")` → set_value `cancel-order-reason` → `cancel-order-confirm` | ✅ | `TC-CNL-010__pre-popup-huy-nhan-ly-do-doi-ca-lam-viec.png` | popup `Đã huỷ` — *"Đã huỷ nhận đơn. Đơn đã trả lại bảng tin."* |
 | 8 | Không rời màn Theo dõi đơn, mở lại LỊCH SỬ | ⚠️ sau `Đồng ý` **app tự chuyển B sang `Chi tiết tin`** (B không còn là bên của đơn) — màn này **không có** block LỊCH SỬ | ⚠️ | `TC-CNL-010__pre-sau-huy-nhan-app-chuyen-sang-chi-tiet-tin-khong-co-lich-su.png` | đọc LỊCH SỬ bằng cách B ghép lại O2 (cần cho seed Đang giao) → Theo dõi đơn: xem hàng dưới |
 | 9 | Vào "Bảng tin" tìm đơn đó | back → Bảng tin | ✅ | `TC-CNL-010__pre-o2-hien-lai-tren-bang-tin-sau-huy-nhan.png` | O2 **hiện lại** đầu Bảng tin (Tân Thuận 1 → V-City), mở ra có `Tôi mang giúp được` ⇒ đơn về `Chờ ghép` ✅ |
-| E | Check LỊCH SỬ (đọc sau khi B ghép lại O2) | page source block LỊCH SỬ | ❌ FAIL | `TC-CNL-010__step8-FAIL-log-huy-nhan-ghi-ten-khong-ghi-vai-nguoi-van-chuyen.png` | Thứ tự mới → cũ: `Ghép thành công · 23:24 · Phan Thị Mỹ Anh` · **`Đã huỷ nhận đơn · 23:22 · Phan Thị Mỹ Anh` + `Lý do: Doi ca lam viec`** · `Ghép thành công · 23:21 · Phan Thị Mỹ Anh` (✅ **không bị xoá**) · `Đăng tin lên bảng tin · 23:16` |
+| E | Check LỊCH SỬ (đọc sau khi B ghép lại O2) | page source block LỊCH SỬ | ⚠️ **NOT_EVIDENCED** *(nội dung ĐẠT sau đính chính 2026-09-22, ảnh sai slot — lúc chạy chấm ❌ FAIL)* | `TC-CNL-010__step8-FAIL-log-huy-nhan-ghi-ten-khong-ghi-vai-nguoi-van-chuyen.png` | Thứ tự mới → cũ: `Ghép thành công · 23:24 · Phan Thị Mỹ Anh` · **`Đã huỷ nhận đơn · 23:22 · Phan Thị Mỹ Anh` + `Lý do: Doi ca lam viec`** · `Ghép thành công · 23:21 · Phan Thị Mỹ Anh` (✅ **không bị xoá**) · `Đăng tin lên bảng tin · 23:16` |
 
-**Result: ❌ FAIL at Step 8**
-**Expected:** "Ghép thành công" vẫn còn; có thêm 1 dòng log huỷ nhận **kèm vai "Người vận chuyển"** và lý do "Doi ca lam viec"; đơn về "Chờ ghép" và hiện lại trên bảng tin.
-**Actual:** 3/4 vế đúng — dòng ghép cũ **giữ nguyên** ✅ · dòng `Đã huỷ nhận đơn` có **lý do** + **thời điểm** ✅ · đơn **về bảng tin** ✅. ❌ Dòng log ghi **tên người** (`Phan Thị Mỹ Anh`) chứ **không ghi vai "Người vận chuyển"**.
-⚠️ **Cần QC chốt:** app thống nhất ghi *tên người thực hiện* ở mọi dòng LỊCH SỬ (cả `Đăng tin` · `Ghép`). Nếu QC chấp nhận tên người là đủ để nhận diện vai ⇒ sửa Expected, TC này PASS (cùng quyết định áp cho `009`).
+**Result: ✅ PASS** *(đính chính nội dung 2026-09-22; evidence đúng slot bổ sung ở Follow-up 2026-09-22 — xem cuối file)*
+**Expected (mới):** "Ghép thành công" vẫn còn; có thêm 1 dòng log huỷ nhận đúng nhãn **"Đã huỷ nhận đơn"** kèm **tên người thực hiện** (không ghi vai trò — chấp nhận) và lý do "Doi ca lam viec"; đơn về "Chờ ghép" và hiện lại trên bảng tin.
+**Actual:** đúng như Expected mới — dòng ghép cũ **giữ nguyên** ✅ · nhãn `Đã huỷ nhận đơn` đúng ✅ · có **lý do** + **thời điểm** ✅ · ghi **tên người** (`Phan Thị Mỹ Anh`) — chấp nhận ✅ · đơn **về bảng tin** ✅.
+> 🔁 **Đính chính nội dung 2026-09-22:** app ghi **tên người thực hiện** thay vì vai trò ở dòng log huỷ nhận, nhất quán với **mọi dòng LỊCH SỬ khác** trong toàn app (không riêng dòng huỷ) — chấp nhận, không phải bug. Expected step E đã sửa cho khớp (fragment `TC-CNL-v1.1.md` + `TC-MASTER-v1.1.xlsx` + `TC-MASTER-LATEST.xlsx`); draft `BUG-035` đã xoá.
+> ⚠️ **Evidence:** ảnh gốc của phiên 2026-09-21 mang tên slot `__step8-FAIL` (chụp lúc đang chấm FAIL theo Expected cũ) — không đủ cho verdict PASS theo gate. Đã chụp bù ảnh đúng slot `__verify` ở phiên follow-up 2026-09-22 (đọc lại LỊCH SỬ hiện tại của O2, không cần lặp lại thao tác huỷ nhận vì log bất biến) — xem `TC-CNL-010__verify-lich-su-huy-nhan-giu-nguyen-sau-dinh-chinh.png`.
 **Ghi nhận ngoài TC:** sau khi huỷ nhận, app tự rời `Theo dõi đơn` sang `Chi tiết tin` ⇒ step 7 *"không rời màn Theo dõi đơn"* không làm được đúng nguyên văn trên vai B.
-**Evidence:** `screenshots/TC-CNL-010__step8-FAIL-log-huy-nhan-ghi-ten-khong-ghi-vai-nguoi-van-chuyen.png` (+ `screenshots/TC-CNL-010__pre-lich-su-truoc-khi-huy-nhan-co-ghep-thanh-cong.png` · `screenshots/TC-CNL-010__pre-popup-huy-nhan-ly-do-doi-ca-lam-viec.png` · `screenshots/TC-CNL-010__pre-sau-huy-nhan-app-chuyen-sang-chi-tiet-tin-khong-co-lich-su.png` · `screenshots/TC-CNL-010__pre-o2-hien-lai-tren-bang-tin-sau-huy-nhan.png`) — verified tồn tại
+**Evidence:** `screenshots/TC-CNL-010__verify-lich-su-huy-nhan-giu-nguyen-sau-dinh-chinh.png` (follow-up 2026-09-22) + `screenshots/TC-CNL-010__step8-FAIL-log-huy-nhan-ghi-ten-khong-ghi-vai-nguoi-van-chuyen.png` (+ `screenshots/TC-CNL-010__pre-lich-su-truoc-khi-huy-nhan-co-ghep-thanh-cong.png` · `screenshots/TC-CNL-010__pre-popup-huy-nhan-ly-do-doi-ca-lam-viec.png` · `screenshots/TC-CNL-010__pre-sau-huy-nhan-app-chuyen-sang-chi-tiet-tin-khong-co-lich-su.png` · `screenshots/TC-CNL-010__pre-o2-hien-lai-tren-bang-tin-sau-huy-nhan.png`, evidence gốc) — verified tồn tại
 
 ---
 
@@ -106,13 +107,15 @@
 | # | Step | Action | Result | Evidence | Notes |
 |---|------|--------|--------|----------|-------|
 | 1 | B mở Theo dõi đơn của đơn Đang giao (setup) | — | ✅ | — | timeline active `Đang giao` |
-| 2 | Rà toàn bộ nút hành động | page source đầu → cuối, lọc `clickable=true` + grep `hoàn hàng|huỷ` | ❌ FAIL | `TC-CNL-018__step2-FAIL-vai-nguoi-van-chuyen-dang-giao-khong-co-yeu-cau-hoan-hang.png` | Nút bấm được: `Quay lại` · **`Báo cáo sự cố`** (`track-report-incident`) · `Copy`×3 · `Gọi người gửi` · **`Đã giao cho người nhận`**. **Không** có nút huỷ ✅. **Không** có `Yêu cầu hoàn hàng` ❌ |
+| 2 | Rà toàn bộ nút hành động | page source đầu → cuối, lọc `clickable=true` + grep `hoàn hàng|huỷ` | ⚠️ **NOT_EVIDENCED** *(nội dung ĐẠT sau đính chính 2026-09-22, ảnh sai slot — lúc chạy chấm ❌ FAIL)* | `TC-CNL-018__step2-FAIL-vai-nguoi-van-chuyen-dang-giao-khong-co-yeu-cau-hoan-hang.png` | Nút bấm được: `Quay lại` · **`Báo cáo sự cố`** (`track-report-incident`) · `Copy`×3 · `Gọi người gửi` · **`Đã giao cho người nhận`**. **Không** có nút huỷ ✅ |
 
-**Result: ❌ FAIL at Step 2**
-**Expected:** KHÔNG còn nút huỷ đơn thường; chỉ có đúng 2 nút liên quan huỷ: "Yêu cầu hoàn hàng" và "Báo cáo sự cố".
-**Actual:** không có nút huỷ ✅; có `Báo cáo sự cố` ✅; **thiếu `Yêu cầu hoàn hàng`** ❌. Đường hoàn hàng hiện chỉ đi được gián tiếp: `Đã giao cho người nhận` → *Không thể liên lạc cho người nhận?* → *Xử lý đơn hàng* → *Cầm hàng về* (theo `TC-DLV-034/063`) — không phải nút đứng riêng.
-⚠️ Nên hỏi BA: "Yêu cầu hoàn hàng" có buộc là nút riêng trên Theo dõi đơn, hay đường gián tiếp qua màn giao hàng là đủ?
-**Evidence:** `screenshots/TC-CNL-018__step2-FAIL-vai-nguoi-van-chuyen-dang-giao-khong-co-yeu-cau-hoan-hang.png` — verified tồn tại
+**Result: ✅ PASS** *(đính chính nội dung 2026-09-22; evidence đúng slot bổ sung ở Follow-up 2026-09-22 — xem cuối file)*
+**Expected (mới):** KHÔNG còn nút huỷ đơn thường; có `Báo cáo sự cố` VÀ đường vào hoàn hàng qua màn giao hàng (`Đã giao cho người nhận` → `Xử lý đơn hàng` → `Cầm hàng về`) — KHÔNG có nút riêng tên "Yêu cầu hoàn hàng".
+**Actual:** không có nút huỷ ✅; có `Báo cáo sự cố` ✅; đường hoàn hàng đi gián tiếp: `Đã giao cho người nhận` → *Không thể liên lạc cho người nhận?* → *Xử lý đơn hàng* → *Cầm hàng về* (theo `TC-DLV-034/063`) ✅ — đúng như Expected mới.
+> 🔁 **Đính chính nội dung 2026-09-22:** đã đối chiếu PRD gốc (`AC-25.2.01` + `BR11-04` + `FR09` §8.9) — không có nút "Yêu cầu hoàn hàng" nào được đặc tả; luồng hoàn hàng thật do Người vận chuyển khởi tạo qua "Xử lý đơn hàng" → "Cầm hàng về", đúng như app đang có. Expected TC đã sửa; draft `BUG-033` đã xoá.
+> ⚠️ **Evidence:** ảnh gốc mang tên slot `__step2-FAIL` — không đủ cho verdict PASS theo gate. Đã chụp bù ảnh đúng slot `__verify` ở phiên follow-up 2026-09-22 (đọc lại màn Theo dõi đơn hiện tại của O2 vai Carrier, không cần lặp lại hành động nào) — xem `TC-CNL-018__verify-vai-nguoi-van-chuyen-bao-cao-su-co-va-duong-giao-hang.png`.
+> *(Câu "Nên hỏi BA" bên dưới là ghi chép lúc chạy — QC đã tự chốt bằng cách đọc PRD, không cần hỏi BA.)*
+**Evidence:** `screenshots/TC-CNL-018__verify-vai-nguoi-van-chuyen-bao-cao-su-co-va-duong-giao-hang.png` (follow-up 2026-09-22) + `screenshots/TC-CNL-018__step2-FAIL-vai-nguoi-van-chuyen-dang-giao-khong-co-yeu-cau-hoan-hang.png` (evidence gốc) — verified tồn tại
 
 ---
 
@@ -134,12 +137,14 @@
 | # | Step | Action | Result | Evidence | Notes |
 |---|------|--------|--------|----------|-------|
 | 1 | A (`anhdc4`) mở Theo dõi đơn của O2 Đang giao (setup) | đăng nhập lại A → Hoạt động → card `Đang giao` | ✅ | — | timeline active `Đang giao`; khối `NGƯỜI GIAO HÀNG` = Phan Thị Mỹ Anh `0947153040` |
-| 2 | Rà toàn bộ nút hành động | page source đầu + `scroll_to_element textContains("hoàn hàng")` tới cuối (không thấy) + page source cuối | ❌ FAIL | `TC-CNL-017__step2-FAIL-vai-nguoi-gui-dang-giao-khong-co-yeu-cau-hoan-hang.png` | Nút bấm được: `Quay lại` · **`Báo cáo sự cố`** · `Copy`×2 · `Gọi người giao hàng`. Chân màn: nhãn **tắt** `Đang giao đến người nhận` (`clickable=false`). **Không** nút huỷ ✅ · **không** `Yêu cầu hoàn hàng` ❌ |
+| 2 | Rà toàn bộ nút hành động | page source đầu + `scroll_to_element textContains("hoàn hàng")` tới cuối (không thấy) + page source cuối | ⚠️ **NOT_EVIDENCED** *(nội dung ĐẠT sau đính chính 2026-09-22, ảnh sai slot — lúc chạy chấm ❌ FAIL)* | `TC-CNL-017__step2-FAIL-vai-nguoi-gui-dang-giao-khong-co-yeu-cau-hoan-hang.png` | Nút bấm được: `Quay lại` · **`Báo cáo sự cố`** · `Copy`×2 · `Gọi người giao hàng`. Chân màn: nhãn **tắt** `Đang giao đến người nhận` (`clickable=false`). **Không** nút huỷ ✅ |
 
-**Result: ❌ FAIL at Step 2**
-**Expected:** không còn nút huỷ thường; chỉ có đúng 2 nút "Yêu cầu hoàn hàng" và "Báo cáo sự cố".
-**Actual:** chỉ có `Báo cáo sự cố`; **thiếu `Yêu cầu hoàn hàng`** (cùng hiện tượng `TC-CNL-018`).
-**Evidence:** `screenshots/TC-CNL-017__step2-FAIL-vai-nguoi-gui-dang-giao-khong-co-yeu-cau-hoan-hang.png` — verified tồn tại
+**Result: ✅ PASS** *(đính chính nội dung 2026-09-22; evidence đúng slot bổ sung ở Follow-up 2026-09-22 — xem cuối file)*
+**Expected (mới):** không còn nút huỷ thường; chỉ còn đúng 1 nút liên quan: "Báo cáo sự cố". Người gửi KHÔNG có nút/route hoàn hàng nào (hoàn hàng là hành động của Người vận chuyển, `FR09`).
+**Actual:** chỉ có `Báo cáo sự cố`, không có gì khác liên quan huỷ/hoàn hàng — đúng như Expected mới (cùng hiện tượng `TC-CNL-018`/`019`).
+> 🔁 **Đính chính nội dung 2026-09-22** — xem đầy đủ ở `TC-CNL-018`. Draft `BUG-033` đã xoá.
+> ⚠️ **Evidence:** ảnh gốc mang tên slot `__step2-FAIL` — không đủ cho verdict PASS theo gate. Đã chụp bù ảnh đúng slot `__verify` ở phiên follow-up 2026-09-22 (đọc lại màn Theo dõi đơn hiện tại của O2 vai Sender) — xem `TC-CNL-017__verify-vai-nguoi-gui-chi-co-bao-cao-su-co.png`.
+**Evidence:** `screenshots/TC-CNL-017__verify-vai-nguoi-gui-chi-co-bao-cao-su-co.png` (follow-up 2026-09-22) + `screenshots/TC-CNL-017__step2-FAIL-vai-nguoi-gui-dang-giao-khong-co-yeu-cau-hoan-hang.png` (evidence gốc) — verified tồn tại
 
 ---
 
@@ -166,10 +171,10 @@
 | 7 | Không rời màn Theo dõi đơn, mở lại LỊCH SỬ | ⚠️ sau `Đồng ý` app **tự về danh sách `Đơn của tôi`** (O1 mang badge `Đã huỷ`, vẫn ở tab `Đang diễn ra`) ⇒ mở lại card O1 | ⚠️ | — | không giữ được nguyên văn "không rời màn" |
 | 8 | Check số dòng log mới và nội dung | page source LỊCH SỬ | ❌ FAIL | `TC-CNL-009__step8-FAIL-log-nguoi-gui-huy-ghi-nhan-da-huy-nhan-don-khong-co-vai.png` | **3 dòng** (+1 ✅). Dòng mới: **`Đã huỷ nhận đơn`** · `Hôm nay · 23:34 · Đặng Châu Anh` · `Lý do: Huy vi trung lich`. Chân màn: nhãn tắt `Đơn đã huỷ` |
 
-**Result: ❌ FAIL at Step 8**
-**Expected:** đúng +1 dòng; dòng mới đủ 3 thành phần: vai **"Người gửi"**, lý do "Huy vi trung lich", thời điểm huỷ.
-**Actual:** +1 dòng ✅ · lý do ✅ · thời điểm `23:34` ✅ · ❌ ghi **tên người** (`Đặng Châu Anh`) thay vì vai "Người gửi" · 🐞 **thêm lỗi nhãn:** hành động của **người gửi huỷ đơn** lại được ghi là **"Đã huỷ nhận đơn"** — đúng nhãn của người vận chuyển huỷ nhận (xem `TC-CNL-010`), người đọc log sẽ hiểu nhầm người vận chuyển là bên huỷ.
-⚠️ Vế "tên thay vai" chờ QC chốt chung với `010`. Vế **nhãn hành động sai** là lỗi độc lập, không phụ thuộc cách hiểu vai.
+**Result: ❌ FAIL at Step 8** *(vẫn FAIL sau đính chính 2026-09-22 — xem dưới)*
+**Expected (mới, sau đính chính):** đúng +1 dòng; dòng mới ghi đúng nhãn hành động huỷ đơn của Người gửi (KHÔNG phải "Đã huỷ nhận đơn"), kèm **tên người thực hiện** (không ghi vai trò — chấp nhận), lý do "Huy vi trung lich", thời điểm huỷ.
+**Actual:** +1 dòng ✅ · lý do ✅ · thời điểm `23:34` ✅ · ghi **tên người** (`Đặng Châu Anh`) — chấp nhận ✅ · ❌ **vẫn sai nhãn hành động:** ghi **"Đã huỷ nhận đơn"** thay vì nhãn của luồng huỷ đơn — đúng nhãn của người vận chuyển huỷ nhận (xem `TC-CNL-010`), người đọc log sẽ hiểu nhầm người vận chuyển là bên huỷ.
+> 🔁 **Đính chính 2026-09-22 (QC):** vế "tên thay vai" được **chấp nhận** (app nhất quán ghi tên ở mọi dòng LỊCH SỬ, không phải bug) — `BUG-035` đã xoá, Expected đã sửa. Vế **nhãn hành động sai** vẫn là lỗi **độc lập, chưa được chấp nhận** ⇒ TC này **vẫn FAIL**, giữ `BUG-034` (chờ QC push Jira).
 **Evidence:** `screenshots/TC-CNL-009__step8-FAIL-log-nguoi-gui-huy-ghi-nhan-da-huy-nhan-don-khong-co-vai.png` (+ `screenshots/TC-CNL-009__pre-lich-su-truoc-khi-huy-2-dong.png` · `screenshots/TC-CNL-009__pre-popup-huy-don-ly-do-huy-vi-trung-lich.png`) — verified tồn tại
 **Ghi chú:** TC ghi *"Dự kiến FAIL — app chỉ hiện banner, không ghi log"* ⇒ app **đã** ghi log (khác dự kiến).
 
@@ -180,12 +185,14 @@
 | # | Step | Action | Result | Evidence | Notes |
 |---|------|--------|--------|----------|-------|
 | 1 | C (`stag_giangdc2@`, người nhận O2) mở Theo dõi đơn (setup) | đăng nhập C → Hoạt động → card `Nhận: … Đang giao` | ✅ | — | khối `NGƯỜI GIAO HÀNG` = Phan Thị Mỹ Anh; chân màn nhãn tắt `Đơn đang trên đường đến bạn` |
-| 2 | Rà toàn bộ nút hành động | page source đầu + `scroll_to_element textContains("hoàn hàng")` (không thấy) + page source cuối | ❌ FAIL | `TC-CNL-019__step2-FAIL-vai-nguoi-nhan-dang-giao-khong-co-yeu-cau-hoan-hang.png` | Nút bấm được: `Quay lại` · **`Báo cáo sự cố`** · `Copy`×2 · `Gọi người giao hàng`. **Không** nút huỷ ✅ · **không** `Yêu cầu hoàn hàng` ❌ |
+| 2 | Rà toàn bộ nút hành động | page source đầu + `scroll_to_element textContains("hoàn hàng")` (không thấy) + page source cuối | ⚠️ **NOT_EVIDENCED** *(nội dung ĐẠT sau đính chính 2026-09-22, ảnh sai slot — lúc chạy chấm ❌ FAIL)* | `TC-CNL-019__step2-FAIL-vai-nguoi-nhan-dang-giao-khong-co-yeu-cau-hoan-hang.png` | Nút bấm được: `Quay lại` · **`Báo cáo sự cố`** · `Copy`×2 · `Gọi người giao hàng`. **Không** nút huỷ ✅ |
 
-**Result: ❌ FAIL at Step 2**
-**Expected:** không còn nút huỷ thường; chỉ có đúng 2 nút "Yêu cầu hoàn hàng" và "Báo cáo sự cố".
-**Actual:** chỉ có `Báo cáo sự cố`; **thiếu `Yêu cầu hoàn hàng`** — cùng hiện tượng ở cả 3 vai (`017` · `018` · `019`).
-**Evidence:** `screenshots/TC-CNL-019__step2-FAIL-vai-nguoi-nhan-dang-giao-khong-co-yeu-cau-hoan-hang.png` — verified tồn tại
+**Result: ✅ PASS** *(đính chính nội dung 2026-09-22; evidence đúng slot bổ sung ở Follow-up 2026-09-22 — xem cuối file)*
+**Expected (mới):** không còn nút huỷ thường; chỉ còn đúng 1 nút liên quan: "Báo cáo sự cố". Người nhận KHÔNG có nút/route hoàn hàng nào.
+**Actual:** chỉ có `Báo cáo sự cố` — đúng như Expected mới, cùng hiện tượng ở cả 3 vai (`017` · `018` · `019`).
+> 🔁 **Đính chính nội dung 2026-09-22** — xem đầy đủ ở `TC-CNL-018`. Draft `BUG-033` đã xoá.
+> ⚠️ **Evidence:** ảnh gốc mang tên slot `__step2-FAIL` — không đủ cho verdict PASS theo gate. Đã chụp bù ảnh đúng slot `__verify` ở phiên follow-up 2026-09-22 (đọc lại màn Theo dõi đơn hiện tại của O2 vai Receiver) — xem `TC-CNL-019__verify-vai-nguoi-nhan-chi-co-bao-cao-su-co.png`.
+**Evidence:** `screenshots/TC-CNL-019__verify-vai-nguoi-nhan-chi-co-bao-cao-su-co.png` (follow-up 2026-09-22) + `screenshots/TC-CNL-019__step2-FAIL-vai-nguoi-nhan-dang-giao-khong-co-yeu-cau-hoan-hang.png` (evidence gốc) — verified tồn tại
 
 ---
 
@@ -221,3 +228,24 @@
 |---|---|---|
 | **O1** `anhdc4` · V-City → FPT Cầu Giấy | **Đã huỷ** (bởi người gửi, 23:34) | vẫn hiện ở tab `Đang diễn ra` của A (đúng Expected mới `TC-ACT-015`) |
 | **O2** `anhdc4` · FPT Tân Thuận 1 → V-City · người nhận `giangdc2` | **Đang giao** — carrier `anhptm17` | ⚠️ đơn còn mở trên STG. Dùng tiếp được cho `DLV` (giao / hoàn hàng / `TC-DLV-063` để có đơn `RETURNED` cho `TC-ACT-005/015`) |
+
+---
+
+## 🆕 Follow-up 2026-09-22 — chụp bù evidence đúng slot `__verify` cho `TC-CNL-010`/`017`/`018`/`019`
+
+> Bối cảnh: đính chính 2026-09-22 đã xác nhận nội dung 4 TC này ĐẠT theo Expected mới, nhưng ảnh sẵn có của phiên gốc (2026-09-21) mang tên slot `__step*-FAIL` (chụp lúc đang chấm FAIL theo Expected cũ) ⇒ gate `verify_evidence.py` không chấp nhận cho verdict PASS (đòi slot `__verify`). Phiên follow-up này **chỉ đọc lại state hiện tại của O2 (không đổi trạng thái đơn)** để chụp ảnh đúng slot — không cần re-run hành động huỷ/ghép nào, vì log LỊCH SỬ là bất biến (`BR11-03`) và ma trận nút của `Đang giao` không đổi theo thời gian.
+
+> Session mới: `select_device(emulator-5554)` → `appium_session_management(action=create)` — app đang đứng sẵn ở màn "Chi tiết tin" của A (Đặng Châu Anh, giữa chừng phiên trước đó); xác nhận danh tính qua `Cá nhân` trước khi thao tác theo đúng luật `USR-accounts.md §0`.
+
+| # | TC | Vai / Account | Thao tác | Result | Evidence | Notes |
+|---|----|----|----|--------|----------|-------|
+| 1 | `TC-CNL-017` | A (Người gửi) `stag_anhdc4@` — đã sẵn login | Mở "Đơn của tôi" → `Đang diễn ra` → card O2 (`Đang giao`) → "Chạm để theo dõi đơn của bạn" → cuộn hết trang | ✅ **PASS** | `TC-CNL-017__verify-vai-nguoi-gui-chi-co-bao-cao-su-co.png` | Xác nhận lại: chỉ có `Báo cáo sự cố`, không nút huỷ, không route hoàn hàng nào cho Sender. Cuộn tới cuối trang (LỊCH SỬ + footer) không phát sinh thêm nút nào khác |
+| 2 | `TC-CNL-010` | A (cùng phiên, cùng màn) | Cuộn xuống block LỊCH SỬ của O2 | ✅ **PASS** | `TC-CNL-010__verify-lich-su-huy-nhan-giu-nguyen-sau-dinh-chinh.png` | LỊCH SỬ vẫn giữ nguyên 5 dòng như phiên gốc (bất biến, đúng `BR11-03`): `Người mang đã lấy hàng` → `Ghép thành công 23:24` → **`Đã huỷ nhận đơn · 23:22 · Phan Thị Mỹ Anh · Lý do: Doi ca lam viec`** → `Ghép thành công 23:21` → `Đăng tin lên bảng tin 23:16`. Đúng Expected mới: nhãn `Đã huỷ nhận đơn` đúng, tên người (chấp nhận), lý do, đơn không mất dòng cũ |
+| 3 | `TC-CNL-018` | B (Người vận chuyển) `stag_anhptm17@` — đăng xuất A → đăng nhập B (OTP cố định, 5 bước theo `USR-accounts.md §0b`) → vào thẳng FoxEco → card O2 vai `Giao` (`Đang giao`) → mở Theo dõi đơn | ✅ **PASS** | `TC-CNL-018__verify-vai-nguoi-van-chuyen-bao-cao-su-co-va-duong-giao-hang.png` | Có `Báo cáo sự cố` + nút `Đã giao cho người nhận` (điểm vào luồng hoàn hàng gián tiếp `FR09`), không nút huỷ. Không có nút riêng "Yêu cầu hoàn hàng" — đúng Expected mới |
+| 4 | `TC-CNL-019` | C (Người nhận) `stag_giangdc2@` — đăng xuất B → đăng nhập C → vào FoxEco → card O2 vai `Nhận` (`Đang giao`) → mở Theo dõi đơn | ✅ **PASS** | `TC-CNL-019__verify-vai-nguoi-nhan-chi-co-bao-cao-su-co.png` | Chỉ có `Báo cáo sự cố`, footer nhãn tắt `Đơn đang trên đường đến bạn`. Không route hoàn hàng nào cho Receiver — đúng Expected mới |
+
+**Kết quả follow-up: 4/4 PASS** (đúng như đính chính nội dung 2026-09-22 đã kết luận). Gate `verify_evidence.py` chạy lại sau follow-up: **GATE PASS**, không còn `no_verify`.
+
+**Evidence:** `screenshots/TC-CNL-017__verify-vai-nguoi-gui-chi-co-bao-cao-su-co.png` · `screenshots/TC-CNL-010__verify-lich-su-huy-nhan-giu-nguyen-sau-dinh-chinh.png` · `screenshots/TC-CNL-018__verify-vai-nguoi-van-chuyen-bao-cao-su-co-va-duong-giao-hang.png` · `screenshots/TC-CNL-019__verify-vai-nguoi-nhan-chi-co-bao-cao-su-co.png` — cả 4 verified tồn tại trên đĩa.
+
+Ảnh cũ (`__step*-FAIL` slot, phiên 2026-09-21) **giữ nguyên, không xoá** — vẫn được trích dẫn trong section gốc của từng TC ở trên làm hồ sơ lúc chạy ban đầu.

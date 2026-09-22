@@ -238,3 +238,56 @@
 > 🔑 App đã đăng nhập sẵn (`stag_giangdc2@fpt.com`) từ đầu phiên; retest `009` cần tạo tin mới qua wizard Đăng tin; retest `007` cần đổi tài khoản qua FoxPro (FoxEco không có nút đăng xuất).
 > 🎯 **Không còn case v1.1 nào cần hành động của QC** (`013` là case xác nhận BLOCKED, chờ dev/QA — không phải nợ kiểm thử).
 > 📁 `VR-016-FEED-2026-09-21/vibe-report.md` · sổ cái `coverage/coverage-FEED.md`.
+
+## VR-019 — module **TS** — 2026-09-22 (mobile · 2 thiết bị song song: emulator=Giang, máy thật=Tài → tạm Mỹ Anh → về Tài, chỉ TC v1.1)
+
+> **`/vibe-test --module TS` chỉ 17 TC thuộc v1.1** (`TC-TS-008..024`; 7 TC CARRIED v1.0 ngoài phạm vi). Chạy hết **17/17**: **3 PASS** (`018` `022` `023`) · **1 FAIL** (`016`) · **13 BLOCKED**. Coverage TS: 0 → **17/17** có verdict — §8 = **COMPLETED**.
+> 🐞 **Phát hiện 2 vấn đề chặn phần lớn scope:** `BUG-037` — nút "Báo cáo sự cố" mở WebView nhưng **luôn dừng ở màn đăng nhập Microsoft**, tái hiện 100% ở cả 3 vai (A/B/C) và mọi trạng thái đơn đã thử trên tài khoản test STG (`stag_*@fpt.com` không có danh tính Microsoft tương ứng) ⇒ chặn 12 TC. 🔁 **Dev phản hồi cùng ngày: nguyên nhân là form có trường tải file ⇒ Microsoft Forms bắt buộc đăng nhập (quy định nền tảng, không phải lỗi code)** — đổi từ P1/Critical sang **Suggestion P2**: đề xuất bỏ bắt buộc đăng nhập, vì đây là khảo sát nhanh và bắt đăng nhập dễ khiến người dùng bỏ dở. `BUG-038` (P2, bug thật) — mất mạng hiện trang lỗi Chromium kỹ thuật, không có nút "Thử lại" ⇒ FAIL `TC-TS-016` + BLOCKED `TC-TS-017`.
+> 🔑 **Phát hiện quan trọng khi điều tra thêm:** trên thiết bị thật, WebView từng **auto-sign-in bằng 1 tài khoản Microsoft 365 THẬT đã cache sẵn ở cấp hệ điều hành** (không liên quan tài khoản FoxEco/STG đang dùng), lộ ra đúng **Microsoft Forms thật** phía sau — xác nhận giả thuyết `BUG-037` (form yêu cầu đăng nhập tổ chức) nhưng KHÔNG điền/gửi gì để tránh dùng danh tính thật; đồng thời gợi ý 1 vấn đề thiết kế độc lập: form dường như không xác thực người gửi khớp với tài khoản/đơn hàng trong app. Chi tiết đầy đủ: `VR-019-TS-2026-09-22/vibe-log.md` mục "⚠️ Phát hiện quan trọng".
+> ✅ **3 TC PASS không phụ thuộc nội dung form** (chỉ cần nút hiện+nhấn được hoặc hành vi đóng WebView): `TC-TS-018` (đóng WebView quay đúng màn), `TC-TS-022` (nút hiện đủ 3 trạng thái, vai người gửi), `TC-TS-023` (nút hiện đủ 2 trạng thái, vai vận chuyển).
+> 🎯 **13 BLOCKED không phải nợ kiểm thử.** 12 TC chờ BA/Dev chốt hướng xử lý `BUG-037` (Suggestion), `TC-TS-017` chờ fix `BUG-038`. Retest sau khi có hướng: `/vibe-test --retest TC-TS-008,009,010,011,012,013,014,015,016,017,019,020,021,024`.
+> 📁 `VR-019-TS-2026-09-22/vibe-report.md` · sổ cái `coverage/coverage-TS.md` · bug draft `05_bug-reports/draft/BUG-037-*.md` + `BUG-038-*.md`.
+>
+> 🆕 **Follow-up 2026-09-22 (cùng ngày, cùng folder):** QC tự đăng nhập tài khoản Microsoft **thật**
+> trên thiết bị thật, yêu cầu retest 12 TC bị chặn ở màn login. **Bypass thành công** — 12 TC đảo
+> verdict thành 9 PASS / 3 FAIL. 🔁 **Hiệu chỉnh cùng ngày sau khi log bug:** `TC-TS-010`/`011` FAIL
+> vì giả định "nút Gửi disable" sai — QC xác nhận không phải bug (`BUG-040` xoá), sửa Expected theo
+> hành vi thật (inline error) ⇒ đảo tiếp **FAIL → PASS**. Kết quả CUỐI CÙNG module TS: **11 PASS · 5
+> FAIL · 1 BLOCKED** (`TC-TS-017`, chờ `BUG-038`, không liên quan màn login). 🔴 3 phát hiện đảo
+> ngược clarification "Resolved" trước đó (`C-TS-03(b)` mã đơn hàng sửa được · `C-TS-03(d)` màn xác
+> nhận là mặc định MS Forms · giả định ảnh không bắt buộc) — cần `/analyze-requirements --update`.
+> Đã log 4 bug mới (`BUG-039/041/042/043`, draft, chưa push Jira). Chi tiết:
+> `VR-019-TS-2026-09-22/vibe-log.md` §"🆕 Follow-up 2026-09-22" · coverage đã cập nhật ở
+> `coverage/coverage-TS.md`.
+
+## VR-020 — module **DLV** — 2026-09-22 (mobile · thiết bị thật `R58T20PLP8K`, chỉ TC v1.1 còn nợ)
+
+> ⚠️ **Phiên dừng SỚM theo yêu cầu user** (lo hết token giữa chừng) — chỉ seed 4 đơn mới
+> (`SEED-DLV-VR020-01..04`, A `giangdc2`→C `taipm`, carrier B `anhptm17`) rồi phát hiện **BLOCKER lớn**:
+> form "Xác nhận đã giao" mở rộng (FR07, 4 loại đối tượng nhận) mà PRD v1.1 giả định **không tồn tại**
+> trên STG — bấm nút chính ra thẳng popup đơn giản y hệt v1.0. Kiểm chéo 2 đơn độc lập, cùng kết quả.
+> Chạy `TC-DLV-043` tới verdict `🚫 BLOCKED` (evidence đầy đủ). 13 TC khác cùng nhóm (`TC-DLV-044..053`,
+> `069..071`) nhiều khả năng cũng BLOCKED vì cùng nguyên nhân nhưng **giữ `NOT_RUN`** — chưa verify riêng
+> từng TC, không tự nhận verdict thiếu evidence (mâu thuẫn với `RISK-DLV-08`/`TC-CNL-018` cần QC đối
+> chiếu trước, không log bug mới). Thu thêm 1 ảnh evidence mới củng cố `BUG-044`.
+> Coverage DLV: 19/81 → **20/81 có verdict**, còn nợ 61. 4 đơn seed còn sống, dùng tiếp được ở phiên sau
+> (2/4 cần soát lại trạng thái trước) — xem `coverage/coverage-DLV.md` §"4 đơn seed còn sống".
+> 📁 `VR-020-DLV-2026-09-22/vibe-report.md`.
+
+## VR-021 — module **DLV** — 2026-09-22 (mobile · thiết bị thật `R58T20PLP8K`, tiếp nối VR-020, chỉ TC v1.1 còn nợ)
+
+> 🔴 **ĐÍNH CHÍNH 2026-09-22 (QC chỉ ra trực tiếp, follow-up cùng ngày):** verdict `🚫 BLOCKED` ban đầu
+> của `TC-DLV-043` (VR-020) và `TC-DLV-050` (VR-021) đều **SAI**. Nguyên nhân: cả 2 lần test dừng ở
+> popup quick-confirm lớp 1 ("Bạn xác nhận đã giao hàng...?") rồi bấm **Huỷ** để giữ đơn, chưa từng bấm
+> **Xác nhận** để thấy màn đầy đủ **"Xác nhận đã giao"** — form FR07 (GIAO CHO 4 lựa chọn + ảnh bắt
+> buộc) **và** link "Không thể liên lạc cho người nhận?" đều nằm ngay ở màn này, **CÓ tồn tại trên
+> STG**. Retest thật: `TC-DLV-043` **✅ PASS** (giao "Người nhận", log đúng mẫu câu), `TC-DLV-050`
+> **✅ PASS** (bottom sheet 2 lựa chọn đúng thứ tự spec). ⇒ **~40 TC family `044..053`/`069..071`/
+> `031..039`/`051..056`/`058..067`/`072..073` không còn nghi cascade** — vẫn `NOT_RUN` (chưa test
+> thật) nhưng KHÔNG còn bị chặn bởi build, chạy pending bình thường ở phiên sau.
+> `TC-DLV-041`/`042` (luồng "Tôi đã lấy hàng") → cả 2 **✅ PASS** — đính chính `RISK-DLV-11`: ô ảnh
+> bằng chứng lúc lấy hàng CÓ tồn tại (ở lớp popup thứ 2 "Xác nhận đã lấy hàng", trước đây chưa harvest kỹ).
+> **Bài học chung:** nút hành động chính trên Theo dõi đơn luôn có ≥2 lớp popup — bấm Huỷ ở lớp 1 để
+> giữ đơn không được dùng để kết luận BLOCKED, phải bấm Xác nhận đi tiếp ít nhất 1 lần (dùng đơn phụ).
+> Coverage DLV: 20/81 → **23/81 có verdict**, còn nợ 58 (không còn nghi blocker build).
+> 📁 `VR-021-DLV-2026-09-22/vibe-report.md`.
