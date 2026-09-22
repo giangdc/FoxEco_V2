@@ -1,17 +1,35 @@
-# [TC_11 - Tài khoản & Hồ sơ] - Chuỗi thông báo lỗi SĐT lệch chuỗi BA đã chốt
+# FE-291 — [TC_11 - Tài khoản & Hồ sơ] - Chuỗi thông báo lỗi SĐT lệch chuỗi BA đã chốt
 
-- **Jira:** [FE-291](https://foxproject.atlassian.net/browse/FE-291)
-- **Project:** FE (Fox Eco) · **Parent:** FE-1
-- **Assignee:** Tuanvm37
-- **Priority:** Medium · **Severity:** 5 · **Test Round:** 1 · **Platform:** App · **Effect:** Usability · **Defect Type:** Requirement · **Fix version:** V1.0
-- **Status:** To Do
-- **Labels:** bug-001, tc-usr-017, tc-usr-018, tc-usr-020, tc-usr-023
-- **Module:** USR (Tài khoản & Hồ sơ) · **Màn:** Cập nhật thông tin → field "Số điện thoại mặc định"
-- **Môi trường:** STG · Platform test: mobile (Appium MCP / UiAutomator2), Pixel 7 AVD 1080x2400
-- **Test case liên quan:** TC-USR-017, TC-USR-018, TC-USR-020, TC-USR-023
-- **Nguồn:** Vibe Test `VR-001-USR-2026-09-18` (`08_test-runs/vibe/VR-001-USR-2026-09-18/vibe-report.md`, ứng viên bug **B3**)
-- **Evidence:** ✅ đã đính kèm trên Jira (verify 2026-09-18 15:11 qua `getJiraIssue` → 4 attachment thật) — `TC-USR-017__step5-FAIL-chuoi-thong-bao-lech.png` (id `31490`) · `TC-USR-018__step5-FAIL-chuoi-thong-bao-lech.png` (id `31491`) · `TC-USR-020__step5-FAIL-chuoi-thong-bao-lech.png` (id `31492`) · `TC-USR-023__step5-FAIL-chuoi-thong-bao-lech.png` (id `31493`). Upload qua REST fallback `curl` (`~/.config/jira/.env`).
-- **ID local:** `BUG-001` (draft cũ đã chuyển sang `jira/`, xem `bug-index.md`)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-291 · **Module:** USR · **Sync:** 2026-09-22 (R1)
+
+| Field | Value |
+|-------|-------|
+| Key | FE-291 |
+| Module | USR |
+| Status | To Do |
+| Resolution |  |
+| Resolved |  |
+| Verify Date |  |
+| Done At |  |
+| Fix Version | V1.0 |
+| Priority | Medium |
+| Severity | Low (weight 2) |
+| Test Round | R1 |
+| Effect | Usability |
+| Defect Type | Interface |
+| Platform | App |
+| Test method | Manual |
+| Duplicate | No |
+| Reject Number | — |
+| Due date |  |
+| Reporter | GiangDC2 |
+| Assignee | Tuanvm37 |
+| Created | 2026-09-18 |
+| Updated | 2026-09-18 |
+
+> ⚠️ **Nguồn chuẩn = Jira** — sửa trên Jira rồi `/sync-jira-bugs`, KHÔNG sửa tay file này.
+
+---
 
 ## Nội dung từ Jira
 
@@ -30,10 +48,10 @@
 
 1. Vào field "Số điện thoại mặc định"
 2. Nhập một trong các giá trị sai định dạng sau:
-   - để trống (TC-USR-017)
-   - `091234567` — 9 số (TC-USR-018)
-   - `1912345678` — không bắt đầu bằng 0 (TC-USR-020)
-   - `09123a5678` — chứa chữ (TC-USR-023)
+  - để trống (TC-USR-017)
+  - `091234567` — 9 số (TC-USR-018)
+  - `1912345678` — không bắt đầu bằng 0 (TC-USR-020)
+  - `09123a5678` — chứa chữ (TC-USR-023)
 3. Nhấn nút "Lưu thay đổi"
 
 **Expected result:**
@@ -48,3 +66,5 @@
 - TC-USR-018 / TC-USR-020 / TC-USR-023: hiện "Số điện thoại không hợp lệ" — thiếu hẳn phần `(10 số, bắt đầu bằng 0)` trong ngoặc
 - Chuỗi kỳ vọng lấy từ demo `DOC-v1.1-02`, BA xác nhận 2026-09-17 là chuỗi chính thức
 - Hành vi chặn lưu bản thân đúng ở cả 4 case — chỉ sai nội dung text thông báo
+
+**Hình ảnh mô tả:** đính kèm 4 ảnh evidence (TC-USR-017/018/020/023) theo attachment của issue này.

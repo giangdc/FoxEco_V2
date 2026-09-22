@@ -1,17 +1,35 @@
-# [TC_11 - Tài khoản & Hồ sơ] - Avatar chữ viết tắt sai quy tắc dẫn xuất
+# FE-293 — [TC_11 - Tài khoản & Hồ sơ] - Avatar chữ viết tắt sai quy tắc dẫn xuất
 
-- **Jira:** [FE-293](https://foxproject.atlassian.net/browse/FE-293)
-- **Project:** FE (Fox Eco) · **Parent:** FE-1
-- **Assignee:** Tuanvm37
-- **Priority:** Low · **Severity:** 2 · **Test Round:** 1 · **Platform:** App · **Effect:** Usability · **Defect Type:** Logic · **Fix version:** V1.0
-- **Status:** To Do
-- **Labels:** bug-003, tc-usr-002
-- **Module:** USR (Tài khoản & Hồ sơ) · **Màn:** Cá nhân
-- **Môi trường:** STG · Platform test: mobile (Appium MCP / UiAutomator2), Pixel 7 AVD 1080x2400
-- **Test case liên quan:** TC-USR-002
-- **Nguồn:** Vibe Test `VR-001-USR-2026-09-18` (`08_test-runs/vibe/VR-001-USR-2026-09-18/vibe-report.md`, ứng viên bug **B6**)
-- **Evidence:** ✅ đã đính kèm trên Jira (verify 2026-09-18 15:20 qua `getJiraIssue` → 1 attachment thật) — `TC-USR-002__step3-FAIL-avatar-chu-viet-tat-sai.png` (id `31503`)
-- **ID local:** `BUG-003` (draft cũ đã chuyển sang `jira/`, xem `bug-index.md`)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-293 · **Module:** USR · **Sync:** 2026-09-22 (R1)
+
+| Field | Value |
+|-------|-------|
+| Key | FE-293 |
+| Module | USR |
+| Status | To Do |
+| Resolution |  |
+| Resolved |  |
+| Verify Date |  |
+| Done At |  |
+| Fix Version | V1.0 |
+| Priority | Low |
+| Severity | Low (weight 2) |
+| Test Round | R1 |
+| Effect | Usability |
+| Defect Type | Logic |
+| Platform | App |
+| Test method | Manual |
+| Duplicate | No |
+| Reject Number | — |
+| Due date |  |
+| Reporter | GiangDC2 |
+| Assignee | Tuanvm37 |
+| Created | 2026-09-18 |
+| Updated | 2026-09-18 |
+
+> ⚠️ **Nguồn chuẩn = Jira** — sửa trên Jira rồi `/sync-jira-bugs`, KHÔNG sửa tay file này.
+
+---
 
 ## Nội dung từ Jira
 
@@ -39,3 +57,5 @@
 
 - Avatar hiện `ĐC` — sai 2 điểm cùng lúc: lấy 2 từ ĐẦU thay vì 2 từ cuối, và còn giữ dấu
 - Các phần khác (tên, dòng phòng ban·MNV, vắng SĐT/email/địa chỉ) đều đúng — chỉ riêng logic tạo avatar sai
+
+**Hình ảnh mô tả:** đính kèm ảnh evidence (TC-USR-002) theo attachment của issue này.

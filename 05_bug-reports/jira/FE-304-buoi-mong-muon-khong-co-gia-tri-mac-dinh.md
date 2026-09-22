@@ -1,38 +1,37 @@
+# FE-304 — [TC_04 - Đăng tin - Tôi cần gửi hàng] Buổi mong muốn không có giá trị mặc định Sau giờ làm
+
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-304 · **Module:** ORD · **Sync:** 2026-09-22 (R1)
+
+| Field | Value |
+|-------|-------|
+| Key | FE-304 |
+| Module | ORD |
+| Status | To Do |
+| Resolution |  |
+| Resolved |  |
+| Verify Date |  |
+| Done At |  |
+| Fix Version | V1.0 |
+| Priority | Medium |
+| Severity | Low (weight 2) |
+| Test Round | R1 |
+| Effect | Functionality |
+| Defect Type | Logic |
+| Platform | App |
+| Test method | Manual |
+| Duplicate | No |
+| Reject Number | — |
+| Due date |  |
+| Reporter | GiangDC2 |
+| Assignee | Tuanvm37 |
+| Created | 2026-09-21 |
+| Updated | 2026-09-21 |
+
+> ⚠️ **Nguồn chuẩn = Jira** — sửa trên Jira rồi `/sync-jira-bugs`, KHÔNG sửa tay file này.
+
 ---
-bug_id: BUG-012
-jira_project: FE
-jira_issue_type: Bug
-jira_key: FE-304
-jira_url: https://foxproject.atlassian.net/browse/FE-304
-module: ORD - Đăng tin & Quản lý tin
-bug_desc: Buổi mong muốn không có giá trị mặc định Sau giờ làm
-priority: P3
-severity: Low
-components: [ORD]
-affects_versions: [v1.1]
-traceability: TC-ORD-058 → SC-ORD-029 → REQ-ORD-012
-status: To Do
-effect: Functionality
-defect_type: Logic
-platform: App
-test_method: Manual
-test_round: R1
-reject_number:
-resolution:
-reason_for_wontfix:
-attachments: [08_test-runs/vibe/VR-002-ORD-2026-09-18/screenshots/TC-ORD-058__verify-buoi-mac-dinh.png]
-reported_by: GiangDC2
-reported_on: 2026-09-18
-assignee:
-due_date:
-last_synced: 2026-09-21
----
 
-# [ORD - Đăng tin & Quản lý tin] - Buổi mong muốn không có giá trị mặc định Sau giờ làm
-
-> Jira: [FE-304](https://foxproject.atlassian.net/browse/FE-304) · Status: To Do
-
-<!-- jira:description:start — copy nguyên khối dưới đây vào field Description của Jira -->
+## Nội dung từ Jira
 
 **I. Môi trường**
 
@@ -70,26 +69,7 @@ last_synced: 2026-09-21
 
 **Căn cứ (PRD v1.1 — 2 chỗ):**
 
-- **`§8.1.4` UI / Field Spec (FR01)**: `Buổi mong muốn | Có | Chọn nhiều · `**`mặc định Sau giờ làm`**` | Sáng (8–12) · Chiều (13–17) · Sau giờ làm (17–19) · Giờ nào cũng được`
-- **`AC-06.1.01`** (Given): *"Người dùng đang ở nhóm 'Thời gian' ở bước 2, mặc định Từ ngày = hôm nay, Đến ngày = Từ ngày, **buổi = Sau giờ làm**."*
+- `§8.1.4` UI / Field Spec (FR01): `Buổi mong muốn | Có | Chọn nhiều · mặc định Sau giờ làm | Sáng (8–12) · Chiều (13–17) · Sau giờ làm (17–19) · Giờ nào cũng được`
+- `AC-06.1.01` (Given): *"Người dùng đang ở nhóm 'Thời gian' ở bước 2, mặc định Từ ngày = hôm nay, Đến ngày = Từ ngày, ****buổi = Sau giờ làm****."*
 
-**Hình ảnh mô tả:**
-
-![BUG-012-01](../../08_test-runs/vibe/VR-002-ORD-2026-09-18/screenshots/TC-ORD-058__verify-buoi-mac-dinh.png)
-
-<!-- jira:description:end -->
-
-## Status History
-
-| Ngày | Status | Ghi chú | Ref |
-|---|---|---|---|
-| 2026-09-18 | Open | Log từ `TC-ORD-058` FAIL — ứng viên bug **B5** của VR-002 | VR-002-ORD-2026-09-18 |
-| 2026-09-21 | To Do | Push Jira → FE-304 (QC GiangDC2 yêu cầu) | — |
-
-## Ghi chú nội bộ (không push Jira)
-
-- ✅ **Đã xác minh lại PRD ngày 2026-09-18** (QC yêu cầu): mặc định `Sau giờ làm` có thật trong tài liệu, **2 chỗ độc lập** — bảng field `§8.1.4` và Given của `AC-06.1.01`. ⇒ ⛔ dev không phản bác được bằng lý do *"spec không yêu cầu"*.
-- **`severity: Low`** đúng như report VR-002 đề xuất: chỉ mất tiện lợi, ⛔ không chặn luồng đăng tin (người dùng vẫn chọn buổi tay rồi đi tiếp bình thường).
-- **Chi tiết phụ đáng để dev xem cùng lúc:** lỗi đỏ *"Chọn ít nhất 1 buổi"* hiện **ngay khi màn vừa mở**, trước mọi thao tác. Nếu mặc định được set đúng thì lỗi này cũng tự hết — nên ⛔ **không tách bug riêng**, chỉ ghi trong Actual.
-- **Cần kiểm thêm khi retest:** field `Buổi di chuyển` của form **OFFER** (FR02) dùng cùng rule mặc định, chưa có TC nào chạy ⇒ nếu cũng rỗng thì mở rộng bug này thay vì log mới.
-- **Đã push Jira 2026-09-21** → [FE-304](https://foxproject.atlassian.net/browse/FE-304) (Parent `FE-1` · Fix version `V1.0` · Test Round `1`, evidence đính kèm qua REST).
+**Hình ảnh mô tả:** đính kèm file ảnh trên issue này (`TC-ORD-058__verify-buoi-mac-dinh.png`)

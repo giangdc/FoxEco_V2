@@ -1,17 +1,35 @@
-# [TC_11 - Tài khoản & Hồ sơ] - Nhãn mục menu thứ 3 lệch tài liệu, không nhất quán tiêu đề màn đích
+# FE-294 — [TC_11 - Tài khoản & Hồ sơ] - Nhãn mục menu thứ 3 lệch tài liệu, không nhất quán tiêu đề màn đích
 
-- **Jira:** [FE-294](https://foxproject.atlassian.net/browse/FE-294)
-- **Project:** FE (Fox Eco) · **Parent:** FE-1
-- **Assignee:** Tuanvm37
-- **Priority:** Low · **Severity:** 2 · **Test Round:** 1 · **Platform:** App · **Effect:** Usability · **Defect Type:** Requirement · **Fix version:** V1.0
-- **Status:** To Do
-- **Labels:** bug-004, tc-usr-013
-- **Module:** USR (Tài khoản & Hồ sơ) · **Màn:** Cá nhân
-- **Môi trường:** STG · Platform test: mobile (Appium MCP / UiAutomator2), Pixel 7 AVD 1080x2400
-- **Test case liên quan:** TC-USR-013
-- **Nguồn:** Vibe Test `VR-001-USR-2026-09-18` (`08_test-runs/vibe/VR-001-USR-2026-09-18/vibe-report.md`, ứng viên bug **B7**)
-- **Evidence:** ✅ đã đính kèm trên Jira (verify 2026-09-18 15:20 qua `getJiraIssue` → 1 attachment thật) — `TC-USR-013__step3-FAIL-nhan-menu-thu-ba.png` (id `31504`)
-- **ID local:** `BUG-004` (draft cũ đã chuyển sang `jira/`, xem `bug-index.md`)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-294 · **Module:** USR · **Sync:** 2026-09-22 (R1)
+
+| Field | Value |
+|-------|-------|
+| Key | FE-294 |
+| Module | USR |
+| Status | To Do |
+| Resolution |  |
+| Resolved |  |
+| Verify Date |  |
+| Done At |  |
+| Fix Version | V1.0 |
+| Priority | Low |
+| Severity | Low (weight 2) |
+| Test Round | R1 |
+| Effect | Usability |
+| Defect Type | Requirement |
+| Platform | App |
+| Test method | Manual |
+| Duplicate | No |
+| Reject Number | — |
+| Due date |  |
+| Reporter | GiangDC2 |
+| Assignee | Tuanvm37 |
+| Created | 2026-09-18 |
+| Updated | 2026-09-18 |
+
+> ⚠️ **Nguồn chuẩn = Jira** — sửa trên Jira rồi `/sync-jira-bugs`, KHÔNG sửa tay file này.
+
+---
 
 ## Nội dung từ Jira
 
@@ -39,3 +57,5 @@
 - Nhãn = "Cập nhật thông tin cá nhân" (thừa 2 chữ "cá nhân")
 - Vị trí (ngay dưới "Quà đã nhận") đúng
 - ⚠️ App tự mâu thuẫn: tiêu đề của màn đích lại đúng verbatim là "Cập nhật thông tin"
+
+**Hình ảnh mô tả:** đính kèm ảnh evidence (TC-USR-013) theo attachment của issue này.

@@ -1,38 +1,37 @@
+# FE-300 — [TC_11 - Tài khoản & Hồ sơ] - Không load SĐT và địa chỉ mặc định từ HRIS
+
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-300 · **Module:** USR · **Sync:** 2026-09-22 (R1)
+
+| Field | Value |
+|-------|-------|
+| Key | FE-300 |
+| Module | USR |
+| Status | To Do |
+| Resolution |  |
+| Resolved |  |
+| Verify Date |  |
+| Done At |  |
+| Fix Version | V1.0 |
+| Priority | Medium |
+| Severity | Low (weight 2) |
+| Test Round | R1 |
+| Effect | Functionality |
+| Defect Type | Data |
+| Platform | App |
+| Test method | Manual |
+| Duplicate | No |
+| Reject Number | — |
+| Due date |  |
+| Reporter | GiangDC2 |
+| Assignee | Tuanvm37 |
+| Created | 2026-09-21 |
+| Updated | 2026-09-21 |
+
+> ⚠️ **Nguồn chuẩn = Jira** — sửa trên Jira rồi `/sync-jira-bugs`, KHÔNG sửa tay file này.
+
 ---
-bug_id: BUG-008
-jira_project: FE
-jira_issue_type: Bug
-jira_key: FE-300
-jira_url: https://foxproject.atlassian.net/browse/FE-300
-module: USR - Tài khoản & Hồ sơ
-bug_desc: Không load SĐT và địa chỉ mặc định từ HRIS
-priority: P2
-severity: Major
-components: [USR]
-affects_versions: [v1.1]
-traceability: TC-USR-040 → SC-USR-022 → REQ-USR-008 · TC-USR-043 → SC-USR-023 → REQ-USR-008
-status: To Do
-effect: Functionality
-defect_type: Data
-platform: App
-test_method: Manual
-test_round: R1
-reject_number:
-resolution:
-reason_for_wontfix:
-attachments: [08_test-runs/vibe/VR-003-USR-2026-09-18/screenshots/TC-USR-043__step5-FAIL-sdt-khong-prefill-hris.png, 08_test-runs/vibe/VR-003-USR-2026-09-18/screenshots/TC-USR-040__step5-FAIL-dia-chi-khong-prefill-hris.png]
-reported_by: GiangDC2
-reported_on: 2026-09-18
-assignee:
-due_date:
-last_synced: 2026-09-21
----
 
-# [USR - Tài khoản & Hồ sơ] - Không load SĐT và địa chỉ mặc định từ HRIS
-
-> Jira: [FE-300](https://foxproject.atlassian.net/browse/FE-300) · Status: To Do
-
-<!-- jira:description:start — copy nguyên khối dưới đây vào field Description của Jira -->
+## Nội dung từ Jira
 
 **I. Môi trường**
 
@@ -74,24 +73,4 @@ last_synced: 2026-09-21
 - Ảnh hưởng **100% CBNV dùng FoxEco lần đầu**: ai cũng phải tự gõ lại thông tin mà hệ thống đã có sẵn.
 - **Lan sang module ORD:** địa chỉ mặc định rỗng ⇒ ô "địa chỉ lấy hàng" khi đăng tin cũng không có gì để prefill.
 
-**Hình ảnh mô tả:**
-
-![BUG-008-01](../../08_test-runs/vibe/VR-003-USR-2026-09-18/screenshots/TC-USR-043__step5-FAIL-sdt-khong-prefill-hris.png)
-
-![BUG-008-02](../../08_test-runs/vibe/VR-003-USR-2026-09-18/screenshots/TC-USR-040__step5-FAIL-dia-chi-khong-prefill-hris.png)
-
-<!-- jira:description:end -->
-
-## Status History
-
-| Ngày | Status | Ghi chú | Ref |
-|---|---|---|---|
-| 2026-09-18 | Open | Log từ 2 TC FAIL cùng 1 defect (`TC-USR-040` + `TC-USR-043`) — ứng viên bug **B9** của VR-003 | VR-003-USR-2026-09-18 |
-| 2026-09-21 | To Do | Push Jira → FE-300 (QC GiangDC2 yêu cầu) | — |
-
-## Ghi chú nội bộ (không push Jira)
-
-- **Vì sao gộp 2 TC vào 1 bug:** cùng một nguyên nhân (không nạp dữ liệu HRIS vào form), cùng một màn, cùng một thời điểm xảy ra. Tách 2 bug sẽ tạo 2 luồng fix cho 1 nguyên nhân.
-- **Severity `Major`, không phải `Medium`:** khác các bug lệch câu chữ của VR-001, đây là **một yêu cầu chức năng không được thực hiện chút nào** và chạm **mọi người dùng mới**. ⚠️ Nếu QC thấy nên hạ xuống `Medium` thì sửa trước khi push — AI không tự quyết mức này.
-- **Giới hạn oracle đã ghi nhận:** app HRIS mobile **không phơi** trường "địa chỉ làm việc / văn phòng" cho chính người dùng (đã kiểm cả *Thông tin* lẫn *Quá trình làm việc*), nên với tài khoản 00002352 không đọc được chuỗi văn phòng kỳ vọng. Điều này **không làm yếu bug**: QC đã chốt HRIS luôn có địa chỉ mặc định, và tài khoản A ở VR-001 có chuỗi văn phòng đã biết vẫn cho kết quả rỗng y hệt.
-- **Đã push Jira 2026-09-21** → [FE-300](https://foxproject.atlassian.net/browse/FE-300) (Parent `FE-1` · Fix version `V1.0` · Test Round `1`, evidence đính kèm qua REST).
+**Hình ảnh mô tả:** đính kèm file ảnh trên issue này (`TC-USR-043__step5-FAIL-sdt-khong-prefill-hris.png`, `TC-USR-040__step5-FAIL-dia-chi-khong-prefill-hris.png`)

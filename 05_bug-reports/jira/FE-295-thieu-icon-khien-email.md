@@ -1,17 +1,35 @@
-# [TC_11 - Tài khoản & Hồ sơ] - Thiếu icon khiên cạnh field Email công ty
+# FE-295 — [TC_11 - Tài khoản & Hồ sơ] - Thiếu icon khiên cạnh field Email công ty
 
-- **Jira:** [FE-295](https://foxproject.atlassian.net/browse/FE-295)
-- **Project:** FE (Fox Eco) · **Parent:** FE-1
-- **Assignee:** Tuanvm37
-- **Priority:** Low · **Severity:** 2 · **Test Round:** 1 · **Platform:** App · **Effect:** Usability · **Defect Type:** Interface · **Fix version:** V1.0
-- **Status:** To Do
-- **Labels:** bug-005, tc-usr-024
-- **Module:** USR (Tài khoản & Hồ sơ) · **Màn:** Cập nhật thông tin
-- **Môi trường:** STG · Platform test: mobile (Appium MCP / UiAutomator2), Pixel 7 AVD 1080x2400
-- **Test case liên quan:** TC-USR-024
-- **Nguồn:** Vibe Test `VR-001-USR-2026-09-18` (`08_test-runs/vibe/VR-001-USR-2026-09-18/vibe-report.md`, ứng viên bug **B8**)
-- **Evidence:** ✅ đã đính kèm trên Jira (verify 2026-09-18 15:20 qua `getJiraIssue` → 1 attachment thật) — `TC-USR-024__step8-FAIL-thieu-icon-khien-email.png` (id `31505`)
-- **ID local:** `BUG-005` (draft cũ đã chuyển sang `jira/`, xem `bug-index.md`)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-295 · **Module:** USR · **Sync:** 2026-09-22 (R1)
+
+| Field | Value |
+|-------|-------|
+| Key | FE-295 |
+| Module | USR |
+| Status | To Do |
+| Resolution |  |
+| Resolved |  |
+| Verify Date |  |
+| Done At |  |
+| Fix Version | V1.0 |
+| Priority | Lowest |
+| Severity | Suggest (weight 0) |
+| Test Round | R1 |
+| Effect | Usability |
+| Defect Type | Interface |
+| Platform | App |
+| Test method | Manual |
+| Duplicate | No |
+| Reject Number | — |
+| Due date |  |
+| Reporter | GiangDC2 |
+| Assignee | Tuanvm37 |
+| Created | 2026-09-18 |
+| Updated | 2026-09-18 |
+
+> ⚠️ **Nguồn chuẩn = Jira** — sửa trên Jira rồi `/sync-jira-bugs`, KHÔNG sửa tay file này.
+
+---
 
 ## Nội dung từ Jira
 
@@ -40,3 +58,7 @@
 - Không có icon nào ở bên phải — chỉ có icon phong bì ✉ ở bên trái
 - 4/4 vế còn lại của TC đều đúng — chỉ riêng icon khiên bị thiếu
 - Demo `DOC-v1.1-02` cũng đang lệch điểm này — có thể cần chốt lại với BA
+
+**Hình ảnh mô tả:** đính kèm ảnh evidence (TC-USR-024) theo attachment của issue này.
+
+![attachment](908bef00-3b8b-49ae-81a3-9abf6f2953cf)
