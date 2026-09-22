@@ -1,0 +1,105 @@
+{
+  "total": 223,
+  "by_priority": {
+    "High": 22,
+    "Medium": 145,
+    "Low": 56
+  },
+  "by_priority_exec": {
+    "High": 18,
+    "Medium": 108,
+    "Low": 39
+  },
+  "by_group": {
+    "Functional": 175,
+    "UI": 48,
+    "Integration": 0,
+    "Database": 0
+  },
+  "executed": 165,
+  "pass": 101,
+  "fail": 37,
+  "block": 20,
+  "na": 7,
+  "ai_gen": 223,
+  "qc_written": 0,
+  "automated": 0,
+  "vibe": 165,
+  "reviewed": 0,
+  "kpi": {
+    "total_bugs": 40,
+    "bug_fixed": 1,
+    "bug_wont_fix": 0,
+    "bug_unresolved": 39,
+    "critical_major": 0,
+    "critical_major_open": 0,
+    "bug_closed": 0,
+    "pct_bug_closed": 0.0,
+    "pct_coverage": 74.0,
+    "pct_automation": 0.0,
+    "pct_bug_by_ai": 100.0,
+    "pct_tc_pass": 61.2
+  },
+  "project": "FoxEco",
+  "version": "v1.1",
+  "phase": "report",
+  "sprint": "R1",
+  "period": {
+    "start": "2026-09-18",
+    "end": "2026-09-22",
+    "source": "01_test-plans/test-period-v1.1.md",
+    "rounds": {
+      "1": {
+        "start": "2026-09-18",
+        "end": "2026-09-22"
+      }
+    }
+  },
+  "modules": [
+    {
+      "name": "Hoạt động (Đơn của tôi)",
+      "count": 10
+    },
+    {
+      "name": "Ghép nối",
+      "count": 13
+    },
+    {
+      "name": "Huỷ đơn - Huỷ nhận đơn",
+      "count": 13
+    },
+    {
+      "name": "Giao nhận & Theo dõi đơn",
+      "count": 51
+    },
+    {
+      "name": "Bảng tin & Chi tiết tin",
+      "count": 5
+    },
+    {
+      "name": "Quà cảm ơn",
+      "count": 8
+    },
+    {
+      "name": "Trang chủ",
+      "count": 11
+    },
+    {
+      "name": "Thông báo",
+      "count": 9
+    },
+    {
+      "name": "Đăng tin & Quản lý tin",
+      "count": 48
+    },
+    {
+      "name": "Trust & Safety",
+      "count": 17
+    },
+    {
+      "name": "Tài khoản & Hồ sơ",
+      "count": 38
+    }
+  ],
+  "output": "09_reports/ISC_FoxEco_v1.1_TestCase-Report_R1.xlsx"
+}
