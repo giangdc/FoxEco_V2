@@ -1,8 +1,8 @@
 # Coverage — module GIFT — SCOPE_TOTAL = 14 TC
 
 > Sổ cái TÍCH LŨY xuyên run cho module GIFT (Quà cảm ơn — v1.0 + v1.1).
-> **Cập nhật lần cuối: VR-011 (2026-09-19)** · Nguồn scope: `03_test-cases/v1.1/TC-MASTER-v1.1.xlsx` sheet `Quà cảm ơn` (8 TC) **∪** `03_test-cases/v1.0/TC-MASTER-v1.0.xlsx` sheet `Quà cảm ơn` (12 TC) — hợp nhất 14 TC, 6 TC trùng ID lấy **bản v1.1**
-> **Tổng: có verdict cuối 11/14 · CÒN NỢ 3** (2 NOT_RUN + 1 NOT_EVIDENCED)
+> **Cập nhật lần cuối: VR-028 (2026-09-23)** · Nguồn scope: `03_test-cases/v1.1/TC-MASTER-v1.1.xlsx` sheet `Quà cảm ơn` (8 TC) **∪** `03_test-cases/v1.0/TC-MASTER-v1.0.xlsx` sheet `Quà cảm ơn` (12 TC) — hợp nhất 14 TC, 6 TC trùng ID lấy **bản v1.1**
+> **Tổng: có verdict cuối 12/14 · CÒN NỢ 2** (1 NOT_RUN + 1 NOT_EVIDENCED)
 > Verdict hợp lệ: ✅ PASS · ❌ FAIL · 🚫 BLOCKED · ⚠️ NOT_EVIDENCED · ⏳ NOT_RUN · ⛔ N-A
 
 > 🆕 **2026-09-19 — file mới, khởi tạo bởi VR-011.** GIFT chưa từng được vibe-test trước phiên này.
@@ -14,6 +14,7 @@
 | Run | Ngày | TC chạy trong run | Verdict thu được |
 |-----|------|-------------------|------------------|
 | VR-011 | 2026-09-19 | **12** | 8P / 1F / 2B / 1NE *(sau đính chính `TC-GIFT-012` 2026-09-21)* |
+| VR-028 | 2026-09-23 | **1** | 1P (`TC-GIFT-008`) — QC dừng phiên trước `TC-GIFT-011` |
 
 ## Chi tiết từng TC
 
@@ -26,7 +27,7 @@
 | TC-GIFT-005 | ✅ PASS | SC-GIFT-005 | P2 | Check sau khi gửi quà nút đổi nhãn "Bạn đã đánh giá" và không gửi lại được cho cùng đơn | VR-011 | `VR-011-GIFT-2026-09-19/screenshots/TC-GIFT-005__verify-nhan-nut-sau-khi-tang-qua.png` | E5+E6 đạt: nhãn `"Bạn đã đánh giá"` + **không có tổ tiên clickable** ⇒ disable thật; ⛔ không mở lại "Tặng quà". ⚠ Step 4 (back) sai — defect đã chấm FAIL ở `TC-GIFT-010`, ⛔ không đếm trùng |
 | TC-GIFT-006 | ✅ PASS | SC-GIFT-006 | P2 | Check card đếm quà hiển thị đúng từng loại và tổng khi nhận 5 quà thuộc 2 loại | VR-011 | `VR-011-GIFT-2026-09-19/screenshots/TC-GIFT-006__verify-card-dem-2-loai-tong-5.png` | Chạy trên `stag_anhptm17@` — **5 quà / 2 loại / 3+2**, khớp cardinality `SEED-GIFT-05`. ⚠ **Hoán tên loại có khai:** `Ly cà phê 3` + `Vương miện 2` thay cho `Bông hoa 3` + `Gấu bông 2`; 2 loại count=0 **không hiện** ✅. Đề nghị BA bỏ ràng buộc tên loại trong seed |
 | TC-GIFT-007 | ✅ PASS | SC-GIFT-007 | P2 | Check màn "Quà đã nhận" có danh sách lịch sử nhận quà | VR-011 | `VR-011-GIFT-2026-09-19/screenshots/TC-GIFT-007__verify-co-danh-sach-lich-su-nhan-qua.png` | 🔑 Đóng `C-GIFT-03` vế (b) — app **CÓ** khối `LỊCH SỬ NHẬN QUÀ`, số dòng khớp số quà. ⚠ Test Data lệch: 1 quà thay vì `SEED-GIFT-05` 5 quà (assert chính vẫn quyết được) |
-| TC-GIFT-008 | ⏳ NOT_RUN | SC-GIFT-008 | P3 | Check empty state "Quà đã nhận" đúng text và không có CTA | — | — | **Lý do:** 🆕 **Cập nhật 2026-09-21 — QC đã cấp tài khoản CBNV trắng `stag_MinhNDN2@fpt.com`** *(SĐT HRIS chưa cập nhật; chưa login xác nhận 0 đơn / 0 quà)* ⇒ **hết blocker tài khoản, case CHƯA chạy** — chạy được ngay bằng `/vibe-test --tc TC-GIFT-008`, ⛔ **trước khi** tạo bất kỳ đơn nào bằng tài khoản này. *(Lý do ghi lúc chạy VR-011, giữ để truy vết:)* ⛔ **KHÔNG còn tài khoản CBNV "trắng" nào trên STG.** `stag_anhptm17@` — tài khoản vẫn được `USR-accounts.md §2` giữ làm *"dự phòng/sạch"* — thực tế đã **5 đơn đã giúp / 5 quà đã nhận** (kiểm 2026-09-19, ảnh `_recon__ca-nhan-anhptm17-5-don-5-qua.png`). 4 acc còn lại cũng bẩn (`taipm` 2/1 · `giangdc2` 13/13 · `anhdc4` 3/2 · `huyennhk` không vào được FoxEco). ⇒ **cần dev/QA cấp account mới tinh** (dùng chung với `SEED-ACT-02` + `SEED-HOME-01`) |
+| TC-GIFT-008 | ✅ PASS | SC-GIFT-008 | P3 | Check empty state "Quà đã nhận" đúng text và không có CTA | VR-028 | `VR-028-GIFT-2026-09-23/screenshots/TC-GIFT-008__verify-empty-state-qua-da-nhan.png` | Chạy trên `stag_minhndn2@` (tài khoản trắng): "Chưa nhận được quà nào" · thống kê 0/0 · không CTA (chỉ có `Quay lại`) |
 | TC-GIFT-009 | ✅ PASS | SC-GIFT-009 | P3 | Check nhấn quay lại ở màn "Quà đã nhận" trở về màn Cá nhân | VR-011 | `VR-011-GIFT-2026-09-19/screenshots/TC-GIFT-009__verify-ve-man-ca-nhan.png` | 📝 Expected ghi *"2 mục menu"* là số cũ v1.0 — app có **3 mục**; sửa TC ở lượt bảo trì, ⛔ không log bug |
 | TC-GIFT-010 | ⚠️ NOT_EVIDENCED | SC-GIFT-010 | P3 | Check nhấn quay lại ở màn "Tặng quà" trở về màn Theo dõi đơn của đúng đơn vừa mở | VR-011 | `VR-011-GIFT-2026-09-19/screenshots/TC-GIFT-010__step4-FAIL-back-ve-danh-sach-khong-ve-theo-doi-don.png` | **Nội dung ĐẠT** (app về `Đơn của tôi` = nằm trong Then của `SC-GIFT-010`; `KB-GIFT-04` **không tái hiện**) **nhưng ảnh nằm SAI SLOT** — chụp lúc đang chấm FAIL, sau đó verdict được đính chính; ⛔ **không đổi tên ảnh** (luật cấm). Chụp lại **không được** vì STG đã hết sạch đơn Hoàn thành chưa tặng quà. **Chạy lại:** `/vibe-test --tc TC-GIFT-010` sau khi có 1 đơn đủ điều kiện |
 | TC-GIFT-011 | ⏳ NOT_RUN | SC-GIFT-011 | P3 | Check không có sao, điểm, tier hay chỉ số môi trường trên cả 4 bề mặt của luồng tặng quà | — | — | **Lý do:** cần `SEED-GIFT-06` = 1 đơn Hoàn thành **RIÊNG** chưa tặng quà (TC tiêu đơn để mở được popup + "Quà đã nhận"). Tài khoản có đúng **2** đơn đủ điều kiện, đã bị `TC-GIFT-003` và `TC-GIFT-005` (đều P2, ưu tiên cao hơn P3) tiêu hết → cần seed thêm đơn Hoàn thành |
@@ -38,15 +39,15 @@
 
 | Verdict | Số | TC |
 |---|---|---|
-| ✅ PASS | 8 | `TC-GIFT-001` · `TC-GIFT-002` · `TC-GIFT-004` · `TC-GIFT-005` · `TC-GIFT-006` · `TC-GIFT-007` · `TC-GIFT-009` · `TC-GIFT-012` |
+| ✅ PASS | 9 | `TC-GIFT-001` · `TC-GIFT-002` · `TC-GIFT-004` · `TC-GIFT-005` · `TC-GIFT-006` · `TC-GIFT-007` · `TC-GIFT-008` · `TC-GIFT-009` · `TC-GIFT-012` |
 | ❌ FAIL | 1 | `TC-GIFT-003` *(→ Jira FE-308)* |
 | 🚫 BLOCKED | 2 | `TC-GIFT-013` · `TC-GIFT-014` |
 | ⚠️ NOT_EVIDENCED | 1 | `TC-GIFT-010` |
-| ⏳ NOT_RUN | 2 | `TC-GIFT-008` · `TC-GIFT-011` |
+| ⏳ NOT_RUN | 1 | `TC-GIFT-011` |
 | ⛔ N-A | 0 | — |
 | **Tổng** | **14** | |
 
-**Có verdict cuối: 11/14 · CÒN NỢ: 3** ⇒ §8 = **PARTIAL**.
+**Có verdict cuối: 12/14 · CÒN NỢ: 2** ⇒ §8 = **PARTIAL**.
 
 > 🔁 **ĐÍNH CHÍNH 2026-09-21 — `TC-GIFT-012` ❌ FAIL → ✅ PASS (QC chốt).** `TC-GIFT-012` đổi **❌ FAIL → ✅ PASS** theo quyết định của QC GiangDC2: nhấn thông báo `NTF-07` mở thẳng màn **"Quà đã nhận"** là **ĐÚNG hành vi**, ⛔ không phải bug. Expected step 4 của TC đã sửa cho khớp (fragment `TC-GIFT-v1.0.md` + `TC-MASTER-v1.0.xlsx` 2 sheet `Quà cảm ơn`/`ALL`, số dòng TC không đổi) và **draft `BUG-022` đã xoá**. Evidence: ảnh `TC-GIFT-012__verify-thong-bao-qua-cam-on.png` (slot `verify`, chứng minh thông báo) + `TC-GIFT-012__step4-FAIL-mo-qua-da-nhan-khong-phai-trang-ca-nhan.png` (màn đích; ⛔ **giữ nguyên tên** file vì chụp lúc đang chấm FAIL — nội dung ảnh chính là màn "Quà đã nhận" mà Expected mới yêu cầu). ⚠️ Chưa chụp lại ảnh màn đích ở slot `verify` — cần đăng nhập lại `stag_giangdc2@` trên thiết bị (đang dùng cho phiên VR-013); làm được bằng thông báo thứ 2 ("17 phút trước") nếu QC muốn ảnh đúng slot. ⚠️ Thiếu emoji 🎁 ở thông báo vẫn là quan sát trang trí, không hạ verdict.
 

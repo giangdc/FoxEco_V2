@@ -23,6 +23,7 @@
 | **VR-016** | 2026-09-21 | **FEED** | mobile (Appium) | 15 | **5** | **4P / 0F / 1B** *(`009` BLOCKED→PASS retest data QC cấp; `015` FAIL→PASS, QC chấp nhận hành vi app + sửa Expected, `BUG-029` rút lại; `007` FAIL→PASS retest account `anhdc4` + data hợp lệ)* · còn nợ **10** *(carried v1.0, ngoài phạm vi — chỉ chạy TC v1.1 theo QC)* | 5/5 ✅ | PARTIAL | `VR-016-FEED-2026-09-21/` |
 | **VR-017** | 2026-09-21 | **ACT** | mobile (Appium) | 18 | **10** | **6P / 2F / 2B** 🐞 `BUG-030/031` draft *(chờ QC review)* · `015` FAIL→BLOCKED · `017` FAIL→PASS *(QC chốt 2 case này app đúng; `BUG-032` xoá)* · còn nợ **8** *(CARRIED v1.0, ngoài phạm vi — chỉ chạy TC v1.1 theo QC)* | 10/10 ✅ | PARTIAL | `VR-017-ACT-2026-09-21/` |
 | **VR-018** | 2026-09-21 | **CNL** | mobile (Appium) | 22 | **13** | **5P / 6F / 2B** 🐞 4 ứng viên *(chưa log)* · còn nợ **9** *(CARRIED v1.0, ngoài phạm vi — chỉ chạy TC v1.1 theo QC)* | 13/13 ✅ | PARTIAL | `VR-018-CNL-2026-09-21/` |
+| **VR-028** | 2026-09-23 | **GIFT** | mobile (Appium) | 14 | **1** | **1P** (`TC-GIFT-008`, tài khoản trắng `stag_minhndn2@`) · QC dừng trước `TC-GIFT-011` · còn nợ **2** (`011` NOT_RUN · `010` NOT_EVIDENCED) | 1/1 ✅ | PARTIAL | `VR-028-GIFT-2026-09-23/` |
 
 ## Ghi chú theo phiên
 
@@ -291,3 +292,11 @@
 > giữ đơn không được dùng để kết luận BLOCKED, phải bấm Xác nhận đi tiếp ít nhất 1 lần (dùng đơn phụ).
 > Coverage DLV: 20/81 → **23/81 có verdict**, còn nợ 58 (không còn nghi blocker build).
 > 📁 `VR-021-DLV-2026-09-22/vibe-report.md`.
+
+## VR-027 — module **DLV** — 2026-09-23 (mobile · emulator-5554 · RETEST bug In review)
+
+> Retest 5 bug Jira DLV đang In review (carrier `stag_anhptm17@`), chỉ comment + đính kèm ảnh, **không đổi trạng thái**.
+> ✅ **FE-327** (nút "Đã đến địa điểm giao hàng", vào thẳng form) · ✅ **FE-334** (validate SĐT ở 3 lựa chọn) ·
+> ❌ **FE-331** / ❌ **FE-338** (Hẹn giao lại: lịch sử, nút, block vẫn sai, kể cả với lịch hẹn mới tạo) ·
+> ❌ **FE-337** (Đang hoàn hàng: nút đã có, lịch sử vẫn sai). Ngoài phạm vi: Quầy bảo vệ nhận SĐT trống; màn không tự refresh sau khi xử lý.
+> 📁 `VR-027-DLV-2026-09-23/vibe-report.md`.
