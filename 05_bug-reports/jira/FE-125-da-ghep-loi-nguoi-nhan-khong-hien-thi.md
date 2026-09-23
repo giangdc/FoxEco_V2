@@ -1,6 +1,6 @@
-# FE-125 — [TC_07 - Theo dõi đơn] Đã ghép: Lỗi người nhận không hiển thị btn hủy và sai nhãn "Đã có người vận chuyển · chờ lấy hàng"
+# FE-125 — [TC_07 - Theo dõi đơn] Đã ghép: Lỗi người nhận không hiển thị btn hủy và sai nhãn "Đã có người vận chuyển · chờ lấy hàng" 
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-125 · **Module:** DLV · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-125 · **Module:** DLV · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -48,5 +48,4 @@
 **KQMM: Hiển thị nút "Đã có người vận chuyển · chờ lấy hàng" ở trạng thái disable, kèm nút "Huỷ đơn"**
 
 ![attachment](a55578f6-36d7-4860-bcb0-90b612bf88c8)
-
 ![attachment](2167fdde-fc30-47c1-9ef9-eeb9a06630b8)

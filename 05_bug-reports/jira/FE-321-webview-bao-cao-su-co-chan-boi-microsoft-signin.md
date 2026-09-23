@@ -1,6 +1,6 @@
 # FE-321 — [TC_10 - Trust & Safety] - Form Báo cáo sự cố bắt buộc đăng nhập Microsoft (do có trường tải file) — đề xuất bỏ bắt buộc đăng nhập
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-321 · **Module:** TS · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-321 · **Module:** TS · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -23,9 +23,9 @@
 | Reject Number | — |
 | Due date |  |
 | Reporter | GiangDC2 |
-| Assignee | Tuanvm37 |
+| Assignee | LinhDCC |
 | Created | 2026-09-22 |
-| Updated | 2026-09-22 |
+| Updated | 2026-09-23 |
 
 > ⚠️ **Nguồn chuẩn = Jira** — sửa trên Jira rồi `/sync-jira-bugs`, KHÔNG sửa tay file này.
 
@@ -61,8 +61,10 @@
 
 **Đề xuất (thay cho "Expected result"):**
 
-- **Form "Báo cáo sự cố" về bản chất là một khảo sát/báo cáo nhanh — người dùng bấm vào giữa lúc đang thao tác trên đơn hàng, kỳ vọng điền và gửi ngay, không phải một tác vụ họ chủ động dành thời gian chuẩn bị đăng nhập. Bắt đăng nhập Microsoft giữa luồng này nhiều khả năng khiến người dùng bỏ dở (rời màn ngay khi thấy màn đăng nhập lạ, không rõ dùng tài khoản nào) — làm giảm hẳn số lượng báo cáo sự cố thực nhận được, đi ngược mục tiêu ban đầu của tính năng **`FR16`.
+- **Form "Báo cáo sự cố" về bản chất là một khảo sát/báo cáo nhanh — người dùng bấm vào giữa lúc đang thao tác trên đơn hàng, kỳ vọng điền và gửi ngay, không phải một tác vụ họ chủ động dành thời gian chuẩn bị đăng nhập. Bắt đăng nhập Microsoft giữa luồng này nhiều khả năng khiến người dùng bỏ dở (rời màn ngay khi thấy màn đăng nhập lạ, không rõ dùng tài khoản nào) — làm giảm hẳn số lượng báo cáo sự cố thực nhận được, đi ngược mục tiêu ban đầu của tính năng** `FR16`.
 - Đề xuất BA/Dev cân nhắc 1 trong 2 hướng để bỏ yêu cầu đăng nhập bắt buộc, ưu tiên sự tiện lợi cho người dùng cuối:
-  1. Bỏ trường "Hình ảnh đính kèm" khỏi form (nếu ảnh không phải thông tin bắt buộc để xử lý sự cố) ⇒ Microsoft Forms không còn lý do đòi đăng nhập.
-  2. Nếu ảnh đính kèm là bắt buộc về nghiệp vụ, đổi nền tảng form sang loại hỗ trợ tải file mà không cần đăng nhập (Google Form công khai, hoặc form tự dựng trong hệ thống nội bộ) — đúng như giả định ban đầu của tài liệu phân tích (`test_data_catalog.md` dùng chữ "Google Form").
+
+    1. Bỏ trường "Hình ảnh đính kèm" khỏi form (nếu ảnh không phải thông tin bắt buộc để xử lý sự cố) ⇒ Microsoft Forms không còn lý do đòi đăng nhập.
+    2. Nếu ảnh đính kèm là bắt buộc về nghiệp vụ, đổi nền tảng form sang loại hỗ trợ tải file mà không cần đăng nhập (Google Form công khai, hoặc form tự dựng trong hệ thống nội bộ) — đúng như giả định ban đầu của tài liệu phân tích (`test_data_catalog.md` dùng chữ "Google Form").
+    
 - Nếu BA/Dev xác nhận giữ nguyên yêu cầu đăng nhập (đánh đổi lấy khả năng đính kèm ảnh), đề nghị ít nhất: (a) thêm 1 dòng cảnh báo trước khi mở WebView — "Bạn sẽ cần đăng nhập Microsoft để gửi báo cáo kèm ảnh" — để người dùng không bị bất ngờ giữa chừng, và (b) xác nhận `test_data_catalog.md`/`test_scenario_map.md` của TS đang mô tả sai (ghi "Google Form", ngụ ý không cần đăng nhập).

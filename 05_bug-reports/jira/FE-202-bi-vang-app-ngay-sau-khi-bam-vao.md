@@ -1,6 +1,6 @@
 # FE-202 — [TC_01 - Hoạt động] Bị văng app ngay sau khi bấm vào menu Hoạt động
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-202 · **Module:** ACT · **Sync:** 2026-09-22 (R2)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-202 · **Module:** ACT · **Sync:** 2026-09-23 (R2)
 
 | Field | Value |
 |-------|-------|

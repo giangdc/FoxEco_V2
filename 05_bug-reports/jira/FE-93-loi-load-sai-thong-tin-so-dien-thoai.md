@@ -1,6 +1,6 @@
 # FE-93 — [TC_04 - Đăng tin - Tôi cần gửi hàng] Lỗi load sai thông tin Số điện thoại của Người gửi
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-93 · **Module:** ORD · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-93 · **Module:** ORD · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -21,7 +21,7 @@
 | Test method | Manual |
 | Duplicate | No |
 | Reject Number | — |
-| Reason for Wontfix |  |
+| Reason for Wontfix | Lỗi do server - Not use |
 | Due date | 2026-08-04 |
 | Reporter | AnhDC4 |
 | Assignee | Tuanvm37 |

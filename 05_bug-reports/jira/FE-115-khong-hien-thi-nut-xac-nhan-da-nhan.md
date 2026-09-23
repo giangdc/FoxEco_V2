@@ -1,6 +1,6 @@
 # FE-115 — [TC_07 - Theo dõi đơn ]: Không hiển thị nút "✓ Xác nhận đã nhận hàng" khi đơn = "Đã giao" và login tài khoản người nhận
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-115 · **Module:** DLV · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-115 · **Module:** DLV · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|

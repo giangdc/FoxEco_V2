@@ -1,6 +1,6 @@
-# FE-328 — [TC_03 - Huỷ đơn]- Title popup thông báo Đã hủy nhậ nđơn không đúng bị hiển thị trên 2 dòng
+# FE-328 — [TC_03 - Huỷ đơn]- Title popup thông báo Đã hủy nhận đơn không đúng bị hiển thị trên 2 dòng
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-328 · **Module:** CNL · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-328 · **Module:** CNL · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -25,7 +25,7 @@
 | Reporter | GiangDC2 |
 | Assignee | Tuanvm37 |
 | Created | 2026-09-22 |
-| Updated | 2026-09-22 |
+| Updated | 2026-09-23 |
 
 > ⚠️ **Nguồn chuẩn = Jira** — sửa trên Jira rồi `/sync-jira-bugs`, KHÔNG sửa tay file này.
 

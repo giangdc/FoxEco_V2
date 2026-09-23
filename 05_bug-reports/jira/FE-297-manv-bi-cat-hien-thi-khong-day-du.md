@@ -1,16 +1,16 @@
 # FE-297 — [TC_11 - Tài khoản & Hồ sơ] - Mã nhân viên bị cắt, hiển thị không đầy đủ
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-297 · **Module:** USR · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-297 · **Module:** USR · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|
 | Key | FE-297 |
 | Module | USR |
-| Status | To Do |
-| Resolution |  |
-| Resolved |  |
-| Verify Date |  |
-| Done At |  |
+| Status | Done |
+| Resolution | Fixed |
+| Resolved | 2026-09-23 |
+| Verify Date | 2026-09-23 |
+| Done At | 2026-09-23 |
 | Fix Version | V1.0 |
 | Priority | Low |
 | Severity | Suggest (weight 0) |
@@ -21,11 +21,11 @@
 | Test method | Manual |
 | Duplicate | No |
 | Reject Number | — |
-| Due date |  |
+| Due date | 2026-09-23 |
 | Reporter | GiangDC2 |
 | Assignee | Tuanvm37 |
 | Created | 2026-09-18 |
-| Updated | 2026-09-18 |
+| Updated | 2026-09-23 |
 
 > ⚠️ **Nguồn chuẩn = Jira** — sửa trên Jira rồi `/sync-jira-bugs`, KHÔNG sửa tay file này.
 

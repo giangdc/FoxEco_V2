@@ -1,14 +1,14 @@
 # FE-308 — [TC_08 - Quà cảm ơn - Tặng quà] Popup sau khi tặng quà hiện chuỗi cũ, sai chuỗi chính thức BR14-02
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-308 · **Module:** GIFT · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-308 · **Module:** GIFT · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|
 | Key | FE-308 |
 | Module | GIFT |
-| Status | To Do |
-| Resolution |  |
-| Resolved |  |
+| Status | In review |
+| Resolution | Fixed |
+| Resolved | 2026-09-23 |
 | Verify Date |  |
 | Done At |  |
 | Fix Version | V1.0 |
@@ -21,11 +21,11 @@
 | Test method | Manual |
 | Duplicate | No |
 | Reject Number | — |
-| Due date |  |
+| Due date | 2026-09-23 |
 | Reporter | GiangDC2 |
 | Assignee | Tuanvm37 |
 | Created | 2026-09-21 |
-| Updated | 2026-09-21 |
+| Updated | 2026-09-23 |
 
 > ⚠️ **Nguồn chuẩn = Jira** — sửa trên Jira rồi `/sync-jira-bugs`, KHÔNG sửa tay file này.
 
@@ -57,11 +57,11 @@
 
 **Expected result:**
 
-- Quà gửi ngay, không có bước chờ xác nhận của người vận chuyển; popup hiện đúng chuỗi **"Cảm ơn của bạn đã được gửi"** kèm nút về trang chủ. *(BR14-02 · AC-24.1.01, *`DOC-v1.1-01` §8.14.1 trang 49 · §6.2 trang 25)
+- Quà gửi ngay, không có bước chờ xác nhận của người vận chuyển; popup hiện đúng chuỗi **"Cảm ơn của bạn đã được gửi"** kèm nút về trang chủ. _(BR14-02 · AC-24.1.01,_ `DOC-v1.1-01` §8.14.1 trang 49 · §6.2 trang 25)
 
 **Actual result:**
 
-- Popup hiện **tiêu đề **`Đã gửi lời cảm ơn!` — chuỗi của v1.0 mà v1.1 đã chủ ý thay.
+- Popup hiện **tiêu đề** `Đã gửi lời cảm ơn!` — chuỗi của v1.0 mà v1.1 đã chủ ý thay.
 - Nội dung popup: `Món quà và lời cảm ơn của bạn đã được gửi đến người vận chuyển.`
 - Chuỗi `Cảm ơn của bạn đã được gửi` **không xuất hiện** ở tiêu đề. Chỉ có cụm chữ thường `cảm ơn của bạn đã được gửi` nằm lẫn trong câu nội dung.
 - Các vế còn lại đúng: quà gửi ngay (không có màn chờ), có nút `Về trang chủ`.

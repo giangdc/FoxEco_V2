@@ -1,6 +1,6 @@
 # FE-98 — [TC_05 - Trang chủ]: Lỗi load data Số người trong Cộng đồng FoxEco không khớp với Hris
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-98 · **Module:** HOME · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-98 · **Module:** HOME · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -21,7 +21,7 @@
 | Test method | Manual |
 | Duplicate | No |
 | Reject Number | — |
-| Reason for Wontfix |  |
+| Reason for Wontfix | Data/Phân quyền chưa đúng - Not use |
 | Due date | 2026-08-04 |
 | Reporter | anhptm17 |
 | Assignee | liemch2 |

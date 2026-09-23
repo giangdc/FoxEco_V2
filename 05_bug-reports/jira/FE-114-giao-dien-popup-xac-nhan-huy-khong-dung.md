@@ -1,6 +1,6 @@
 # FE-114 — [TC_08 - Hủy đơn]: giao diện popup xác nhận hủy không đúng (trạng thái Lấy hàng)
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-114 · **Module:** CNL · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-114 · **Module:** CNL · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|

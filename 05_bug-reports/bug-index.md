@@ -5,14 +5,14 @@
 
 ## Nguồn chuẩn
 
-> 🔄 **Sync gần nhất: 2026-09-22 — `/sync-jira-bugs` (PULL, không cờ lọc).**
-> JQL: `project = FE AND issuetype = Bug ORDER BY key ASC` ⇒ **phạm vi = TOÀN BỘ project FE, 119 bug** (`FE-93` … `FE-338`).
+> 🔄 **Sync gần nhất: 2026-09-23 (lượt 2, chiều) — `/sync-jira-bugs` (PULL, không cờ lọc).**
+> JQL: `project = FE AND issuetype = Bug ORDER BY key ASC` ⇒ **phạm vi = TOÀN BỘ project FE, 121 bug** (`FE-93` … `FE-342`).
 > Index này **phản ánh đủ project**, không bị cắt phạm vi ⇒ lượt đối chiếu sau kết luận `only-local` là đáng tin.
-> Trục: Jira REST v3 (`~/.config/jira/.env`) — Atlassian MCP connector không expose tool trong phiên này.
+> Trục: Atlassian MCP connector (`searchJiraIssuesUsingJql`, markdown).
 
 | Cần gì | Đọc ở đâu |
 |---|---|
-| Bug đã push Jira (mirror, trạng thái mới nhất) | `05_bug-reports/jira/<KEY>-*.md` (glob đệ quy) — **119 file**, ghi đè toàn bộ mỗi lượt sync, ⛔ KHÔNG sửa tay |
+| Bug đã push Jira (mirror, trạng thái mới nhất) | `05_bug-reports/jira/<KEY>-*.md` (glob đệ quy) — **121 file**, ghi đè toàn bộ mỗi lượt sync, ⛔ KHÔNG sửa tay |
 | Bug local chưa push Jira | `05_bug-reports/draft/BUG-NNN-*.md` (glob đệ quy) — hiện **0** file (11 file trước đó — `BUG-030/031/034/036/037/038/039/041/042/043/044` — đã push Jira 2026-09-22, xem `jira/FE-317..327-*.md` + bảng `Bug → ID local → RUN` bên dưới) |
 | Tổng quan status/aging | `/log-bug --status` (sinh on-demand, không lưu ở đây) |
 

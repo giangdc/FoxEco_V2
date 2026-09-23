@@ -1,6 +1,6 @@
-# FE-169 — [TC_01 - Hoạt động]: Người nhận không hiển thị data đơn hoàn thành tại tab Đã hoàn thành
+# FE-169 — [TC_01 - Hoạt động]: Người nhận không hiển thị data đơn hoàn thành tại tab Đã hoàn thành 
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-169 · **Module:** ACT · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-169 · **Module:** ACT · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -43,10 +43,9 @@
 1. Mở app Foxeco →vào màn hình Hoạt động(Đơn của tôi)/Tab Đã hoàn thành
 2. Check dữ liệu đang load 
 
-**Bug:  Người nhận ko load data data Đã hoàn thành **
+**Bug:  Người nhận ko load data data Đã hoàn thành** 
 
 → demo hiển thị cả 3 role
 
 ![attachment](2aa4b31f-c2a6-4ab6-9675-797381851084)
-
 ![attachment](d47e31a0-ea63-417f-bc18-dfb765c004c5)

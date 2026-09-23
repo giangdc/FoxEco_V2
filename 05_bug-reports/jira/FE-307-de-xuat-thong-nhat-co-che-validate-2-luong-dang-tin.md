@@ -1,6 +1,6 @@
 # FE-307 — [TC_04 - Đăng tin][Suggest] Đề xuất thống nhất cơ chế validate giữa 2 luồng đăng tin
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-307 · **Module:** ORD · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-307 · **Module:** ORD · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -25,7 +25,7 @@
 | Reporter | GiangDC2 |
 | Assignee | Tuanvm37 |
 | Created | 2026-09-21 |
-| Updated | 2026-09-21 |
+| Updated | 2026-09-23 |
 
 > ⚠️ **Nguồn chuẩn = Jira** — sửa trên Jira rồi `/sync-jira-bugs`, KHÔNG sửa tay file này.
 
@@ -47,7 +47,7 @@
 **Hiện trạng:**
 
 |  | "Tôi cần gửi hàng" (NEED) | "Tôi nhận giao hàng" (OFFER) |
-|---|---|---|
+| --- | --- | --- |
 | Nút gửi/tiếp khi thiếu dữ liệu | **khoá** (`enabled=false`) | **luôn bật** |
 | Khi bấm lúc thiếu dữ liệu | không có phản hồi nào | không đăng, hiện lỗi đỏ inline `Chọn ít nhất 1 buổi` |
 | Người dùng biết thiếu gì? | **không** (xem `FE-301`) | **có**, ít nhất ở nhánh "chưa chọn buổi" |
@@ -62,11 +62,11 @@
 **Căn cứ đặc tả:**
 
 - `VAL-01` (`DOC-v1.0-01 §D8.3 L392`, `SC-ORD-047`): nút gửi **vô hiệu hoá tới khi form hợp lệ** — áp cho cả NEED và OFFER. NEED làm đúng; OFFER để nút bật ⇒ lệch chữ `VAL-01`.
-- `VAL-02` (`§D8.3 L393`, `SC-ORD-048`): *"Lỗi hiện ngay dưới ô nhập khi rời ô (on blur), không dùng popup; cuộn tới ô lỗi đầu tiên khi bấm submit"*. OFFER làm được một phần; NEED chưa làm (`FE-301`).
+- `VAL-02` (`§D8.3 L393`, `SC-ORD-048`): _"Lỗi hiện ngay dưới ô nhập khi rời ô (on blur), không dùng popup; cuộn tới ô lỗi đầu tiên khi bấm submit"_. OFFER làm được một phần; NEED chưa làm (`FE-301`).
 
 **Đề xuất hướng thống nhất (BA/Dev chọn):**
 
-- **Phương án A — theo **`VAL-01`: cả hai luồng **khoá nút** cho tới khi đủ dữ liệu, **kèm lỗi inline tại từng trường** (`VAL-02`) để người dùng biết thiếu gì. OFFER chuyển sang khoá nút; NEED bổ sung lỗi inline (đang theo dõi ở `FE-301`).
+- **Phương án A — theo** `VAL-01`: cả hai luồng **khoá nút** cho tới khi đủ dữ liệu, **kèm lỗi inline tại từng trường** (`VAL-02`) để người dùng biết thiếu gì. OFFER chuyển sang khoá nút; NEED bổ sung lỗi inline (đang theo dõi ở `FE-301`).
 - **Phương án B — bỏ khoá nút:** cả hai luồng để nút **luôn bật**; khi bấm thiếu dữ liệu thì hiện lỗi inline và cuộn tới ô lỗi đầu tiên (`VAL-02`). Cần BA sửa `VAL-01`; NEED bỏ khoá nút.
 - Cả hai phương án đều đòi NEED hiển thị được lỗi inline. Lưu ý khi chọn A: nếu chỉ khoá nút mà không có lỗi inline thì lặp lại đúng tình trạng `FE-301`.
 

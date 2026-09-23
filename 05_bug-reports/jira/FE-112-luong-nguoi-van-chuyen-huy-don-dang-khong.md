@@ -1,6 +1,6 @@
-# FE-112 — [TC_08 - Hủy đơn]: Luồng Người vận chuyển hủy đơn đang không đúng
+# FE-112 — [TC_08 - Hủy đơn]: Luồng Người vận chuyển hủy đơn đang không đúng 
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-112 · **Module:** CNL · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-112 · **Module:** CNL · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|

@@ -1,6 +1,6 @@
-# FE-191 — [TC_04 - Đăng tin - Tôi cần gửi hàng] Đăng tin thành công : Hiển thị trang chủ khi click btn Theo dõi đơn hàng ở Popup kết quả
+# FE-191 — [TC_04 - Đăng tin - Tôi cần gửi hàng] Đăng tin thành công : Hiển thị trang chủ khi click btn Theo dõi đơn hàng ở Popup kết quả 
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-191 · **Module:** ORD · **Sync:** 2026-09-22 (R2)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-191 · **Module:** ORD · **Sync:** 2026-09-23 (R2)
 
 | Field | Value |
 |-------|-------|
@@ -38,7 +38,7 @@
 1. Tại màn hình Đăng tin thành công 
 2. Click chọn btn Theo dõi đơn hàng ở Popup kết quả 
 
-**=> Bug: Hệ thống hiển thị màn hình trang chủ **
+**=> Bug: Hệ thống hiển thị màn hình trang chủ** 
 
 **KQMM: Chuyển sang màn Theo dõi đơn của tin vừa tạo**
 

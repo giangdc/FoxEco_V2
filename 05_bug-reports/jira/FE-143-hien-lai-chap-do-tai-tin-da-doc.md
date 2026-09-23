@@ -1,6 +1,6 @@
 # FE-143 — [TC_03 - Thông báo ]: Hiện lại chấp đỏ tại tin đã đọc sau khi reload màn hình thông báo
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-143 · **Module:** NTF · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-143 · **Module:** NTF · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -37,7 +37,7 @@
 
 - Còn thông báo chưa đọc
 
-**Tại màn hình thông báo **
+**Tại màn hình thông báo** 
 
 1. Tap vào thông báo chưa đọc
 2. Back lại màn thông báo 

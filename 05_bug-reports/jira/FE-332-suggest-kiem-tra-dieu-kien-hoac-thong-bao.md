@@ -1,12 +1,12 @@
 # FE-332 — [TC_04 - Giao nhận & Theo dõi đơn]- suggest kiêm tra điều kiện hoặc thông báo cho người dùng khi SĐT không tồn tại zalo
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-332 · **Module:** DLV · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-332 · **Module:** DLV · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|
 | Key | FE-332 |
 | Module | DLV |
-| Status | To Do |
+| Status | In Progress |
 | Resolution |  |
 | Resolved |  |
 | Verify Date |  |
@@ -20,12 +20,12 @@
 | Platform | App |
 | Test method | Manual |
 | Duplicate | No |
-| Reject Number | — |
-| Due date |  |
+| Reject Number | Lần 0 |
+| Due date | 2026-09-23 |
 | Reporter | GiangDC2 |
 | Assignee | Tuanvm37 |
 | Created | 2026-09-22 |
-| Updated | 2026-09-22 |
+| Updated | 2026-09-23 |
 
 > ⚠️ **Nguồn chuẩn = Jira** — sửa trên Jira rồi `/sync-jira-bugs`, KHÔNG sửa tay file này.
 

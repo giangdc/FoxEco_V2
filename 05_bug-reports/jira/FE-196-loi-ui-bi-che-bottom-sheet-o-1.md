@@ -1,6 +1,6 @@
 # FE-196 — [TC_04 - Đăng tin - Tôi cần gửi hàng] Lỗi UI bị che bottom sheet ở 1 vài màn hình Thông tin hàng, Xác nhận đã lấy hàng, Xác nhận đã giao hàng
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-196 · **Module:** ORD · **Sync:** 2026-09-22 (R2)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-196 · **Module:** ORD · **Sync:** 2026-09-23 (R2)
 
 | Field | Value |
 |-------|-------|

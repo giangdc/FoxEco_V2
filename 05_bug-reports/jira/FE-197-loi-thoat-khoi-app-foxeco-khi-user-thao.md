@@ -1,6 +1,6 @@
 # FE-197 — [TC_04 - Đăng tin/Theo dõi đơn/Chi tiết đơn] Lỗi thoát khỏi app FoxEco khi user thao tác vuốt back về trên màn hình
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-197 · **Module:** ORD · **Sync:** 2026-09-22 (R2)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-197 · **Module:** ORD · **Sync:** 2026-09-23 (R2)
 
 | Field | Value |
 |-------|-------|
@@ -42,5 +42,4 @@ Expected: Chỉ back về màn hình tương ứng trước đó
 Evidence:
 
 ![attachment](cc58dc21-dd22-4dcc-9ba3-52b5d07541bf)
-
 ![attachment](100123c3-a66a-40dc-bd76-cd198240f430)

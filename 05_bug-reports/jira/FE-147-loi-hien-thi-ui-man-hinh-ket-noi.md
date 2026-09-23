@@ -1,6 +1,6 @@
 # FE-147 — [TC_06 - Bảng tin & Chi tiết tin - Chi tiết tin] Lỗi hiển thị UI màn hình Kết nối thành công khi user nhấn Xác nhận mang giúp đơn hàng
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-147 · **Module:** FEED · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-147 · **Module:** FEED · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|

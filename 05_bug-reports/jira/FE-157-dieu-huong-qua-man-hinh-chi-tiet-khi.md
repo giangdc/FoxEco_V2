@@ -1,6 +1,6 @@
 # FE-157 — [TC_03 - Thông báo]: điều hướng qua màn hinh chi tiết khi tap vào thông báo "Tìm thấy đơn hàng phù hơp..." - đơn này đã đồng ý giao
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-157 · **Module:** NTF · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-157 · **Module:** NTF · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|

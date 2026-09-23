@@ -1,6 +1,6 @@
 # FE-140 — [TC_05 - Trang chủ]: Không sắp xếp thứ tự tin trong "Tin mới" theo tin gần tuyến nhất hiển thị trước
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-140 · **Module:** HOME · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-140 · **Module:** HOME · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|

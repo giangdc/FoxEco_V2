@@ -1,6 +1,6 @@
 # FE-145 — [TC_06 - Bảng tin & Chi tiết tin - Chi tiết tin] Lỗi hiển thị ảnh sản phẩm, thông tin đơn hàng không đúng với figma mô tả
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-145 · **Module:** FEED · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-145 · **Module:** FEED · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|

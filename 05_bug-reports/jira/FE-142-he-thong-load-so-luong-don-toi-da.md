@@ -1,6 +1,6 @@
 # FE-142 — [TC_05 - Trang chủ]: Hệ thống load số lượng đơn tối đa trong Đơn của tôi không khớp giữa các vai trò
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-142 · **Module:** HOME · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-142 · **Module:** HOME · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -50,8 +50,7 @@
 
 **=> Bug: Hệ thống load số lượng đơn tối đa hiên thị trong Đơn của tôi không khớp giữa các vai trò**
 
-**KQMM: Hệ thống load số lượng đơn tối đa 5 **
+**KQMM: Hệ thống load số lượng đơn tối đa 5** 
 
 ![attachment](d18ecfcb-2a35-4b7f-912f-3b9e26275901)
-
 ![attachment](8aef056c-3924-42a8-8204-7be53c3d8936)

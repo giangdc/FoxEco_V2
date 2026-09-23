@@ -1,16 +1,16 @@
 # FE-318 — [TC_01 - Hoạt động] - Empty state tab Đang diễn ra thiếu dòng giải thích
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-318 · **Module:** ACT · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-318 · **Module:** ACT · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|
 | Key | FE-318 |
 | Module | ACT |
-| Status | To Do |
-| Resolution |  |
-| Resolved |  |
-| Verify Date |  |
-| Done At |  |
+| Status | Done |
+| Resolution | Fixed |
+| Resolved | 2026-09-23 |
+| Verify Date | 2026-09-23 |
+| Done At | 2026-09-23 |
 | Fix Version | V1.0 |
 | Priority | Low |
 | Severity | Low (weight 2) |
@@ -21,11 +21,11 @@
 | Test method | Manual |
 | Duplicate | No |
 | Reject Number | — |
-| Due date |  |
+| Due date | 2026-09-23 |
 | Reporter | GiangDC2 |
 | Assignee | Tuanvm37 |
 | Created | 2026-09-22 |
-| Updated | 2026-09-22 |
+| Updated | 2026-09-23 |
 
 > ⚠️ **Nguồn chuẩn = Jira** — sửa trên Jira rồi `/sync-jira-bugs`, KHÔNG sửa tay file này.
 
@@ -54,7 +54,7 @@
 
 **Expected result:**
 
-- Vùng danh sách hiện icon nét mảnh màu neutral, dòng tiêu đề đúng chuỗi "Không có đơn đang thực hiện", **1 dòng giải thích**, và đúng 1 nút CTA nhãn "Đăng tin gửi hàng" *(TC-ACT-012; PRD *`DOC-v1.1-01` §8.17.1 EMP-05 + §8.17.2 BR17-01: "Mỗi empty state gồm: icon nét mảnh màu neutral + một dòng tiêu đề + một dòng giải thích + tối đa một CTA.").
+- Vùng danh sách hiện icon nét mảnh màu neutral, dòng tiêu đề đúng chuỗi "Không có đơn đang thực hiện", **1 dòng giải thích**, và đúng 1 nút CTA nhãn "Đăng tin gửi hàng" _(TC-ACT-012; PRD_ `DOC-v1.1-01` §8.17.1 EMP-05 + §8.17.2 BR17-01: "Mỗi empty state gồm: icon nét mảnh màu neutral + một dòng tiêu đề + một dòng giải thích + tối đa một CTA.").
 
 **Actual result:**
 

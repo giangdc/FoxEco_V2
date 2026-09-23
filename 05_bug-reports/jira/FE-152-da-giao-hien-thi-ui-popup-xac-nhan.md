@@ -1,6 +1,6 @@
 # FE-152 — [TC_07 - Theo dõi đơn] Đã giao: Hiển thị UI popup "Xác nhận" đã nhận hàng khác với figma mô tả
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-152 · **Module:** DLV · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-152 · **Module:** DLV · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|

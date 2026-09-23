@@ -1,6 +1,6 @@
-# FE-154 — [TC_07 - Theo dõi đơn]: Hiển thị Lịch sử khi hoàn tất đơn và người gửi tặng quà khác với figma mô tả
+# FE-154 — [TC_07 - Theo dõi đơn]: Hiển thị Lịch sử khi hoàn tất đơn và người gửi tặng quà khác với figma mô tả 
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-154 · **Module:** DLV · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-154 · **Module:** DLV · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -21,7 +21,7 @@
 | Test method | Manual |
 | Duplicate | No |
 | Reject Number | — |
-| Reason for Wontfix |  |
+| Reason for Wontfix | BA thiếu/ sai nghiệp vụ |
 | Due date | 2026-08-05 |
 | Reporter | anhptm17 |
 | Assignee | liemch2 |
@@ -36,7 +36,7 @@
 
 **Data**:
 
-- Account người gửi : [stag_](mailto:stag_chintl12@fpt.com)dienlt2@fpt.com
+- Account người gửi : [stag\_](mailto:stag_chintl12@fpt.com)dienlt2@fpt.com
 
 **Step:**
 

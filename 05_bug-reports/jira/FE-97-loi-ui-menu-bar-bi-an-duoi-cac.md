@@ -1,6 +1,6 @@
 # FE-97 — [TC_05 - Trang chủ] Lỗi UI menu bar bị ẩn dưới các icon chức năng của device
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-97 · **Module:** HOME · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-97 · **Module:** HOME · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|

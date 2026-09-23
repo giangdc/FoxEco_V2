@@ -1,6 +1,6 @@
 # FE-128 — [TC_07 - Theo dõi đơn] Đang giao: Lỗi người nhận hiển thị nhãn 'Đơn đang trên đường đến bạn' không đúng
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-128 · **Module:** DLV · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-128 · **Module:** DLV · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -43,16 +43,15 @@
 2. Bấm tab "Hoạt động", mở đơn Nhận - Đang giao 
 3. Quan sát nhãn CTA ở đáy màn
 
-**=> Bug: **
+**=> Bug:** 
 
 - **Hệ thống hiển thị nhãn CTA** **“ Đang giao đến người nhận “ ở đáy màn**
-- **Hiển thị text hearder Tôi gửi hàng **
+- **Hiển thị text hearder Tôi gửi hàng** 
 
-**KQMM: **
+**KQMM:** 
 
-- **Hệ thống hiển thị nhãn "✓ Đơn đang trên đường đến bạn" ở trạng thái disable ở đáy màn **
+- **Hệ thống hiển thị nhãn "✓ Đơn đang trên đường đến bạn" ở trạng thái disable ở đáy màn** 
 - **Hiển thị text hearder Tôi nhận hàng**
 
 ![attachment](35683946-98a0-4ad7-aa87-ee079cbf5b68)
-
 ![attachment](cb803859-bc50-4c69-b678-6551993cff7c)

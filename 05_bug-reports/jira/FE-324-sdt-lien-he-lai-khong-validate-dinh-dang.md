@@ -1,6 +1,6 @@
 # FE-324 — [TC_10 - Trust & Safety] - SĐT liên hệ lại trong form báo cáo sự cố không validate định dạng
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-324 · **Module:** TS · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-324 · **Module:** TS · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -23,9 +23,9 @@
 | Reject Number | — |
 | Due date |  |
 | Reporter | GiangDC2 |
-| Assignee | Tuanvm37 |
+| Assignee | LinhDCC |
 | Created | 2026-09-22 |
-| Updated | 2026-09-22 |
+| Updated | 2026-09-23 |
 
 > ⚠️ **Nguồn chuẩn = Jira** — sửa trên Jira rồi `/sync-jira-bugs`, KHÔNG sửa tay file này.
 

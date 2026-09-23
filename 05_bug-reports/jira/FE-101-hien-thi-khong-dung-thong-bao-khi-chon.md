@@ -1,6 +1,6 @@
 # FE-101 — [TC_04 - Đăng tin - Tôi nhận giao hàng]: hiển thị không đúng thông báo khi chọn thời gian khởi hành + đên nơi < 30p
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-101 · **Module:** ORD · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-101 · **Module:** ORD · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|

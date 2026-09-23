@@ -1,6 +1,6 @@
-# FE-333 — [TC_04 - Giao nhận & Theo dõi đơn]- Xử lý khi click btn Không thê liên lạc cho người nhận không đúng
+# FE-333 — [TC_04 - Giao nhận & Theo dõi đơn]- Xử lý khi click btn Không thê liên lạc cho người nhận không đúng 
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-333 · **Module:** DLV · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-333 · **Module:** DLV · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -25,7 +25,7 @@
 | Reporter | GiangDC2 |
 | Assignee | Tuanvm37 |
 | Created | 2026-09-22 |
-| Updated | 2026-09-22 |
+| Updated | 2026-09-23 |
 
 > ⚠️ **Nguồn chuẩn = Jira** — sửa trên Jira rồi `/sync-jira-bugs`, KHÔNG sửa tay file này.
 

@@ -1,16 +1,16 @@
 # FE-291 — [TC_11 - Tài khoản & Hồ sơ] - Chuỗi thông báo lỗi SĐT lệch chuỗi BA đã chốt
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-291 · **Module:** USR · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-291 · **Module:** USR · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|
 | Key | FE-291 |
 | Module | USR |
-| Status | To Do |
-| Resolution |  |
-| Resolved |  |
-| Verify Date |  |
-| Done At |  |
+| Status | Done |
+| Resolution | Fixed |
+| Resolved | 2026-09-23 |
+| Verify Date | 2026-09-23 |
+| Done At | 2026-09-23 |
 | Fix Version | V1.0 |
 | Priority | Medium |
 | Severity | Low (weight 2) |
@@ -21,11 +21,11 @@
 | Test method | Manual |
 | Duplicate | No |
 | Reject Number | — |
-| Due date |  |
+| Due date | 2026-09-23 |
 | Reporter | GiangDC2 |
 | Assignee | Tuanvm37 |
 | Created | 2026-09-18 |
-| Updated | 2026-09-18 |
+| Updated | 2026-09-23 |
 
 > ⚠️ **Nguồn chuẩn = Jira** — sửa trên Jira rồi `/sync-jira-bugs`, KHÔNG sửa tay file này.
 
@@ -48,10 +48,12 @@
 
 1. Vào field "Số điện thoại mặc định"
 2. Nhập một trong các giá trị sai định dạng sau:
-  - để trống (TC-USR-017)
-  - `091234567` — 9 số (TC-USR-018)
-  - `1912345678` — không bắt đầu bằng 0 (TC-USR-020)
-  - `09123a5678` — chứa chữ (TC-USR-023)
+
+    - để trống (TC-USR-017)
+    - `091234567` — 9 số (TC-USR-018)
+    - `1912345678` — không bắt đầu bằng 0 (TC-USR-020)
+    - `09123a5678` — chứa chữ (TC-USR-023)
+    
 3. Nhấn nút "Lưu thay đổi"
 
 **Expected result:**

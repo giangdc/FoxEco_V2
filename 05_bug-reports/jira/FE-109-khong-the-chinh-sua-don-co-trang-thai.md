@@ -1,6 +1,6 @@
 # FE-109 — [TC_04 - Đăng tin - Tôi nhận giao hàng]: Không thể chính sửa đơn có trạng thái chờ ghép
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-109 · **Module:** ORD · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-109 · **Module:** ORD · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|

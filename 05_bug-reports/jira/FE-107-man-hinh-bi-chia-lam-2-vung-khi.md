@@ -1,6 +1,6 @@
 # FE-107 — [TC_04 - Đăng tin - Tôi nhận giao hàng]: màn hình bị chia làm 2  vùng khi thao tác tại giao diện chọn giờ
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-107 · **Module:** ORD · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-107 · **Module:** ORD · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|

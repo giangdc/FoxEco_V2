@@ -1,6 +1,6 @@
 # FE-121 — [TC_04 - Đăng tin- Chỉnh sửa]: Không hiển thị btn Hủy chỉnh sửa tại bước 1/2
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-121 · **Module:** ORD · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-121 · **Module:** ORD · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -38,7 +38,7 @@
 1. Người gởi Tab Btn Chỉnh sửa 
 2. Check giao diện màn hình chỉnh sửa
 
-**Actual: **Không hiển thị btn Hủy chỉnh sửa tại bước 1/2, bước 3 mới có 
+**Actual:** Không hiển thị btn Hủy chỉnh sửa tại bước 1/2, bước 3 mới có 
 
 => Mỗi bước đều có btn này
 

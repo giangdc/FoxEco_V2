@@ -1,6 +1,6 @@
-# FE-167 — [TC_01 - Hoạt động] Chức năng tặng quà tại màn hình Hoạt động (Đơn của tôi) không đúng
+# FE-167 — [TC_01 - Hoạt động] Chức năng tặng quà tại màn hình Hoạt động (Đơn của tôi) không đúng 
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-167 · **Module:** ACT · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-167 · **Module:** ACT · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -33,7 +33,7 @@
 
 ## Nội dung từ Jira
 
-**Điều kiện test: **
+**Điều kiện test:** 
 
 - account: [stag_tampnh2@fpt.com](mailto:stag_tampnh2@fpt.com) → người gởi
 - data: Có đơn đã hoàn thành
@@ -49,6 +49,6 @@
 - Sau khi tặng quà 1 đơn → thao tác tặng tiếp thì báo lỗi idempotency-key đã dùng cho gift khác 
 - Sau khi tặng xong Tắt app mở lại → <Đã tặng quà> cập nhật thành <Chạm để tặng quà>
 
-****** Cần check lại do file demo ko rõ ràng + brd cũng không mô tả luồng tặng quà chỗ này
+\*\*\*\*\*\* Cần check lại do file demo ko rõ ràng + brd cũng không mô tả luồng tặng quà chỗ này
 
 ![attachment](260be93a-9f02-4cc2-93e5-e642a8a7886b)

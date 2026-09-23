@@ -1,6 +1,6 @@
-# FE-156 — [TC_03 - Thông báo]: push thêm thông báo sau khi trước đó đã gởi 5 tin -> có 1 tin Xác nhận
+# FE-156 — [TC_03 - Thông báo]: push thêm thông báo sau khi trước đó đã gởi 5 tin -> có 1 tin Xác nhận 
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-156 · **Module:** NTF · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-156 · **Module:** NTF · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|

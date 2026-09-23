@@ -1,6 +1,6 @@
 # FE-130 — [TC_07 - Theo dõi đơn] Không gửi nhắc cho người nhận khi đơn ở "Đã giao" quá 2 giờ mà chưa xác nhận
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-130 · **Module:** DLV · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-130 · **Module:** DLV · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|

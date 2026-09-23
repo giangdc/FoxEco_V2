@@ -1,6 +1,6 @@
-# FE-170 — [TC_03 - Thông báo ]: Rule gởi thông báo khi đơn bị hủy không đúng
+# FE-170 — [TC_03 - Thông báo ]: Rule gởi thông báo khi đơn bị hủy không đúng 
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-170 · **Module:** NTF · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-170 · **Module:** NTF · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -33,14 +33,14 @@
 
 ## Nội dung từ Jira
 
-**Điều kiện test: **Đơn đã ghép
+**Điều kiện test:** Đơn đã ghép
 
-**Bước thực hiện: **
+**Bước thực hiện:** 
 
 1. Người vận chuyển thao tác hủy đơn
 2. Check thông báo
 
-**> Bug: **
+**> Bug:** 
 
 - Chỉ gởi thông báo hủy cho Gởi, không gởi cho người nhận  =>phải gởi cả 2 (Gởi cho cá bên liên quan còn lại của đơn)
 - Nội dung thông báo hủy không đúng brd

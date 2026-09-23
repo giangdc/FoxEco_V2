@@ -1,16 +1,16 @@
 # FE-320 — [TC_03 - Huỷ đơn][Suggest] - Thiếu dòng lỗi dưới ô lý do khi nhập 4 ký tự
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-320 · **Module:** CNL · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-320 · **Module:** CNL · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|
 | Key | FE-320 |
 | Module | CNL |
-| Status | To Do |
-| Resolution |  |
-| Resolved |  |
-| Verify Date |  |
-| Done At |  |
+| Status | Done |
+| Resolution | Fixed |
+| Resolved | 2026-09-23 |
+| Verify Date | 2026-09-23 |
+| Done At | 2026-09-23 |
 | Fix Version | V1.0 |
 | Priority | Low |
 | Severity | Suggest (weight 0) |
@@ -21,11 +21,11 @@
 | Test method | Manual |
 | Duplicate | No |
 | Reject Number | — |
-| Due date |  |
+| Due date | 2026-09-23 |
 | Reporter | GiangDC2 |
 | Assignee | Tuanvm37 |
 | Created | 2026-09-22 |
-| Updated | 2026-09-22 |
+| Updated | 2026-09-23 |
 
 > ⚠️ **Nguồn chuẩn = Jira** — sửa trên Jira rồi `/sync-jira-bugs`, KHÔNG sửa tay file này.
 
@@ -53,7 +53,7 @@
 
 **Expected result:**
 
-- Nút "Xác nhận" vô hiệu hoá **ngay** (không phải bấm được rồi mới báo lỗi); **hiện lỗi ngay dưới ô lý do**; trạng thái đơn không đổi *(TC-CNL-004; PRD *`DOC-v1.1-01` `BR11-01` + `VAL-04` + `AC-25.1.03`).
+- Nút "Xác nhận" vô hiệu hoá **ngay** (không phải bấm được rồi mới báo lỗi); **hiện lỗi ngay dưới ô lý do**; trạng thái đơn không đổi _(TC-CNL-004; PRD_ `DOC-v1.1-01` `BR11-01` + `VAL-04` + `AC-25.1.03`).
 
 **Actual result:**
 

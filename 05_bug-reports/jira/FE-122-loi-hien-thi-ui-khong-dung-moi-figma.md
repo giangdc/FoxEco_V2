@@ -1,6 +1,6 @@
 # FE-122 — [TC_07 - Theo dõi đơn]: Lỗi hiển thị UI không đúng mới figma khi Người vận chuyển bấm "Tôi đã lấy hàng"
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-122 · **Module:** DLV · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-122 · **Module:** DLV · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -43,7 +43,7 @@ Step:
 2. Bấm tab "Hoạt động", mở đơn đang nhận để vào màn "Theo dõi đơn"
 3. Bấm nút "✓ Tôi đã lấy hàng"
 
-**=> Bug: Hệ thống hiển thị màn hình Xác nhận lấy hàng và bắt buộc up ảnh **
+**=> Bug: Hệ thống hiển thị màn hình Xác nhận lấy hàng và bắt buộc up ảnh** 
 
 **KQMM: Hiển thị UI giống design: Popup "Xác nhận" hiển thị nội dung "Bạn xác nhận đã lấy hàng từ người gửi và bắt đầu giao?"**
 

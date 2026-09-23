@@ -1,6 +1,6 @@
 # FE-137 — [TC_04 - Đăng tin - Tôi nhận giao hàng]: Disable btn đăng tin ngay khi chọn đúng thông tin
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-137 · **Module:** ORD · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-137 · **Module:** ORD · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -33,7 +33,7 @@
 
 ## Nội dung từ Jira
 
-**Tại màn hình Tạo tin Tôi nhận giao hàng **
+**Tại màn hình Tạo tin Tôi nhận giao hàng** 
 
 1. Nhập đúng tên/SDT
 2. Điểm xuất phát nhập tân thuận → chọn từ autocomplete

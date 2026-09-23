@@ -1,6 +1,6 @@
 # FE-325 — [TC_10 - Trust & Safety] - Trường ảnh đính kèm trong báo cáo sự cố bắt buộc, ngược đặc tả
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-325 · **Module:** TS · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-325 · **Module:** TS · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -23,9 +23,9 @@
 | Reject Number | — |
 | Due date |  |
 | Reporter | GiangDC2 |
-| Assignee | Tuanvm37 |
+| Assignee | LinhDCC |
 | Created | 2026-09-22 |
-| Updated | 2026-09-22 |
+| Updated | 2026-09-23 |
 
 > ⚠️ **Nguồn chuẩn = Jira** — sửa trên Jira rồi `/sync-jira-bugs`, KHÔNG sửa tay file này.
 
@@ -54,8 +54,12 @@
 
 **Expected result:**
 
-- Gửi thành công, hiển thị màn ghi nhận — 0 ảnh là biên dưới hợp lệ (theo `SC-TS-010`, `test_data_catalog.md §TS` liệt "Hình ảnh đính kèm" là trường không bắt buộc). → tài liệu _ demo ko mô tả bắt buộc ảnh 
+- Gửi thành công, hiển thị màn ghi nhận — 0 ảnh là biên dưới hợp lệ (theo `SC-TS-010`, `test_data_catalog.md §TS` liệt "Hình ảnh đính kèm" là trường không bắt buộc). → tài liệu \_ demo ko mô tả bắt buộc ảnh 
 - ![attachment](aaa77d0f-883f-4a7d-916b-1f6f4082bb6b)
+
+    
+
+
 
 **Actual result:**
 

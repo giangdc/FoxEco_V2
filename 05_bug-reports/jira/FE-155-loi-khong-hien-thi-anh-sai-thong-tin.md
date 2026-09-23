@@ -1,6 +1,6 @@
 # FE-155 — [TC_04 - Đăng tin - Tôi cần gửi hàng - Chỉnh sửa] Lỗi không hiển thị ảnh, sai thông tin đã nhập khi thực hiện chỉnh sửa đơn hàng
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-155 · **Module:** ORD · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-155 · **Module:** ORD · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -47,5 +47,4 @@
 Evidence:
 
 ![attachment](52af8350-25d5-4753-9134-7fae34f0d139)
-
 ![attachment](eb1638e1-966e-45db-89a4-dedf84080bcd)

@@ -1,6 +1,6 @@
-# FE-198 — [TC_06 - Bảng tin & Chi tiết tin - Bảng tin] Không hiển thị btn Tôi mang giúp được với người giao đã hủy đơn trước đó
+# FE-198 — [TC_06 - Bảng tin & Chi tiết tin - Bảng tin] Không hiển thị btn Tôi mang giúp được với người giao đã hủy đơn trước đó 
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-198 · **Module:** FEED · **Sync:** 2026-09-22 (R2)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-198 · **Module:** FEED · **Sync:** 2026-09-23 (R2)
 
 | Field | Value |
 |-------|-------|
@@ -41,8 +41,8 @@ Step:
 4. Thao tác hủy đơn 
 5. Check chi tiết tin đã hủy đó => Không hiển thị btn Tôi mang giúp được
 
-**=> Bug: Không hiển thị btn Tôi mang giúp được với người giao đã hủy đơn trước đó **
+**=> Bug: Không hiển thị btn Tôi mang giúp được với người giao đã hủy đơn trước đó** 
 
-**KQMM: Hiển thị btn Tôi mang giúp được với người giao đã hủy đơn trước đó **
+**KQMM: Hiển thị btn Tôi mang giúp được với người giao đã hủy đơn trước đó** 
 
 ![attachment](93624071-d037-4cc8-925c-cb229e5694df)

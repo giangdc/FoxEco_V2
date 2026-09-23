@@ -1,6 +1,6 @@
 # FE-153 — [TC_04 - Đăng tin - Tôi cần gửi hàng] Lỗi không clear data người gửi khi back về màn hình Đăng tin mới
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-153 · **Module:** ORD · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-153 · **Module:** ORD · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|

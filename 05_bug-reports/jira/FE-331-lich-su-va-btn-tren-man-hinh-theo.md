@@ -1,12 +1,12 @@
-# FE-331 — [TC_04 - Giao nhận & Theo dõi đơn]- Lịch sử và btn trên màn hình theo dõi đơn khi đơn Đã hẹn giao lại không đúng
+# FE-331 — [TC_04 - Giao nhận & Theo dõi đơn]- Lịch sử và btn trên màn hình theo dõi đơn khi đơn Đã hẹn giao lại không đúng 
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-331 · **Module:** DLV · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-331 · **Module:** DLV · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|
 | Key | FE-331 |
 | Module | DLV |
-| Status | To Do |
+| Status | In Progress |
 | Resolution |  |
 | Resolved |  |
 | Verify Date |  |
@@ -20,12 +20,12 @@
 | Platform | App |
 | Test method | Manual |
 | Duplicate | No |
-| Reject Number | — |
-| Due date |  |
+| Reject Number | Lần 1 |
+| Due date | 2026-09-23 |
 | Reporter | GiangDC2 |
 | Assignee | Tuanvm37 |
 | Created | 2026-09-22 |
-| Updated | 2026-09-22 |
+| Updated | 2026-09-23 |
 
 > ⚠️ **Nguồn chuẩn = Jira** — sửa trên Jira rồi `/sync-jira-bugs`, KHÔNG sửa tay file này.
 
@@ -51,6 +51,6 @@
 1. Vào màn hình theo dõi đơn hẹn giao lại với role người vận chuyển
 2. Check thông tin Lịch sử + btn chức năng 
 
-**Actual: Thông tin Lịch sử + btn chưa đúng demo **
+**Actual: Thông tin Lịch sử + btn chưa đúng demo** 
 
 ![attachment](3c1bfa2e-c934-4ede-af1e-63a49b656b36)

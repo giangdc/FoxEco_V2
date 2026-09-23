@@ -1,6 +1,6 @@
 # FE-162 — [TC_06 - Bảng tin & Chi tiết tin - Chi tiết tin] Hiển thị màn hình Không tìm thấy đơn khi người vận chuyển bấm "Xác nhận " Tôi mang giúp được
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-162 · **Module:** FEED · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-162 · **Module:** FEED · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -43,7 +43,7 @@ Step:
 2. Bấm thông báo khớp tuyến để mở Chi tiết tin của tin NEED phù hợp
 3. Bấm "Tôi mang giúp được" và xác nhận
 
-**=> Bug: Hệ thống hiển thị màn hình Không tìm thấy đơn, xong mới chuyển sang màn hình Kết nối thành công **
+**=> Bug: Hệ thống hiển thị màn hình Không tìm thấy đơn, xong mới chuyển sang màn hình Kết nối thành công**   
 **KQMM: Không hiển thị màn hình Không tìm thấy đơn**
 
 ![attachment](b2e20618-d77f-4335-9e06-ac84805952d4)

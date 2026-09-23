@@ -1,6 +1,6 @@
 # FE-326 — [TC_10 - Trust & Safety] - Ô mã đơn hàng trong form báo cáo sự cố sửa được, sai đặc tả chỉ đọc
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-326 · **Module:** TS · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-326 · **Module:** TS · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -23,9 +23,9 @@
 | Reject Number | — |
 | Due date |  |
 | Reporter | GiangDC2 |
-| Assignee | Tuanvm37 |
+| Assignee | LinhDCC |
 | Created | 2026-09-22 |
-| Updated | 2026-09-22 |
+| Updated | 2026-09-23 |
 
 > ⚠️ **Nguồn chuẩn = Jira** — sửa trên Jira rồi `/sync-jira-bugs`, KHÔNG sửa tay file này.
 
@@ -61,4 +61,4 @@
 
 - Bàn phím Android bật lên (chứng minh đây là ô nhập liệu thật) và ký tự "X" được chèn vào giữa chuỗi → giá trị đổi thành `01a0c6fd-4730-74d6-8Xe99-d3e416b5bb56`. Ô hoàn toàn sửa được.
 
-**Ghi chú:** Clarification `C-TS-03(b)` (Resolved 2026-09-17) từng kết luận ô này "nhãn tĩnh, không sửa được", dựa trên quan sát demo trước khi từng đăng nhập qua được màn Microsoft. Bằng chứng thật trên chính form cho thấy kết luận đó sai — khớp lại với `BR16-03` gốc ("cho phép sửa, dạng câu trả lời ngắn") mà `C-TS-03(b)` từng bác bỏ. Cần `/analyze-requirements --update` mở lại `C-TS-03(b)` trước khi quyết định đây là bug cần Dev khoá field, hay `§8.16.2` mới là bản đặc tả sai. Rủi ro nếu không sửa: người dùng có thể vô tình/cố ý đổi mã đơn hàng trước khi gửi, làm sai lệch dữ liệu báo cáo mà đội hỗ trợ nhận được (báo cáo bị gắn nhầm đơn hàng).
+**Ghi chú:** Clarification `C-TS-03(b)` (Resolved 2026-09-17) từng kết luận ô này "nhãn tĩnh, không sửa được", dựa trên quan sát demo trước khi từng đăng nhập qua được màn Microsoft. Bằng chứng thật trên chính form cho thấy kết luận đó sai — khớp lại với `BR16-03` gốc ("cho phép sửa, dạng câu trả lời ngắn") mà `C-TS-03(b)` từng bác bỏ. Cần `/analyze-requirements --update` mở lại `C-TS-03(b)` trước khi quyết định đây là bug cần Dev khoá field, hay `§8.16.2` mới là bản đặc tả sai. **Rủi ro nếu không sửa: người dùng có thể vô tình/cố ý đổi mã đơn hàng trước khi gửi, làm sai lệch dữ liệu báo cáo mà đội hỗ trợ nhận được (báo cáo bị gắn nhầm đơn hàng).**

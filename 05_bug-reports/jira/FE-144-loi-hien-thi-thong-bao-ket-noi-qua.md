@@ -1,6 +1,6 @@
 # FE-144 — [TC_01 - Hoạt động]: Lỗi hiển thị thông báo "Kết nối quá thời gian chờ. Vui lòng thử lại" khi click xem đơn trạng thái chờ ghép
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-144 · **Module:** ACT · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-144 · **Module:** ACT · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -41,13 +41,12 @@
 
 1. Mở app FoxEco
 2. Bấm "Hoạt động" tại bottom nav
-3. Bấm tab "Đang diễn ra"
-4. Bấm vào đơn 
+3.  Bấm tab "Đang diễn ra"
+4.  Bấm vào đơn 
 
 **=> Bug: Hiển thị thông báo "Kết nối quá thời gian chờ. Vui lòng thử lại" → Không tìm thấy đơn khi click xem đơn**
 
-**KQMM:Hệ thống hiển thị màn hình theo dõi của đơn đã chọn **
+**KQMM:Hệ thống hiển thị màn hình theo dõi của đơn đã chọn** 
 
 ![attachment](8fb019a2-e4a9-4cb4-b9d9-d2b95e2ea266)
-
 ![attachment](cd299c66-748d-4559-8b94-4a7177b93120)

@@ -1,6 +1,6 @@
-# FE-173 — [TC_01 - Hoạt động]: Dữ liệu tại tab Đang diễn ra đang sắp xếp không hợp lý
+# FE-173 — [TC_01 - Hoạt động]: Dữ liệu tại tab Đang diễn ra đang sắp xếp không hợp lý 
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-173 · **Module:** ACT · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-173 · **Module:** ACT · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -35,7 +35,7 @@
 
 **Điều kiện test**: login acc [stag_giangdc2@fpt.com](mailto:stag_giangdc2@fpt.com)
 
-**Bước thực hiện: **
+**Bước thực hiện:** 
 
 1. Truy cập màn hình Đơn của tôi (hoạt động)
 2. Tap vào Đang diễn ra

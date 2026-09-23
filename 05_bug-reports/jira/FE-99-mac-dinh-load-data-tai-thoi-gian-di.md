@@ -1,6 +1,6 @@
 # FE-99 — [TC_04 - Đăng tin - Tôi nhận giao hàng] Mặc định load data tại Thời gian di chuyển không đúng
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-99 · **Module:** ORD · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-99 · **Module:** ORD · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|

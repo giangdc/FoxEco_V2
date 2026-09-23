@@ -1,6 +1,6 @@
 # FE-163 — [TC_07 - Theo dõi đơn] Màn Xác nhận đã lấy hàng/đã giao: Hiển thị thông báo Request timeout sau 5000ms khi Bấm nút  Đã lấy hàng/Xác nhận đã giao hàng
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-163 · **Module:** DLV · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-163 · **Module:** DLV · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -35,7 +35,7 @@
 
 **Data**:
 
-- Account: [stag_](mailto:stag_chintl12@fpt.com)[vanmtt3@fpt.com](mailto:vanmtt3@fpt.com)
+- Account: [stag\_](mailto:stag_chintl12@fpt.com)[vanmtt3@fpt.com](mailto:vanmtt3@fpt.com)
 
 **Step:**
 

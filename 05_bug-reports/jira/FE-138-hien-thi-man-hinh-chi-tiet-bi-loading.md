@@ -1,6 +1,6 @@
 # FE-138 — [TC_03 - Thông báo ]: Hiển thị màn hình chi tiết bị loading + thông báo "bạn không có quyền thực hiên thao tác này" khi click vào thông báo tìm thấy tuyến đường phù hợp-trường hợp đơn đã hủy
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-138 · **Module:** NTF · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-138 · **Module:** NTF · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|

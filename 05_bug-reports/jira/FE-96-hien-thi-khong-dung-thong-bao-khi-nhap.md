@@ -1,6 +1,6 @@
 # FE-96 — [TC_04 - Đăng tin - Tôi cần giao hàng]: Hiển thị không đúng thông báo khi nhập SĐT không đúng định dạng
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-96 · **Module:** ORD · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-96 · **Module:** ORD · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -35,9 +35,9 @@
 
 **Step:**
 
-**Tại màn hình đăng tin Tôi nhận giao hàng  **
+**Tại màn hình đăng tin Tôi nhận giao hàng**  
 
-1. Nhập SĐT không đúng định dạng: 09343*333
+1. Nhập SĐT không đúng định dạng: 09343\*333
 2. Nhập các thông tin bắt buộc khác 
 3. Click Đăng tin ngày 
 

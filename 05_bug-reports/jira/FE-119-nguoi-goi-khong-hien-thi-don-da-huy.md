@@ -1,6 +1,6 @@
 # FE-119 — [TC_01 - Hoạt động(Đơn của tôi)]: Người gởi Không hiển thị đơn đã hủy tại màn hình Đơn của tôi
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-119 · **Module:** ACT · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-119 · **Module:** ACT · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -45,5 +45,6 @@
 - sau khi reload thì người gởi không hiển thị đơn trạng thái hủy tại tab Đang diễn ra (người nhận thì có hiển thị đơn trạng thái hủy) → link demo case này có hiển thi
 
 ![attachment](b54ed501-3415-4094-9e28-2a7afc516d00)
+‌
 
 ![attachment](4f23d4d9-78b5-4181-a069-69e2f8575511)

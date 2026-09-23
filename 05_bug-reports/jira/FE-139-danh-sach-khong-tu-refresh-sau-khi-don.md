@@ -1,6 +1,6 @@
 # FE-139 — [TC_06 - Bảng tin & Chi tiết tin - Bảng tin] Danh sách không tự refresh sau khi đơn hàng đã được ghép
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-139 · **Module:** FEED · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-139 · **Module:** FEED · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -42,5 +42,4 @@
 **Evidence**:
 
 ![attachment](c6bf063e-262d-4d0b-8a0b-ba1ea628fa77)
-
 ![attachment](adef7e30-34b5-4522-a8d4-a04940250a6d)

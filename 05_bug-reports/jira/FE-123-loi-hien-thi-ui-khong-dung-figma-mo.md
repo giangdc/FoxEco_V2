@@ -1,6 +1,6 @@
 # FE-123 — [TC_07 - Theo dõi đơn]: Lỗi hiển thị UI không đúng Figma mô tả khi Người vận chuyển bấm "Đã giao cho người nhận"
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-123 · **Module:** DLV · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-123 · **Module:** DLV · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|

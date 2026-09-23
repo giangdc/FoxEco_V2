@@ -1,6 +1,6 @@
 # FE-149 — [TC_03 - Thông báo]: Nội dung thông báo cho người gởi và người nhận không khớp URD
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-149 · **Module:** NTF · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-149 · **Module:** NTF · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|

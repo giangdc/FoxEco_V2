@@ -1,6 +1,6 @@
 # FE-192 — [TC_05 - Trang chủ] Lỗi show thông báo cần đăng nhập khi mới mở app
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-192 · **Module:** HOME · **Sync:** 2026-09-22 (R2)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-192 · **Module:** HOME · **Sync:** 2026-09-23 (R2)
 
 | Field | Value |
 |-------|-------|

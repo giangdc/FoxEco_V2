@@ -1,6 +1,6 @@
 # FE-187 — [TC_01 - Hoạt động] Tab Đã hoàn thành: Lỗi hiển thị thời gian hoàn tất
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-187 · **Module:** ACT · **Sync:** 2026-09-22 (R2)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-187 · **Module:** ACT · **Sync:** 2026-09-23 (R2)
 
 | Field | Value |
 |-------|-------|
@@ -35,17 +35,17 @@
 
 **Data**:
 
-- Account: [stag_](mailto:stag_chintl12@fpt.com)chintl12@fpt.com
+- Account: [stag\_](mailto:stag_chintl12@fpt.com)chintl12@fpt.com
 
 **Step:**
 
 1. Mở app FoxEco
 2. Bấm "Hoạt động" tại bottom nav
-3. Bấm tab “Đã hoàn thành”
-4. Check thông tin đơn hàng 
+3.  Bấm tab “Đã hoàn thành”
+4.  Check thông tin đơn hàng 
 
 **=> Bug: Hiển thị sai thông tin thời gian tạo tin**
 
-**KQMM: Hệ thống hiển thị hiển thị thông tin thời gian hoàn thành **
+**KQMM: Hệ thống hiển thị hiển thị thông tin thời gian hoàn thành** 
 
 ![attachment](ae4dd021-f34a-4bfa-8ae7-d7297636ffa8)

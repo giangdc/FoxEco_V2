@@ -1,6 +1,6 @@
 # FE-148 — [TC_02 - Cá nhân]: Header thiếu MNV (mã nhân viên) + badge tier "Hạng Đồng hành"
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-148 · **Module:** USR · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-148 · **Module:** USR · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -42,16 +42,17 @@
 3. Quan sát toàn bộ header cam đầu màn
 
 **Phần 1 — Thiếu MNV (mã nhân viên)**
-Actual: Dòng phòng ban chỉ hiện tên phòng ("Phòng Phát triển Phần mềm số 8" / "Ban Giám đốc"), KHÔNG có phần "· MNV: [mã NV]".
-=> Bug: Thiếu trường MNV trên hồ sơ Cá nhân — xác nhận trên cả 2 tài khoản test.
-KQMM: Đúng định dạng "Phòng [ban] · MNV: [mã NV]" (vd "Phòng Kỹ thuật · MNV: FTEL2291").
+Actual: Dòng phòng ban chỉ hiện tên phòng ("Phòng Phát triển Phần mềm số 8" / "Ban Giám đốc"), KHÔNG có phần "· MNV: \[mã NV\]".  
+=> Bug: Thiếu trường MNV trên hồ sơ Cá nhân — xác nhận trên cả 2 tài khoản test.  
+KQMM: Đúng định dạng "Phòng \[ban\] · MNV: \[mã NV\]" (vd "Phòng Kỹ thuật · MNV: FTEL2291").
 
 **Phần 2 — Thiếu badge tier "Hạng Đồng hành"**
-Actual: KHÔNG có badge tier nào trên header, ở cả 2 tài khoản test.
-=> Bug: Thiếu badge tier "🏆 Hạng Đồng hành" tại header màn Cá nhân.
+Actual: KHÔNG có badge tier nào trên header, ở cả 2 tài khoản test.  
+=> Bug: Thiếu badge tier "🏆 Hạng Đồng hành" tại header màn Cá nhân.  
 KQMM: Có badge dạng text tĩnh "🏆 Hạng Đồng hành" (C-USR-01: chưa cần logic tính hạng, chỉ cần hiển thị display-only).
 
 ![attachment](2afd7286-2608-42e1-ad6a-1dd361a3c813)
+‌
 
 ---
 

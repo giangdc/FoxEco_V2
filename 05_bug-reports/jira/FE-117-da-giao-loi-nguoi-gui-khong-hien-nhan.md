@@ -1,6 +1,6 @@
 # FE-117 — [TC_07 - Theo dõi đơn ] Đã giao: Lỗi Người gửi không hiện nhãn disable "Đã giao · chờ người nhận xác nhận"
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-117 · **Module:** DLV · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-117 · **Module:** DLV · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -43,8 +43,8 @@
 2. Bấm tab "Hoạt động", mở đơn cần theo dõi để vào màn "Theo dõi đơn"
 3. Quan sát và bấm thử nhãn CTA ở đáy màn
 
-**=> Bug: Hiển thị nhãn disable “Đang chờ người nhận xác nhận" ở màn hình Theo dõi đơn của người gửi **
+**=> Bug: Hiển thị nhãn disable “Đang chờ người nhận xác nhận" ở màn hình Theo dõi đơn của người gửi** 
 
-**KQMM: Hiển thị nhãn disable "Đã giao · chờ người nhận xác nhận" **
+**KQMM: Hiển thị nhãn disable "Đã giao · chờ người nhận xác nhận"** 
 
 ![attachment](971a360a-e5a7-4168-a81e-0c37e2087025)

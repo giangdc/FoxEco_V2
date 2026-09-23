@@ -1,6 +1,6 @@
 # FE-174 — [TC_02 -Cá nhân] Hiển thị Số lượng đơn đã giúp không đúng
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-174 · **Module:** USR · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-174 · **Module:** USR · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -43,8 +43,8 @@
 2. Bấm "Cá nhân" tại bottom nav
 3. Quan sát 2 chỉ số tại header 
 
-**=> Bug: Hệ thống hiển thị  Số lượng đơn đã giúp =**** ****21 xong reset lại 0 **
+**=> Bug: Hệ thống hiển thị  Số lượng đơn đã giúp = 21 xong reset lại 0** 
 
-**KQMM: Hệ thống hiển thị đúng Số lượng đơn đã giúp **
+**KQMM: Hệ thống hiển thị đúng Số lượng đơn đã giúp** 
 
 ![attachment](fac214de-8c97-4538-8da9-bdca37cb397b)

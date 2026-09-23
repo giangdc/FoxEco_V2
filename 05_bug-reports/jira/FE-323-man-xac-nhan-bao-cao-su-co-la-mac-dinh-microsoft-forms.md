@@ -1,6 +1,6 @@
 # FE-323 — [TC_10 - Trust & Safety] - Màn xác nhận sau khi gửi báo cáo sự cố là mặc định Microsoft Forms, không đúng đặc tả
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-323 · **Module:** TS · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-323 · **Module:** TS · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -23,9 +23,9 @@
 | Reject Number | — |
 | Due date |  |
 | Reporter | GiangDC2 |
-| Assignee | Tuanvm37 |
+| Assignee | LinhDCC |
 | Created | 2026-09-22 |
-| Updated | 2026-09-22 |
+| Updated | 2026-09-23 |
 
 > ⚠️ **Nguồn chuẩn = Jira** — sửa trên Jira rồi `/sync-jira-bugs`, KHÔNG sửa tay file này.
 
@@ -55,8 +55,12 @@
 
 **Expected result:**
 
-- Màn hiển thị "Đã ghi nhận phản hồi" kèm đúng câu "Đội hỗ trợ FoxEco sẽ liên hệ lại số [SĐT] trong vòng 24 giờ làm việc" và nút "Quay lại đơn hàng" (theo `SC-TS-008`/`AC-31.1.01`).
+- Màn hiển thị "Đã ghi nhận phản hồi" kèm đúng câu "Đội hỗ trợ FoxEco sẽ liên hệ lại số \[SĐT\] trong vòng 24 giờ làm việc" và nút "Quay lại đơn hàng" (theo `SC-TS-008`/`AC-31.1.01`).
 - ![attachment](edfc9833-e3d3-48e7-aebb-6620424e2678)
+
+    
+
+
 
 **Actual result:**
 

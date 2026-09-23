@@ -1,16 +1,16 @@
 # FE-319 — [TC_03 - Huỷ đơn] - Log người gửi huỷ đơn lại ghi nhãn Đã huỷ nhận đơn
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-319 · **Module:** CNL · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-319 · **Module:** CNL · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|
 | Key | FE-319 |
 | Module | CNL |
-| Status | To Do |
-| Resolution |  |
-| Resolved |  |
-| Verify Date |  |
-| Done At |  |
+| Status | Done |
+| Resolution | Fixed |
+| Resolved | 2026-09-23 |
+| Verify Date | 2026-09-23 |
+| Done At | 2026-09-23 |
 | Fix Version | V1.0 |
 | Priority | Low |
 | Severity | Low (weight 2) |
@@ -21,11 +21,11 @@
 | Test method | Manual |
 | Duplicate | No |
 | Reject Number | — |
-| Due date |  |
+| Due date | 2026-09-23 |
 | Reporter | GiangDC2 |
 | Assignee | Tuanvm37 |
 | Created | 2026-09-22 |
-| Updated | 2026-09-22 |
+| Updated | 2026-09-23 |
 
 > ⚠️ **Nguồn chuẩn = Jira** — sửa trên Jira rồi `/sync-jira-bugs`, KHÔNG sửa tay file này.
 
@@ -54,7 +54,7 @@
 
 **Expected result:**
 
-- Block LỊCH SỬ có thêm đúng 1 dòng; dòng mới ghi đủ 3 thành phần: vai "Người gửi", lý do "Huy vi trung lich" và thời điểm huỷ *(TC-CNL-009; PRD *`DOC-v1.1-01` `BR11-02` + `AC-25.1.01`).
+- Block LỊCH SỬ có thêm đúng 1 dòng; dòng mới ghi đủ 3 thành phần: vai "Người gửi", lý do "Huy vi trung lich" và thời điểm huỷ _(TC-CNL-009; PRD_ `DOC-v1.1-01` `BR11-02` + `AC-25.1.01`).
 
 **Actual result:**
 

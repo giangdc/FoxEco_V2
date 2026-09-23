@@ -1,12 +1,12 @@
 # FE-301 — [TC_04 - Đăng tin - Tôi cần gửi hàng] Chặn sang bước sau nhưng không hiện lỗi ở trường thiếu
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-301 · **Module:** ORD · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-301 · **Module:** ORD · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|
 | Key | FE-301 |
 | Module | ORD |
-| Status | To Do |
+| Status | In Progress |
 | Resolution |  |
 | Resolved |  |
 | Verify Date |  |
@@ -20,12 +20,12 @@
 | Platform | App |
 | Test method | Manual |
 | Duplicate | No |
-| Reject Number | — |
-| Due date |  |
+| Reject Number | Lần 1 |
+| Due date | 2026-09-23 |
 | Reporter | GiangDC2 |
 | Assignee | Tuanvm37 |
 | Created | 2026-09-21 |
-| Updated | 2026-09-21 |
+| Updated | 2026-09-23 |
 
 > ⚠️ **Nguồn chuẩn = Jira** — sửa trên Jira rồi `/sync-jira-bugs`, KHÔNG sửa tay file này.
 
@@ -50,7 +50,7 @@
 - Thư viện ảnh thiết bị có sẵn bộ ảnh mẫu (dùng cho các nhánh cần tải ảnh).
 - Với các nhánh ở Bước 2: ô "Địa chỉ lấy hàng" phải được điền bằng cách **chạm chọn một gợi ý** (`address-suggestion-N`).
 
-**Steps:** *(luồng đại diện — nhánh thiếu ẢNH HÀNG,* `TC-ORD-063`, P1)
+**Steps:** _(luồng đại diện — nhánh thiếu ẢNH HÀNG,_ `TC-ORD-063`, P1)
 
 1. Đăng nhập app FoxPro → menu "Chức năng" → nhấn icon FoxEco
 2. Nhấn "+ Đăng tin" → nhấn card "Tôi cần gửi hàng"
@@ -65,7 +65,7 @@ Các nhánh còn lại tái hiện tương tự: vào đúng màn, để trạng
 **Expected result:**
 
 - Wizard vẫn ở màn hiện tại, không đi tiếp được, **và có thông báo lỗi hiện ngay dưới đúng trường thiếu/sai**; khi bấm submit màn cuộn tới ô lỗi đầu tiên.
-- Căn cứ `VAL-02`: *"Lỗi hiện ngay dưới ô nhập khi rời ô (on blur), không dùng popup; cuộn tới ô lỗi đầu tiên khi bấm submit"*.
+- Căn cứ `VAL-02`: _"Lỗi hiện ngay dưới ô nhập khi rời ô (on blur), không dùng popup; cuộn tới ô lỗi đầu tiên khi bấm submit"_.
 
 **Actual result:**
 
@@ -73,7 +73,7 @@ Các nhánh còn lại tái hiện tương tự: vào đúng màn, để trạng
 - Vế **báo lỗi SAI ở mọi nhánh trong bảng**: không có thông báo lỗi nào xuất hiện. Người dùng bị khoá nút mà **không có bất kỳ dấu hiệu nào cho biết thiếu/sai ở đâu**.
 
 | TC | Màn | Nhánh validate | Chặn? | Thông báo lỗi? | Kiểm chứng |
-|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- |
 | `TC-ORD-063` **(P1)** | NEED · Bước 1 | chưa tải ảnh nào | ✓ có | ✗ **không** | khối "ẢNH HÀNG" chỉ có dòng helper tĩnh |
 | `TC-ORD-064` | NEED · Bước 1 | chưa chọn TRỌNG LƯỢNG | ✓ có | ✗ **không** | nhãn khối + 3 chip hiển thị đúng, chỉ thiếu lỗi |
 | `TC-ORD-066` | NEED · Bước 1 | chưa chọn KÍCH THƯỚC | ✓ có | ✗ **không** | 3 chip hiển thị đúng, chỉ thiếu lỗi |
@@ -89,8 +89,8 @@ Các nhánh còn lại tái hiện tương tự: vào đúng màn, để trạng
 **Phạm vi ảnh hưởng:**
 
 - 8 nhánh validate trải **Bước 1, Bước 2 của wizard NEED và cả form OFFER** ⇒ người dùng có thể bị kẹt ở bất kỳ màn nào mà không biết lý do.
-- Đây **không phải** hạn chế của framework hiển thị lỗi: app **CÓ** báo lỗi inline đúng ở các nhánh khác — NEED: ảnh > 5MB (`TC-ORD-068`), chưa chọn buổi (`TC-ORD-058`: *"Chọn ít nhất 1 buổi"*), khoảng ngày > 7 (`TC-ORD-057`), SĐT người nhận sai định dạng (`TC-ORD-025`), SĐT uỷ quyền (`TC-ORD-079`), tên uỷ quyền (`TC-ORD-081`), trùng địa chỉ khi chọn từ gợi ý (`TC-ORD-026`); OFFER: chưa chọn buổi (`Chọn ít nhất 1 buổi`, `TC-ORD-050`) ⇒ là **bỏ sót ở từng nhánh**, không phải thiếu cơ chế.
+- Đây **không phải** hạn chế của framework hiển thị lỗi: app **CÓ** báo lỗi inline đúng ở các nhánh khác — NEED: ảnh > 5MB (`TC-ORD-068`), chưa chọn buổi (`TC-ORD-058`: _"Chọn ít nhất 1 buổi"_), khoảng ngày > 7 (`TC-ORD-057`), SĐT người nhận sai định dạng (`TC-ORD-025`), SĐT uỷ quyền (`TC-ORD-079`), tên uỷ quyền (`TC-ORD-081`), trùng địa chỉ khi chọn từ gợi ý (`TC-ORD-026`); OFFER: chưa chọn buổi (`Chọn ít nhất 1 buổi`, `TC-ORD-050`) ⇒ là **bỏ sót ở từng nhánh**, không phải thiếu cơ chế.
 
-**Căn cứ:** `VAL-02` (`TC-ORD-051`) · `BR01-01` (*"Thiếu ảnh thì chặn sang bước 2"*) · `BR01-02` (*"không cho để trống"*) · `AC-03.1.02` · `AC-04.2.01` · `KB-ORD-01` (người nhận bắt buộc, `TC-ORD-023`) · `§D8.1` L366-368 (email, tên 2–60, SĐT) · `§D8.2` L381-382 (OFFER: điểm đến ≠ điểm xuất phát) · `§8.1.4` (*"Địa chỉ giao phải khác địa chỉ lấy"*) · `VAL-03` (có trim).
+**Căn cứ:** `VAL-02` (`TC-ORD-051`) · `BR01-01` (_"Thiếu ảnh thì chặn sang bước 2"_) · `BR01-02` (_"không cho để trống"_) · `AC-03.1.02` · `AC-04.2.01` · `KB-ORD-01` (người nhận bắt buộc, `TC-ORD-023`) · `§D8.1` L366-368 (email, tên 2–60, SĐT) · `§D8.2` L381-382 (OFFER: điểm đến ≠ điểm xuất phát) · `§8.1.4` (_"Địa chỉ giao phải khác địa chỉ lấy"_) · `VAL-03` (có trim).
 
 **Hình ảnh mô tả:** đính kèm các file ảnh FAIL trên issue này, mỗi TC ít nhất 1 ảnh (`TC-ORD-063`, `064`, `066`, `077`, `083`, `084` đã có trước; bổ sung `023`, `021`, `024`, `051` (2 ảnh: ô tên + không cuộn), `043` (2 ảnh))

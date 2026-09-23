@@ -1,6 +1,6 @@
-# FE-103 — [TC_04 - Đăng tin - Tôi cần gửi hàng] Lỗi cho phép qua bước tiếp theo khi nhập Địa chỉ lấy hàng không thuộc danh sách
+# FE-103 — [TC_04 - Đăng tin - Tôi cần gửi hàng] Lỗi cho phép qua bước tiếp theo khi nhập Địa chỉ lấy hàng không thuộc danh sách 
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-103 · **Module:** ORD · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-103 · **Module:** ORD · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -38,7 +38,7 @@
 3. Nhập các trường bắt buộc khác 
 4. Check click button Tiếp theo
 
-**=> Bug: vẫn qua được bước tiếp theo khi nhập Địa chỉ lấy hàng không thuộc danh sách **
+**=> Bug: vẫn qua được bước tiếp theo khi nhập Địa chỉ lấy hàng không thuộc danh sách** 
 
 **Expected**: Show thông báo lỗi khi người gửi nhập địa chỉ không thuộc danh data của hệ thống
 

@@ -1,6 +1,6 @@
 # FE-150 — [TC_07 - Theo dõi đơn] Màn Xác nhận đã lấy hàng/đã giao: Hệ thống mở máy ảnh khi chọn Chụp lại hoặc Chọn ảnh khác
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-150 · **Module:** DLV · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-150 · **Module:** DLV · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -35,7 +35,7 @@
 
 **Data**:
 
-- Account: [stag_](mailto:stag_chintl12@fpt.com)vanmtt3@fpt.com
+- Account: [stag\_](mailto:stag_chintl12@fpt.com)vanmtt3@fpt.com
 
 **Step:**
 
@@ -50,12 +50,12 @@
 **=> Bug:**
 
 - **Hệ thống mở máy ảnh khi chọn Chụp lại hoặc Chọn ảnh khác**
-- **Màn hình Xác nhận đã lấy hàng hiển thị text ‘chọn từ thư viện’ nhưng không cho chọn **
+- **Màn hình Xác nhận đã lấy hàng hiển thị text ‘chọn từ thư viện’ nhưng không cho chọn** 
 
 Ref màn hình Xác nhận đã lấy hàng
 
 ![attachment](a7054d53-da67-4c20-9c43-d1107122e756)
-
 Ref màn hình Xác nhận đã giao 
 
 ![attachment](c89238d0-c76e-4e38-8bf1-5265c5f3679e)
+‌

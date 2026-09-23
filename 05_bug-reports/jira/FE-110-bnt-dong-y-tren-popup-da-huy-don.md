@@ -1,6 +1,6 @@
-# FE-110 — [TC_08 - Đăng tin - Hủy đơn]: bnt Đồng ý trên popup đã hủy đơn hàng không đúng
+# FE-110 — [TC_08 - Đăng tin - Hủy đơn]: bnt Đồng ý trên popup đã hủy đơn hàng không đúng 
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-110 · **Module:** CNL · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-110 · **Module:** CNL · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -37,7 +37,7 @@
 
 1. Thao dõi đơn - trạng thái Chờ ghép
 2. Click bnt Hủy
-3. Nhập lý do hợp lệ \
+3. Nhập lý do hợp lệ \\
 4. Click Xác nhận
 
 **Actual:** Hiển thị popup đã hủy kèm btn Đông ý nhưng btn đồng ý nằm trên 2 hàng 

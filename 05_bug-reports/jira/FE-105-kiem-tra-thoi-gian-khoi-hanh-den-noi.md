@@ -1,6 +1,6 @@
 # FE-105 — [TC_04 - Đăng tin - Tôi nhận giao hàng]: Kiểm tra thời gian khởi hành < đến nơi khi chọn Từ ngày khác Đến ngày
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-105 · **Module:** ORD · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-105 · **Module:** ORD · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|

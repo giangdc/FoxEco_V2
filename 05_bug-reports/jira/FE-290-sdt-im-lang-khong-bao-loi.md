@@ -1,12 +1,12 @@
 # FE-290 — [TC_11 - Tài khoản & Hồ sơ]:  Chặn lưu SĐT im lặng, không báo lỗi
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-290 · **Module:** USR · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-290 · **Module:** USR · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|
 | Key | FE-290 |
 | Module | USR |
-| Status | To Do |
+| Status | In Progress |
 | Resolution |  |
 | Resolved |  |
 | Verify Date |  |
@@ -20,12 +20,12 @@
 | Platform | App |
 | Test method | Manual |
 | Duplicate | No |
-| Reject Number | — |
-| Due date |  |
+| Reject Number | Lần 1 |
+| Due date | 2026-09-23 |
 | Reporter | GiangDC2 |
 | Assignee | Tuanvm37 |
 | Created | 2026-09-18 |
-| Updated | 2026-09-18 |
+| Updated | 2026-09-23 |
 
 > ⚠️ **Nguồn chuẩn = Jira** — sửa trên Jira rồi `/sync-jira-bugs`, KHÔNG sửa tay file này.
 

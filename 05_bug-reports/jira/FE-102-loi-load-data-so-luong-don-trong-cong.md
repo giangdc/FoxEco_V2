@@ -1,6 +1,6 @@
 # FE-102 — [TC_05 - Trang chủ]: Lỗi load data số lượng đơn trong Cộng đồng không realtime
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-102 · **Module:** HOME · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-102 · **Module:** HOME · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -45,6 +45,6 @@
 
 **=> Bug: Hệ thống load data số lượng đơn trong Cộng đồng không realtime**
 
-**KQMM: Hệ thống load data realtime **
+**KQMM: Hệ thống load data realtime** 
 
 ![attachment](203ed5cd-1eb5-45b8-9880-501e0537f229)

@@ -1,16 +1,16 @@
-# FE-330 — [TC_09 - Đăng tin]- Có thể chọn người gởi và nhận cùng email
+# FE-330 — [TC_09 - Đăng tin]- Có thể chọn người gởi và nhận cùng email 
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-330 · **Module:** ORD · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-330 · **Module:** ORD · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|
 | Key | FE-330 |
 | Module | ORD |
-| Status | To Do |
-| Resolution |  |
-| Resolved |  |
-| Verify Date |  |
-| Done At |  |
+| Status | Done |
+| Resolution | Fixed |
+| Resolved | 2026-09-23 |
+| Verify Date | 2026-09-23 |
+| Done At | 2026-09-23 |
 | Fix Version | V1.0 |
 | Priority | Medium |
 | Severity | Low (weight 2) |
@@ -21,11 +21,11 @@
 | Test method | Manual |
 | Duplicate | No |
 | Reject Number | — |
-| Due date |  |
+| Due date | 2026-09-23 |
 | Reporter | GiangDC2 |
 | Assignee | Tuanvm37 |
 | Created | 2026-09-22 |
-| Updated | 2026-09-22 |
+| Updated | 2026-09-23 |
 
 > ⚠️ **Nguồn chuẩn = Jira** — sửa trên Jira rồi `/sync-jira-bugs`, KHÔNG sửa tay file này.
 
@@ -49,7 +49,7 @@
 **Steps:**
 
 1. Nhập người gởi và người nhận trùng thông tin email
-2. Nhập các thông tin bắt buộc khác 
+2.  Nhập các thông tin bắt buộc khác 
 3. Tap Tiếp theo 
 4. Nhập thông tin bắt buộc 
 5. Tap Đăng tin ngay 

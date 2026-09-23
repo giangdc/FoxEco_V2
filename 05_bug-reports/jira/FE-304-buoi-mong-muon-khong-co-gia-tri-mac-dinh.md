@@ -1,16 +1,16 @@
 # FE-304 — [TC_04 - Đăng tin - Tôi cần gửi hàng] Buổi mong muốn không có giá trị mặc định Sau giờ làm
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-304 · **Module:** ORD · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-304 · **Module:** ORD · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|
 | Key | FE-304 |
 | Module | ORD |
-| Status | To Do |
-| Resolution |  |
-| Resolved |  |
-| Verify Date |  |
-| Done At |  |
+| Status | Done |
+| Resolution | Fixed |
+| Resolved | 2026-09-23 |
+| Verify Date | 2026-09-23 |
+| Done At | 2026-09-23 |
 | Fix Version | V1.0 |
 | Priority | Medium |
 | Severity | Low (weight 2) |
@@ -21,11 +21,11 @@
 | Test method | Manual |
 | Duplicate | No |
 | Reject Number | — |
-| Due date |  |
+| Due date | 2026-09-23 |
 | Reporter | GiangDC2 |
 | Assignee | Tuanvm37 |
 | Created | 2026-09-21 |
-| Updated | 2026-09-21 |
+| Updated | 2026-09-23 |
 
 > ⚠️ **Nguồn chuẩn = Jira** — sửa trên Jira rồi `/sync-jira-bugs`, KHÔNG sửa tay file này.
 
@@ -65,11 +65,11 @@
 
 - Mọi người dùng đăng tin NEED đều phải tự chọn buổi, mất đi giá trị mặc định mà PRD thiết kế để rút ngắn thao tác.
 - Hiện lỗi đỏ ngay khi chưa thao tác làm form trông như đang sai, dù người dùng chưa nhập gì.
-- ⚠️ **Nghi lan sang form OFFER**: PRD đặt **cùng giá trị mặc định** cho field `Buổi di chuyển` của FR02 (*"Chọn nhiều · mặc định Sau giờ làm"*). Nhánh OFFER **chưa được test** ở phiên này — đề nghị dev kiểm cả hai form khi fix.
+- ⚠️ **Nghi lan sang form OFFER**: PRD đặt **cùng giá trị mặc định** cho field `Buổi di chuyển` của FR02 (_"Chọn nhiều · mặc định Sau giờ làm"_). Nhánh OFFER **chưa được test** ở phiên này — đề nghị dev kiểm cả hai form khi fix.
 
 **Căn cứ (PRD v1.1 — 2 chỗ):**
 
 - `§8.1.4` UI / Field Spec (FR01): `Buổi mong muốn | Có | Chọn nhiều · mặc định Sau giờ làm | Sáng (8–12) · Chiều (13–17) · Sau giờ làm (17–19) · Giờ nào cũng được`
-- `AC-06.1.01` (Given): *"Người dùng đang ở nhóm 'Thời gian' ở bước 2, mặc định Từ ngày = hôm nay, Đến ngày = Từ ngày, ****buổi = Sau giờ làm****."*
+- `AC-06.1.01` (Given): _"Người dùng đang ở nhóm 'Thời gian' ở bước 2, mặc định Từ ngày = hôm nay, Đến ngày = Từ ngày, **buổi = Sau giờ làm**."_
 
 **Hình ảnh mô tả:** đính kèm file ảnh trên issue này (`TC-ORD-058__verify-buoi-mac-dinh.png`)

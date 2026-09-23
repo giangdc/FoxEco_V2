@@ -1,6 +1,6 @@
-# FE-129 — [TC_04 - Đăng tin- Tạo mới/Chỉnh sửa]: Không điều hường đến màn hình cài đặt của device khi click vào btn Cấp quyền
+# FE-129 — [TC_04 - Đăng tin- Tạo mới/Chỉnh sửa]: Không điều hường đến màn hình cài đặt của device khi click vào btn Cấp quyền 
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-129 · **Module:** ORD · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-129 · **Module:** ORD · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -41,7 +41,7 @@ Thiết bị: Xiaomi redmid note 12T , android 15
 2. Tap Chụp ảnh 
 3. Tap btn Câp quyền 
 
-**Actual: **Không điều hướng đến màn hình cài đặt của device 
+**Actual:** Không điều hướng đến màn hình cài đặt của device 
 
 ==> Cần điều hướng or thông báo lỗi hợp lý cho case này
 

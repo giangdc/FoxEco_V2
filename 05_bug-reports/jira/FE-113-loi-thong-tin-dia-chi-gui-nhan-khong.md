@@ -1,6 +1,6 @@
 # FE-113 — [TC_04 - Đăng tin - Tôi cần gửi hàng] Lỗi thông tin địa chỉ gửi, nhận không hiển thị chi tiết ở Bước 3
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-113 · **Module:** ORD · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-113 · **Module:** ORD · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|

@@ -1,6 +1,6 @@
-# FE-201 — [TC_07 - Theo dõi đơn]: Lỗi Back về ở màn hình Theo dõi đơn sau khi người giao hàng xác nhận đã lấy hàng/ đã giao hàng
+# FE-201 — [TC_07 - Theo dõi đơn]: Lỗi Back về ở màn hình Theo dõi đơn sau khi người giao hàng xác nhận đã lấy hàng/ đã giao hàng 
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-201 · **Module:** DLV · **Sync:** 2026-09-22 (R2)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-201 · **Module:** DLV · **Sync:** 2026-09-23 (R2)
 
 | Field | Value |
 |-------|-------|
@@ -45,7 +45,7 @@ Step:
 4. Chụp ảnh -> click btn đã lấy → click btn đồng ý 
 5. Bấm icon quay lại (←) ở Header  → hiển thị màn hình theo dõi đơn hàng có btn Tôi đã lấy hàng 
 
-**=>Bug: Hệ thống back về màn hình theo dõi đơn hàng khi click btn back ở màn hình Theo dõi đơn hàng **
+**=>Bug: Hệ thống back về màn hình theo dõi đơn hàng khi click btn back ở màn hình Theo dõi đơn hàng** 
 
 Note tương tự với thao tác đã giao hàng 
 

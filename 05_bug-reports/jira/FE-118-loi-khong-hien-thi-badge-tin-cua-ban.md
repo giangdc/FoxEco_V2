@@ -1,6 +1,6 @@
 # FE-118 — [TC_06 - Bảng tin & Chi tiết tin - Bảng tin] Lỗi không hiển thị Badge "Tin của bạn" trên card của tin do chính user đăng
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-118 · **Module:** FEED · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-118 · **Module:** FEED · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -41,6 +41,7 @@
 **Expected**: Hiển thị badge Tin của bạn trên card của tin do chính user đăng
 
 ![attachment](dbc4bfdf-af44-4506-b0f3-8906355eb784)
+‌
 
 Evidence:
 

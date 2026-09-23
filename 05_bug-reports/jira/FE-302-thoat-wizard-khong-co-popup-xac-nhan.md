@@ -1,12 +1,12 @@
 # FE-302 — [TC_04 - Đăng tin - Tôi cần gửi hàng] Thoát wizard không hiện popup xác nhận, mất dữ liệu đã nhập
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-302 · **Module:** ORD · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-302 · **Module:** ORD · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|
 | Key | FE-302 |
 | Module | ORD |
-| Status | To Do |
+| Status | In Progress |
 | Resolution |  |
 | Resolved |  |
 | Verify Date |  |
@@ -20,12 +20,12 @@
 | Platform | App |
 | Test method | Manual |
 | Duplicate | No |
-| Reject Number | — |
-| Due date |  |
+| Reject Number | Lần 1 |
+| Due date | 2026-09-23 |
 | Reporter | GiangDC2 |
 | Assignee | Tuanvm37 |
 | Created | 2026-09-21 |
-| Updated | 2026-09-21 |
+| Updated | 2026-09-23 |
 
 > ⚠️ **Nguồn chuẩn = Jira** — sửa trên Jira rồi `/sync-jira-bugs`, KHÔNG sửa tay file này.
 
@@ -56,7 +56,7 @@
 
 **Expected result:**
 
-- Hiện popup đúng chuỗi **"Thoát và bỏ nội dung đã nhập?"**; sau khi chọn *ở lại*, ô "Địa chỉ giao hàng" vẫn giữ nguyên "Số 9 Duy Tân".
+- Hiện popup đúng chuỗi **"Thoát và bỏ nội dung đã nhập?"**; sau khi chọn _ở lại_, ô "Địa chỉ giao hàng" vẫn giữ nguyên "Số 9 Duy Tân".
 
 **Actual result:**
 
@@ -67,7 +67,7 @@
 **Phạm vi ảnh hưởng:**
 
 - Người dùng lỡ tay chạm "Quay lại" sau khi đã nhập gần hết form 2 bước sẽ **mất toàn bộ công nhập liệu**, không có đường hoàn tác.
-- Nhánh *"chọn thoát trên popup"* (`TC-ORD-062`) cũng không thực hiện đúng kịch bản được vì popup không tồn tại.
+- Nhánh _"chọn thoát trên popup"_ (`TC-ORD-062`) cũng không thực hiện đúng kịch bản được vì popup không tồn tại.
 
 **Căn cứ:** `AC-01.2.01` + `C-ORD-08` (BA chốt 2026-09-15: assert **verbatim** chuỗi popup).
 

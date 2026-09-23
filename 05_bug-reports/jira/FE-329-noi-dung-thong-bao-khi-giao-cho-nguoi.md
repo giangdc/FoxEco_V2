@@ -1,6 +1,6 @@
-# FE-329 — [TC_08 - Thông báo]- Nội dung thông báo khi giao cho người được ủy quyền không đúng
+# FE-329 — [TC_08 - Thông báo]- Nội dung thông báo khi giao cho người được ủy quyền không đúng 
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-329 · **Module:** NTF · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-329 · **Module:** NTF · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -8,7 +8,7 @@
 | Module | NTF |
 | Status | In review |
 | Resolution | Fixed |
-| Resolved | 2026-09-22 |
+| Resolved | 2026-09-23 |
 | Verify Date |  |
 | Done At |  |
 | Fix Version | V1.0 |
@@ -20,12 +20,12 @@
 | Platform | App |
 | Test method | Manual |
 | Duplicate | No |
-| Reject Number | — |
+| Reject Number | Lần 1 |
 | Due date | 2026-09-22 |
 | Reporter | GiangDC2 |
 | Assignee | HungHT32 |
 | Created | 2026-09-22 |
-| Updated | 2026-09-22 |
+| Updated | 2026-09-23 |
 
 > ⚠️ **Nguồn chuẩn = Jira** — sửa trên Jira rồi `/sync-jira-bugs`, KHÔNG sửa tay file này.
 
@@ -51,7 +51,7 @@
 1. Đăng nhập tài khoản người nhận, nhấn icon chuông, check nội dung thông báo về đơn đó.
 2. Đăng nhập tài khoản người gửi, nhấn icon chuông, check nội dung thông báo về đơn đó.
 
-**Actual result: **Thông báo không đúng prd (tham khảo ảnh đính kèm).
+**Actual result:** Thông báo không đúng prd (tham khảo ảnh đính kèm).
 
 **Bug tương tự cho NTF-11,  NTF-12, NTF-13, NTF-14, NTF-15**
 

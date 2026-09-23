@@ -1,6 +1,6 @@
 # FE-135 — [TC_05 - Trang chủ]: Card "Đơn của tôi" không hiển thị đơn đã hoàn thành
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-135 · **Module:** HOME · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-135 · **Module:** HOME · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|

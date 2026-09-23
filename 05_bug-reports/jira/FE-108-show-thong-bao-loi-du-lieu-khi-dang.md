@@ -1,6 +1,6 @@
-# FE-108 — [TC_04 - Đăng tin - Tôi cần gửi hàng] Show thông báo lỗi dữ liệu khi Đăng tin
+# FE-108 — [TC_04 - Đăng tin - Tôi cần gửi hàng] Show thông báo lỗi dữ liệu khi Đăng tin 
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-108 · **Module:** ORD · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-108 · **Module:** ORD · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -33,7 +33,7 @@
 
 ## Nội dung từ Jira
 
-1. Tại màn hình Tôi cần gửi hàng - Bước 2/3 Địa điểm thời gian
+1.  Tại màn hình Tôi cần gửi hàng - Bước 2/3 Địa điểm thời gian
 2. Nhập đầy đủ các trường bắt buộc
 3. Nhấn button Tiếp theo
 4. Check nhấn button Đăng tin ở bước 3

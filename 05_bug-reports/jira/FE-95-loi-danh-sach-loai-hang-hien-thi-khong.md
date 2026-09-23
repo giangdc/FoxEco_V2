@@ -1,6 +1,6 @@
 # FE-95 — [TC_04 - Đăng tin - Tôi cần gửi hàng] Lỗi danh sách loại hàng hiển thị không đúng theo Figma mô tả
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-95 · **Module:** ORD · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-95 · **Module:** ORD · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|

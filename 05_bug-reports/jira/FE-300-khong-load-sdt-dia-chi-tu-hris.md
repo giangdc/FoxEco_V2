@@ -1,12 +1,12 @@
 # FE-300 — [TC_11 - Tài khoản & Hồ sơ] - Không load SĐT và địa chỉ mặc định từ HRIS
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-300 · **Module:** USR · **Sync:** 2026-09-22 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-300 · **Module:** USR · **Sync:** 2026-09-23 (R1)
 
 | Field | Value |
 |-------|-------|
 | Key | FE-300 |
 | Module | USR |
-| Status | To Do |
+| Status | In Progress |
 | Resolution |  |
 | Resolved |  |
 | Verify Date |  |
@@ -20,12 +20,12 @@
 | Platform | App |
 | Test method | Manual |
 | Duplicate | No |
-| Reject Number | — |
-| Due date |  |
+| Reject Number | Lần 1 |
+| Due date | 2026-09-23 |
 | Reporter | GiangDC2 |
 | Assignee | Tuanvm37 |
 | Created | 2026-09-21 |
-| Updated | 2026-09-21 |
+| Updated | 2026-09-23 |
 
 > ⚠️ **Nguồn chuẩn = Jira** — sửa trên Jira rồi `/sync-jira-bugs`, KHÔNG sửa tay file này.
 
@@ -58,14 +58,14 @@
 
 - Field "Số điện thoại mặc định" hiển thị đúng số điện thoại của CBNV trên HRIS và cho phép nhập.
 - Field "Địa chỉ mặc định" hiển thị đúng địa chỉ làm việc của CBNV trên HRIS và cho phép nhập.
-- Căn cứ: BA chốt 2026-09-16 (*"mặc định load HRIS, cho sửa"*) + PRD `§8.15.2` (*"số điện thoại hiện tại"*, *"địa chỉ làm việc trong hồ sơ"*).
+- Căn cứ: BA chốt 2026-09-16 (_"mặc định load HRIS, cho sửa"_) + PRD `§8.15.2` (_"số điện thoại hiện tại"_, _"địa chỉ làm việc trong hồ sơ"_).
 
 **Actual result:**
 
 - **CẢ HAI field đều RỖNG** — chỉ hiển thị chữ gợi ý (placeholder) `09xx xxx xxx` và `Toà nhà, đường, quận`. App **không load bất kỳ giá trị nào từ HRIS**.
 - Xác nhận bằng accessibility tree: cả 2 `EditText` đều có `showing-hint="true"` (⚠️ thuộc tính `text` vẫn trả về chuỗi placeholder, nên nhìn qua log dễ tưởng field có dữ liệu).
 - Đối chiếu HRIS **của chính tài khoản này**, đọc tại chỗ cùng ngày (FoxPro → Cá nhân → Thông tin cá nhân → Thông tin): trường **"Điện thoại" CÓ giá trị hợp lệ** (10 số, bắt đầu bằng 0).
-- Vế *"cho phép nhập"* của Expected thì **ĐẠT** (con trỏ + bàn phím hiện đúng) — lỗi nằm ở **vế nạp dữ liệu**.
+- Vế _"cho phép nhập"_ của Expected thì **ĐẠT** (con trỏ + bàn phím hiện đúng) — lỗi nằm ở **vế nạp dữ liệu**.
 
 **Phạm vi ảnh hưởng:**
 
