@@ -24,6 +24,9 @@
 | **VR-017** | 2026-09-21 | **ACT** | mobile (Appium) | 18 | **10** | **6P / 2F / 2B** 🐞 `BUG-030/031` draft *(chờ QC review)* · `015` FAIL→BLOCKED · `017` FAIL→PASS *(QC chốt 2 case này app đúng; `BUG-032` xoá)* · còn nợ **8** *(CARRIED v1.0, ngoài phạm vi — chỉ chạy TC v1.1 theo QC)* | 10/10 ✅ | PARTIAL | `VR-017-ACT-2026-09-21/` |
 | **VR-018** | 2026-09-21 | **CNL** | mobile (Appium) | 22 | **13** | **5P / 6F / 2B** 🐞 4 ứng viên *(chưa log)* · còn nợ **9** *(CARRIED v1.0, ngoài phạm vi — chỉ chạy TC v1.1 theo QC)* | 13/13 ✅ | PARTIAL | `VR-018-CNL-2026-09-21/` |
 | **VR-028** | 2026-09-23 | **GIFT** | mobile (Appium) | 14 | **1** | **1P** (`TC-GIFT-008`, tài khoản trắng `stag_minhndn2@`) · QC dừng trước `TC-GIFT-011` · còn nợ **2** (`011` NOT_RUN · `010` NOT_EVIDENCED) | 1/1 ✅ | PARTIAL | `VR-028-GIFT-2026-09-23/` |
+| *(không mở VR)* | 2026-09-24 | **ACT/DLV** | mobile (Appium) | — | **0** | ⛔ 0 verdict — retest **FE-341** ✅ hết · **FE-342** ⚠️ fix 1 phần (giờ 30p OK, nơi giao lại vẫn trống + nhập tự do) | n/a *(hợp đồng nhẹ)* | — | `repro/RP-FE-341-342-2026-09-24/` |
+| *(không mở VR)* | 2026-09-24 | **DLV** | mobile (Appium) | — | **0** | ⛔ 0 verdict — retest **FE-338** ✅ · **FE-331** ⚠️ 1 phần (thiếu 2 dòng lịch sử) · **FE-334** ✅ (+ thiếu thông báo khi trống tên) · **FE-337** ❌ | n/a *(hợp đồng nhẹ)* | — | `repro/RP-FE-331-338-2026-09-24/` · `repro/RP-FE-334-2026-09-24/` · `repro/RP-FE-337-2026-09-24/` |
+| *(không mở VR)* | 2026-09-24 | **ORD** | mobile (Appium) | — | **0** | ⛔ 0 verdict — retest **FE-301** ① ✅ (câu lỗi trọng lượng) · ②③ + **FE-302** ⏳ chưa kiểm — ⏸ dừng: app mất wizard sau camera + FoxEco hiện sai tài khoản | n/a *(hợp đồng nhẹ)* | — | `repro/RP-FE-301-2026-09-24/` |
 
 ## Ghi chú theo phiên
 
@@ -300,3 +303,9 @@
 > ❌ **FE-331** / ❌ **FE-338** (Hẹn giao lại: lịch sử, nút, block vẫn sai, kể cả với lịch hẹn mới tạo) ·
 > ❌ **FE-337** (Đang hoàn hàng: nút đã có, lịch sử vẫn sai). Ngoài phạm vi: Quầy bảo vệ nhận SĐT trống; màn không tự refresh sau khi xử lý.
 > 📁 `VR-027-DLV-2026-09-23/vibe-report.md`.
+
+## VR-029 — module **TS** — 2026-09-24 (mobile · emulator-5554 · RETEST 5 TC v1.1)
+
+> Retest sau khi sửa Expected theo quyết định BA (`C-TS-04`, `FE-322..326`) + `FE-325` Fixed. **5P** *(4P/1F lúc chạy; `016` → PASS sau khi QC chốt lại Expected)* · evidence 5/5 · gate ✅.
+> ✅ `TC-TS-009` · `012` · `013` · `021`: FAIL → PASS. 🔴 `TC-TS-016` FAIL **ngược chiều**: mất mạng thì app nay tự vẽ màn lỗi "Không tải được trang" + nút "Thử lại" (đúng spec gốc), QC đã chốt lại Expected theo app ⇒ PASS. Recon: "Thử lại" giữ đúng mã đơn ⇒ đề xuất bỏ DESCOPED `TC-TS-017`.
+> Sổ TS: **17/17 có verdict** (16P · 1 N-A) · §8 COMPLETED. 📁 `VR-029-TS-2026-09-24/vibe-report.md`.
