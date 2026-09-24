@@ -98,16 +98,16 @@ updated: 2026-09-18
 | GIFT | 9 | 14 | 2 | 6 | 6 | 0 | 0 | 9 | 5 | 4 | 6 | Low |
 | CNL | 9 | 17 | 4 | 5 | 8 | 0 | 6 | 9 | 2 | 3 | 8 | **High** |
 | NTF | 12 | 22 | 6 | 3 | 13 | 0 | 1 | 15 | 6 | 4 | 7 | Low |
-| TS | 6 | 15 | 8 | 0 | 7 | 0 | 2 | 5 | 8 | 3 | 7 | Medium |
-| **Tổng (10 module delta)** | **133** | **287** | **89** | **45** | **150** | **3** | **38** | **165** | **81** | **60** | **82** | — |
+| TS | 6 | 15 | 8 | 0 | 7 | 0 | 2 | 5 | 8 | 4 | 7 | Medium |
+| **Tổng (10 module delta)** | **133** | **287** | **89** | **45** | **150** | **3** | **38** | **165** | **81** | **61** | **82** | — |
 
 ### 2b. Toàn bộ v1.1 (10 module delta + 1 module giữ nguyên v1.0)
 
 | Nhóm | Req | SC | P1 | P2 | P3 | CL | RISK |
 |---|--:|--:|--:|--:|--:|--:|--:|
-| 10 module delta (bảng 2a) | 133 | 287 | 38 | 165 | 81 | 60 | 82 |
+| 10 module delta (bảng 2a) | 133 | 287 | 38 | 165 | 81 | 61 | 82 |
 | 1 module không có thư mục v1.1 (`FEED`) — đọc `../v1.0/` | 9 | 15 | 2 | 6 | 7 | 7 | 5 |
-| **Tổng v1.1** | **142** | **302** | **40** | **171** | **88** | **67** | **87** |
+| **Tổng v1.1** | **142** | **302** | **40** | **171** | **88** | **68** | **87** |
 
 > ℹ️ **Δ so với v1.0:** REQ 116 → **142** (+26) · SC 211 → **302** (**+89 NEW** ở 10 module delta + 1 NEW sửa tại chỗ `FEED`, **45 MODIFIED** giữ ID, **3 DEPRECATED** — ⚠️ **đính chính 2026-09-17 lượt 2:** `SC-ORD-059` **giữ `NEW`**; nhãn `MODIFIED` gán cùng ngày là SAI vì SC này sinh ở v1.1, không có ID ở v1.0. Phép kiểm + chứng cứ: `MASTER-MEMORY §3`) · CL 35 → **66** (+1 `C-FEED-05` 2026-09-17) (+5 lượt delta 2026-09-15: `C-DLV-04` · `C-CNL-03` · `C-ACT-02` · `C-ORD-13` · `C-USR-05`; **+25 lượt UPDATE 2026-09-16** sau khi BA trả lời — xem `<module>/CHANGELOG.md §1`) · RISK 64 → **87** (+23).
 > ℹ️ **P1+P2+P3 = 40+171+88 = 299 = 302 − 3 DEPRECATED** ⇒ **không lệch cộng**, đúng `Project_rule.md §Quy ước đếm scenario`. SC bị DEPRECATED: `SC-HOME-024` · `SC-HOME-010` (2026-09-17, thay bằng `SC-HOME-026`) · **`SC-DLV-060`** (2026-09-17 — descope role admin, xem `MASTER §3`).

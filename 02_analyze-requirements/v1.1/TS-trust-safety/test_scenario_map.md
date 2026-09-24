@@ -16,7 +16,7 @@ counts:
   p2: 5
   p3: 8
 status: ANALYZED
-updated: 2026-09-15
+updated: 2026-09-24
 ---
 
 # Test Scenario Map — v1.1 · Module TS
@@ -31,7 +31,7 @@ updated: 2026-09-15
 
 ## Tổng quan
 - Tổng số scenarios (tính tới v1.1): **15** (NEW: 8, MODIFIED: 0, CARRIED: 7, DEPRECATED: 0)
-- Phân bổ priority: P1: 2 | P2: 6 | P3: 7
+- Phân bổ priority: P1: 2 | P2: 5 | P3: 8
 - Delta lớn nhất: **tính năng hoàn toàn mới** "Báo sự cố & hỗ trợ" (`FR16`) — đảo kết luận `C-CNL-01` (v1.0: out of scope) chỉ trong phạm vi module `TS` sở hữu màn hình này.
 
 ## Scenarios — NEW & MODIFIED (chi tiết đầy đủ)
@@ -40,13 +40,13 @@ updated: 2026-09-15
 
 | Scenario ID | Feature | Req ID | DOC Source | Given | When | Then | Priority | Test Type | Lifecycle |
 |-------------|---------|--------|-----------|-------|------|------|----------|-----------|-----------|
-| SC-TS-008 | Happy path — báo sự cố thành công | REQ-TS-006 | DOC-v1.1-01 §6.2 AC-31.1.01 | Người dùng (vai trò bất kỳ) đang ở màn theo dõi đơn | Bấm "Báo cáo sự cố", chọn loại yêu cầu, nhập mô tả + SĐT hợp lệ, đính kèm 2 ảnh, bấm Gửi | Mở WebView toàn màn hình tới Google Form (thanh URL chỉ đọc + nút đóng); mã đơn/vai trò/trạng thái đơn/MNV/họ tên/phòng ban/SĐT/phiên bản app/hệ điều hành được điền sẵn; sau khi gửi hiện "Đã ghi nhận phản hồi" + cam kết liên hệ lại trong 24 giờ làm việc + nút "Quay lại đơn hàng" | P1 | Functional | NEW |
-| SC-TS-009 | Thiếu trường bắt buộc — nút Gửi vô hiệu hoá | REQ-TS-006 | DOC-v1.1-01 §6.2 AC-31.1.02 | Người dùng đang ở form báo sự cố | Chưa chọn loại yêu cầu, HOẶC chưa nhập mô tả, HOẶC SĐT không hợp lệ | Nút "Gửi" vô hiệu hoá; cạnh nút hiện "Điền các mục bắt buộc" | P2 | Business Rule | NEW |
+| SC-TS-008 | Happy path — báo sự cố thành công | REQ-TS-006 | DOC-v1.1-01 §6.2 AC-31.1.01 | Người dùng (vai trò bất kỳ) đang ở màn theo dõi đơn | Bấm "Báo cáo sự cố", chọn loại yêu cầu, nhập mô tả + SĐT hợp lệ, đính kèm 2 ảnh, bấm Gửi | Mở WebView toàn màn hình tới **Microsoft Forms** (thanh URL chỉ đọc + nút đóng); chỉ ô "Mã đơn hàng" được điền sẵn (`C-TS-03(a)`); sau khi gửi hiện **màn xác nhận mặc định của Microsoft Forms** "Đã gửi phản hồi của bạn." — ⛔ không còn assert cam kết 24 giờ / nút "Quay lại đơn hàng" (BA 2026-09-24, `C-TS-04(b)`) | P1 | Functional | NEW |
+| SC-TS-009 | Thiếu trường bắt buộc — nút Gửi vô hiệu hoá | REQ-TS-006 | DOC-v1.1-01 §6.2 AC-31.1.02 | Người dùng đang ở form báo sự cố | Chưa chọn loại yêu cầu, HOẶC chưa nhập mô tả (SĐT sai định dạng **không còn là nhánh chặn** — `C-TS-04(c)`) | Nút "Gửi" vẫn bấm được; bấm thì form KHÔNG gửi, hiện lỗi inline "Câu hỏi này là bắt buộc." dưới câu hỏi còn thiếu (cơ chế Microsoft Forms, QC chốt 2026-09-22 khi xoá `BUG-040`) | P2 | Business Rule | NEW |
 | SC-TS-010 | Ảnh đính kèm là tuỳ chọn — bỏ trống vẫn gửi được | REQ-TS-006 | DOC-v1.1-01 §6.2 AC-31.1.02 · §8.16.2 | Đã đủ 3 trường bắt buộc (loại yêu cầu + mô tả + SĐT hợp lệ), KHÔNG đính ảnh nào | Bấm Gửi | Nút "Gửi" khả dụng và gửi thành công (ảnh không nằm trong điều kiện bắt buộc) | P3 | Boundary | NEW |
 | SC-TS-011 | Trần ảnh đính kèm — đúng 5 (hợp lệ) vs 6 (chặn) | REQ-TS-006 | DOC-v1.1-01 §8.16.2 | Form báo sự cố đã đủ trường bắt buộc | Đính kèm lần lượt 5 ảnh (thử gửi) rồi thử đính thêm ảnh thứ 6 | Với 5 ảnh: gửi thành công, xoá được từng ảnh riêng lẻ. Với ảnh thứ 6: KHÔNG thêm được (hoặc bị chặn ở UI) — trần cứng là 5 | P3 | Boundary | NEW |
-| SC-TS-012 | Mất mạng khi mở WebView | REQ-TS-006 | DOC-v1.1-01 §6.2 AC-31.2.01 | Thiết bị mất kết nối mạng | Bấm "Báo cáo sự cố" | WebView không tải được → hiện thông báo lỗi kèm nút "Thử lại"; KHÔNG mất ngữ cảnh đơn (mã đơn/vai trò vẫn giữ nguyên khi thử lại có mạng) | P2 | Negative | NEW |
+| SC-TS-012 | Mất mạng khi mở WebView | REQ-TS-006 | DOC-v1.1-01 §6.2 AC-31.2.01 | Thiết bị mất kết nối mạng | Bấm "Báo cáo sự cố" | **App** hiện màn lỗi "Không tải được trang — Vui lòng kiểm tra kết nối mạng và thử lại." kèm nút "Thử lại"; form không hiện ra (QC chốt lần 2 ngày 2026-09-24 theo app hiện tại — VR-029, `C-TS-04(a)`) | P2 | Negative | NEW |
 | SC-TS-013 | Vòng đời WebView — đóng không reset ngăn xếp, mở lại là phiên mới | REQ-TS-006 | DOC-v1.1-01 §8.16.1 BR16-04, BR16-06 | Đã mở WebView báo sự cố và nhập dở 1 số trường | (a) Bấm nút đóng WebView; (b) Mở lại "Báo cáo sự cố" từ cùng đơn | (a) Quay lại đúng màn theo dõi đơn trước đó, KHÔNG reset ngăn xếp điều hướng. (b) Form mở như MỘT PHIÊN MỚI — dữ liệu đã nhập ở lần trước KHÔNG còn (đã reset), không phải tiếp tục từ chỗ dở dang | P3 | Business Rule | NEW |
-| SC-TS-014 | Field prefill vẫn sửa được (khác field chỉ-đọc SSO) | REQ-TS-006 | DOC-v1.1-01 §8.16.1 BR16-03 | Form báo sự cố đã mở với các trường prefill (mã đơn, vai trò, MNV, họ tên, phòng ban, SĐT…) | Người dùng sửa trực tiếp giá trị 1 trường prefill (vd SĐT liên hệ lại) | Trường prefill CHO PHÉP sửa (dạng câu trả lời ngắn, không phải chỉ đọc); giá trị đã sửa được gửi kèm form, đối chiếu MNV ở khâu xử lý | P3 | Business Rule | NEW |
+| SC-TS-014 | Field prefill vẫn sửa được (khác field chỉ-đọc SSO) | REQ-TS-006 | DOC-v1.1-01 §8.16.1 BR16-03 | Form báo sự cố đã mở với các trường prefill (mã đơn, vai trò, MNV, họ tên, phòng ban, SĐT…) | Người dùng sửa trực tiếp giá trị 1 trường prefill (vd SĐT liên hệ lại) | Trường prefill CHO PHÉP sửa (dạng câu trả lời ngắn, không phải chỉ đọc) — **kể cả ô "Mã đơn hàng"** (BA 2026-09-24: Microsoft Forms không khoá được trường, `§8.16.2` sai tài liệu — `C-TS-04(d)`); giá trị đã sửa được gửi kèm form, đối chiếu MNV ở khâu xử lý | P3 | Business Rule | NEW |
 | SC-TS-015 | Vị trí trigger + hiển thị cho cả 3 vai trò | REQ-TS-006 | DOC-v1.1-01 §8.16 (Trigger) · Actor | Lần lượt đăng nhập Sender · Carrier · Receiver của cùng 1 đơn, mở màn theo dõi đơn | Quan sát góc trên bên phải màn theo dõi đơn | Cả 3 vai trò đều thấy button "Báo cáo sự cố" (bo tròn, nền cam nhạt, icon cảnh báo + chữ) ở đúng vị trí; hành vi mở form giống nhau cho cả 3 vai | P2 | UI | NEW |
 
 #### Source Detail per Scenario (verbatim quotes)

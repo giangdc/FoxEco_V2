@@ -6,12 +6,12 @@ version: v1.1
 sprint: 1
 module: TS
 counts:
-  cl: 3
+  cl: 4
   risk: 7
   cl_open: 0
-  cl_resolved: 3
+  cl_resolved: 4
 status: ANALYZED
-updated: 2026-09-17
+updated: 2026-09-24
 ---
 
 # Risk Assessment — v1.1 · Module TS (DELTA)
@@ -38,7 +38,8 @@ updated: 2026-09-17
 | CL ID | Nội dung | Status | Mở | REQ/SC liên quan |
 |-------|----------|--------|-----|-------------------|
 | C-TS-02 | Nút "Báo cáo sự cố" hiện ở **trạng thái** nào; gửi form có **tự chuyển đơn sang INCIDENT** không | ✅ **Resolved 2026-09-17 — xác nhận qua vibe-check demo** | 2026-09-16 | REQ-TS-006, SC-TS-015, SC-CNL-006, SC-CNL-015, SC-DLV-034 |
-| C-TS-03 | Trường prefill: chỉ mã đơn (`BR16-02`) hay 9 trường (`AC-31.1.01`); mã đơn chỉ đọc hay sửa được (`BR16-03`); Custom Tabs có làm được nút "Thử lại"/"Quay lại đơn hàng" | ✅ **Resolved 2026-09-17** — Dev xác nhận nút "Thử lại" do APP hiển thị, không phải WebView/Custom Tabs | 2026-09-17 | REQ-TS-006, SC-TS-008, SC-TS-012, SC-TS-014 |
+| C-TS-03 | Trường prefill: chỉ mã đơn (`BR16-02`) hay 9 trường (`AC-31.1.01`); mã đơn chỉ đọc hay sửa được (`BR16-03`); Custom Tabs có làm được nút "Thử lại"/"Quay lại đơn hàng" | ✅ **Resolved 2026-09-17** — ⚠️ câu (b)(c)(d) **bị đảo 2026-09-24** bởi `C-TS-04`, chỉ còn (a) hiệu lực | 2026-09-17 | REQ-TS-006, SC-TS-008, SC-TS-012, SC-TS-014 |
+| C-TS-04 | BA quyết định trên Jira cho 6 bug TS sau khi test trên form **Microsoft Forms thật** (`FE-321..326`): màn lỗi mất mạng · màn xác nhận · validate SĐT · khoá ô mã đơn · popup đăng nhập Microsoft | ✅ **Resolved 2026-09-24** — BA chốt (a)–(e) trên Jira; QC chốt 2 câu con cùng ngày | 2026-09-24 | REQ-TS-006, SC-TS-008, SC-TS-009, SC-TS-012, SC-TS-013, SC-TS-014 |
 
 ### C-TS-02 · Phạm vi hiển thị nút + hệ quả trạng thái *(RESOLVED 2026-09-17)*
 
@@ -75,6 +76,37 @@ updated: 2026-09-17
 ↳ **BA trả lời 2026-09-17 + vibe-check demo (Playwright MCP):** (a) BA "mã đơn" — **xác nhận qua demo**: form chỉ prefill đúng 1 trường "Mã đơn hàng" (hiện `FE-2508-0472`, ghi chú "Tự động điền từ ứng dụng"); Loại yêu cầu/Mô tả chi tiết/SĐT đều TRỐNG, phải nhập tay ⇒ `BR16-02` (chỉ mã đơn) đúng, `AC-31.1.01` (9 trường) là PRD sai/thừa, đề nghị BA cập nhật PRD. (b) BA "chỉ đọc" — **xác nhận qua demo**: ô "Mã đơn hàng" hiển thị dạng nhãn tĩnh, không phải textbox, không sửa được ⇒ `§8.16.2` đúng, `BR16-03` ("người dùng vẫn sửa được") là PRD sai, đề nghị BA cập nhật PRD. (c) BA "nhưng link docs.google.com/forms/foxeco-ho-tro" — ảnh `TS_02` (2026-09-15) đã cho thấy khung nhúng có icon "✕" (đóng) + THANH ĐỊA CHỈ hiện rõ URL — đây là chrome đặc trưng của **Custom Tabs/SFSafariViewController** (WebView trần thường không tự vẽ thanh địa chỉ), nên nhiều khả năng ý định thiết kế là Custom Tabs; vẫn là mock tĩnh nên **chưa chắc chắn 100% công nghệ thật** — cần Dev xác nhận trực tiếp, ảnh hưởng khả năng vẽ nút "Thử lại" khi mất mạng. (d) BA "không rõ, dev xử lý sao cũng được, btn Quay lại đơn hàng thì thao tác thêm trên demo" — **đã thao tác demo**: sau khi Gửi, màn "Đã ghi nhận phản hồi" + nút "Quay lại đơn hàng" là do CHÍNH APP hiển thị (giao diện native cùng theme app, không phải trang xác nhận riêng của Google Form) và bấm vào quay thẳng về "Theo dõi đơn" — vậy nút này do APP điều khiển.
 
 ↳ **Dev trả lời 2026-09-17 (vòng 3, duy nhất câu (c) còn treo):** "App hiển thị nhé" — Dev xác nhận nút "Thử lại" khi mất mạng do **CHÍNH APP** vẽ/điều khiển (không phải nội dung do WebView/Custom Tabs tự sinh). ⇒ `SC-TS-012` assert được: mất mạng khi đang mở "Báo cáo sự cố" → nút "Thử lại" do app hiển thị, tách biệt khỏi khung nhúng Google Form. Câu hỏi phụ "WebView trần hay Custom Tabs" giờ **không còn chặn viết TC** — Dev không cần xác nhận thêm công nghệ nhúng cụ thể vì hành vi observable (ai vẽ nút) đã có câu trả lời trực tiếp. **`C-TS-03` ĐÓNG HẲN 2026-09-17.**
+
+↳ ⚠️ **2026-09-24 — câu (b), (c), (d) HẾT HIỆU LỰC**, xem `C-TS-04`. Các kết luận trên rút từ **demo mock** trước khi đăng nhập qua được form thật; form thật là **Microsoft Forms** (không phải Google Form) và cho kết quả ngược lại. Chỉ câu (a) (prefill đúng 1 trường "Mã đơn hàng") còn hiệu lực.
+
+### C-TS-04 · Hành vi thật của form Microsoft Forms — BA chốt qua Jira *(RESOLVED 2026-09-24)*
+
+📍 `DOC-v1.1-01 §8.16.1 BR16-03 / BR16-04 · trang 49-50` · `§8.16.2 dòng "Mã đơn hàng" · trang 51` · `§6.2 AC-31.1.01 / AC-31.1.02 / AC-31.2.01 · trang 29-30` ⟷ comment BA (LinhDCC) trên `FE-321..326` ngày 2026-09-24
+
+> `BR16-04`: "Đóng WebView thì quay lại màn trước, không reset ngăn xếp điều hướng. Mất mạng thì hiện lỗi + nút 'Thử lại', không mất ngữ cảnh đơn."
+
+> `AC-31.2.01`: "Then: Hiện thông báo lỗi kèm nút 'Thử lại'; không mất ngữ cảnh đơn."
+
+> `AC-31.1.01`: "Sau khi gửi: hiện 'Đã ghi nhận phản hồi' kèm cam kết liên hệ lại trong 24 giờ làm việc và nút 'Quay lại đơn hàng'."
+
+> `AC-31.1.02`: "When: Người dùng chưa chọn loại yêu cầu, hoặc chưa nhập mô tả, hoặc số điện thoại không hợp lệ."
+
+> `§8.16.2`: "Mã đơn hàng | Có | Chỉ đọc · tự điền từ ứng dụng | Không sửa"
+
+↳ **Ghi chú:** Vibe-test `VR-019-TS-2026-09-22` lần đầu vào được form thật (sau màn đăng nhập Microsoft) và thấy 5 chỗ lệch tài liệu → log `FE-321..326`. BA trả lời từng bug như sau:
+
+| Câu | Bug | BA trả lời (nguyên văn) | Kết luận áp vào phân tích / TC |
+|---|---|---|---|
+| (a) Mất mạng | `FE-322` · Won't Fix | *"Form đang dùng là của bên thứ 3 nên mình không kiểm soát được các vấn đề này -> tài liệu sai, bỏ giúp em BR16-04"* | ~~Vế mất mạng bị bỏ; hiện trang lỗi mặc định WebView~~ ⇒ 🔁 **QC chốt lại lần 2 (2026-09-24, sau VR-029):** app nay **tự vẽ** màn lỗi "Không tải được trang" + nút "Thử lại" (đúng `AC-31.2.01` gốc) ⇒ Then `SC-TS-012` + Expected `TC-TS-016` theo hành vi này. `TC-TS-017` vẫn DESCOPED — recon VR-029 cho thấy "Thử lại" giữ đúng mã đơn, chờ QC quyết khôi phục |
+| (b) Màn xác nhận | `FE-323` · Won't Fix | *"màn hình này là mặc định của Microsoft Form, mình không can thiệp được. Sai tài liệu ạ."* | Sau khi gửi hiện **màn mặc định của Microsoft Forms** "Đã gửi phản hồi của bạn." — **không** có cam kết 24 giờ, **không** có nút "Quay lại đơn hàng" ⇒ đảo `C-TS-03(d)` · sửa Expected `TC-TS-009`, Steps `TC-TS-020` |
+| (c) SĐT sai định dạng | `FE-324` · Won't Fix | *"Microsoft form không hỗ trợ rang buộc định dạng số điện thoại -> chấp nhận rủi ro data"* | Nhánh "SĐT không hợp lệ" của `AC-31.1.02` **bị bỏ** — form chỉ kiểm không rỗng ⇒ sửa Steps + Expected `TC-TS-012` |
+| (d) Ô mã đơn | `FE-326` · Won't Fix | *"Microsoft form không cho phép khoá trường như mô tả → sai tài liệu"* | Ô "Mã đơn hàng" **sửa được** ⇒ `§8.16.2` sai, `BR16-03` đúng; đảo `C-TS-03(b)` · sửa Expected `TC-TS-021` |
+| (e) Bắt buộc đăng nhập Microsoft | `FE-321` · **To Do** | *"vẫn giữ như hiện tại, bổ sung 1 popup "Bạn sẽ cần đăng nhập Microsoft để gửi báo cáo kèm ảnh" → 2 button huỷ và xác nhận"* | Giữ bắt buộc đăng nhập; **yêu cầu mới** cho Dev: popup báo trước kèm 2 nút Huỷ/Xác nhận. Chưa có TC phủ (số lượng TC đang freeze theo `Project_rule §10.5`) ⇒ ghi nợ, báo QC |
+| — Ảnh bắt buộc | `FE-325` · Fixed | *"Đã chỉnh lại trên Microsoft form ạ"* | Không đổi phân tích — ảnh vẫn là tuỳ chọn (`SC-TS-010`), cần retest `TC-TS-013` |
+
+↳ **QC GiangDC2 chốt 2 câu con 2026-09-24:**
+1. **Phạm vi bỏ `BR16-04`:** *"đúng rồi, mất mạng thì hiện giao diện mặc định của webview (như hiện tại)"* — ⚠️ phần "giao diện mặc định WebView" **đã được QC chốt lại** cùng ngày sau VR-029: *"update lại kết quả mong đợi lần nữa, theo hiện tại"* ⇒ app vẽ màn lỗi + nút "Thử lại" ⇒ **chỉ bỏ vế mất mạng**; vế *"Đóng WebView thì quay lại màn trước, không reset ngăn xếp"* **vẫn hiệu lực** ⇒ `SC-TS-013`/`TC-TS-018` giữ nguyên.
+2. **Popup đăng nhập (`FE-321`):** *"Hiển mỗi lần đăng nhập nhé"* ⇒ popup hiện **mỗi lần** người dùng phải đăng nhập Microsoft để vào form (không phải chỉ khi đính ảnh). Hành vi nút "Huỷ" chưa nêu — chốt khi Dev làm xong.
 
 ## Vibe-check bổ sung 2026-09-15 — xác nhận luồng end-to-end trên demo
 
