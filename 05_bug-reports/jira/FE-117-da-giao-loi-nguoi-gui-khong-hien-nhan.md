@@ -1,6 +1,6 @@
 # FE-117 — [TC_07 - Theo dõi đơn ] Đã giao: Lỗi Người gửi không hiện nhãn disable "Đã giao · chờ người nhận xác nhận"
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-117 · **Module:** DLV · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-117 · **Module:** DLV · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -35,7 +35,7 @@
 
 **Data**:
 
-- Account: stag_dienlt2@fpt.com
+* Account: stag_dienlt2@fpt.com
 
 **Step**:
 
@@ -47,4 +47,4 @@
 
 **KQMM: Hiển thị nhãn disable "Đã giao · chờ người nhận xác nhận"** 
 
-![attachment](971a360a-e5a7-4168-a81e-0c37e2087025)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=f4573b3e3bec&id=971a360a-e5a7-4168-a81e-0c37e2087025&&collection=&height=727&occurrenceKey=null&width=1454&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

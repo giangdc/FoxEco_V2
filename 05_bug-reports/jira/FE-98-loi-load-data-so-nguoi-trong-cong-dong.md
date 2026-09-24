@@ -1,6 +1,6 @@
 # FE-98 — [TC_05 - Trang chủ]: Lỗi load data Số người trong Cộng đồng FoxEco không khớp với Hris
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-98 · **Module:** HOME · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-98 · **Module:** HOME · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -44,4 +44,4 @@
 
 **KQMM: Load data Số người trong Cộng đồng FoxEco khớp với Hris**
 
-![attachment](61d45b62-0bb7-48d2-831b-1bc404071a61)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=106e30e08830&id=61d45b62-0bb7-48d2-831b-1bc404071a61&&collection=&height=681&occurrenceKey=null&width=1741&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

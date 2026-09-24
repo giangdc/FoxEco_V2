@@ -1,12 +1,12 @@
 # FE-341 — [TC_01- Hoạt động] - Đơn khi chọn Cầm hàng về không hiển thị tại đơn của tôi (đang ko hiển thị tại bất kỳ màn hình nào )
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-341 · **Module:** ACT · **Sync:** 2026-09-23 (R2)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-341 · **Module:** ACT · **Sync:** 2026-09-24 (R2)
 
 | Field | Value |
 |-------|-------|
 | Key | FE-341 |
 | Module | ACT |
-| Status | To Do |
+| Status | In Progress |
 | Resolution |  |
 | Resolved |  |
 | Verify Date |  |
@@ -20,12 +20,12 @@
 | Platform | App |
 | Test method | Manual |
 | Duplicate | No |
-| Reject Number | — |
-| Due date |  |
+| Reject Number | Lần 1 |
+| Due date | 2026-09-24 |
 | Reporter | GiangDC2 |
 | Assignee | Tuanvm37 |
 | Created | 2026-09-23 |
-| Updated | 2026-09-23 |
+| Updated | 2026-09-24 |
 
 > ⚠️ **Nguồn chuẩn = Jira** — sửa trên Jira rồi `/sync-jira-bugs`, KHÔNG sửa tay file này.
 
@@ -35,15 +35,15 @@
 
 **I. Môi trường**
 
-- URL: N/A (FoxEco là SDK nhúng trong host app mobile FoxPro, không có URL riêng)
-- Account/Role: CBNV `stag_vunt60`— người vận chuyển
-- Build/Version: STG · v1.1 · host app `com.hrisproject.stag` (FoxPro)
+* URL: N/A (FoxEco là SDK nhúng trong host app mobile FoxPro, không có URL riêng)
+* Account/Role: CBNV `stag_vunt60`— người vận chuyển
+* Build/Version: STG · v1.1 · host app `com.hrisproject.stag` (FoxPro)
 
 **II. Mô tả Bug**
 
 **Pre-condition:**
 
-- Có đang trang thái đang giao 
+* Có đang trang thái đang giao 
 
 **Steps:**
 
@@ -58,10 +58,10 @@
 
 **Expected result:**
 
-- Vân hiển thị và load đúng thông tin với trạng thái này 
+* Vân hiển thị và load đúng thông tin với trạng thái này 
 
 **Actual result:**
 
-- Đơn không còn hiển thị lại bất kỳ đâu trên app nữa 
+* Đơn không còn hiển thị lại bất kỳ đâu trên app nữa 
 
-![attachment](e464b55d-f647-4f99-b426-6f0dbfebd482)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=5f3c9e53f20d&id=e464b55d-f647-4f99-b426-6f0dbfebd482&&collection=&height=null&occurrenceKey=null&width=null&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

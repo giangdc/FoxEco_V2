@@ -1,6 +1,6 @@
 # FE-113 — [TC_04 - Đăng tin - Tôi cần gửi hàng] Lỗi thông tin địa chỉ gửi, nhận không hiển thị chi tiết ở Bước 3
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-113 · **Module:** ORD · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-113 · **Module:** ORD · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -43,4 +43,4 @@
 
 **Evidence**:
 
-![attachment](8639cfc1-a461-4f25-9868-7d118455f5e8)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=0a1818e83016&id=8639cfc1-a461-4f25-9868-7d118455f5e8&&collection=&height=711&occurrenceKey=null&width=661&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

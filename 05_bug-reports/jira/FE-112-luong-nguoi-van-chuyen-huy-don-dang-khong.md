@@ -1,6 +1,6 @@
 # FE-112 — [TC_08 - Hủy đơn]: Luồng Người vận chuyển hủy đơn đang không đúng 
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-112 · **Module:** CNL · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-112 · **Module:** CNL · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -41,4 +41,4 @@
 
 **Actual:** Tin vừa thực hiện hủy hiển thị đầu danh sách bảng tin→ không có rule này, vẫn ở vị trí cũ
 
-![attachment](f9e9b61f-1c12-4e46-993d-fd9d716eec58)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=e78dd21389b3&id=f9e9b61f-1c12-4e46-993d-fd9d716eec58&&collection=&height=null&occurrenceKey=null&width=null&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

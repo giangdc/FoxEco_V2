@@ -1,6 +1,6 @@
 # FE-95 — [TC_04 - Đăng tin - Tôi cần gửi hàng] Lỗi danh sách loại hàng hiển thị không đúng theo Figma mô tả
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-95 · **Module:** ORD · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-95 · **Module:** ORD · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -40,4 +40,4 @@
 
 Evidence:
 
-![attachment](22aee67b-84e9-4304-be0c-b7fa91272fd5)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=6476eb59d899&id=22aee67b-84e9-4304-be0c-b7fa91272fd5&&collection=&height=711&occurrenceKey=null&width=656&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

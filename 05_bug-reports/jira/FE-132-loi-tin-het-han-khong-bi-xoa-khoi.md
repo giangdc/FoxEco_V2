@@ -1,6 +1,6 @@
 # FE-132 — [TC_06 - Bảng tin & Chi tiết tin - Bảng tin] Lỗi tin hết hạn không bị xóa khỏi danh sách bảng tin
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-132 · **Module:** FEED · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-132 · **Module:** FEED · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -40,4 +40,4 @@
 
 Evidence:
 
-![attachment](89dd2b16-e650-46d9-b91a-fd4cb84af450)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=70de1c902ca4&id=89dd2b16-e650-46d9-b91a-fd4cb84af450&&collection=&height=null&occurrenceKey=null&width=null&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

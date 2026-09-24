@@ -1,6 +1,6 @@
 # FE-100 — [TC_04 - Đăng tin - Tôi cần gửi hàng] Lỗi cho phép edit trường Tên người gửi
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-100 · **Module:** ORD · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-100 · **Module:** ORD · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -40,7 +40,7 @@
 
 Expected: Trường tên người gửi là trường Read Only như BRD mô tả
 
-![attachment](94fda041-f6ea-47a3-b128-21799001bcc4)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=5ea000a63e9b&id=94fda041-f6ea-47a3-b128-21799001bcc4&&collection=&height=181&occurrenceKey=null&width=696&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)
 Evidence:
 
-![attachment](4ce89808-3e28-4616-921e-55af78adacf0)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=381a0951f133&id=4ce89808-3e28-4616-921e-55af78adacf0&&collection=&height=null&occurrenceKey=null&width=null&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

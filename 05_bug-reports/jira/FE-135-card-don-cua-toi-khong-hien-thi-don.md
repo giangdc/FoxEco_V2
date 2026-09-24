@@ -1,6 +1,6 @@
 # FE-135 — [TC_05 - Trang chủ]: Card "Đơn của tôi" không hiển thị đơn đã hoàn thành
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-135 · **Module:** HOME · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-135 · **Module:** HOME · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -35,18 +35,18 @@
 
 **Data**:
 
-- Account Sender: [stag_dienlt2@fpt.com](mailto:stag_dienlt2@fpt.com) 
-- Account Carrier: [stag_vanmtt3@fpt.com](mailto:stag_chintl12@fpt.com)
-- Account Receiver: stag_chinlt12@fpt.com
+* Account Sender: [stag_dienlt2@fpt.com](mailto:stag_dienlt2@fpt.com) 
+* Account Carrier: [stag_vanmtt3@fpt.com](mailto:stag_chintl12@fpt.com)
+* Account Receiver: stag_chinlt12@fpt.com
 
 **Step:**
 
-- Mở app FoxEco
-- Bấm tab "Trang chủ" tại bottom nav
-- Quan sát badge trạng thái trên card trong section "Đơn của tôi"
+* Mở app FoxEco
+* Bấm tab "Trang chủ" tại bottom nav
+* Quan sát badge trạng thái trên card trong section "Đơn của tôi"
 
 **=> Bug: Card "Đơn của tôi" không hiển thị đơn đã hoàn thành**
 
 **KQMM: Card "Đơn của tôi" hiển thị đơn đã hoàn thành**
 
-![attachment](0a05d031-f90d-4ec8-b180-532e56da612e)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=5891a46746b9&id=0a05d031-f90d-4ec8-b180-532e56da612e&&collection=&height=null&occurrenceKey=null&width=null&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

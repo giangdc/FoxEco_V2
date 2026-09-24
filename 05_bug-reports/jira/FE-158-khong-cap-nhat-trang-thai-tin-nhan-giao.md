@@ -1,6 +1,6 @@
 # FE-158 — [TC_01 - Hoạt động]: Không cập nhật trạng thái tin Nhận giao hàng khi có đơn hàng phù hợp -> đồng ý giao ->  hoàn tất đơn
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-158 · **Module:** ACT · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-158 · **Module:** ACT · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -46,7 +46,7 @@ Actual:  Đã ghép-> hoàn tất đơn nhưng tin Nhận giao hàng  vẫn hi�
 
 => Ẩn đơn hoàn tất
 
-![attachment](634e5ff4-f59f-4fc9-a879-89d5d0104a9e)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=0ececc7c3827&id=634e5ff4-f59f-4fc9-a879-89d5d0104a9e&&collection=&height=527&occurrenceKey=null&width=584&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)
 ‌
 
-![attachment](5ae8f88c-9cdc-4d52-abf5-0724d888c56f)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=b883b4fd4748&id=5ae8f88c-9cdc-4d52-abf5-0724d888c56f&&collection=&height=360&occurrenceKey=null&width=158&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

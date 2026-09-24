@@ -1,6 +1,6 @@
 # FE-96 — [TC_04 - Đăng tin - Tôi cần giao hàng]: Hiển thị không đúng thông báo khi nhập SĐT không đúng định dạng
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-96 · **Module:** ORD · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-96 · **Module:** ORD · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -45,4 +45,4 @@ Actual: Hiển thị thông báo “Dữ liệu đầu vào không hợp lệ“
 
 => Hiển thị cảnh báo, boder đỏ tại trường SĐT để người dùng biết trường nào đang sai
 
-![attachment](114126c3-e606-47a9-9bdb-6a85d1a5aaa9)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=976273600fd7&id=114126c3-e606-47a9-9bdb-6a85d1a5aaa9&&collection=&height=null&occurrenceKey=null&width=null&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

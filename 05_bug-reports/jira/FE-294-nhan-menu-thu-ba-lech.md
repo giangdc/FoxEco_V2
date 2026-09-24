@@ -1,6 +1,6 @@
 # FE-294 — [TC_11 - Tài khoản & Hồ sơ] - Nhãn mục menu thứ 3 lệch tài liệu, không nhất quán tiêu đề màn đích
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-294 · **Module:** USR · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-294 · **Module:** USR · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -35,10 +35,10 @@
 
 **I. Môi trường**
 
-- URL: N/A (mobile app, không phải web)
-- Account/Role: FOXECO_STG_USER_A — Đặng Châu Giang, MNV 00131946, Ban Giám đốc
-- Trình duyệt / Thiết bị: emulator-5554, Pixel 7 AVD, 1080x2400, UiAutomator2
-- Build/Version: STG · v1.1
+* URL: N/A (mobile app, không phải web)
+* Account/Role: FOXECO_STG_USER_A — Đặng Châu Giang, MNV 00131946, Ban Giám đốc
+* Trình duyệt / Thiết bị: emulator-5554, Pixel 7 AVD, 1080x2400, UiAutomator2
+* Build/Version: STG · v1.1
 
 **II. Mô tả Bug**
 
@@ -50,12 +50,12 @@
 
 **Expected result:**
 
-- Nhãn = "Cập nhật thông tin" (theo `DOC-v1.1-01 §8.15`)
+* Nhãn = "Cập nhật thông tin" (theo `DOC-v1.1-01 §8.15`)
 
 **Actual result:**
 
-- Nhãn = "Cập nhật thông tin cá nhân" (thừa 2 chữ "cá nhân")
-- Vị trí (ngay dưới "Quà đã nhận") đúng
-- ⚠️ App tự mâu thuẫn: tiêu đề của màn đích lại đúng verbatim là "Cập nhật thông tin"
+* Nhãn = "Cập nhật thông tin cá nhân" (thừa 2 chữ "cá nhân")
+* Vị trí (ngay dưới "Quà đã nhận") đúng
+* ⚠️ App tự mâu thuẫn: tiêu đề của màn đích lại đúng verbatim là "Cập nhật thông tin"
 
 **Hình ảnh mô tả:** đính kèm ảnh evidence (TC-USR-013) theo attachment của issue này.

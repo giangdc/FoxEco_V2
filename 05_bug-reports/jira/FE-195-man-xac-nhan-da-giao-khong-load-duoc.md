@@ -1,6 +1,6 @@
 # FE-195 — [TC_07 - Theo dõi đơn] Màn Xác nhận đã giao _ không load được thông tin nguồi nhận/địa chỉ giao --> không hoàn tất được đơn
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-195 · **Module:** DLV · **Sync:** 2026-09-23 (R2)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-195 · **Module:** DLV · **Sync:** 2026-09-24 (R2)
 
 | Field | Value |
 |-------|-------|
@@ -35,8 +35,8 @@
 
 **Điều kiện test:**
 
--  có > 1 đơn tôi cần gởi hàng
-- account test: stag_giangdc2@fpt.com
+*  có > 1 đơn tôi cần gởi hàng
+* account test: stag_giangdc2@fpt.com
 
 1. Người nhận tạo tin tôi nhận giao hàng phù hợp (> 2 tin khớp)
 2. Đông ý ghép thành công
@@ -46,4 +46,4 @@
 
 Actual: Không load thông tin người nhận + địa chỉ giao → Không xác nhận được. → Không hoàn tất được đơn
 
-![attachment](e8fe6531-670f-48d5-978b-260acb53dfb6)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=6a13811b4266&id=e8fe6531-670f-48d5-978b-260acb53dfb6&&collection=&height=null&occurrenceKey=null&width=null&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

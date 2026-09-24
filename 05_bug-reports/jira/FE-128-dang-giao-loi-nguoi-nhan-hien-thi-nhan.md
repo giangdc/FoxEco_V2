@@ -1,6 +1,6 @@
 # FE-128 — [TC_07 - Theo dõi đơn] Đang giao: Lỗi người nhận hiển thị nhãn 'Đơn đang trên đường đến bạn' không đúng
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-128 · **Module:** DLV · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-128 · **Module:** DLV · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -35,7 +35,7 @@
 
 **Data**:
 
-- Account: [stag_chintl12@fpt.com](mailto:stag_chintl12@fpt.com)
+* Account: [stag_chintl12@fpt.com](mailto:stag_chintl12@fpt.com)
 
 **Step:**
 
@@ -45,13 +45,13 @@
 
 **=> Bug:** 
 
-- **Hệ thống hiển thị nhãn CTA** **“ Đang giao đến người nhận “ ở đáy màn**
-- **Hiển thị text hearder Tôi gửi hàng** 
+* **Hệ thống hiển thị nhãn CTA** **“ Đang giao đến người nhận “ ở đáy màn**
+* **Hiển thị text hearder Tôi gửi hàng** 
 
 **KQMM:** 
 
-- **Hệ thống hiển thị nhãn "✓ Đơn đang trên đường đến bạn" ở trạng thái disable ở đáy màn** 
-- **Hiển thị text hearder Tôi nhận hàng**
+* **Hệ thống hiển thị nhãn "✓ Đơn đang trên đường đến bạn" ở trạng thái disable ở đáy màn** 
+* **Hiển thị text hearder Tôi nhận hàng**
 
-![attachment](35683946-98a0-4ad7-aa87-ee079cbf5b68)
-![attachment](cb803859-bc50-4c69-b678-6551993cff7c)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=d35191aaff9a&id=35683946-98a0-4ad7-aa87-ee079cbf5b68&&collection=&height=661&occurrenceKey=null&width=650&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=1d2a1285330c&id=cb803859-bc50-4c69-b678-6551993cff7c&&collection=&height=null&occurrenceKey=null&width=null&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

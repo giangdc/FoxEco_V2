@@ -1,6 +1,6 @@
 # FE-140 — [TC_05 - Trang chủ]: Không sắp xếp thứ tự tin trong "Tin mới" theo tin gần tuyến nhất hiển thị trước
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-140 · **Module:** HOME · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-140 · **Module:** HOME · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -35,8 +35,8 @@
 
 **Data**:
 
-- Account Carrier: [stag_vanmtt3@fpt.com](mailto:stag_chintl12@fpt.com)
-- Đã cấp quyền vị trí cho app Foxpro 
+* Account Carrier: [stag_vanmtt3@fpt.com](mailto:stag_chintl12@fpt.com)
+* Đã cấp quyền vị trí cho app Foxpro 
 
 **Step:**
 
@@ -48,4 +48,4 @@
 
 **KQMM: Danh sách sắp xếp theo độ gần tuyến: tin gần tuyến nhất ở vị trí đầu tiên, tin xa tuyến nhất ở cuối**
 
-![attachment](0950456c-a565-4b8c-b2df-e1aa6e10b3b8)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=5396e0cb4311&id=0950456c-a565-4b8c-b2df-e1aa6e10b3b8&&collection=&height=794&occurrenceKey=null&width=1261&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

@@ -1,6 +1,6 @@
 # FE-109 — [TC_04 - Đăng tin - Tôi nhận giao hàng]: Không thể chính sửa đơn có trạng thái chờ ghép
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-109 · **Module:** ORD · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-109 · **Module:** ORD · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -42,4 +42,4 @@
 
 ==> Cho phép điều chỉnh
 
-![attachment](580590bc-9990-448c-b74f-954dd00dde69)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=6ba82fe4893c&id=580590bc-9990-448c-b74f-954dd00dde69&&collection=&height=null&occurrenceKey=null&width=null&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

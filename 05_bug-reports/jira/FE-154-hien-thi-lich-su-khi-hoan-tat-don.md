@@ -1,6 +1,6 @@
 # FE-154 — [TC_07 - Theo dõi đơn]: Hiển thị Lịch sử khi hoàn tất đơn và người gửi tặng quà khác với figma mô tả 
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-154 · **Module:** DLV · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-154 · **Module:** DLV · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -36,7 +36,7 @@
 
 **Data**:
 
-- Account người gửi : [stag\_](mailto:stag_chintl12@fpt.com)dienlt2@fpt.com
+* Account người gửi : [stag\_](mailto:stag_chintl12@fpt.com)dienlt2@fpt.com
 
 **Step:**
 
@@ -48,4 +48,4 @@
 
 **KQMM: Khối "Lịch sử" ghi thêm mốc "Hoàn thành & đã đánh giá" kèm timestamp, nối tiếp đúng thứ tự sau mốc "Đã giao"**
 
-![attachment](a153cf53-7c03-4676-afcb-dab33635c56c)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=f8d1060b982c&id=a153cf53-7c03-4676-afcb-dab33635c56c&&collection=&height=615&occurrenceKey=null&width=590&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

@@ -1,6 +1,6 @@
 # FE-123 — [TC_07 - Theo dõi đơn]: Lỗi hiển thị UI không đúng Figma mô tả khi Người vận chuyển bấm "Đã giao cho người nhận"
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-123 · **Module:** DLV · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-123 · **Module:** DLV · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -37,7 +37,7 @@
 
 Data:
 
-- Account: Stag_vanmtt3@fpt.com
+* Account: Stag_vanmtt3@fpt.com
 
 Step:
 
@@ -49,4 +49,4 @@ Step:
 
 **KQMM: Hiển thị UI giống design: Popup "Xác nhận" hiển thị nội dung "Bạn xác nhận đã giao hàng tận tay người nhận?"**
 
-![attachment](cec5fd8f-89a9-4072-91ef-b147ca499942)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=fae0166484fb&id=cec5fd8f-89a9-4072-91ef-b147ca499942&&collection=&height=649&occurrenceKey=null&width=582&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

@@ -1,6 +1,6 @@
 # FE-168 — [TC_04 - Đăng tin - Tôi cần gửi hàng] Lỗi không show thông báo khi trường Số điện thoại không đúng format
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-168 · **Module:** ORD · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-168 · **Module:** ORD · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -40,4 +40,4 @@
 
 Evidence:
 
-![attachment](68a68e27-f1a6-4094-9621-2ca544168c12)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=227723cff993&id=68a68e27-f1a6-4094-9621-2ca544168c12&&collection=&height=1568&occurrenceKey=null&width=720&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

@@ -1,6 +1,6 @@
 # FE-157 — [TC_03 - Thông báo]: điều hướng qua màn hinh chi tiết khi tap vào thông báo "Tìm thấy đơn hàng phù hơp..." - đơn này đã đồng ý giao
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-157 · **Module:** NTF · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-157 · **Module:** NTF · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -45,4 +45,4 @@ Actual: Điều hướng qua màn hình chi tiết tin
 
 => Điều hướng qua màn hình theo dõi tin do trước đó đã xác nhận r
 
-![attachment](a421bd0f-fe8e-49e2-abaa-0fb0fafcb43c)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=994e649a39f3&id=a421bd0f-fe8e-49e2-abaa-0fb0fafcb43c&&collection=&height=null&occurrenceKey=null&width=null&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

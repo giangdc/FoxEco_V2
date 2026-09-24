@@ -1,6 +1,6 @@
 # FE-290 — [TC_11 - Tài khoản & Hồ sơ]:  Chặn lưu SĐT im lặng, không báo lỗi
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-290 · **Module:** USR · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-290 · **Module:** USR · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -25,7 +25,7 @@
 | Reporter | GiangDC2 |
 | Assignee | Tuanvm37 |
 | Created | 2026-09-18 |
-| Updated | 2026-09-23 |
+| Updated | 2026-09-24 |
 
 > ⚠️ **Nguồn chuẩn = Jira** — sửa trên Jira rồi `/sync-jira-bugs`, KHÔNG sửa tay file này.
 
@@ -56,7 +56,7 @@ Hiển thị thông báo lỗi đỏ "Số điện thoại không hợp lệ (10
 
 ## Actual
 
-- Hiển thị thông toast “Không lưu được thông tin vui lòng thử lại“
+* Hiển thị thông toast “Không lưu được thông tin vui lòng thử lại“
 
 ## Ghi chú kỹ thuật cho dev (giả thuyết, chưa xác nhận)
 
@@ -64,9 +64,9 @@ Validator regex có thể chỉ chạy sau một bước sanitize; input chứa 
 
 ## Evidence
 
-- `TC-USR-021__step5-FAIL-khong-hien-thong-bao-loi.png`
-- `TC-USR-022__step5-FAIL-khong-hien-thong-bao-loi.png`
-- Đường dẫn: `08_test-runs/vibe/VR-001-USR-2026-09-18/screenshots/`
+* `TC-USR-021__step5-FAIL-khong-hien-thong-bao-loi.png`
+* `TC-USR-022__step5-FAIL-khong-hien-thong-bao-loi.png`
+* Đường dẫn: `08_test-runs/vibe/VR-001-USR-2026-09-18/screenshots/`
 
 ## Ref
 

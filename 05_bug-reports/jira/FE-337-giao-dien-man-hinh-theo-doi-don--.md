@@ -1,6 +1,6 @@
 # FE-337 — [TC_04 - Giao nhận & Theo dõi đơn]- Giao diện màn hình Theo dõi đơn - Luồng xác nhận trả hàng cho người gởi không đúng 
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-337 · **Module:** DLV · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-337 · **Module:** DLV · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -20,12 +20,12 @@
 | Platform | App |
 | Test method | Manual |
 | Duplicate | No |
-| Reject Number | Lần 1 |
+| Reject Number | Lần 2 |
 | Due date | 2026-09-23 |
 | Reporter | GiangDC2 |
 | Assignee | Tuanvm37 |
 | Created | 2026-09-22 |
-| Updated | 2026-09-23 |
+| Updated | 2026-09-24 |
 
 > ⚠️ **Nguồn chuẩn = Jira** — sửa trên Jira rồi `/sync-jira-bugs`, KHÔNG sửa tay file này.
 
@@ -35,16 +35,16 @@
 
 **I. Môi trường**
 
-- URL: N/A (FoxEco là SDK nhúng trong host app mobile FoxPro, không có URL riêng)
-- Account/Role: A người vận chuyển `stag_anhdc4@`
-- Trình duyệt / Thiết bị: emulator-5554 (Android), UiAutomator2
-- Build/Version: STG · v1.1 · host app `com.hrisproject.stag` (FoxPro)
+* URL: N/A (FoxEco là SDK nhúng trong host app mobile FoxPro, không có URL riêng)
+* Account/Role: A người vận chuyển `stag_anhdc4@`
+* Trình duyệt / Thiết bị: emulator-5554 (Android), UiAutomator2
+* Build/Version: STG · v1.1 · host app `com.hrisproject.stag` (FoxPro)
 
 **II. Mô tả Bug**
 
 **Pre-condition:**
 
-- Đơn đang được người Vẫn chuyển trả về cho người gởi 
+* Đơn đang được người Vẫn chuyển trả về cho người gởi 
 
 **Steps**:
 
@@ -53,4 +53,4 @@
 
 Actual: màu sác và thông tin lịch sử không giông ui , không có btn dưới cùng màn hình như ui 
 
-![attachment](447edf66-0dd1-4414-88c9-379cd848f1f9)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=99f862e8d895&id=447edf66-0dd1-4414-88c9-379cd848f1f9&&collection=&height=977&occurrenceKey=null&width=1988&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

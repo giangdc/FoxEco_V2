@@ -1,6 +1,6 @@
 # FE-138 — [TC_03 - Thông báo ]: Hiển thị màn hình chi tiết bị loading + thông báo "bạn không có quyền thực hiên thao tác này" khi click vào thông báo tìm thấy tuyến đường phù hợp-trường hợp đơn đã hủy
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-138 · **Module:** NTF · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-138 · **Module:** NTF · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -35,9 +35,9 @@
 
 Điều kiện test: 
 
-- Account A tạo tin Tôi nhận giao hàng thành công 
-- Account B tạo tin Tôi cần gởi hàng khớp với account A → khi này account B nhận thông báo tuyến đường phù hợp
-- Account A hủy đơn đã tạo đi
+* Account A tạo tin Tôi nhận giao hàng thành công 
+* Account B tạo tin Tôi cần gởi hàng khớp với account A → khi này account B nhận thông báo tuyến đường phù hợp
+* Account A hủy đơn đã tạo đi
 
 **Tại màn hình thông báo - account B**
 
@@ -47,4 +47,4 @@ Actual: Hiển thị màn hình chi tiết bị loading kèm thông báo "bạn 
 
 =>Chỗ này brd ko miêu tả hành vi cụ thế, nếu chốt giữ thông báo như hiện tại cần fix chỗ loading
 
-![attachment](b46efc82-3fab-4a2a-aab2-5497b351eed1)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=f79105389fb9&id=b46efc82-3fab-4a2a-aab2-5497b351eed1&&collection=&height=null&occurrenceKey=null&width=null&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

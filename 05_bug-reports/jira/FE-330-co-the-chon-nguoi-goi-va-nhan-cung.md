@@ -1,6 +1,6 @@
 # FE-330 — [TC_09 - Đăng tin]- Có thể chọn người gởi và nhận cùng email 
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-330 · **Module:** ORD · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-330 · **Module:** ORD · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -35,16 +35,16 @@
 
 **I. Môi trường**
 
-- URL: N/A (FoxEco là SDK nhúng trong host app mobile FoxPro, không có URL riêng)
-- Account/Role: A người gửi `stag_anhbptm17@`
-- Trình duyệt / Thiết bị: note 12t pro, andorid 15
-- Build/Version: STG · v1.1 · host app `com.hrisproject.stag` (FoxPro)
+* URL: N/A (FoxEco là SDK nhúng trong host app mobile FoxPro, không có URL riêng)
+* Account/Role: A người gửi `stag_anhbptm17@`
+* Trình duyệt / Thiết bị: note 12t pro, andorid 15
+* Build/Version: STG · v1.1 · host app `com.hrisproject.stag` (FoxPro)
 
 **II. Mô tả Bug**
 
 **Pre-condition:**
 
-- Điều hướng đến bước 2 Địa điểm và thời gian
+* Điều hướng đến bước 2 Địa điểm và thời gian
 
 **Steps:**
 
@@ -56,4 +56,4 @@
 
 **Actual result:** Có thể đang tin thành công, vào màn hình chi tiết hiển các btn của cả 2 role → cần chặn chỗ này vì ko hợp lý
 
-![attachment](e310daaa-c51e-4b04-a834-77473984ef6e)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=f89558d0e7a3&id=e310daaa-c51e-4b04-a834-77473984ef6e&&collection=&height=null&occurrenceKey=null&width=null&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

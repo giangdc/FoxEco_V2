@@ -1,6 +1,6 @@
 # FE-169 — [TC_01 - Hoạt động]: Người nhận không hiển thị data đơn hoàn thành tại tab Đã hoàn thành 
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-169 · **Module:** ACT · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-169 · **Module:** ACT · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -35,8 +35,8 @@
 
 **Điều kiện test:**
 
-- account: [stag_taipm@fpt.com](mailto:stag_tampnh2@fpt.com) → người nhận
-- data: Có đơn đã hoàn thành
+* account: [stag_taipm@fpt.com](mailto:stag_tampnh2@fpt.com) → người nhận
+* data: Có đơn đã hoàn thành
 
 **Bước thực hiện**
 
@@ -47,5 +47,5 @@
 
 → demo hiển thị cả 3 role
 
-![attachment](2aa4b31f-c2a6-4ab6-9675-797381851084)
-![attachment](d47e31a0-ea63-417f-bc18-dfb765c004c5)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=cb3c699fba70&id=2aa4b31f-c2a6-4ab6-9675-797381851084&&collection=&height=888&occurrenceKey=null&width=416&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=b773964841c5&id=d47e31a0-ea63-417f-bc18-dfb765c004c5&&collection=&height=463&occurrenceKey=null&width=1293&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

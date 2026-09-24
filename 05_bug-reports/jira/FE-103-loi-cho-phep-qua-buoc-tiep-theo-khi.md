@@ -1,6 +1,6 @@
 # FE-103 — [TC_04 - Đăng tin - Tôi cần gửi hàng] Lỗi cho phép qua bước tiếp theo khi nhập Địa chỉ lấy hàng không thuộc danh sách 
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-103 · **Module:** ORD · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-103 · **Module:** ORD · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -44,4 +44,4 @@
 
 **Evidence**:
 
-![attachment](7ea4ae86-3205-45fe-b8d1-6a11a869fbf3)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=a6d52aa6456c&id=7ea4ae86-3205-45fe-b8d1-6a11a869fbf3&&collection=&height=null&occurrenceKey=null&width=null&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

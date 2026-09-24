@@ -1,6 +1,6 @@
 # FE-167 — [TC_01 - Hoạt động] Chức năng tặng quà tại màn hình Hoạt động (Đơn của tôi) không đúng 
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-167 · **Module:** ACT · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-167 · **Module:** ACT · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -35,8 +35,8 @@
 
 **Điều kiện test:** 
 
-- account: [stag_tampnh2@fpt.com](mailto:stag_tampnh2@fpt.com) → người gởi
-- data: Có đơn đã hoàn thành
+* account: [stag_tampnh2@fpt.com](mailto:stag_tampnh2@fpt.com) → người gởi
+* data: Có đơn đã hoàn thành
 
 **Bước thực hiện**
 
@@ -45,10 +45,10 @@
 
 **Bug: (tham khảo thêm video)**
 
-- Đơn đã tặng quà rồi nhưng mặc định đang hiển thị là Chạm để tặng quà → vẫn cho thao tác tặng quà thành công 
-- Sau khi tặng quà 1 đơn → thao tác tặng tiếp thì báo lỗi idempotency-key đã dùng cho gift khác 
-- Sau khi tặng xong Tắt app mở lại → <Đã tặng quà> cập nhật thành <Chạm để tặng quà>
+* Đơn đã tặng quà rồi nhưng mặc định đang hiển thị là Chạm để tặng quà → vẫn cho thao tác tặng quà thành công 
+* Sau khi tặng quà 1 đơn → thao tác tặng tiếp thì báo lỗi idempotency-key đã dùng cho gift khác 
+* Sau khi tặng xong Tắt app mở lại → <Đã tặng quà> cập nhật thành <Chạm để tặng quà>
 
 \*\*\*\*\*\* Cần check lại do file demo ko rõ ràng + brd cũng không mô tả luồng tặng quà chỗ này
 
-![attachment](260be93a-9f02-4cc2-93e5-e642a8a7886b)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=ea5bb3597798&id=260be93a-9f02-4cc2-93e5-e642a8a7886b&&collection=&height=null&occurrenceKey=null&width=null&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

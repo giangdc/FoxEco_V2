@@ -1,6 +1,6 @@
 # FE-149 — [TC_03 - Thông báo]: Nội dung thông báo cho người gởi và người nhận không khớp URD
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-149 · **Module:** NTF · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-149 · **Module:** NTF · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -43,4 +43,4 @@
 
 Actual: Nội dung thông báo không đung mô tả BRD
 
-![attachment](3924f77b-ee56-4edc-9bf9-5457284978e0)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=57602def9cee&id=3924f77b-ee56-4edc-9bf9-5457284978e0&&collection=&height=518&occurrenceKey=null&width=806&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

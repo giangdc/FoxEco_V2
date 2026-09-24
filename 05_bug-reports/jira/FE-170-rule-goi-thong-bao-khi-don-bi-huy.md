@@ -1,6 +1,6 @@
 # FE-170 — [TC_03 - Thông báo ]: Rule gởi thông báo khi đơn bị hủy không đúng 
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-170 · **Module:** NTF · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-170 · **Module:** NTF · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -42,7 +42,7 @@
 
 **> Bug:** 
 
-- Chỉ gởi thông báo hủy cho Gởi, không gởi cho người nhận  =>phải gởi cả 2 (Gởi cho cá bên liên quan còn lại của đơn)
-- Nội dung thông báo hủy không đúng brd
+* Chỉ gởi thông báo hủy cho Gởi, không gởi cho người nhận  =>phải gởi cả 2 (Gởi cho cá bên liên quan còn lại của đơn)
+* Nội dung thông báo hủy không đúng brd
 
-![attachment](d533c97d-12e1-4d3c-b1d1-56444f98abae)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=290a28688603&id=d533c97d-12e1-4d3c-b1d1-56444f98abae&&collection=&height=453&occurrenceKey=null&width=738&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

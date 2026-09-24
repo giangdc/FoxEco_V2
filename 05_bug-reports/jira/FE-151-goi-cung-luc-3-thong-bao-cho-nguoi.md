@@ -1,6 +1,6 @@
 # FE-151 — [TC_03 - Thông báo]: Gởi cùng lúc 3 thông báo cho người gởi/nhận/vân chuyển khi người vận chuyển lấy hàng
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-151 · **Module:** NTF · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-151 · **Module:** NTF · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -43,4 +43,4 @@
 
 => Chỉ gởi cho 2 người gởi/nhận
 
-![attachment](d96d223a-b182-4791-bb76-db7bc1deed5d)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=8c3bcce27e66&id=d96d223a-b182-4791-bb76-db7bc1deed5d&&collection=&height=null&occurrenceKey=null&width=null&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

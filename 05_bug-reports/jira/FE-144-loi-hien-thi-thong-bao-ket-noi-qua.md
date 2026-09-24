@@ -1,6 +1,6 @@
 # FE-144 — [TC_01 - Hoạt động]: Lỗi hiển thị thông báo "Kết nối quá thời gian chờ. Vui lòng thử lại" khi click xem đơn trạng thái chờ ghép
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-144 · **Module:** ACT · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-144 · **Module:** ACT · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -35,7 +35,7 @@
 
 **Data**:
 
-- Account: [stag_dienlt2@fpt.com](mailto:stag_chintl12@fpt.com)
+* Account: [stag_dienlt2@fpt.com](mailto:stag_chintl12@fpt.com)
 
 **Step:**
 
@@ -48,5 +48,5 @@
 
 **KQMM:Hệ thống hiển thị màn hình theo dõi của đơn đã chọn** 
 
-![attachment](8fb019a2-e4a9-4cb4-b9d9-d2b95e2ea266)
-![attachment](cd299c66-748d-4559-8b94-4a7177b93120)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=25b14813f30b&id=8fb019a2-e4a9-4cb4-b9d9-d2b95e2ea266&&collection=&height=1398&occurrenceKey=null&width=645&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=b8c0226d988b&id=cd299c66-748d-4559-8b94-4a7177b93120&&collection=&height=360&occurrenceKey=null&width=166&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

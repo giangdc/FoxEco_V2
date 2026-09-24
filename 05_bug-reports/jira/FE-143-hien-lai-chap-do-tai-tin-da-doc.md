@@ -1,6 +1,6 @@
 # FE-143 — [TC_03 - Thông báo ]: Hiện lại chấp đỏ tại tin đã đọc sau khi reload màn hình thông báo
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-143 · **Module:** NTF · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-143 · **Module:** NTF · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -35,7 +35,7 @@
 
 Điều kiện test:
 
-- Còn thông báo chưa đọc
+* Còn thông báo chưa đọc
 
 **Tại màn hình thông báo** 
 
@@ -46,4 +46,4 @@
 
 Actual: Tin đã đọc tại bước 1 hiện lại icon chấm đỏ
 
-![attachment](79086585-1ba7-4c47-83ff-23d24882b868)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=43eb153ac64a&id=79086585-1ba7-4c47-83ff-23d24882b868&&collection=&height=null&occurrenceKey=null&width=null&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

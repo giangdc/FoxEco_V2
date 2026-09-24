@@ -1,6 +1,6 @@
 # FE-125 — [TC_07 - Theo dõi đơn] Đã ghép: Lỗi người nhận không hiển thị btn hủy và sai nhãn "Đã có người vận chuyển · chờ lấy hàng" 
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-125 · **Module:** DLV · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-125 · **Module:** DLV · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -35,7 +35,7 @@
 
 **Data**:
 
-- Account: [stag_chintl12@fpt.com](mailto:stag_chintl12@fpt.com) 
+* Account: [stag_chintl12@fpt.com](mailto:stag_chintl12@fpt.com) 
 
 **Step:**
 
@@ -47,5 +47,5 @@
 
 **KQMM: Hiển thị nút "Đã có người vận chuyển · chờ lấy hàng" ở trạng thái disable, kèm nút "Huỷ đơn"**
 
-![attachment](a55578f6-36d7-4860-bcb0-90b612bf88c8)
-![attachment](2167fdde-fc30-47c1-9ef9-eeb9a06630b8)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=1797dfc46fc4&id=a55578f6-36d7-4860-bcb0-90b612bf88c8&&collection=&height=645&occurrenceKey=null&width=619&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=7da7f2f06a0b&id=2167fdde-fc30-47c1-9ef9-eeb9a06630b8&&collection=&height=null&occurrenceKey=null&width=null&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

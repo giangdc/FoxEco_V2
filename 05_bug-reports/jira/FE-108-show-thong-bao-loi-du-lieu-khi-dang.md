@@ -1,6 +1,6 @@
 # FE-108 — [TC_04 - Đăng tin - Tôi cần gửi hàng] Show thông báo lỗi dữ liệu khi Đăng tin 
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-108 · **Module:** ORD · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-108 · **Module:** ORD · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -42,4 +42,4 @@
 
 Evidence:
 
-![attachment](c0aa8043-7868-4418-ab11-73f9fbbe98fc)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=35855291c856&id=c0aa8043-7868-4418-ab11-73f9fbbe98fc&&collection=&height=null&occurrenceKey=null&width=null&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

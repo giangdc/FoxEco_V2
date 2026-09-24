@@ -1,6 +1,6 @@
 # FE-328 — [TC_03 - Huỷ đơn]- Title popup thông báo Đã hủy nhận đơn không đúng bị hiển thị trên 2 dòng
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-328 · **Module:** CNL · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-328 · **Module:** CNL · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -35,15 +35,15 @@
 
 **I. Môi trường**
 
-- Account/Role: A người gửi `stag_anhdc4@`
-- Trình duyệt / Thiết bị: emulator-5554 (Android), UiAutomator2
-- Build/Version: STG · v1.1 · host app `com.hrisproject.stag` (FoxPro)
+* Account/Role: A người gửi `stag_anhdc4@`
+* Trình duyệt / Thiết bị: emulator-5554 (Android), UiAutomator2
+* Build/Version: STG · v1.1 · host app `com.hrisproject.stag` (FoxPro)
 
 **II. Mô tả Bug**
 
 **Pre-condition:**
 
-- Đơn ở trạng thái "Chờ ghép", đang mở popup "Huỷ đơn".
+* Đơn ở trạng thái "Chờ ghép", đang mở popup "Huỷ đơn".
 
 **Steps:**
 
@@ -53,10 +53,10 @@
 
 **Expected result:**
 
-- Hiển thị : Title ngắn nên nằm trên cùng 1 dòng 
+* Hiển thị : Title ngắn nên nằm trên cùng 1 dòng 
 
 **Actual result:**
 
-- Hiển thị title Đã hủy (nằm trên 2 dòng )
+* Hiển thị title Đã hủy (nằm trên 2 dòng )
 
-![attachment](b535ae70-493c-4364-badc-18a582b01536)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=38fe93835eb6&id=b535ae70-493c-4364-badc-18a582b01536&&collection=&height=433&occurrenceKey=null&width=581&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

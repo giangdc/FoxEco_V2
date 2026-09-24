@@ -1,6 +1,6 @@
 # FE-106 — [TC_04 - Đăng tin - Tôi cần gửi hàng] Lỗi không lưu data đã edit sau khi back về từ bước 2
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-106 · **Module:** ORD · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-106 · **Module:** ORD · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -45,4 +45,4 @@
 
 Evidence:
 
-![attachment](7174d046-eda1-4f5b-bf20-96c794d22eec)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=36eed8a6cc44&id=7174d046-eda1-4f5b-bf20-96c794d22eec&&collection=&height=null&occurrenceKey=null&width=null&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

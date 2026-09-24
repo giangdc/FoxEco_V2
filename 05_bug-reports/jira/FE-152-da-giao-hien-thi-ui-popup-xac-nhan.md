@@ -1,6 +1,6 @@
 # FE-152 — [TC_07 - Theo dõi đơn] Đã giao: Hiển thị UI popup "Xác nhận" đã nhận hàng khác với figma mô tả
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-152 · **Module:** DLV · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-152 · **Module:** DLV · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -35,7 +35,7 @@
 
 **Data**:
 
-- Account: [stag_chintl12@fpt.com](mailto:stag_chintl12@fpt.com)
+* Account: [stag_chintl12@fpt.com](mailto:stag_chintl12@fpt.com)
 
 **Step:**
 
@@ -47,4 +47,4 @@
 
 **KQMM: Popup hiển thị đủ 3 thành phần: (1) tiêu đề "Xác nhận", (2) nội dung "Bạn xác nhận đã nhận được hàng từ người vận chuyển?", (3) 2 nút "Huỷ" và "Xác nhận"**
 
-![attachment](3e92296e-1379-43e3-9a3b-29f6dbdd45f5)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=726714cceb92&id=3e92296e-1379-43e3-9a3b-29f6dbdd45f5&&collection=&height=665&occurrenceKey=null&width=597&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

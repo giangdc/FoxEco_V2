@@ -1,6 +1,6 @@
 # FE-146 — [TC_03 - Thông báo ]: Gởi cùng lúc 2 thông báo cảm ơn cho Người gởi/Người vận chuyển 
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-146 · **Module:** NTF · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-146 · **Module:** NTF · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -44,4 +44,4 @@ Actual: Gởi cùng lúc 2 noti cho người Người gởi/Người vận chuy�
 
 ==> Chỉ gởi noti cho người vận chuyển
 
-![attachment](435c3b27-6b27-4264-aee7-09d6a75ddfa8)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=151d2347d9f7&id=435c3b27-6b27-4264-aee7-09d6a75ddfa8&&collection=&height=null&occurrenceKey=null&width=null&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

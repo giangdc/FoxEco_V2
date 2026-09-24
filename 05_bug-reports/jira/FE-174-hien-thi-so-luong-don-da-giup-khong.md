@@ -1,6 +1,6 @@
 # FE-174 — [TC_02 -Cá nhân] Hiển thị Số lượng đơn đã giúp không đúng
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-174 · **Module:** USR · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-174 · **Module:** USR · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -35,7 +35,7 @@
 
 **data**
 
-- Acount: Stag_dienlt2@fpt.com
+* Acount: Stag_dienlt2@fpt.com
 
 **Step**:
 
@@ -47,4 +47,4 @@
 
 **KQMM: Hệ thống hiển thị đúng Số lượng đơn đã giúp** 
 
-![attachment](fac214de-8c97-4538-8da9-bdca37cb397b)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=51544715f819&id=fac214de-8c97-4538-8da9-bdca37cb397b&&collection=&height=null&occurrenceKey=null&width=null&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

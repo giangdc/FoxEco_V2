@@ -1,6 +1,6 @@
 # FE-127 — [TC_04 - Đăng tin- Chỉnh sửa]: màn hình chỉnh sủa load không đúng thông tin SĐT tại bước 2 (khi tạo tin có thay đổi SĐT)
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-127 · **Module:** ORD · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-127 · **Module:** ORD · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -43,4 +43,4 @@
 
 ==> Load đúng SĐT nhập lúc tạo tin
 
-![attachment](48d0fa31-cceb-427b-861d-5411c6aca4c5)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=9c3c6ef0e47f&id=48d0fa31-cceb-427b-861d-5411c6aca4c5&&collection=&height=null&occurrenceKey=null&width=null&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

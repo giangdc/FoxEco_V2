@@ -1,6 +1,6 @@
 # FE-295 — [TC_11 - Tài khoản & Hồ sơ] - Thiếu icon khiên cạnh field Email công ty
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-295 · **Module:** USR · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-295 · **Module:** USR · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -35,10 +35,10 @@
 
 **I. Môi trường**
 
-- URL: N/A (mobile app, không phải web)
-- Account/Role: FOXECO_STG_USER_A — Đặng Châu Giang, MNV 00131946, Ban Giám đốc
-- Trình duyệt / Thiết bị: emulator-5554, Pixel 7 AVD, 1080x2400, UiAutomator2
-- Build/Version: STG · v1.1
+* URL: N/A (mobile app, không phải web)
+* Account/Role: FOXECO_STG_USER_A — Đặng Châu Giang, MNV 00131946, Ban Giám đốc
+* Trình duyệt / Thiết bị: emulator-5554, Pixel 7 AVD, 1080x2400, UiAutomator2
+* Build/Version: STG · v1.1
 
 **II. Mô tả Bug**
 
@@ -51,14 +51,14 @@
 
 **Expected result:**
 
-- Có icon khiên ở bên phải field "Email công ty" (theo rule BA chốt 2026-09-16, ngoài PRD gốc)
+* Có icon khiên ở bên phải field "Email công ty" (theo rule BA chốt 2026-09-16, ngoài PRD gốc)
 
 **Actual result:**
 
-- Không có icon nào ở bên phải — chỉ có icon phong bì ✉ ở bên trái
-- 4/4 vế còn lại của TC đều đúng — chỉ riêng icon khiên bị thiếu
-- Demo `DOC-v1.1-02` cũng đang lệch điểm này — có thể cần chốt lại với BA
+* Không có icon nào ở bên phải — chỉ có icon phong bì ✉ ở bên trái
+* 4/4 vế còn lại của TC đều đúng — chỉ riêng icon khiên bị thiếu
+* Demo `DOC-v1.1-02` cũng đang lệch điểm này — có thể cần chốt lại với BA
 
 **Hình ảnh mô tả:** đính kèm ảnh evidence (TC-USR-024) theo attachment của issue này.
 
-![attachment](908bef00-3b8b-49ae-81a3-9abf6f2953cf)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=a0528cfa1683&id=908bef00-3b8b-49ae-81a3-9abf6f2953cf&&collection=&height=949&occurrenceKey=null&width=449&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

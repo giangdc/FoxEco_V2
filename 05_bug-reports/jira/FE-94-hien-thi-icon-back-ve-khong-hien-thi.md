@@ -1,6 +1,6 @@
 # FE-94 — [TC_05 - Trang chủ]: Hiển thị icon back về, không hiển thị icon vai trò 
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-94 · **Module:** HOME · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-94 · **Module:** HOME · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -44,4 +44,4 @@ Step:
 
 **KQMM: Header (icon vai trò + "Xin chào, \[Tên\]" + icon chuông thông báo),** 
 
-![attachment](c0caafac-3128-4cc5-986b-402363f4318d)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=d231d6c6a4c1&id=c0caafac-3128-4cc5-986b-402363f4318d&&collection=&height=668&occurrenceKey=null&width=630&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

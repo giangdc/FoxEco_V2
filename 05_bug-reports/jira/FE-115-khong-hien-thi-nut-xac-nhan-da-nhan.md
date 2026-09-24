@@ -1,6 +1,6 @@
 # FE-115 — [TC_07 - Theo dõi đơn ]: Không hiển thị nút "✓ Xác nhận đã nhận hàng" khi đơn = "Đã giao" và login tài khoản người nhận
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-115 · **Module:** DLV · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-115 · **Module:** DLV · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -35,7 +35,7 @@
 
 Data: 
 
-- Account: stag_Chintl12@fpt.com
+* Account: stag_Chintl12@fpt.com
 
 Step:
 
@@ -47,4 +47,4 @@ Step:
 
 **KQMM: Nút hiển thị nhãn "✓ Xác nhận đã nhận hàng" ở trạng thái kích hoạt (nền cam, bấm được) — đây là partition DUY NHẤT nút này active**
 
-![attachment](7aa6c6b0-0a28-4187-b50e-ac36f5de9427)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=e2c8a2bb2037&id=7aa6c6b0-0a28-4187-b50e-ac36f5de9427&&collection=&height=null&occurrenceKey=null&width=null&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

@@ -1,6 +1,6 @@
 # FE-148 — [TC_02 - Cá nhân]: Header thiếu MNV (mã nhân viên) + badge tier "Hạng Đồng hành"
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-148 · **Module:** USR · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-148 · **Module:** USR · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -51,7 +51,7 @@ Actual: KHÔNG có badge tier nào trên header, ở cả 2 tài khoản test.
 => Bug: Thiếu badge tier "🏆 Hạng Đồng hành" tại header màn Cá nhân.  
 KQMM: Có badge dạng text tĩnh "🏆 Hạng Đồng hành" (C-USR-01: chưa cần logic tính hạng, chỉ cần hiển thị display-only).
 
-![attachment](2afd7286-2608-42e1-ad6a-1dd361a3c813)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=1cb290b1063b&id=2afd7286-2608-42e1-ad6a-1dd361a3c813&&collection=&height=555&occurrenceKey=null&width=872&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)
 ‌
 
 ---

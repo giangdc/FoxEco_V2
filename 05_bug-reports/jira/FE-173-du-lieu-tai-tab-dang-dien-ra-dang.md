@@ -1,6 +1,6 @@
 # FE-173 — [TC_01 - Hoạt động]: Dữ liệu tại tab Đang diễn ra đang sắp xếp không hợp lý 
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-173 · **Module:** ACT · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-173 · **Module:** ACT · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -44,4 +44,4 @@ Actual: Hiện tại dữ liệu đang sắp xếp lộn xộn, dữ liệu mớ
 
 => Cần chốt lại rule cụ thể : or là sắp xếp theo thứ tự mới đến cũ theo thời gian tạo ?? thời gian cập nhât?, or là theo trạng thái?…..
 
-![attachment](dcb6112e-7ccd-4584-8c72-22ceb2f3827f)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=787b8dd3c70d&id=dcb6112e-7ccd-4584-8c72-22ceb2f3827f&&collection=&height=null&occurrenceKey=null&width=null&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

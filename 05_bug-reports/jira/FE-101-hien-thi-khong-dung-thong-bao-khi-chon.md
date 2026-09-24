@@ -1,6 +1,6 @@
 # FE-101 — [TC_04 - Đăng tin - Tôi nhận giao hàng]: hiển thị không đúng thông báo khi chọn thời gian khởi hành + đên nơi < 30p
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-101 · **Module:** ORD · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-101 · **Module:** ORD · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -41,4 +41,4 @@
 
 **Actual:** Hiển thị thông báo “thời gian đến phải lớn hơn <khơi hành>“ → đang chọn lớn hơn r nên thông báo ntn không đúng 
 
-![attachment](c034ad5f-9040-4b5b-a669-ff9ab29f1624)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=81bbf523f7a3&id=c034ad5f-9040-4b5b-a669-ff9ab29f1624&&collection=&height=636&occurrenceKey=null&width=814&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

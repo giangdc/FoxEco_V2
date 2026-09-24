@@ -1,6 +1,6 @@
-# FE-305 — [TC_04 - Đăng tin - Tôi cần gửi hàng] Địa chỉ người gửi và người nhận không được tự điền
+# FE-305 — [TC_04 - Đăng tin - Tôi cần gửi hàng/Tôi nhận giao hàng] Địa chỉ người gửi/người nhận/Thông tin của tôi mặc định không load thông tin từ màn hình Cập nhật thông tin 
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-305 · **Module:** ORD · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-305 · **Module:** ORD · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -23,9 +23,9 @@
 | Reject Number | — |
 | Due date |  |
 | Reporter | GiangDC2 |
-| Assignee | liemch2 |
+| Assignee | Tuanvm37 |
 | Created | 2026-09-21 |
-| Updated | 2026-09-23 |
+| Updated | 2026-09-24 |
 
 > ⚠️ **Nguồn chuẩn = Jira** — sửa trên Jira rồi `/sync-jira-bugs`, KHÔNG sửa tay file này.
 
@@ -35,10 +35,10 @@
 
 **I. Môi trường**
 
-- URL: N/A (FoxEco là SDK nhúng trong host app mobile FoxPro, không có URL riêng)
-- Account/Role: CBNV `Đặng Châu Giang`, MNV 00131946 (tài khoản A) — vai SENDER
-- Trình duyệt / Thiết bị: emulator-5554, Android, UiAutomator2
-- Build/Version: STG · v1.1 · host app `com.hrisproject.stag` (FoxPro)
+* URL: N/A (FoxEco là SDK nhúng trong host app mobile FoxPro, không có URL riêng)
+* Account/Role: CBNV `Đặng Châu Giang`, MNV 00131946 (tài khoản A) — vai SENDER
+* Trình duyệt / Thiết bị: emulator-5554, Android, UiAutomator2
+* Build/Version: STG · v1.1 · host app `com.hrisproject.stag` (FoxPro)
 
 **II. Mô tả Bug**
 
@@ -48,8 +48,8 @@ Liên quan: `FE-300` (SĐT và địa chỉ mặc định không được nạp 
 
 **Pre-condition:**
 
-- Tài khoản A đã đăng nhập host app FoxPro. Hồ sơ FoxEco của tài khoản A  **có "Địa chỉ mặc định"** (xem `FE-300`).
-- Email người nhận `stag_anhdc4@fpt.com` — email nội bộ có trên danh bạ (email mẫu BA cung cấp, `C-ORD-13`).
+* Tài khoản A đã đăng nhập host app FoxPro. Hồ sơ FoxEco của tài khoản A  **có "Địa chỉ mặc định"** (xem `FE-300`).
+* Email người nhận `stag_anhdc4@fpt.com` — email nội bộ có trên danh bạ (email mẫu BA cung cấp, `C-ORD-13`).
 
 **Steps A — địa chỉ người gửi:**
 
@@ -65,17 +65,17 @@ Liên quan: `FE-300` (SĐT và địa chỉ mặc định không được nạp 
 
 **Expected result:**
 
-- **A:** "Địa chỉ lấy hàng" (NEED) và "Điểm xuất phát (A)" (OFFER) được **điền sẵn địa chỉ nơi làm việc** và sửa được, không chỉ là chữ gợi ý. Căn cứ `SC-ORD-016` / `REQ-ORD-007` (`DOC-v1.0-01 §D8.1 L364`); OFFER `§D8.2 L381-382`.
-- **B:** tra thấy ⇒ **tự điền cả 3 ô** tên · số điện thoại · địa chỉ, vẫn sửa được. Căn cứ `BR01-09` (`DOC-v1.1-01 §8.1.1`, trang 34): _"Email công ty người nhận được tra danh bạ nội bộ: tìm thấy thì tự điền tên · số điện thoại · địa chỉ (vẫn sửa được); không thấy thì cho nhập thủ công."_
+* **A:** "Địa chỉ lấy hàng" (NEED) và "Điểm xuất phát (A)" (OFFER) được **điền sẵn địa chỉ nơi làm việc** và sửa được, không chỉ là chữ gợi ý. Căn cứ `SC-ORD-016` / `REQ-ORD-007` (`DOC-v1.0-01 §D8.1 L364`); OFFER `§D8.2 L381-382`.
+* **B:** tra thấy ⇒ **tự điền cả 3 ô** tên · số điện thoại · địa chỉ, vẫn sửa được. Căn cứ `BR01-09` (`DOC-v1.1-01 §8.1.1`, trang 34): _"Email công ty người nhận được tra danh bạ nội bộ: tìm thấy thì tự điền tên · số điện thoại · địa chỉ (vẫn sửa được); không thấy thì cho nhập thủ công."_
 
 **Actual result:**
 
-- **A:** "Địa chỉ lấy hàng" và "Điểm xuất phát (A)" **RỖNG**, chỉ có placeholder (`Địa chỉ lấy hàng` / `Bạn đang ở đâu / xuất phát từ đâu`). Cùng tài khoản A, phiên VR-002 (sáng 2026-09-18) ô này **có** prefill `363 Nguyễn Hữu Thọ, Cẩm Lệ`; phiên VR-004 (cùng ngày, sau các phiên test màn "Cập nhật thông tin") thì rỗng.
-- **B:** app hiện dòng xanh `Đã tìm thấy trong hệ thống nội bộ · vui lòng bổ sung SĐT/địa chỉ giao còn thiếu.` Tên `Đặng Châu Anh` ✓ · SĐT `0343439724` ✓ · **Địa chỉ giao hàng RỖNG** ✗. Tái hiện ở 2 phiên độc lập, 2 version TC: `TC-ORD-074` (VR-002, P1) và `TC-ORD-019` (VR-004, P1).
-- Nghịch lý ở B: chính thông báo của app nói "vui lòng bổ sung … địa chỉ giao còn thiếu" — app tự nhận là chưa điền đủ, nhưng SĐT thì điền được.
+* **A:** "Địa chỉ lấy hàng" và "Điểm xuất phát (A)" **RỖNG**, chỉ có placeholder (`Địa chỉ lấy hàng` / `Bạn đang ở đâu / xuất phát từ đâu`). Cùng tài khoản A, phiên VR-002 (sáng 2026-09-18) ô này **có** prefill `363 Nguyễn Hữu Thọ, Cẩm Lệ`; phiên VR-004 (cùng ngày, sau các phiên test màn "Cập nhật thông tin") thì rỗng.
+* **B:** app hiện dòng xanh `Đã tìm thấy trong hệ thống nội bộ · vui lòng bổ sung SĐT/địa chỉ giao còn thiếu.` Tên `Đặng Châu Anh` ✓ · SĐT `0343439724` ✓ · **Địa chỉ giao hàng RỖNG** ✗. Tái hiện ở 2 phiên độc lập, 2 version TC: `TC-ORD-074` (VR-002, P1) và `TC-ORD-019` (VR-004, P1).
+* Nghịch lý ở B: chính thông báo của app nói "vui lòng bổ sung … địa chỉ giao còn thiếu" — app tự nhận là chưa điền đủ, nhưng SĐT thì điền được.
 
 **Phạm vi ảnh hưởng:**
 
-- Mọi lần đăng tin, người dùng phải tự nhập tay địa chỉ lấy hàng (nếu hồ sơ chưa có địa chỉ mặc định) và địa chỉ giao của người nhận, dù hệ thống nội bộ đã tra thấy người đó.
+* Mọi lần đăng tin, người dùng phải tự nhập tay địa chỉ lấy hàng (nếu hồ sơ chưa có địa chỉ mặc định) và địa chỉ giao của người nhận, dù hệ thống nội bộ đã tra thấy người đó.
 
 **Hình ảnh mô tả:** đính kèm 4 ảnh (mỗi TC 1 ảnh: `TC-ORD-017`, `TC-ORD-043`, `TC-ORD-019`, `TC-ORD-074`)

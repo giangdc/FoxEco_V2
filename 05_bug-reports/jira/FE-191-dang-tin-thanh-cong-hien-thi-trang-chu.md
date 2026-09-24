@@ -1,6 +1,6 @@
 # FE-191 — [TC_04 - Đăng tin - Tôi cần gửi hàng] Đăng tin thành công : Hiển thị trang chủ khi click btn Theo dõi đơn hàng ở Popup kết quả 
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-191 · **Module:** ORD · **Sync:** 2026-09-23 (R2)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-191 · **Module:** ORD · **Sync:** 2026-09-24 (R2)
 
 | Field | Value |
 |-------|-------|
@@ -42,4 +42,4 @@
 
 **KQMM: Chuyển sang màn Theo dõi đơn của tin vừa tạo**
 
-![attachment](6804c42c-194b-42a4-bfdd-f036bd78878e)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=dfa9a0c83015&id=6804c42c-194b-42a4-bfdd-f036bd78878e&&collection=&height=1792&occurrenceKey=null&width=828&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

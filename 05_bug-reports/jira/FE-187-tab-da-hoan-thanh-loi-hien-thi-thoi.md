@@ -1,6 +1,6 @@
 # FE-187 — [TC_01 - Hoạt động] Tab Đã hoàn thành: Lỗi hiển thị thời gian hoàn tất
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-187 · **Module:** ACT · **Sync:** 2026-09-23 (R2)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-187 · **Module:** ACT · **Sync:** 2026-09-24 (R2)
 
 | Field | Value |
 |-------|-------|
@@ -35,7 +35,7 @@
 
 **Data**:
 
-- Account: [stag\_](mailto:stag_chintl12@fpt.com)chintl12@fpt.com
+* Account: [stag\_](mailto:stag_chintl12@fpt.com)chintl12@fpt.com
 
 **Step:**
 
@@ -48,4 +48,4 @@
 
 **KQMM: Hệ thống hiển thị hiển thị thông tin thời gian hoàn thành** 
 
-![attachment](ae4dd021-f34a-4bfa-8ae7-d7297636ffa8)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=1719f085d3b8&id=ae4dd021-f34a-4bfa-8ae7-d7297636ffa8&&collection=&height=null&occurrenceKey=null&width=null&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

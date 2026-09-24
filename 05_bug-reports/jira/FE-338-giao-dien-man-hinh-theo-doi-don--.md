@@ -1,6 +1,6 @@
 # FE-338 — [TC_04 - Giao nhận & Theo dõi đơn]- Giao diện màn hình Theo dõi đơn - Luồng  hẹn giao lại
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-338 · **Module:** DLV · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-338 · **Module:** DLV · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -20,12 +20,12 @@
 | Platform | App |
 | Test method | Manual |
 | Duplicate | No |
-| Reject Number | Lần 1 |
+| Reject Number | Lần 2 |
 | Due date | 2026-09-23 |
 | Reporter | GiangDC2 |
 | Assignee | Tuanvm37 |
 | Created | 2026-09-22 |
-| Updated | 2026-09-23 |
+| Updated | 2026-09-24 |
 
 > ⚠️ **Nguồn chuẩn = Jira** — sửa trên Jira rồi `/sync-jira-bugs`, KHÔNG sửa tay file này.
 
@@ -35,16 +35,16 @@
 
 **I. Môi trường**
 
-- URL: N/A (FoxEco là SDK nhúng trong host app mobile FoxPro, không có URL riêng)
-- Account/Role: A người vận chuyển `stag_anhdc4@`
-- Trình duyệt / Thiết bị: emulator-5554 (Android), UiAutomator2
-- Build/Version: STG · v1.1 · host app `com.hrisproject.stag` (FoxPro)
+* URL: N/A (FoxEco là SDK nhúng trong host app mobile FoxPro, không có URL riêng)
+* Account/Role: A người vận chuyển `stag_anhdc4@`
+* Trình duyệt / Thiết bị: emulator-5554 (Android), UiAutomator2
+* Build/Version: STG · v1.1 · host app `com.hrisproject.stag` (FoxPro)
 
 **II. Mô tả Bug**
 
 **Pre-condition:**
 
-- Đơn đang được Hẹn giao lại
+* Đơn đang được Hẹn giao lại
 
 **Steps**:
 
@@ -53,4 +53,4 @@
 
 Actual: thiến block Giao lại cho người nhận, lịch sử + btn sai 
 
-![attachment](76115a72-5a47-4b1d-9944-c37731c2965a)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=333510ac34f7&id=76115a72-5a47-4b1d-9944-c37731c2965a&&collection=&height=959&occurrenceKey=null&width=1437&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

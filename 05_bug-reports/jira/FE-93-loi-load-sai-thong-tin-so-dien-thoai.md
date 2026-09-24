@@ -1,6 +1,6 @@
 # FE-93 — [TC_04 - Đăng tin - Tôi cần gửi hàng] Lỗi load sai thông tin Số điện thoại của Người gửi
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-93 · **Module:** ORD · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-93 · **Module:** ORD · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -41,4 +41,4 @@
 
 Evidence:
 
-![attachment](6bb7576c-136d-4527-aeb7-43d7a0679e69)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=8b3708e0069e&id=6bb7576c-136d-4527-aeb7-43d7a0679e69&&collection=&height=360&occurrenceKey=null&width=166&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

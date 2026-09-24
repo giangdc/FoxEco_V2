@@ -1,6 +1,6 @@
 # FE-107 — [TC_04 - Đăng tin - Tôi nhận giao hàng]: màn hình bị chia làm 2  vùng khi thao tác tại giao diện chọn giờ
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-107 · **Module:** ORD · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-107 · **Module:** ORD · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -44,4 +44,4 @@ Thiết bị: IP XR, ios 18.7.9
 
 ==> scroll đến 00 giờ thì ko cho scroll nữa + giữ nguyên giao diện chọn giờ 
 
-![attachment](dffe7311-debf-49ac-a777-42cfec5f1dcf)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=27c5189eedb5&id=dffe7311-debf-49ac-a777-42cfec5f1dcf&&collection=&height=360&occurrenceKey=null&width=166&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

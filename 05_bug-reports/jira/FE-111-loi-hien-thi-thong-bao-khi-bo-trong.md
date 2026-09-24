@@ -1,6 +1,6 @@
 # FE-111 — [TC_04 - Đăng tin - Tôi cần gửi hàng] Lỗi hiển thị thông báo khi bỏ trống Số điện thoại người nhận không đúng vị trí
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-111 · **Module:** ORD · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-111 · **Module:** ORD · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -41,4 +41,4 @@
 
 **Evidence**:
 
-![attachment](5141f6f9-4f27-4a43-853d-2e5f3afb992f)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=2bf957eb6520&id=5141f6f9-4f27-4a43-853d-2e5f3afb992f&&collection=&height=710&occurrenceKey=null&width=458&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

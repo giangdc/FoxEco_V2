@@ -1,6 +1,6 @@
 # FE-104 — [TC_07 - Theo dõi đơn]: Lỗi hiển thị thông tin Người Giao hàng không đúng ở màn hình Theo dõi đơn hàng của người nhận 
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-104 · **Module:** DLV · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-104 · **Module:** DLV · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -43,5 +43,5 @@
 
 **KQMM: Hệ thống hiển thị đúng thông tin người giao hàng đã giao** 
 
-![attachment](5ac21d69-c90b-4e62-b7fa-ac5578ac9a6a)
-![attachment](2cb70d56-b453-45f2-81f1-b7b3d7ed9414)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=70fecff9d5e8&id=5ac21d69-c90b-4e62-b7fa-ac5578ac9a6a&&collection=&height=2097&occurrenceKey=null&width=967&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=5cea5f0436ac&id=2cb70d56-b453-45f2-81f1-b7b3d7ed9414&&collection=&height=null&occurrenceKey=null&width=null&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

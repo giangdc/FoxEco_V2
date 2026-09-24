@@ -1,6 +1,6 @@
 # FE-198 — [TC_06 - Bảng tin & Chi tiết tin - Bảng tin] Không hiển thị btn Tôi mang giúp được với người giao đã hủy đơn trước đó 
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-198 · **Module:** FEED · **Sync:** 2026-09-23 (R2)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-198 · **Module:** FEED · **Sync:** 2026-09-24 (R2)
 
 | Field | Value |
 |-------|-------|
@@ -45,4 +45,4 @@ Step:
 
 **KQMM: Hiển thị btn Tôi mang giúp được với người giao đã hủy đơn trước đó** 
 
-![attachment](93624071-d037-4cc8-925c-cb229e5694df)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=d2c2277d8c73&id=93624071-d037-4cc8-925c-cb229e5694df&&collection=&height=1792&occurrenceKey=null&width=828&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

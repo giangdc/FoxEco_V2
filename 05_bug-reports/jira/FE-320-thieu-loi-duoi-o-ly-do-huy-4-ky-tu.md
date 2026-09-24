@@ -1,6 +1,6 @@
 # FE-320 — [TC_03 - Huỷ đơn][Suggest] - Thiếu dòng lỗi dưới ô lý do khi nhập 4 ký tự
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-320 · **Module:** CNL · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-320 · **Module:** CNL · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -35,16 +35,16 @@
 
 **I. Môi trường**
 
-- URL: N/A (FoxEco là SDK nhúng trong host app mobile FoxPro, không có URL riêng)
-- Account/Role: A người gửi `stag_anhdc4@`
-- Trình duyệt / Thiết bị: emulator-5554 (Android), UiAutomator2
-- Build/Version: STG · v1.1 · host app `com.hrisproject.stag` (FoxPro)
+* URL: N/A (FoxEco là SDK nhúng trong host app mobile FoxPro, không có URL riêng)
+* Account/Role: A người gửi `stag_anhdc4@`
+* Trình duyệt / Thiết bị: emulator-5554 (Android), UiAutomator2
+* Build/Version: STG · v1.1 · host app `com.hrisproject.stag` (FoxPro)
 
 **II. Mô tả Bug**
 
 **Pre-condition:**
 
-- Đơn ở trạng thái "Chờ ghép", đang mở popup "Huỷ đơn".
+* Đơn ở trạng thái "Chờ ghép", đang mở popup "Huỷ đơn".
 
 **Steps:**
 
@@ -53,8 +53,8 @@
 
 **Expected result:**
 
-- Nút "Xác nhận" vô hiệu hoá **ngay** (không phải bấm được rồi mới báo lỗi); **hiện lỗi ngay dưới ô lý do**; trạng thái đơn không đổi _(TC-CNL-004; PRD_ `DOC-v1.1-01` `BR11-01` + `VAL-04` + `AC-25.1.03`).
+* Nút "Xác nhận" vô hiệu hoá **ngay** (không phải bấm được rồi mới báo lỗi); **hiện lỗi ngay dưới ô lý do**; trạng thái đơn không đổi _(TC-CNL-004; PRD_ `DOC-v1.1-01` `BR11-01` + `VAL-04` + `AC-25.1.03`).
 
 **Actual result:**
 
-- Nút "Xác nhận" đã khoá đúng (`enabled=false`) và trạng thái đơn không đổi — nhưng **không có dòng lỗi hiển thị dưới ô lý do** (page source giữa ô lý do và hàng nút không có text nào).
+* Nút "Xác nhận" đã khoá đúng (`enabled=false`) và trạng thái đơn không đổi — nhưng **không có dòng lỗi hiển thị dưới ô lý do** (page source giữa ô lý do và hàng nút không có text nào).

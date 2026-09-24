@@ -1,6 +1,6 @@
 # FE-156 — [TC_03 - Thông báo]: push thêm thông báo sau khi trước đó đã gởi 5 tin -> có 1 tin Xác nhận 
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-156 · **Module:** NTF · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-156 · **Module:** NTF · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -46,4 +46,4 @@ Actual: Nhận thêm thông báo đơn hàng phù hợp sau khi xác nhận tạ
 
 (trong Video đã nhận 1 tin → push thêm 1 tin trên đầu)
 
-![attachment](1153a708-b691-4025-9cd9-2182f3123076)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=0f302ddb15b2&id=1153a708-b691-4025-9cd9-2182f3123076&&collection=&height=360&occurrenceKey=null&width=158&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

@@ -1,6 +1,6 @@
 # FE-129 — [TC_04 - Đăng tin- Tạo mới/Chỉnh sửa]: Không điều hường đến màn hình cài đặt của device khi click vào btn Cấp quyền 
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-129 · **Module:** ORD · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-129 · **Module:** ORD · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -45,4 +45,4 @@ Thiết bị: Xiaomi redmid note 12T , android 15
 
 ==> Cần điều hướng or thông báo lỗi hợp lý cho case này
 
-![attachment](d3bcc252-69ac-4fd5-9045-d4a671bc7398)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=86e0590fb12e&id=d3bcc252-69ac-4fd5-9045-d4a671bc7398&&collection=&height=null&occurrenceKey=null&width=null&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

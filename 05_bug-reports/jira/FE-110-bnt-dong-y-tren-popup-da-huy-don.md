@@ -1,6 +1,6 @@
 # FE-110 — [TC_08 - Đăng tin - Hủy đơn]: bnt Đồng ý trên popup đã hủy đơn hàng không đúng 
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-110 · **Module:** CNL · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-110 · **Module:** CNL · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -42,4 +42,4 @@
 
 **Actual:** Hiển thị popup đã hủy kèm btn Đông ý nhưng btn đồng ý nằm trên 2 hàng 
 
-![attachment](a027c2cb-8799-4571-b7d7-67039bd97a1c)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=37e5a807e7e5&id=a027c2cb-8799-4571-b7d7-67039bd97a1c&&collection=&height=405&occurrenceKey=null&width=650&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

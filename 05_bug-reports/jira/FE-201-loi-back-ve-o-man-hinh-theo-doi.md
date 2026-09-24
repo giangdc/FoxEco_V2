@@ -1,6 +1,6 @@
 # FE-201 — [TC_07 - Theo dõi đơn]: Lỗi Back về ở màn hình Theo dõi đơn sau khi người giao hàng xác nhận đã lấy hàng/ đã giao hàng 
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-201 · **Module:** DLV · **Sync:** 2026-09-23 (R2)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-201 · **Module:** DLV · **Sync:** 2026-09-24 (R2)
 
 | Field | Value |
 |-------|-------|
@@ -35,7 +35,7 @@
 
 Data:
 
-- Account: [stag_vanmtt3@fpt.com](mailto:stag_Chintl12@fpt.com)
+* Account: [stag_vanmtt3@fpt.com](mailto:stag_Chintl12@fpt.com)
 
 Step:
 
@@ -51,4 +51,4 @@ Note tương tự với thao tác đã giao hàng
 
 **KQMM: Điều hướng đúng về màn Hoạt động**
 
-![attachment](782dcfed-0b46-4b5c-bbae-211538cd403d)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=da96fabd755d&id=782dcfed-0b46-4b5c-bbae-211538cd403d&&collection=&height=1066&occurrenceKey=null&width=480&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

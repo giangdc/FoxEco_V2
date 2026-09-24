@@ -1,6 +1,6 @@
 # FE-142 — [TC_05 - Trang chủ]: Hệ thống load số lượng đơn tối đa trong Đơn của tôi không khớp giữa các vai trò
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-142 · **Module:** HOME · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-142 · **Module:** HOME · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -35,9 +35,9 @@
 
 **Data**:
 
-- Account Sender: [stag_dienlt2@fpt.com](mailto:stag_dienlt2@fpt.com)
-- Account Carrier: [stag_vanmtt3@fpt.com](mailto:stag_chintl12@fpt.com)
-- Account Receiver: [stag_chinlt12@fpt.com](mailto:stag_chinlt12@fpt.com)
+* Account Sender: [stag_dienlt2@fpt.com](mailto:stag_dienlt2@fpt.com)
+* Account Carrier: [stag_vanmtt3@fpt.com](mailto:stag_chintl12@fpt.com)
+* Account Receiver: [stag_chinlt12@fpt.com](mailto:stag_chinlt12@fpt.com)
 
 **Step:**
 
@@ -52,5 +52,5 @@
 
 **KQMM: Hệ thống load số lượng đơn tối đa 5** 
 
-![attachment](d18ecfcb-2a35-4b7f-912f-3b9e26275901)
-![attachment](8aef056c-3924-42a8-8204-7be53c3d8936)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=bc1edf18adff&id=d18ecfcb-2a35-4b7f-912f-3b9e26275901&&collection=&height=2113&occurrenceKey=null&width=2841&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=96ba44358019&id=8aef056c-3924-42a8-8204-7be53c3d8936&&collection=&height=2113&occurrenceKey=null&width=2841&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

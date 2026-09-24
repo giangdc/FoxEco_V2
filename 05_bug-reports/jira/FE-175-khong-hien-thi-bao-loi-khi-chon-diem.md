@@ -1,6 +1,6 @@
 # FE-175 — [TC_04 - Đăng tin - Tôi cần gửi hàng]: không hiển thị báo lỗi khi chọn Điểm xuất phát = điểm đến
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-175 · **Module:** ORD · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-175 · **Module:** ORD · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -41,4 +41,4 @@ Actual: Disalbe btn Đăng tin ngay
 
 => Báo lỗi để người dùng biết đang bị lỗi chỗ nào 
 
-![attachment](113f774a-85e3-41b1-aef6-56a2b7ddae54)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=9c42d931e414&id=113f774a-85e3-41b1-aef6-56a2b7ddae54&&collection=&height=null&occurrenceKey=null&width=null&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

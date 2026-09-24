@@ -1,6 +1,6 @@
 # FE-307 — [TC_04 - Đăng tin][Suggest] Đề xuất thống nhất cơ chế validate giữa 2 luồng đăng tin
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-307 · **Module:** ORD · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-307 · **Module:** ORD · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -25,7 +25,7 @@
 | Reporter | GiangDC2 |
 | Assignee | Tuanvm37 |
 | Created | 2026-09-21 |
-| Updated | 2026-09-23 |
+| Updated | 2026-09-24 |
 
 > ⚠️ **Nguồn chuẩn = Jira** — sửa trên Jira rồi `/sync-jira-bugs`, KHÔNG sửa tay file này.
 
@@ -35,10 +35,10 @@
 
 **I. Môi trường**
 
-- URL: N/A (FoxEco là SDK nhúng trong host app mobile FoxPro, không có URL riêng)
-- Account/Role: CBNV `Đặng Châu Giang`, MNV 00131946 (tài khoản A) — vai SENDER
-- Trình duyệt / Thiết bị: emulator-5554, Android, UiAutomator2
-- Build/Version: STG · v1.1 · host app `com.hrisproject.stag` (FoxPro)
+* URL: N/A (FoxEco là SDK nhúng trong host app mobile FoxPro, không có URL riêng)
+* Account/Role: CBNV `Đặng Châu Giang`, MNV 00131946 (tài khoản A) — vai SENDER
+* Trình duyệt / Thiết bị: emulator-5554, Android, UiAutomator2
+* Build/Version: STG · v1.1 · host app `com.hrisproject.stag` (FoxPro)
 
 **II. Mô tả Bug**
 
@@ -61,13 +61,13 @@
 
 **Căn cứ đặc tả:**
 
-- `VAL-01` (`DOC-v1.0-01 §D8.3 L392`, `SC-ORD-047`): nút gửi **vô hiệu hoá tới khi form hợp lệ** — áp cho cả NEED và OFFER. NEED làm đúng; OFFER để nút bật ⇒ lệch chữ `VAL-01`.
-- `VAL-02` (`§D8.3 L393`, `SC-ORD-048`): _"Lỗi hiện ngay dưới ô nhập khi rời ô (on blur), không dùng popup; cuộn tới ô lỗi đầu tiên khi bấm submit"_. OFFER làm được một phần; NEED chưa làm (`FE-301`).
+* `VAL-01` (`DOC-v1.0-01 §D8.3 L392`, `SC-ORD-047`): nút gửi **vô hiệu hoá tới khi form hợp lệ** — áp cho cả NEED và OFFER. NEED làm đúng; OFFER để nút bật ⇒ lệch chữ `VAL-01`.
+* `VAL-02` (`§D8.3 L393`, `SC-ORD-048`): _"Lỗi hiện ngay dưới ô nhập khi rời ô (on blur), không dùng popup; cuộn tới ô lỗi đầu tiên khi bấm submit"_. OFFER làm được một phần; NEED chưa làm (`FE-301`).
 
 **Đề xuất hướng thống nhất (BA/Dev chọn):**
 
-- **Phương án A — theo** `VAL-01`: cả hai luồng **khoá nút** cho tới khi đủ dữ liệu, **kèm lỗi inline tại từng trường** (`VAL-02`) để người dùng biết thiếu gì. OFFER chuyển sang khoá nút; NEED bổ sung lỗi inline (đang theo dõi ở `FE-301`).
-- **Phương án B — bỏ khoá nút:** cả hai luồng để nút **luôn bật**; khi bấm thiếu dữ liệu thì hiện lỗi inline và cuộn tới ô lỗi đầu tiên (`VAL-02`). Cần BA sửa `VAL-01`; NEED bỏ khoá nút.
-- Cả hai phương án đều đòi NEED hiển thị được lỗi inline. Lưu ý khi chọn A: nếu chỉ khoá nút mà không có lỗi inline thì lặp lại đúng tình trạng `FE-301`.
+* **Phương án A — theo** `VAL-01`: cả hai luồng **khoá nút** cho tới khi đủ dữ liệu, **kèm lỗi inline tại từng trường** (`VAL-02`) để người dùng biết thiếu gì. OFFER chuyển sang khoá nút; NEED bổ sung lỗi inline (đang theo dõi ở `FE-301`).
+* **Phương án B — bỏ khoá nút:** cả hai luồng để nút **luôn bật**; khi bấm thiếu dữ liệu thì hiện lỗi inline và cuộn tới ô lỗi đầu tiên (`VAL-02`). Cần BA sửa `VAL-01`; NEED bỏ khoá nút.
+* Cả hai phương án đều đòi NEED hiển thị được lỗi inline. Lưu ý khi chọn A: nếu chỉ khoá nút mà không có lỗi inline thì lặp lại đúng tình trạng `FE-301`.
 
 **Hình ảnh mô tả:** đính kèm 2 ảnh — OFFER trống với nút "Đăng tin ngay" đang bật và lỗi `Chọn ít nhất 1 buổi` (`TC-ORD-050`); NEED nút "Tiếp theo" khoá không báo lỗi (`TC-ORD-063`)

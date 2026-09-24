@@ -1,14 +1,14 @@
 # FE-302 — [TC_04 - Đăng tin - Tôi cần gửi hàng] Thoát wizard không hiện popup xác nhận, mất dữ liệu đã nhập
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-302 · **Module:** ORD · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-302 · **Module:** ORD · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
 | Key | FE-302 |
 | Module | ORD |
-| Status | In Progress |
-| Resolution |  |
-| Resolved |  |
+| Status | In review |
+| Resolution | Fixed |
+| Resolved | 2026-09-24 |
 | Verify Date |  |
 | Done At |  |
 | Fix Version | V1.0 |
@@ -25,7 +25,7 @@
 | Reporter | GiangDC2 |
 | Assignee | Tuanvm37 |
 | Created | 2026-09-21 |
-| Updated | 2026-09-23 |
+| Updated | 2026-09-24 |
 
 > ⚠️ **Nguồn chuẩn = Jira** — sửa trên Jira rồi `/sync-jira-bugs`, KHÔNG sửa tay file này.
 
@@ -35,16 +35,16 @@
 
 **I. Môi trường**
 
-- URL: N/A (FoxEco là SDK nhúng trong host app mobile FoxPro, không có URL riêng)
-- Account/Role: CBNV `Đặng Châu Giang`, MNV 00131946 (tài khoản A) — vai SENDER
-- Trình duyệt / Thiết bị: emulator-5554, Android, 1080x2400, UiAutomator2
-- Build/Version: STG · v1.1 · host app `com.hrisproject.stag` (FoxPro)
+* URL: N/A (FoxEco là SDK nhúng trong host app mobile FoxPro, không có URL riêng)
+* Account/Role: CBNV `Đặng Châu Giang`, MNV 00131946 (tài khoản A) — vai SENDER
+* Trình duyệt / Thiết bị: emulator-5554, Android, 1080x2400, UiAutomator2
+* Build/Version: STG · v1.1 · host app `com.hrisproject.stag` (FoxPro)
 
 **II. Mô tả Bug**
 
 **Pre-condition:**
 
-- Tài khoản A là CBNV có hồ sơ đầy đủ trên STG, đã đăng nhập host app FoxPro.
+* Tài khoản A là CBNV có hồ sơ đầy đủ trên STG, đã đăng nhập host app FoxPro.
 
 **Steps:**
 
@@ -56,18 +56,18 @@
 
 **Expected result:**
 
-- Hiện popup đúng chuỗi **"Thoát và bỏ nội dung đã nhập?"**; sau khi chọn _ở lại_, ô "Địa chỉ giao hàng" vẫn giữ nguyên "Số 9 Duy Tân".
+* Hiện popup đúng chuỗi **"Thoát và bỏ nội dung đã nhập?"**; sau khi chọn _ở lại_, ô "Địa chỉ giao hàng" vẫn giữ nguyên "Số 9 Duy Tân".
 
 **Actual result:**
 
-- **Không có popup nào** — tìm phần tử chứa text "Thoát" → NOT FOUND.
-- Nhấn "Quay lại" ở bước 1 **thoát thẳng khỏi wizard**, **toàn bộ dữ liệu đang soạn dở bị xoá sạch**, không có bất kỳ cảnh báo nào.
-- Ghi nhận thêm về điều hướng: ở bước 2, "Quay lại" **về bước 1** (không đóng wizard) — nên phải nhấn 2 lần mới tới điểm thoát.
+* **Không có popup nào** — tìm phần tử chứa text "Thoát" → NOT FOUND.
+* Nhấn "Quay lại" ở bước 1 **thoát thẳng khỏi wizard**, **toàn bộ dữ liệu đang soạn dở bị xoá sạch**, không có bất kỳ cảnh báo nào.
+* Ghi nhận thêm về điều hướng: ở bước 2, "Quay lại" **về bước 1** (không đóng wizard) — nên phải nhấn 2 lần mới tới điểm thoát.
 
 **Phạm vi ảnh hưởng:**
 
-- Người dùng lỡ tay chạm "Quay lại" sau khi đã nhập gần hết form 2 bước sẽ **mất toàn bộ công nhập liệu**, không có đường hoàn tác.
-- Nhánh _"chọn thoát trên popup"_ (`TC-ORD-062`) cũng không thực hiện đúng kịch bản được vì popup không tồn tại.
+* Người dùng lỡ tay chạm "Quay lại" sau khi đã nhập gần hết form 2 bước sẽ **mất toàn bộ công nhập liệu**, không có đường hoàn tác.
+* Nhánh _"chọn thoát trên popup"_ (`TC-ORD-062`) cũng không thực hiện đúng kịch bản được vì popup không tồn tại.
 
 **Căn cứ:** `AC-01.2.01` + `C-ORD-08` (BA chốt 2026-09-15: assert **verbatim** chuỗi popup).
 

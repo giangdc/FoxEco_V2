@@ -1,6 +1,6 @@
 # FE-99 — [TC_04 - Đăng tin - Tôi nhận giao hàng] Mặc định load data tại Thời gian di chuyển không đúng
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-99 · **Module:** ORD · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-99 · **Module:** ORD · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -43,4 +43,4 @@ Actual: mặc định thời gian hiện tại + 30p
 
 `BRD 17:30 – 18:30`
 
-![attachment](77f21925-04a1-47a1-9efc-687ce9701d7e)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=d7ab4a419d0f&id=77f21925-04a1-47a1-9efc-687ce9701d7e&&collection=&height=589&occurrenceKey=null&width=473&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

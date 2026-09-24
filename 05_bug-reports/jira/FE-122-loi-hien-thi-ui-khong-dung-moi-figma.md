@@ -1,6 +1,6 @@
 # FE-122 — [TC_07 - Theo dõi đơn]: Lỗi hiển thị UI không đúng mới figma khi Người vận chuyển bấm "Tôi đã lấy hàng"
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-122 · **Module:** DLV · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-122 · **Module:** DLV · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -35,7 +35,7 @@
 
 Data:
 
-- Account: Stag_vanmtt3@fpt.com
+* Account: Stag_vanmtt3@fpt.com
 
 Step:
 
@@ -47,4 +47,4 @@ Step:
 
 **KQMM: Hiển thị UI giống design: Popup "Xác nhận" hiển thị nội dung "Bạn xác nhận đã lấy hàng từ người gửi và bắt đầu giao?"**
 
-![attachment](e039b030-fb25-4aea-9ab8-65b0df448fe9)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=167279330456&id=e039b030-fb25-4aea-9ab8-65b0df448fe9&&collection=&height=1139&occurrenceKey=null&width=989&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

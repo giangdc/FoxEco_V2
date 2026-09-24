@@ -1,6 +1,6 @@
 # FE-196 — [TC_04 - Đăng tin - Tôi cần gửi hàng] Lỗi UI bị che bottom sheet ở 1 vài màn hình Thông tin hàng, Xác nhận đã lấy hàng, Xác nhận đã giao hàng
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-196 · **Module:** ORD · **Sync:** 2026-09-23 (R2)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-196 · **Module:** ORD · **Sync:** 2026-09-24 (R2)
 
 | Field | Value |
 |-------|-------|
@@ -41,4 +41,4 @@ Note device: Samsung Galaxy A56
 
 Evidence:
 
-![attachment](d6ca0bd9-406e-4e2a-b70a-e60d592442a0)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=70fafd3ee2ac&id=d6ca0bd9-406e-4e2a-b70a-e60d592442a0&&collection=&height=1568&occurrenceKey=null&width=720&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

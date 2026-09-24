@@ -1,6 +1,6 @@
 # FE-319 — [TC_03 - Huỷ đơn] - Log người gửi huỷ đơn lại ghi nhãn Đã huỷ nhận đơn
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-319 · **Module:** CNL · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-319 · **Module:** CNL · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -35,16 +35,16 @@
 
 **I. Môi trường**
 
-- URL: N/A (FoxEco là SDK nhúng trong host app mobile FoxPro, không có URL riêng)
-- Account/Role: A người gửi `stag_anhdc4@` — đơn `MATCHED` (đã ghép, tài khoản B `stag_anhptm17@` là bên nhận)
-- Trình duyệt / Thiết bị: emulator-5554 (Android), UiAutomator2
-- Build/Version: STG · v1.1 · host app `com.hrisproject.stag` (FoxPro)
+* URL: N/A (FoxEco là SDK nhúng trong host app mobile FoxPro, không có URL riêng)
+* Account/Role: A người gửi `stag_anhdc4@` — đơn `MATCHED` (đã ghép, tài khoản B `stag_anhptm17@` là bên nhận)
+* Trình duyệt / Thiết bị: emulator-5554 (Android), UiAutomator2
+* Build/Version: STG · v1.1 · host app `com.hrisproject.stag` (FoxPro)
 
 **II. Mô tả Bug**
 
 **Pre-condition:**
 
-- Đơn `MATCHED`, block LỊCH SỬ đã có mốc "Ghép thành công" trước đó.
+* Đơn `MATCHED`, block LỊCH SỬ đã có mốc "Ghép thành công" trước đó.
 
 **Steps:**
 
@@ -54,8 +54,8 @@
 
 **Expected result:**
 
-- Block LỊCH SỬ có thêm đúng 1 dòng; dòng mới ghi đủ 3 thành phần: vai "Người gửi", lý do "Huy vi trung lich" và thời điểm huỷ _(TC-CNL-009; PRD_ `DOC-v1.1-01` `BR11-02` + `AC-25.1.01`).
+* Block LỊCH SỬ có thêm đúng 1 dòng; dòng mới ghi đủ 3 thành phần: vai "Người gửi", lý do "Huy vi trung lich" và thời điểm huỷ _(TC-CNL-009; PRD_ `DOC-v1.1-01` `BR11-02` + `AC-25.1.01`).
 
 **Actual result:**
 
-- Có thêm đúng 1 dòng, đủ lý do và thời điểm (`23:34`) — nhưng nhãn hành động ghi là **"Đã huỷ nhận đơn"** (`Hôm nay · 23:34 · Đặng Châu Anh · Lý do: Huy vi trung lich`). Đây là hành động **A (người gửi) huỷ đơn**, nhưng nhãn "Đã huỷ nhận đơn" lại đúng là nhãn dùng cho khi **người vận chuyển huỷ nhận đơn** (xem `TC-CNL-010`) ⇒ người đọc log dễ hiểu nhầm bên huỷ là người vận chuyển.
+* Có thêm đúng 1 dòng, đủ lý do và thời điểm (`23:34`) — nhưng nhãn hành động ghi là **"Đã huỷ nhận đơn"** (`Hôm nay · 23:34 · Đặng Châu Anh · Lý do: Huy vi trung lich`). Đây là hành động **A (người gửi) huỷ đơn**, nhưng nhãn "Đã huỷ nhận đơn" lại đúng là nhãn dùng cho khi **người vận chuyển huỷ nhận đơn** (xem `TC-CNL-010`) ⇒ người đọc log dễ hiểu nhầm bên huỷ là người vận chuyển.

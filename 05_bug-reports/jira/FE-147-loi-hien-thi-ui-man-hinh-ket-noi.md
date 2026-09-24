@@ -1,6 +1,6 @@
 # FE-147 — [TC_06 - Bảng tin & Chi tiết tin - Chi tiết tin] Lỗi hiển thị UI màn hình Kết nối thành công khi user nhấn Xác nhận mang giúp đơn hàng
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-147 · **Module:** FEED · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-147 · **Module:** FEED · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -42,4 +42,4 @@
 
 **Expected**: Chuyển sang màn hình Theo dõi đơn hàng như Figma mô tả sau khi user nhấn button Xác nhận ở popup Xác nhận mang giúp. Vì những thông tin ở màn hình Kết nối thành công trên màn hình Theo dõi đơn đều có hiển thị
 
-![attachment](5c7019e5-e54d-4ef8-b1f4-a7ef8e72754c)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=d46ac1b20a72&id=5c7019e5-e54d-4ef8-b1f4-a7ef8e72754c&&collection=&height=675&occurrenceKey=null&width=992&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

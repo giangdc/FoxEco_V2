@@ -1,6 +1,6 @@
 # FE-137 — [TC_04 - Đăng tin - Tôi nhận giao hàng]: Disable btn đăng tin ngay khi chọn đúng thông tin
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-137 · **Module:** ORD · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-137 · **Module:** ORD · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -43,4 +43,4 @@
 
 Actual: bnt Đăng tin ngay bị disable → Thao tác tương tự trên android OK
 
-![attachment](8e91bfe1-9b5d-4c48-8d83-41d95c41bb65)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=54a6c555b7f1&id=8e91bfe1-9b5d-4c48-8d83-41d95c41bb65&&collection=&height=null&occurrenceKey=null&width=null&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

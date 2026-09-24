@@ -1,6 +1,6 @@
 # FE-317 — [TC_01- Hoạt động] - Lý do trên card đơn Hết hạn hiện sai chuỗi chính thức
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-317 · **Module:** ACT · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-317 · **Module:** ACT · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -35,16 +35,16 @@
 
 **I. Môi trường**
 
-- URL: N/A (FoxEco là SDK nhúng trong host app mobile FoxPro, không có URL riêng)
-- Account/Role: CBNV `Đặng Châu Anh` (`stag_anhdc4@`) — người gửi, có nhiều tin đã hết hạn
-- Trình duyệt / Thiết bị: emulator-5554 (Android), UiAutomator2
-- Build/Version: STG · v1.1 · host app `com.hrisproject.stag` (FoxPro)
+* URL: N/A (FoxEco là SDK nhúng trong host app mobile FoxPro, không có URL riêng)
+* Account/Role: CBNV `Đặng Châu Anh` (`stag_anhdc4@`) — người gửi, có nhiều tin đã hết hạn
+* Trình duyệt / Thiết bị: emulator-5554 (Android), UiAutomator2
+* Build/Version: STG · v1.1 · host app `com.hrisproject.stag` (FoxPro)
 
 **II. Mô tả Bug**
 
 **Pre-condition:**
 
-- Tài khoản có ít nhất 1 tin đã hết hạn (không ai nhận mang giúp trong thời gian đăng).
+* Tài khoản có ít nhất 1 tin đã hết hạn (không ai nhận mang giúp trong thời gian đăng).
 
 **Steps:**
 
@@ -54,8 +54,8 @@
 
 **Expected result:**
 
-- Card hiển thị badge "Hết hạn" kèm dòng lý do đúng chuỗi **"Không có ai nhận mang giúp trong thời gian đăng"** _(TC-ACT-008; PRD_ `DOC-v1.1-01` §8.5.1 BR05-03 + AC-09.1.01).
+* Card hiển thị badge "Hết hạn" kèm dòng lý do đúng chuỗi **"Không có ai nhận mang giúp trong thời gian đăng"** _(TC-ACT-008; PRD_ `DOC-v1.1-01` §8.5.1 BR05-03 + AC-09.1.01).
 
 **Actual result:**
 
-- Badge "Hết hạn" đúng, nhưng dòng lý do là **"Không có ai nhận mang giúp trong thời gian đăng — tin đã tự động đóng."** — thừa vế "— tin đã tự động đóng." so với chuỗi chính thức. Lặp lại ở **mọi** card Hết hạn trong danh sách (\~30 card).
+* Badge "Hết hạn" đúng, nhưng dòng lý do là **"Không có ai nhận mang giúp trong thời gian đăng — tin đã tự động đóng."** — thừa vế "— tin đã tự động đóng." so với chuỗi chính thức. Lặp lại ở **mọi** card Hết hạn trong danh sách (\~30 card).

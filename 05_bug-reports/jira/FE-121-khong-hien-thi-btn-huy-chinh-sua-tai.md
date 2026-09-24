@@ -1,6 +1,6 @@
 # FE-121 — [TC_04 - Đăng tin- Chỉnh sửa]: Không hiển thị btn Hủy chỉnh sửa tại bước 1/2
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-121 · **Module:** ORD · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-121 · **Module:** ORD · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -42,4 +42,4 @@
 
 => Mỗi bước đều có btn này
 
-![attachment](9a6fc07b-633d-4f6d-b22e-d4c27de89cf4)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=4421ba82c963&id=9a6fc07b-633d-4f6d-b22e-d4c27de89cf4&&collection=&height=352&occurrenceKey=null&width=846&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

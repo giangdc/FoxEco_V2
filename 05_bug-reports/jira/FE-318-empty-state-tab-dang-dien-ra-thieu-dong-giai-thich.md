@@ -1,6 +1,6 @@
 # FE-318 — [TC_01 - Hoạt động] - Empty state tab Đang diễn ra thiếu dòng giải thích
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-318 · **Module:** ACT · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-318 · **Module:** ACT · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -35,16 +35,16 @@
 
 **I. Môi trường**
 
-- URL: N/A (FoxEco là SDK nhúng trong host app mobile FoxPro, không có URL riêng)
-- Account/Role: CBNV `Nguyễn Đình Nhật Minh` (`stag_MinhNDN2@`) — tài khoản trắng, 0 đơn ở cả 2 tab
-- Trình duyệt / Thiết bị: emulator-5554 (Android), UiAutomator2
-- Build/Version: STG · v1.1 · host app `com.hrisproject.stag` (FoxPro)
+* URL: N/A (FoxEco là SDK nhúng trong host app mobile FoxPro, không có URL riêng)
+* Account/Role: CBNV `Nguyễn Đình Nhật Minh` (`stag_MinhNDN2@`) — tài khoản trắng, 0 đơn ở cả 2 tab
+* Trình duyệt / Thiết bị: emulator-5554 (Android), UiAutomator2
+* Build/Version: STG · v1.1 · host app `com.hrisproject.stag` (FoxPro)
 
 **II. Mô tả Bug**
 
 **Pre-condition:**
 
-- Tài khoản không có đơn nào đang thực hiện (từ "Chờ ghép" đến "Đã giao").
+* Tài khoản không có đơn nào đang thực hiện (từ "Chờ ghép" đến "Đã giao").
 
 **Steps:**
 
@@ -54,8 +54,8 @@
 
 **Expected result:**
 
-- Vùng danh sách hiện icon nét mảnh màu neutral, dòng tiêu đề đúng chuỗi "Không có đơn đang thực hiện", **1 dòng giải thích**, và đúng 1 nút CTA nhãn "Đăng tin gửi hàng" _(TC-ACT-012; PRD_ `DOC-v1.1-01` §8.17.1 EMP-05 + §8.17.2 BR17-01: "Mỗi empty state gồm: icon nét mảnh màu neutral + một dòng tiêu đề + một dòng giải thích + tối đa một CTA.").
+* Vùng danh sách hiện icon nét mảnh màu neutral, dòng tiêu đề đúng chuỗi "Không có đơn đang thực hiện", **1 dòng giải thích**, và đúng 1 nút CTA nhãn "Đăng tin gửi hàng" _(TC-ACT-012; PRD_ `DOC-v1.1-01` §8.17.1 EMP-05 + §8.17.2 BR17-01: "Mỗi empty state gồm: icon nét mảnh màu neutral + một dòng tiêu đề + một dòng giải thích + tối đa một CTA.").
 
 **Actual result:**
 
-- Có icon, tiêu đề "Không có đơn đang thực hiện" và đúng 1 nút "Đăng tin gửi hàng", nhưng **không có dòng giải thích** nào giữa tiêu đề và nút (page source chỉ có 2 text trong vùng danh sách).
+* Có icon, tiêu đề "Không có đơn đang thực hiện" và đúng 1 nút "Đăng tin gửi hàng", nhưng **không có dòng giải thích** nào giữa tiêu đề và nút (page source chỉ có 2 text trong vùng danh sách).

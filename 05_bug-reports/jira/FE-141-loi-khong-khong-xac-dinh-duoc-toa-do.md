@@ -1,6 +1,6 @@
 # FE-141 — [TC_06 - Bảng tin & Chi tiết tin - Chi tiết tin] Lỗi không không xác định được tọa độ trên bản đồ cho địa chỉ giao hàng
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-141 · **Module:** FEED · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-141 · **Module:** FEED · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -41,4 +41,4 @@
 
 **Evidence**:
 
-![attachment](026fe9fa-77fd-4f0e-941c-abd348d995d6)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=eca7595ff9d7&id=026fe9fa-77fd-4f0e-941c-abd348d995d6&&collection=&height=null&occurrenceKey=null&width=null&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

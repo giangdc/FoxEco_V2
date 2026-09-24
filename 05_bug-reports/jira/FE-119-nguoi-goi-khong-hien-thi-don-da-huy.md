@@ -1,6 +1,6 @@
 # FE-119 — [TC_01 - Hoạt động(Đơn của tôi)]: Người gởi Không hiển thị đơn đã hủy tại màn hình Đơn của tôi
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-119 · **Module:** ACT · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-119 · **Module:** ACT · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -41,10 +41,10 @@
 
 **Actual:** 
 
-- Sau khi hủy thành công quay lại màn tab đang diên ra nhưng không tự động reload lại data → tự động reload và cập nhật lại trạng thái mới nhất
-- sau khi reload thì người gởi không hiển thị đơn trạng thái hủy tại tab Đang diễn ra (người nhận thì có hiển thị đơn trạng thái hủy) → link demo case này có hiển thi
+* Sau khi hủy thành công quay lại màn tab đang diên ra nhưng không tự động reload lại data → tự động reload và cập nhật lại trạng thái mới nhất
+* sau khi reload thì người gởi không hiển thị đơn trạng thái hủy tại tab Đang diễn ra (người nhận thì có hiển thị đơn trạng thái hủy) → link demo case này có hiển thi
 
-![attachment](b54ed501-3415-4094-9e28-2a7afc516d00)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=a03bd45dd00e&id=b54ed501-3415-4094-9e28-2a7afc516d00&&collection=&height=356&occurrenceKey=null&width=1140&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)
 ‌
 
-![attachment](4f23d4d9-78b5-4181-a069-69e2f8575511)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=fca4783f8511&id=4f23d4d9-78b5-4181-a069-69e2f8575511&&collection=&height=null&occurrenceKey=null&width=null&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)

@@ -1,6 +1,6 @@
 # FE-130 — [TC_07 - Theo dõi đơn] Không gửi nhắc cho người nhận khi đơn ở "Đã giao" quá 2 giờ mà chưa xác nhận
 
-🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-130 · **Module:** DLV · **Sync:** 2026-09-23 (R1)
+🔗 **Jira:** https://foxproject.atlassian.net/browse/FE-130 · **Module:** DLV · **Sync:** 2026-09-24 (R1)
 
 | Field | Value |
 |-------|-------|
@@ -35,7 +35,7 @@
 
 **Data**:
 
-- Account: [stag_chintl12@fpt.com](mailto:stag_chintl12@fpt.com)
+* Account: [stag_chintl12@fpt.com](mailto:stag_chintl12@fpt.com)
 
 **Step:**
 
@@ -47,4 +47,4 @@
 
 **KQMM: Receiver nhận được thông báo nhắc xác nhận đã nhận hàng**
 
-![attachment](4cb0fd5c-92b2-46f7-83a5-0862adc5add2)
+![](blob:https://media.staging.atl-paas.net/?type=file&localId=b3dd5f79dd0d&id=4cb0fd5c-92b2-46f7-83a5-0862adc5add2&&collection=&height=null&occurrenceKey=null&width=null&__contextId=null&__displayType=null&__external=false&__fileMimeType=null&__fileName=null&__fileSize=null&__mediaTraceId=null&url=null)
